@@ -4,17 +4,15 @@ import {
 import {
     MainInterface
 } from "../../../../../interfaces/main";
-import { TextTransformation } from "../../../../../utils/text.transformation";
-import { CodeToAngularTableComponentConstructorParam } from "./constructor-param";
 
-export class CodeToAngularFormComponentConstructorArg extends CodeToAngularTableComponentConstructorParam {
-    customConstructorArg = (objectToCode: MainInterface): string => {
+export class CodeToAngularTableComponentConstructorArg {
+    static customConstructorArg = (objectToCode: MainInterface): string => {
         let hasAction = '';
         if (objectToCode.table) {
             if (objectToCode.table.actions) {
                 hasAction = `
                             this.${objectToCode.table.actions.id}Form = this._formBuilder.group({
-                                ${this.createFormBuilder(objectToCode.table.actions.elements, objectToCode)}
+                                ${CodeToAngularTableComponentConstructorArg.createFormBuilder(objectToCode.table.actions.elements, objectToCode)}
                             });
                             `;
             }
@@ -39,15 +37,15 @@ export class CodeToAngularFormComponentConstructorArg extends CodeToAngularTable
         return '';
     }
 
-    createFormBuilder(elements: Array <FormElementInterface> , objectToCode: MainInterface): string {
+    static createFormBuilder(elements: Array <FormElementInterface> , objectToCode: MainInterface): string {
         let codeElements = '';
 
-        codeElements += this.createFormBuilderElements(elements, objectToCode);
+        codeElements += CodeToAngularTableComponentConstructorArg.createFormBuilderElements(elements, objectToCode);
 
         return codeElements;
     }
 
-    private createFormBuilderElements(
+    static createFormBuilderElements(
         elements: Array<FormElementInterface>,
         objectToCode: MainInterface
     ): string {
@@ -60,14 +58,14 @@ export class CodeToAngularFormComponentConstructorArg extends CodeToAngularTable
                     let validators = '';
 
                     if (element?.validators) 
-                    validators = this.createFormBuilderValidators(element.validators);
+                    validators = CodeToAngularTableComponentConstructorArg.createFormBuilderValidators(element.validators);
 
                     if (key === 'tabs') {
                         const tabs = object[key];
                         if (tabs) {
                             tabs.forEach((tab: any) => {
                                 tab.elements.forEach((tabElement: any) => {
-                                    codeElement += this.createFormBuilder(tabElement, objectToCode);
+                                    codeElement += CodeToAngularTableComponentConstructorArg.createFormBuilder(tabElement, objectToCode);
                                 });
                             });
                         }
@@ -106,7 +104,7 @@ export class CodeToAngularFormComponentConstructorArg extends CodeToAngularTable
         return codeElement;
     }
 
-    private createFormBuilderValidators(validators: Array <string> ): string {
+    static createFormBuilderValidators(validators: Array <string> ): string {
         let codeValidator = '';
         validators.forEach(validator => {
             codeValidator += `Validators.${validator},`;

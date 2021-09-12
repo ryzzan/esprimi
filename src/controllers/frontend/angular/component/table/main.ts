@@ -1,29 +1,30 @@
 import {
     MainInterface
 } from "../../../../../interfaces/main";
+import { CodeToAngularTableComponentConstructorArg } from "./constructor-arg";
+import { CodeToAngularTableComponentConstructorParam } from "./constructor-param";
+import { CodeToAngularTableComponentImport } from "./import";
+import { CodeToAngularTableComponentMethod } from "./method";
+import { CodeToAngularTableComponentProperty } from "./property";
 
-import {
-    CodeToAngularTableComponentImport
-} from "./import";
-
-export class CodeToAngularTableComponent extends CodeToAngularTableComponentImport {
+export class CodeToAngularTableComponent {
     createProperty = (object: MainInterface): string => {
-        return this.customProperties(object);
+        return CodeToAngularTableComponentProperty.customProperties(object);
     }
 
     createConstructorParams = (object: MainInterface): string => {
-        return this.customConstructorParam(object);
+        return CodeToAngularTableComponentConstructorParam.customConstructorParam(object);
     }
 
     createConstructorArg = (object: MainInterface): string => {
-        return this.customConstructorArg(object);
+        return CodeToAngularTableComponentConstructorArg.customConstructorArg(object);
     }
 
     createImport = (object: MainInterface): string => {
-        return this.customImports(object);
+        return CodeToAngularTableComponentImport.customImports(object);
     }
 
     createMethod = (object: MainInterface): string => {
-        return this.customMethod(object);
+        return CodeToAngularTableComponentMethod.customMethod(object);
     }
 }

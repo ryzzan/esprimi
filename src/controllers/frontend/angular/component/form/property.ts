@@ -1,8 +1,7 @@
 import { MainInterface } from "../../../../../interfaces/main";
-import { CodeToAngularFormComponentConstructorArg } from "./constructor-arg";
 
-export class CodeToAngularFormComponentProperty extends CodeToAngularFormComponentConstructorArg {
-    customProperties = (object: MainInterface): string => {
+export class CodeToAngularFormComponentProperty {
+    static customProperties = (object: MainInterface): string => {
         if (object.form) {
             const componentCode = `
                                 ${object.form.id}Id: string;

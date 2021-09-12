@@ -1,8 +1,7 @@
 import { InputInterface } from "../../../../../interfaces/form";
-import { CodeToAngularFormTemplateSelect } from "./select";
 
-export class CodeToAngularFormTemplateInput extends CodeToAngularFormTemplateSelect {
-    createInput = (input: InputInterface): string => {
+export class CodeToAngularFormTemplateInput {
+    static createInput = (input: InputInterface): string => {
         const placeholder = input.placeholder ?
             `placeholder="${input.placeholder}"` :
             '';

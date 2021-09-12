@@ -78,7 +78,6 @@ export const EXAMPLE_TABLE: MainInterface = {
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,
-            ServiceFunctionsEnum.Update,
             ServiceFunctionsEnum.Find,
         ],
     },

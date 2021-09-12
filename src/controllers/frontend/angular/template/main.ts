@@ -16,11 +16,7 @@ export class CodeToAngularTemplate {
     customTemplateTableCode = new CodeToAngularTableTemplate;
 
     createTemplateCode = (object: MainInterface): string => {
-        const componentSkeletonCode = `
-                                <mat-card>
-                                    %CONTENT%
-                                </mat-card>
-                                `;
+        const componentSkeletonCode = `%CONTENT%`;
 
         let code = componentSkeletonCode;
 

@@ -6,7 +6,7 @@ import { TableElementInterface } from "../../../../../interfaces/table";
 import { TextTransformation } from "../../../../../utils/text.transformation";
 
 export class CodeToAngularTableComponentMethod {
-    customMethod = (object: MainInterface): string => {
+    static customMethod = (object: MainInterface): string => {
         let hasAction = '';
         
         if (!object.table)
@@ -30,14 +30,14 @@ export class CodeToAngularTableComponentMethod {
             }
             `;
         const componentCode = `
-                            ${this.setTableElements(object.table.elements)}
+                            ${CodeToAngularTableComponentMethod.setTableElements(object.table.elements)}
                             ${hasAction}
                             `;
 
         return componentCode;
     }
 
-    setTableElements(elements: Array<TableElementInterface>): string {
+    static setTableElements(elements: Array<TableElementInterface>): string {
         let codeElement = '';
         elements.forEach(object => {
           if (object.row) {
@@ -45,7 +45,7 @@ export class CodeToAngularTableComponentMethod {
     
             menus?.forEach(menu => {
               if (menu.dialog) {
-                codeElement += this.setDialog(menu.dialog);
+                codeElement += CodeToAngularTableComponentMethod.setDialog(menu.dialog);
               }
             });
           }
@@ -54,7 +54,7 @@ export class CodeToAngularTableComponentMethod {
         return codeElement;
       }
     
-      setDialog(dialog: DialogInterface): string {
+      static setDialog(dialog: DialogInterface): string {
         let hasDialogData = '';
         
         if (dialog.dialogDataInterface) {

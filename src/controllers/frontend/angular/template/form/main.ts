@@ -11,10 +11,12 @@ import {
 import {
     TextTransformation
 } from "../../../../../utils/text.transformation";
+import { CodeToAngularFormTemplateButton } from "./button";
 
 import { CodeToAngularFormTemplateInput } from "./input";
+import { CodeToAngularFormTemplateSelect } from "./select";
 
-export class CodeToAngularFormTemplate extends CodeToAngularFormTemplateInput {
+export class CodeToAngularFormTemplate {
     createFormSkeleton(object: MainInterface): string {
         if (!object.form) return '';
 
@@ -27,16 +29,18 @@ export class CodeToAngularFormTemplate extends CodeToAngularFormTemplateInput {
             '';
 
         const formTemplate = `
-                            <mat-card-header>
-                                ${hasFormTitle}
-                                ${hasFormSubtitle}
-                            </mat-card-header>
+                            <mat-card>
+                                <mat-card-header>
+                                    ${hasFormTitle}
+                                    ${hasFormSubtitle}
+                                </mat-card-header>
 
-                            <mat-card-content>
-                                <form id="${object.form.id}" [formGroup]="${object.form.id}Form" (ngSubmit)="${object.form.id}Submit()">
-                                    ${this.createFormInputs(object.form)}
-                                </form>
-                            </mat-card-content>
+                                <mat-card-content>
+                                    <form id="${object.form.id}" [formGroup]="${object.form.id}Form" (ngSubmit)="${object.form.id}Submit()">
+                                        ${this.createFormInputs(object.form)}
+                                    </form>
+                                </mat-card-content>
+                            </mat-card>
                             `;
 
         return formTemplate;
@@ -56,11 +60,11 @@ export class CodeToAngularFormTemplate extends CodeToAngularFormTemplateInput {
         let code = '';
 
         elements.forEach((element: FormElementInterface) => {
-            if (element.input) code += this.createInput(element.input);
-            if (element.select) code += this.createSelect(element.select);
+            if (element.input) code += CodeToAngularFormTemplateInput.createInput(element.input);
+            if (element.select) code += CodeToAngularFormTemplateSelect.createSelect(element.select);
             if (element.tabs) code += this.createTab(element.tabs);
             if (element.array) code += this.createArray(element.array);
-            if (element.button) code += this.createButton(element.button);
+            if (element.button) code += CodeToAngularFormTemplateButton.createButton(element.button);
         });
 
         return code;

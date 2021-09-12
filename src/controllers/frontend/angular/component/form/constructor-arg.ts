@@ -5,16 +5,14 @@ import {
     MainInterface
 } from "../../../../../interfaces/main";
 
-import { CodeToAngularFormComponentConstructorParam } from "./constructor-param";
-
-export class CodeToAngularFormComponentConstructorArg extends CodeToAngularFormComponentConstructorParam {
-    customConstructorArg = (objectToCode: MainInterface): string => {
+export class CodeToAngularFormComponentConstructorArg {
+    static customConstructorArg = (objectToCode: MainInterface): string => {
         if (objectToCode.form) {
             const componentCode = `
                                 this.${objectToCode.form.id}Id = this._activatedRoute.snapshot.params['id'];
                                 this.isAddModule = !this.${objectToCode.form.id}Id;
                                 this.${objectToCode.form.id}Form = this._formBuilder.group({
-                                    ${this.createFormBuilder(objectToCode.form.elements, objectToCode)}
+                                    ${CodeToAngularFormComponentConstructorArg.createFormBuilder(objectToCode.form.elements, objectToCode)}
                                 });
                             `;
 
@@ -24,15 +22,15 @@ export class CodeToAngularFormComponentConstructorArg extends CodeToAngularFormC
         return '';
     }
 
-    createFormBuilder(elements: Array <FormElementInterface> , objectToCode: MainInterface): string {
+    static createFormBuilder(elements: Array <FormElementInterface> , objectToCode: MainInterface): string {
         let codeElements = '';
 
-        codeElements += this.createFormBuilderElements(elements, objectToCode);
+        codeElements += CodeToAngularFormComponentConstructorArg.createFormBuilderElements(elements, objectToCode);
 
         return codeElements;
     }
 
-    private createFormBuilderElements(
+    static createFormBuilderElements(
         elements: Array<FormElementInterface>,
         objectToCode: MainInterface
     ): string {
@@ -89,7 +87,7 @@ export class CodeToAngularFormComponentConstructorArg extends CodeToAngularFormC
         return codeElement;
     }
 
-    private createFormBuilderValidators(validators: Array <string> ): string {
+    static createFormBuilderValidators(validators: Array <string> ): string {
         let codeValidator = '';
         validators.forEach(validator => {
             codeValidator += `Validators.${validator},`;

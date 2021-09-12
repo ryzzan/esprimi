@@ -1,8 +1,7 @@
 import { MainInterface } from "../../../../../interfaces/main";
-import { CodeToAngularFormComponentProperty } from "./property";
 
-export class CodeToAngularTableComponentImport extends CodeToAngularFormComponentProperty {
-    customImports = (object: MainInterface): string => {
+export class CodeToAngularTableComponentImport {
+    static customImports = (object: MainInterface): string => {
         let hasAction = '';
         let hasArray = '';
         let hasDialog = '';

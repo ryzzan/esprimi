@@ -1,8 +1,7 @@
 import { MainInterface } from "../../../../../interfaces/main";
-import { CodeToAngularFormComponentProperty } from "./property";
 
-export class CodeToAngularFormComponentImport extends CodeToAngularFormComponentProperty {
-    customImports = (object: MainInterface): string => {
+export class CodeToAngularFormComponentImport {
+    static customImports = (object: MainInterface): string => {
         let hasArray = '';
         if (object.form) {
             const elements = object.form.elements;

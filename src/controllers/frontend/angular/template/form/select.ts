@@ -1,8 +1,7 @@
 import { SelectInterface } from "../../../../../interfaces/form";
-import { CodeToAngularFormTemplateSlide } from "./slide";
 
-export class CodeToAngularFormTemplateSelect extends CodeToAngularFormTemplateSlide {
-    createSelect(select: SelectInterface): string {
+export class CodeToAngularFormTemplateSelect {
+    static createSelect(select: SelectInterface): string {
         const multiple = select.isMultiple?'multiple' : '';
         const required = select.isRequired?'required' : '';
 

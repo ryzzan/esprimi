@@ -1,29 +1,33 @@
 import {
     MainInterface
 } from "../../../../../interfaces/main";
+import { CodeToAngularFormComponentConstructorArg } from "./constructor-arg";
+import { CodeToAngularFormComponentConstructorParam } from "./constructor-param";
 
 import {
     CodeToAngularFormComponentImport
 } from "./import";
+import { CodeToAngularFormComponentMethod } from "./method";
+import { CodeToAngularFormComponentProperty } from "./property";
 
-export class CodeToAngularFormComponent extends CodeToAngularFormComponentImport {
+export class CodeToAngularFormComponent {
     createProperty = (object: MainInterface): string => {
-        return this.customProperties(object);
+        return CodeToAngularFormComponentProperty.customProperties(object);
     }
 
     createConstructorParams = (object: MainInterface): string => {
-        return this.customConstructorParam(object);
+        return CodeToAngularFormComponentConstructorParam.customConstructorParam(object);
     }
 
     createConstructorArg = (object: MainInterface): string => {
-        return this.customConstructorArg(object);
+        return CodeToAngularFormComponentConstructorArg.customConstructorArg(object);
     }
 
     createImport = (object: MainInterface): string => {
-        return this.customImports(object);
+        return CodeToAngularFormComponentImport.customImports(object);
     }
 
     createMethod = (object: MainInterface): string => {
-        return this.customMethod(object);
+        return CodeToAngularFormComponentMethod.customMethod(object);
     }
 }

@@ -69,7 +69,23 @@ export class TextTransformation {
   }
 
   static replacePlurarizeFunctionToString(string: string): string {
-    return '';
+    const regex = /\%pluralize(.*?)%/g;
+    const foundPluralizes = string.match(regex);
+
+    const stringsToPluralize = foundPluralizes
+      ?.join(',')
+      .replace(/\%/g, '')
+      .replace(/pluralize/g, '')
+      .replace(/\(|\)/g, '')
+      .split(',');
+
+    stringsToPluralize?.forEach((stringToPluralize, index) => {
+      const pluralizeString = pluralize(stringToPluralize);
+      const foundPluralize =
+        (foundPluralizes?.length && foundPluralizes[index]) || '';
+      string = string.replace(foundPluralize, pluralizeString);
+    });
+    return string;
   }
   // TO-DO: CHECK IF IT IS STILL NECESSARY
   static setIdToPropertyName(id: string): string {

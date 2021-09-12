@@ -5,8 +5,8 @@ import {
     CodeToAngularTableComponentMethod
 } from "./method";
 
-export class CodeToAngularTableComponentConstructorParam extends CodeToAngularTableComponentMethod {
-    customConstructorParam = (object: MainInterface): string => {
+export class CodeToAngularTableComponentConstructorParam {
+    static customConstructorParam = (object: MainInterface): string => {
         let hasAction = '';
         if (object.table) {
             if (object.table.actions) 

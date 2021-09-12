@@ -2,7 +2,7 @@ import { FormButtonTypeEnum } from "../../../../../enums/form";
 import { ButtonInterface } from "../../../../../interfaces/form";
 
 export class CodeToAngularFormTemplateButton {
-    createButton(button: ButtonInterface): string {
+    static createButton(button: ButtonInterface): string {
         let color = '';
         const dialogAction = '';
         const label =

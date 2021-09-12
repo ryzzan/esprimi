@@ -3,7 +3,7 @@ import {
 } from "../../../../../interfaces/main";
 
 export class CodeToAngularFormComponentMethod {
-    customMethod = (object: MainInterface): string => {
+    static customMethod = (object: MainInterface): string => {
         if (object.form) {
             const componentCode = `
                                 ${object.form.id}Submit() {
