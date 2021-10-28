@@ -1,14 +1,14 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../src/enums/form";
-import { FrontendFrameworkEnum } from "../src/enums/main";
-import { RequestTypeEnum } from "../src/enums/request";
-import { MainInterface } from "../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../src/enums/main";
+import { RequestTypeEnum } from "../../src/enums/request";
+import { MainInterface } from "../../src/interfaces/main";
 
 
-export const EXAMPLE_TABLE: MainInterface = {
+export const PERMISSION_GROUP_MODEL_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'exampleTable',
-    title: 'Exemplos',
+    id: 'permissionGroupModelTable',
+    title: 'Modelos de grupos de permissão',
     data: {
       type: RequestTypeEnum.Object,
     },
@@ -42,7 +42,7 @@ export const EXAMPLE_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/example/123',
+                url: '/main/permissionGroupModel/123',
               },
               label: 'Editar',
             },
@@ -61,20 +61,20 @@ export const EXAMPLE_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'exampleTable',
-        title: 'Exemplo',
+        id: 'permissionGroupModelTable',
+        title: 'Modelo de grupo de permissão',
         elements: [{
             input: {
-                label: 'Search input',
-                name: 'searchInput',
-                placeholder: 'Placeholder to search input',
+                label: 'Grupo modelo',
+                name: 'name',
+                placeholder: 'nome do grupo modelo',
                 type: FormInputTypeEnum.Text
             }
         }]
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'examples',
+        endPoint: 'permissionGroupModels',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

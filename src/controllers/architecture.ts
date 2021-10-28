@@ -3,22 +3,23 @@ import {
     MainInterface
 } from "../interfaces/main";
 import {
-    CodeToAngular
-} from "./frontend/angular/main";
+    AngularArchitecture
+} from "./architecture/angular/main";
 
-export class FrontendCode {
-    codeToAngular;
+export class Architecture {
+    architectureToAngular;
 
     constructor() {
-        this.codeToAngular = new CodeToAngular;
+        this.architectureToAngular = new AngularArchitecture;
     }
 
-    createCode = (
+    createArchitecture = (
+        code: BuildedCode | undefined,
         object: MainInterface
-    ): BuildedCode | undefined => {
+    ) => {
         switch (object.frontendFramework) {
             case 'ANGULAR':
-                return this.codeToAngular.createCode(object);
+                return this.architectureToAngular.createArchitecture(code, object);
                 break;
 
             case 'REACT':

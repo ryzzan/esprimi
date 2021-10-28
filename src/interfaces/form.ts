@@ -48,6 +48,7 @@ export interface ButtonInterface {
     formEnctype ? : FormEncTypeEnum;
     formMethod ? : FormMethodEnum;
     formTarget ? : FormTargetEnum;
+    todo?: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -94,6 +95,7 @@ export interface DatalistInterface {
     validators?: Array<string>;
     value?: string;
     width?: number;
+    todo?: string;
   }
   
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -113,6 +115,7 @@ export interface DatalistInterface {
     value: any;
     isDisabled?: boolean;
     isSelected?: boolean;
+    todo?: string;
   }
   
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -131,6 +134,7 @@ export interface DatalistInterface {
     isDisabled?: boolean;
     isMultiple?: boolean;
     isRequired?: boolean;
+    todo?: string;
   }
   
   // eslint-disable-next-line @typescript-eslint/no-empty-interface

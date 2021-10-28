@@ -50,7 +50,7 @@ export const EXAMPLE_WITHOUT_TABS_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'localhost:3000',
+            baseUrl: 'http://localhost:3000',
             endPoint: 'examples',
             methods: [
                 ServiceFunctionsEnum.Get,

@@ -1,34 +1,25 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../src/enums/form";
-import { FrontendFrameworkEnum } from "../src/enums/main";
-import { RequestTypeEnum } from "../src/enums/request";
-import { MainInterface } from "../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../src/enums/main";
+import { RequestTypeEnum } from "../../src/enums/request";
+import { MainInterface } from "../../src/interfaces/main";
 
 
-export const EXAMPLE_TABLE: MainInterface = {
+export const MODULE_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'exampleTable',
-    title: 'Exemplos',
+    id: 'moduleTable',
+    title: 'Módulos',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Input',
+          label: 'Nome',
         },
         row: {
           type: 'string',
-          field: 'oneInput',
-        },
-      },
-      {
-        column: {
-          label: 'Select',
-        },
-        row: {
-          type: 'date',
-          field: 'oneSelect',
+          field: 'module',
         },
       },
       {
@@ -42,7 +33,7 @@ export const EXAMPLE_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/example/123',
+                url: '/main/module/123',
               },
               label: 'Editar',
             },
@@ -61,20 +52,20 @@ export const EXAMPLE_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'exampleTable',
-        title: 'Exemplo',
+        id: 'moduleTable',
+        title: 'Módulo',
         elements: [{
             input: {
-                label: 'Search input',
-                name: 'searchInput',
-                placeholder: 'Placeholder to search input',
+                label: 'Módulo',
+                name: 'module',
+                placeholder: 'Nome do módulo',
                 type: FormInputTypeEnum.Text
             }
         }]
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'examples',
+        endPoint: 'modules',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

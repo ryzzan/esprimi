@@ -15,7 +15,7 @@ export class CodeToAngularService {
                                     providedIn: 'root',
                                     })
                                     export class %pascalfy(${projectName})%Service {
-                                        BASE_URL = %BASE_URL%;
+                                        BASE_URL = '%BASE_URL%';
 
                                         constructor(private _httpClient: HttpClient) {}
 

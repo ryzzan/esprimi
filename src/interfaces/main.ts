@@ -1,6 +1,6 @@
 import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../enums/main";
 import { FormInterface } from "./form";
-import { NestInterface } from "./nest";
+import { ModuleInterface } from "./module";
 import { TableInterface } from "./table";
 import { TreeInterface } from "./tree";
 
@@ -12,7 +12,7 @@ export interface MainInterface {
     form?: FormInterface;
     table?: TableInterface;
     tree?: TreeInterface;
-    nest?: NestInterface;
+    module?: ModuleInterface;
 };
 
 export interface BuildedCode {

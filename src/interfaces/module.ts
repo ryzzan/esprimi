@@ -1,4 +1,4 @@
-export interface NestInterface {
+export interface ModuleInterface {
     id: string;
     components: Array <string> ;
 }

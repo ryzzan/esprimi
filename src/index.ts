@@ -1,3 +1,4 @@
+import { Architecture } from "./controllers/architecture";
 import { FrontendCode } from "./controllers/frontend-code";
 import {
     BuildedCode,
@@ -6,23 +7,33 @@ import {
 
 export class Main {
     frontendCode = new FrontendCode;
-    createCode = (object: MainInterface, projectPath?: string): BuildedCode | undefined => {
+    architecture = new Architecture;
+
+    createCode = (
+        object: MainInterface
+    ): BuildedCode | undefined => {
         if (object.frontendFramework) {
             try {
-                const code = this.frontendCode.createCode(object);
-                
-                // if (projectPath) {
-                //     this.createArchitecture(code, object, projectPath);
-                // }
+                console.info("Dealing with code. It's gonna be fast!");
+                const codes = this.frontendCode.createCode(object);
+                if(object.projectPath) this.createArchitecture(codes, object);
 
-                return code;
+                console.info("Here are the code:", codes);
+                return codes;
             } catch (error) {
-                return error;
+                return {
+                    component: '',
+                    service: '',
+                    template: ''
+                };
             }
         }
     }
 
-    setArchitecture = (code: BuildedCode, object: MainInterface, projectPath: string) => {
-        object['projectPath'] = projectPath;
+    createArchitecture = (
+        codes: BuildedCode | undefined, 
+        object: MainInterface
+    ) => {
+        this.architecture.createArchitecture(codes, object);
     }
 }

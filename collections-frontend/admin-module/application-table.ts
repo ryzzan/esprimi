@@ -1,34 +1,34 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../src/enums/form";
-import { FrontendFrameworkEnum } from "../src/enums/main";
-import { RequestTypeEnum } from "../src/enums/request";
-import { MainInterface } from "../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../src/enums/main";
+import { RequestTypeEnum } from "../../src/enums/request";
+import { MainInterface } from "../../src/interfaces/main";
 
 
-export const EXAMPLE_TABLE: MainInterface = {
+export const APPLICATION_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'exampleTable',
-    title: 'Exemplos',
+    id: 'applicationTable',
+    title: 'Aplicações',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Input',
+          label: 'Aplicação',
         },
         row: {
           type: 'string',
-          field: 'oneInput',
+          field: 'application',
         },
       },
       {
         column: {
-          label: 'Select',
+          label: 'Módulo',
         },
         row: {
-          type: 'date',
-          field: 'oneSelect',
+          type: 'string',
+          field: 'module',
         },
       },
       {
@@ -42,7 +42,7 @@ export const EXAMPLE_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/example/123',
+                url: '/main/application/123',
               },
               label: 'Editar',
             },
@@ -61,20 +61,20 @@ export const EXAMPLE_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'exampleTable',
-        title: 'Exemplo',
+        id: 'applicationTable',
+        title: 'Aplicações',
         elements: [{
             input: {
-                label: 'Search input',
-                name: 'searchInput',
-                placeholder: 'Placeholder to search input',
+                label: 'Aplicação',
+                name: 'name',
+                placeholder: 'Nome da aplicação',
                 type: FormInputTypeEnum.Text
             }
         }]
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'examples',
+        endPoint: 'applications',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,
