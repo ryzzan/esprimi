@@ -22,7 +22,10 @@ export class CodeToAngularFormComponentConstructorArg {
         return '';
     }
 
-    static createFormBuilder(elements: Array <FormElementInterface> , objectToCode: MainInterface): string {
+    static createFormBuilder(
+        elements: Array <FormElementInterface> , 
+        objectToCode: MainInterface
+    ): string {
         let codeElements = '';
 
         codeElements += CodeToAngularFormComponentConstructorArg.createFormBuilderElements(elements, objectToCode);

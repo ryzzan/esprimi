@@ -16,6 +16,7 @@ export class CodeToAngularFormComponentImport {
                                 import { MatSnackBar } from '@angular/material/snack-bar';
 
                                 import { %pascalfy(${object.form.id})%Service } from './%kebabfy${object.form.id}%.service';
+                                import { MyErrorHandler } from 'src/utils/error-handler';
                                 `;
 
             return componentCode;

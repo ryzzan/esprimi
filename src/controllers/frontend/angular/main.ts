@@ -27,6 +27,9 @@ export class CodeToAngular {
     }
 
     private createProjectName = (object: MainInterface) => {
+        if (object.module)
+            return object.module.id;
+
         if (object.form)
             return object.form.id;
 

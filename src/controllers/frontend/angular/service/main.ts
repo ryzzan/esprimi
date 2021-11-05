@@ -6,8 +6,11 @@ import { ServiceInterface } from "../../../../interfaces/form";
 import { TextTransformation } from "../../../../utils/text.transformation";
 
 export class CodeToAngularService {
-    createServiceCode = (projectName: string, object: MainInterface): string => {
-        const componentSkeletonCode = `
+    createServiceCode = (
+        projectName: string, 
+        object: MainInterface
+    ): string => {
+        const serviceSkeletonCode = `
                                     import { HttpClient } from '@angular/common/http';
                                     import { Injectable } from '@angular/core';
                             
@@ -23,7 +26,7 @@ export class CodeToAngularService {
                                     }
                                     `;
 
-        let code = componentSkeletonCode;
+        let code = serviceSkeletonCode;
 
         if (object.form?.service) {
             const serviceCode = this.createService(projectName, object.form.service);

@@ -16,17 +16,17 @@ export class CodeToAngularTableComponentMethod {
             hasAction = `
             ${object.table.id}Submit() {
                 this._${object.table.id}Service
-                .save(this.${object.table.id}Form.value)
+                .find(this.${object.table.id}Form.value)
                 .then((res) => {
                     this.isLoading = false;
                 })
                 .catch((err) => {
                     this.isLoading = false;
-                    const message = this.errorHandler.apiErrorMessage(err.error.error.message);
+                    const message = this._errorHandler.apiErrorMessage(err.error.error.message);
                     this._snackbar.open(message, undefined, {
                         duration: 4 * 1000,
                     });
-                };
+                })
             }
             `;
         const componentCode = `

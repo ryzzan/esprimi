@@ -38,7 +38,7 @@ export const PERMISSION_GROUP_MODEL_FORM: MainInterface = {
             {
                 select: {
                     label: 'Aplicativo',
-                    name: 'module',
+                    name: 'application',
                     optionsObject: [{
                             label: 'Aplicativo 1',
                             value: 'application1',

@@ -9,7 +9,8 @@ export class CodeToAngularFormComponentConstructorParam {
                                 private _formBuilder: FormBuilder, 
                                 private _activatedRoute: ActivatedRoute, 
                                 private _${object.form.id}Service: %pascalfy(${object.form.id})%Service,
-                                private _snackbar: MatSnackBar
+                                private _snackbar: MatSnackBar,
+                                private _errorHandler: MyErrorHandler
                                 `;
 
             return componentCode;

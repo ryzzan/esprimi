@@ -20,7 +20,6 @@ export class AngularArchitectureCode {
         if (componentCodeType === ComponentCodeTypeEnum.Service) 
             componentFilePath = `${projectPath}/src/app/components/${componentPath}/${componentPath}.service.ts`;
 
-        console.log(componentCodeType, 23);
         try {
             const file = fs.readFileSync(componentFilePath);
             console.info(`Arquivo ${componentPath} existente.`);

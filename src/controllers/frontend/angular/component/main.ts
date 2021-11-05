@@ -73,6 +73,10 @@ export class CodeToAngularComponent {
             code = code.replace('%METHODS%', componentActionCode);
         }
 
+        if (object.module) {
+            
+        }
+
         code = TextTransformation.replaceKebabfyFunctionToString(code);
         code = TextTransformation.replacePascalfyFunctionToString(code);
         

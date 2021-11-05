@@ -12,12 +12,13 @@ export class CodeToAngularTableComponentConstructorParam {
             if (object.table.actions) 
                 hasAction = `
                             private _formBuilder: FormBuilder, 
+                            private _errorHandler: MyErrorHandler,
                             `;
 
             const componentCode = `
                                 ${hasAction}
                                 private _dialog: MatDialog, 
-                                private _${object.table.id}Service: %pascalfy(${object.table.id})%Service
+                                private _${object.table.id}Service: %pascalfy(${object.table.id})%Service, 
                                 private _snackbar: MatSnackBar
                                 `;
 

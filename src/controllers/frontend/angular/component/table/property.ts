@@ -1,6 +1,7 @@
 import {
     MainInterface
 } from "../../../../../interfaces/main";
+import { TableElementInterface } from "../../../../../interfaces/table";
 
 export class CodeToAngularTableComponentProperty {
     static customProperties = (object: MainInterface): string => {
@@ -14,6 +15,7 @@ export class CodeToAngularTableComponentProperty {
 
             const componentCode = `
                                 ${hasAction}
+                                ${CodeToAngularTableComponentProperty.setTableObject(object)}
                                 ${object.table.id}DataSource: any = []; 
                                 isLoading = true;
                                 `;
@@ -23,4 +25,16 @@ export class CodeToAngularTableComponentProperty {
 
         return '';
     }
+
+    static setTableObject(object: MainInterface): string {
+        let codeTableObject = '';
+    
+        codeTableObject += `${object.table?.id}DisplayedColumns: string[] = [`;
+        object.table?.elements.forEach((element: TableElementInterface) => {
+          codeTableObject += `'${element.row.field}',`;
+        });
+        codeTableObject += `];`;
+    
+        return codeTableObject;
+      }
 }

@@ -24,7 +24,7 @@ export class CodeToAngularTableComponentConstructorArg {
                                     this.isLoading = false;
                                 }).catch(err => {
                                     this.isLoading = false;
-                                    const message = this.errorHandler.apiErrorMessage(err.error.error.message);
+                                    const message = this._errorHandler.apiErrorMessage(err.error.error.message);
                                     this._snackbar.open(message, undefined, {
                                         duration: 4 * 1000,
                                     });
