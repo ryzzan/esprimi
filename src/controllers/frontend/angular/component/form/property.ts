@@ -5,17 +5,16 @@ export class CodeToAngularFormComponentProperty {
     static customProperties = (object: MainInterface): string => {
         if (object.form) {
             const elements = object.form.elements;
-            const selectProperties = CodeToAngularFormComponentProperty.createFormProperties(elements);
-            console.log(selectProperties, 10);
+            const properties = CodeToAngularFormComponentProperty.createFormProperties(elements);
+            
             const componentCode = `
-                                ${selectProperties}
+                                ${properties}
                                 ${object.form.id}Id: string;
                                 isAddModule: boolean;
                                 ${object.form.id}Form: FormGroup;
                                 isLoading = false;
                                 `;
-
-            console.log(componentCode, 22);
+                                
             return componentCode;
         }
 
@@ -23,32 +22,32 @@ export class CodeToAngularFormComponentProperty {
     }
 
     static createFormProperties = (elements: Array<FormElementInterface>): string => {
-        console.log(elements, 27);
-        let selectProperties = '';
+        let properties = '';
 
-        elements.forEach(element => {
-            console.log(element, 31);
+        for (let index = 0; index < elements.length; index++) {
+            const element = elements[index];
+
             if (element.tabs) {
                 element.tabs.forEach(elementTab => {
-                    CodeToAngularFormComponentProperty.createFormProperties(elementTab.elements);
+                    properties += CodeToAngularFormComponentProperty.createFormProperties(elementTab.elements);
                 })
             }
 
-            if (element.array) { console.log(element, 34);
-                CodeToAngularFormComponentProperty.createFormProperties(element.array.elements);
+            if (element.array) {
+                properties += CodeToAngularFormComponentProperty.createFormProperties(element.array.elements);
             }
 
-            if (element.select) { console.log(element, 38);
+            if (element.select) {
                 if (element.select.optionsObject) {                        
-                    selectProperties += `${element.select.name}SelectObject = ${JSON.stringify(element.select.optionsObject)};`;
+                    properties += `${element.select.name}SelectObject = ${JSON.stringify(element.select.optionsObject)};`;
                 }
 
                 if (element.select.optionsApiEndpoint) {
-                    selectProperties += `${element.select.name}SelectObject = []`;
+                    properties += `${element.select.name}SelectObject = []`;
                 }
-            }
-        });
-        console.log(selectProperties, 52);
-        return selectProperties;
+            }            
+        }
+
+        return properties;
     }
 }
