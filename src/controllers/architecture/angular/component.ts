@@ -14,7 +14,6 @@ export class AngularArchitectureComponent {
                 
         if (object.form) componentPath = TextTransformation.kebabfy(object.form.id);
         if (object.table) componentPath = TextTransformation.kebabfy(object.table.id);
-        if (object.module) componentPath = TextTransformation.kebabfy(object.module.id);
         
         const projectPath = object.projectPath;
         const projectAndComponentPath = `${projectPath}/src/app/components/${componentPath}`;

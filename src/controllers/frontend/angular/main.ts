@@ -15,9 +15,9 @@ export class CodeToAngular {
     createCode = (object: MainInterface): BuildedCode => {
         this.projectName = this.createProjectName(object);
         
-        const component = this.component.createComponentCode(this.projectName, object);
+        const component = object.module ? this.component.createComponentCode(this.projectName, object) :  '';
         const template = this.template.createTemplateCode(object);
-        const service = this.service.createServiceCode(this.projectName, object);
+        const service = object.module ? this.service.createServiceCode(this.projectName, object) : '';
         
         return {
             component: component.replace(/\n/gi, '').replace(/    /gi, ''),

@@ -7,6 +7,7 @@ import {
 import {
     CodeToAngularFormTemplate
 } from "./form/main";
+import { CodeToAngularModuleTemplate } from "./module/main";
 import { 
     CodeToAngularTableTemplate
 } from "./table/main";
@@ -14,11 +15,17 @@ import {
 export class CodeToAngularTemplate {
     customTemplateFormCode = new CodeToAngularFormTemplate;
     customTemplateTableCode = new CodeToAngularTableTemplate;
+    customTemplateModuleCode = new CodeToAngularModuleTemplate;
 
     createTemplateCode = (object: MainInterface): string => {
         const componentSkeletonCode = `%CONTENT%`;
 
         let code = componentSkeletonCode;
+
+        if (object.module) {
+            const templateModuleCode = this.customTemplateModuleCode.createModuleSkeleton(object);
+            code = code.replace('%CONTENT%', templateModuleCode);
+        }
 
         if (object.form) {
             const templateFormCode = this.customTemplateFormCode.createFormSkeleton(object);

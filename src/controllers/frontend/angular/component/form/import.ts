@@ -2,8 +2,7 @@ import { FormElementInterface } from "../../../../../interfaces/form";
 import { MainInterface } from "../../../../../interfaces/main";
 
 export class CodeToAngularFormComponentImport {
-    static customImports = (object: MainInterface): string => {
-        
+    static customImports = (object: MainInterface): string => {        
         if (object.form) {
             const elements = object.form.elements;
             const imports = CodeToAngularFormComponentImport.createFormImports(elements, object);

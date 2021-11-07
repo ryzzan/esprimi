@@ -18,7 +18,7 @@ export class Main {
                 const codes = this.frontendCode.createCode(object);
                 if(object.projectPath) this.createArchitecture(codes, object);
 
-                console.info("Here are the code:", codes);
+                console.info("Here are the codes:", codes);
                 return codes;
             } catch (error) {
                 return {
