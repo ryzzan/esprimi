@@ -42,7 +42,8 @@ export class FrontendCode {
                 return {
                     component: '',
                     service: '',
-                    template: ''
+                    template: '',
+                    module: ''
                 };
 
                 break;

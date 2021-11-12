@@ -21,14 +21,32 @@ export class AngularArchitectureService {
         try {
             console.info(`Pasta de componente existente.`);
             fs.readdirSync(projectAndComponentPath);
-            await AngularArchitectureCode.writeCodeToFile(projectPath, componentPath, serviceCode, ComponentCodeTypeEnum.Service);
+            await AngularArchitectureCode.writeCodeToFile(
+                projectPath, 
+                componentPath, 
+                serviceCode, 
+                ComponentCodeTypeEnum.Service,
+                object
+            );
         } catch (error) {
             console.info(`Pasta de componente inexistente.`);
             try {
                 fs.mkdirSync(projectAndComponentPath);
-                await AngularArchitectureCode.writeCodeToFile(projectPath, componentPath, serviceCode, ComponentCodeTypeEnum.Service);
+                await AngularArchitectureCode.writeCodeToFile(
+                    projectPath, 
+                    componentPath, 
+                    serviceCode, 
+                    ComponentCodeTypeEnum.Service,
+                    object
+                );
             } catch (error) {
-                await AngularArchitectureCode.writeCodeToFile(projectPath, componentPath, serviceCode, ComponentCodeTypeEnum.Service);
+                await AngularArchitectureCode.writeCodeToFile(
+                    projectPath, 
+                    componentPath, 
+                    serviceCode, 
+                    ComponentCodeTypeEnum.Service,
+                    object
+                );
             }
         }
     }

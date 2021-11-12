@@ -4,16 +4,16 @@ import {
   MainInterface,
 } from '../../src/interfaces/main';
 
-export const USER_GROUP_FORM: MainInterface = {
+export const PERMISSION_GROUP_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     form: {
-        title: 'Grupo de usuários',
-        id: 'userGroupForm',
+        title: 'Grupo de permissão',
+        id: 'permissionGroupForm',
         elements: [
             {
                 input: {
-                    label: 'Grupo de usuários',
-                    placeholder: 'Nome do grupo de usuários',
+                    label: 'Grupo',
+                    placeholder: 'Nome do grupo',
                     name: 'name',
                     type: FormInputTypeEnum.Text,
                     isRequired: true
@@ -22,7 +22,7 @@ export const USER_GROUP_FORM: MainInterface = {
             {
                 input: {
                     label: 'Descrição',
-                    placeholder: 'Descrição do grupo de usuários',
+                    placeholder: 'Descrição do grupo',
                     name: 'description',
                     type: FormInputTypeEnum.Text,
                     isRequired: true
@@ -30,53 +30,57 @@ export const USER_GROUP_FORM: MainInterface = {
             },
             {
                 select: {
-                    label: 'Empresa',
-                    name: 'company',
+                    label: 'Módulo',
+                    name: 'module',
                     optionsObject: [{
-                            label: 'Empresa 1',
-                            value: 'company1',
+                            label: 'Módulo 1',
+                            value: 'module1',
                         },
                         {
-                            label: 'Empresa 2',
-                            value: 'company2',
-                        }, 
-                        {
-                            label: 'Empresa 3',
-                            value: 'company3',
+                            label: 'Módulo 2',
+                            value: 'module2',
                         },
                         {
-                            label: 'Empresa 4',
-                            value: 'company4',
-                        }
+                            label: 'Módulo 3',
+                            value: 'module3',
+                        },
+                        {
+                            label: 'Módulo 4',
+                            value: 'module4',
+                        },
+                        {
+                            label: 'Módulo 5',
+                            value: 'module5',
+                        },
                     ],
-                    todo: 'Autocomplete'
+                    isRequired: true,
                 },
             },
             {
                 select: {
-                    label: 'Usuários',
-                    name: 'users',
+                    label: 'Permissões',
+                    name: 'permissions',
                     optionsObject: [{
-                            label: 'Usuário 1',
-                            value: 'user1',
+                            label: 'Criar',
+                            value: 'create',
                         },
                         {
-                            label: 'Usuário 2',
-                            value: 'user2',
-                        }, 
-                        {
-                            label: 'Usuário 3',
-                            value: 'user3',
+                            label: 'Ler',
+                            value: 'read',
                         },
                         {
-                            label: 'Usuário 4',
-                            value: 'user4',
-                        }
+                            label: 'Atualizar',
+                            value: 'update',
+                        },
+                        {
+                            label: 'Remover',
+                            value: 'delete',
+                        },
                     ],
-                    isMultiple: true,
-                    todo: 'Autocomplete'
+                    isRequired: true,
+                    isMultiple: true
                 },
-            }
+            },
         ],
         actions: [{
             button: {
@@ -87,7 +91,7 @@ export const USER_GROUP_FORM: MainInterface = {
         }, ],
         service: {
             baseUrl: 'http://localhost:3000',
-            endPoint: 'userGroups',
+            endPoint: 'permissionGroups',
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

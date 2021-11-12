@@ -5,6 +5,6 @@ export const EXAMPLE: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     module: {
         id:'example',
-        components: ['example-form', 'example-table'],
+        components: ['exampleForm', 'exampleTable'],
     }
 }

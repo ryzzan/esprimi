@@ -1,5 +1,6 @@
 export enum ComponentCodeTypeEnum {
-    Controller = 'controller',
+    Component = 'component',
     Template = 'template',
     Service = 'service',
+    Module = 'module',
 }

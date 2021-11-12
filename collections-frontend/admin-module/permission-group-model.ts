@@ -1,10 +1,10 @@
 import { FrontendFrameworkEnum } from "../../src/enums/main";
 import { MainInterface } from "../../src/interfaces/main";
 
-export const APPLICATION: MainInterface = {
+export const PERMISSION_GROUP_MODEL: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     module: {
-        id:'application',
-        components: ['applicationForm', 'applicationTable'],
+        id:'permissionGroupModel',
+        components: ['permissionGroupModelForm', 'permissionGroupModelTable'],
     }
 }

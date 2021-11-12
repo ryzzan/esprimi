@@ -16,7 +16,7 @@ export class AngularArchitectureProject {
         } catch (error) {
             console.info(`Pasta de projeto inexistente.`);
             chp.execSync(
-                `git clone https://github.com/ryzzan/lopes-quickstart ${projectFolder}`, 
+                `git clone https://github.com/ryzzan/rapida-komenco ${projectFolder}`, 
                 {cwd: projectFolderParent}
             );
         }

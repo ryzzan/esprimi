@@ -24,7 +24,7 @@ export class CodeToAngularFormTemplate {
             `<mat-card-title>${object.form.title}</mat-card-title>` :
             '';
 
-        const hasFormSubtitle = (object.form.title) ?
+        const hasFormSubtitle = (object.form.subtitle) ?
             `<mat-card-subtitle>${object.form.subtitle}</mat-card-subtitle>` :
             '';
 
@@ -47,13 +47,15 @@ export class CodeToAngularFormTemplate {
     }
 
     private createFormInputs = (form: FormInterface): string => {
+        let formInputs = '';
+
         if (form.elements)
-            return this.createElements(form.elements);
+            formInputs += this.createElements(form.elements);
 
         if (form.actions)
-            return this.createElements(form.actions);
-
-        return '';
+            formInputs += this.createElements(form.actions);
+            
+        return formInputs;
     }
 
     private createElements = (elements: Array<FormElementInterface>) => {
@@ -107,7 +109,7 @@ export class CodeToAngularFormTemplate {
     private createTab(tabs: Array < FormInterface > ): string {
         let codeTab = `<mat-tab-group>`;
         tabs.forEach((tab: FormInterface) => {
-            codeTab += `<mat-tab label="${tab.label}" id="${tab.id}">
+            codeTab += `<mat-tab label="${tab.title}" id="${tab.id}">
                 ${this.createFormInputs(tab)}
             </mat-tab>`;
         });

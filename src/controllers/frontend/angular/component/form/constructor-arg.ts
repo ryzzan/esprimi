@@ -69,8 +69,10 @@ export class CodeToAngularFormComponentConstructorArg {
                         if (element?.isRequired) element.validators?.push('required');
                         
                         codeElement += `${element?.name}: 
-                                        [
-                                            ${element?.value?element?.value : null}, 
+                                        [{
+                                            ${element?.value ? `value: '${element?.value}'` : `value: null`}
+                                            ${element?.isDisabled ? `, disabled: true` : `, disabled: false`}
+                                        },
                                             [${validators}]
                                         ],`;
                     }

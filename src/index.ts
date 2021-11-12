@@ -16,6 +16,7 @@ export class Main {
             try {
                 console.info("Dealing with code. It's gonna be fast!");
                 const codes = this.frontendCode.createCode(object);
+                
                 if(object.projectPath) this.createArchitecture(codes, object);
 
                 console.info("Here are the codes:", codes);
@@ -24,7 +25,8 @@ export class Main {
                 return {
                     component: '',
                     service: '',
-                    template: ''
+                    template: '',
+                    module: '',
                 };
             }
         }

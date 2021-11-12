@@ -7,7 +7,7 @@ import {
 export const APPLICATION_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     form: {
-        title: 'Título exemplo',
+        title: 'Aplicação',
         id: 'applicationForm',
         elements: [
             {

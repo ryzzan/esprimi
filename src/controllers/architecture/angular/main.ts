@@ -3,6 +3,7 @@ import { AngularArchitectureService } from "./service";
 import { AngularArchitectureComponent } from "./component";
 import { AngularArchitectureProject } from "./project"
 import { AngularArchitectureTemplate } from "./template";
+import { AngularArchitectureModule } from "./module";
 
 export class AngularArchitecture {
     createArchitecture = (
@@ -27,7 +28,7 @@ export class AngularArchitecture {
 
         if (object.module) {
             console.info("Are we nesting some components? Let's do it in a module!");
-
+            AngularArchitectureModule.createArchitectureModule(code, object);
         }
     }
 }

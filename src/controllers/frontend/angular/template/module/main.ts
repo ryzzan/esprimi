@@ -20,7 +20,7 @@ export class CodeToAngularModuleTemplate {
     private createModuleComponents = (module: ModuleInterface): string => {
         let components = '';
         module.components.forEach(component => {
-            components += `<${TextTransformation.kebabfy(component)}></${TextTransformation.kebabfy(component)}> `;
+            components += `<app-${TextTransformation.kebabfy(component)}></app-${TextTransformation.kebabfy(component)}> `;
         });
 
         return components;

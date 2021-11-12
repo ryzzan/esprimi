@@ -18,21 +18,39 @@ export class AngularArchitectureComponent {
         const projectPath = object.projectPath;
         const projectAndComponentPath = `${projectPath}/src/app/components/${componentPath}`;
         const projectFolder = projectPath.split(/[\/]+/).pop();
-           
+        
         try {
             console.info(`Pasta de componente existente.`);
             fs.readdirSync(projectAndComponentPath);
-            await AngularArchitectureCode.writeCodeToFile(projectPath, componentPath, componentCode, ComponentCodeTypeEnum.Controller);
+            await AngularArchitectureCode.writeCodeToFile(
+                projectPath, 
+                componentPath, 
+                componentCode, 
+                ComponentCodeTypeEnum.Component,
+                object
+            );
         } catch (error) {
             console.info(`Pasta de componente inexistente.`);
             try {
                 chp.execSync(
-                    `ng g c ${componentPath}`, 
+                    `ng g c ${componentPath} --skip-import`, 
                     {cwd: projectFolder}
                 );
-                await AngularArchitectureCode.writeCodeToFile(projectPath, componentPath, componentCode, ComponentCodeTypeEnum.Controller);
+                await AngularArchitectureCode.writeCodeToFile(
+                    projectPath, 
+                    componentPath, 
+                    componentCode, 
+                    ComponentCodeTypeEnum.Component,
+                    object
+                );
             } catch (error) {
-                await AngularArchitectureCode.writeCodeToFile(projectPath, componentPath, componentCode, ComponentCodeTypeEnum.Controller);
+                await AngularArchitectureCode.writeCodeToFile(
+                    projectPath, 
+                    componentPath, 
+                    componentCode, 
+                    ComponentCodeTypeEnum.Component,
+                    object
+                );
             }
         }        
     }

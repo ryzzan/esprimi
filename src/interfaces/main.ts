@@ -20,4 +20,5 @@ export interface BuildedCode {
   component: string;
   // interfaceComponent: string;
   service: string;
+  module: string;
 };
