@@ -6,10 +6,10 @@ import { ServiceInterface } from "../../../../interfaces/form";
 import { TextTransformation } from "../../../../utils/text.transformation";
 
 export class CodeToAngularService {
-    createServiceCode = (
+    createServiceCode = async (
         projectName: string, 
         object: MainInterface
-    ): string => {
+    ): Promise<string> => {
         const serviceSkeletonCode = `
                                     import { HttpClient } from '@angular/common/http';
                                     import { Injectable } from '@angular/core';

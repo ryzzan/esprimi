@@ -21,4 +21,5 @@ export interface BuildedCode {
   // interfaceComponent: string;
   service: string;
   module: string;
+  navigation: string;
 };

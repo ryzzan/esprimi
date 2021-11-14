@@ -13,13 +13,13 @@ export class Architecture {
         this.architectureToAngular = new AngularArchitecture;
     }
 
-    createArchitecture = (
+    createArchitecture = async (
         code: BuildedCode | undefined,
         object: MainInterface
     ) => {
         switch (object.frontendFramework) {
             case 'ANGULAR':
-                return this.architectureToAngular.createArchitecture(code, object);
+                return await this.architectureToAngular.createArchitecture(code, object);
                 break;
 
             case 'REACT':

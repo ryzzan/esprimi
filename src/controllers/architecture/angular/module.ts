@@ -19,6 +19,7 @@ export class AngularArchitectureModule {
            
         try {
             fs.readdirSync(projectAndModulePath);
+            
             await AngularArchitectureCode.writeCodeToFile(
                 projectPath, 
                 modulePath, 
@@ -26,6 +27,23 @@ export class AngularArchitectureModule {
                 ComponentCodeTypeEnum.Template,
                 object
             );
+            
+            await AngularArchitectureCode.writeCodeToFile(
+                projectPath, 
+                modulePath, 
+                moduleCode?.module, 
+                ComponentCodeTypeEnum.Module,
+                object
+            );
+
+            await AngularArchitectureCode.writeCodeToFile(
+                projectPath, 
+                modulePath, 
+                moduleCode?.navigation, 
+                ComponentCodeTypeEnum.Navigation,
+                object
+            );
+
             console.info(`Pasta de módulo existente.`);
         } catch (error) {
             console.info(`Pasta de módulo inexistente.`);
@@ -33,11 +51,28 @@ export class AngularArchitectureModule {
                 `ng g module modules/${modulePath} --module modules/main --route ${modulePath} --routing --routing-scope Child`, 
                 {cwd: projectPath}
             );
+            
             await AngularArchitectureCode.writeCodeToFile(
                 projectPath, 
                 modulePath, 
                 moduleCode?.template, 
                 ComponentCodeTypeEnum.Template,
+                object
+            );
+            
+            await AngularArchitectureCode.writeCodeToFile(
+                projectPath, 
+                modulePath, 
+                moduleCode?.module, 
+                ComponentCodeTypeEnum.Module,
+                object
+            );
+
+            await AngularArchitectureCode.writeCodeToFile(
+                projectPath, 
+                modulePath, 
+                moduleCode?.navigation, 
+                ComponentCodeTypeEnum.Navigation,
                 object
             );
         }

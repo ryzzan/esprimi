@@ -6,7 +6,7 @@ import { AngularArchitectureTemplate } from "./template";
 import { AngularArchitectureModule } from "./module";
 
 export class AngularArchitecture {
-    createArchitecture = (
+    createArchitecture = async (
         code: BuildedCode | undefined,
         object: MainInterface
     ) => {

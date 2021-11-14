@@ -9,15 +9,16 @@ export class Main {
     frontendCode = new FrontendCode;
     architecture = new Architecture;
 
-    createCode = (
+    createCode = async (
         object: MainInterface
-    ): BuildedCode | undefined => {
+    ): Promise<BuildedCode | undefined> => {
         if (object.frontendFramework) {
             try {
                 console.info("Dealing with code. It's gonna be fast!");
-                const codes = this.frontendCode.createCode(object);
+                const codes = await this.frontendCode.createCode(object);
                 
-                if(object.projectPath) this.createArchitecture(codes, object);
+                if(object.projectPath) 
+                    await this.createArchitecture(codes, object);
 
                 console.info("Here are the codes:", codes);
                 return codes;
@@ -27,12 +28,13 @@ export class Main {
                     service: '',
                     template: '',
                     module: '',
+                    navigation: '',
                 };
             }
         }
     }
 
-    createArchitecture = (
+    createArchitecture = async (
         codes: BuildedCode | undefined, 
         object: MainInterface
     ) => {

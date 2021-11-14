@@ -13,12 +13,12 @@ export class FrontendCode {
         this.codeToAngular = new CodeToAngular;
     }
 
-    createCode = (
+    createCode = async (
         object: MainInterface
-    ): BuildedCode | undefined => {
+    ): Promise<BuildedCode | undefined> => {
         switch (object.frontendFramework) {
             case 'ANGULAR':
-                return this.codeToAngular.createCode(object);
+                return await this.codeToAngular.createCode(object);
                 break;
 
             case 'REACT':
@@ -43,7 +43,8 @@ export class FrontendCode {
                     component: '',
                     service: '',
                     template: '',
-                    module: ''
+                    module: '',
+                    navigation: '',
                 };
 
                 break;

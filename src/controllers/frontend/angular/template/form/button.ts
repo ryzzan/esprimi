@@ -23,7 +23,7 @@ export class CodeToAngularFormTemplateButton {
         codeButton += `<button mat-raised-button ${color}>${label}</button>`;
         if (button.type === FormButtonTypeEnum.Submit)
             codeButton += `</mat-card-actions>`;
-console.log(codeButton, 26);
+            
         return codeButton;
     }
 }

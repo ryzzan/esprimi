@@ -5,6 +5,7 @@ export const PERSON: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     module: {
         id:'person',
+        title: 'Pessoas',
         components: ['personForm', 'personTable'],
     }
 }

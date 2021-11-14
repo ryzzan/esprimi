@@ -17,7 +17,9 @@ export class CodeToAngularTemplate {
     customTemplateTableCode = new CodeToAngularTableTemplate;
     customTemplateModuleCode = new CodeToAngularModuleTemplate;
 
-    createTemplateCode = (object: MainInterface): string => {
+    createTemplateCode = async (
+        object: MainInterface
+    ): Promise<string> => {
         const componentSkeletonCode = `%CONTENT%`;
 
         let code = componentSkeletonCode;

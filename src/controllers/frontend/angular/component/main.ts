@@ -13,7 +13,10 @@ export class CodeToAngularComponent {
     customComponentFormCode = new CodeToAngularFormComponent;
     customComponentTableCode = new CodeToAngularTableComponent;
 
-    createComponentCode = (projectName: string, object: MainInterface): string => {
+    createComponentCode = async (
+        projectName: string, 
+        object: MainInterface
+    ): Promise<string> => {
         const componentSkeletonCode = `
                                     import { Component, OnInit } from '@angular/core';
                                     %IMPORTS%
