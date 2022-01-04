@@ -10,26 +10,34 @@ export class Main {
     architecture = new Architecture;
 
     createCode = async (
-        object: MainInterface
-    ): Promise<BuildedCode | undefined> => {
-        if (object.frontendFramework) {
+        array: Array<MainInterface>,
+        index = 0
+    ) => {
+        if (array[index].frontendFramework) {
             try {
                 console.info("Dealing with code. It's gonna be fast!");
-                const codes = await this.frontendCode.createCode(object);
+                const codes = await this.frontendCode.createCode(array[index]);
                 
-                if(object.projectPath) 
-                    await this.createArchitecture(codes, object);
+                if(array[index].projectPath) {
+                    console.info("Now the architecture!"); 
+                    await this.createArchitecture(codes, array[index]);
+                }
 
                 console.info("Here are the codes:", codes);
-                return codes;
             } catch (error) {
-                return {
+                console.error({
                     component: '',
                     service: '',
                     template: '',
                     module: '',
                     navigation: '',
-                };
+                });
+            }
+
+            index = index + 1;
+
+            if (index < array.length) {
+                this.createCode(array, index);
             }
         }
     }
@@ -38,6 +46,6 @@ export class Main {
         codes: BuildedCode | undefined, 
         object: MainInterface
     ) => {
-        this.architecture.createArchitecture(codes, object);
+        await this.architecture.createArchitecture(codes, object);
     }
 }

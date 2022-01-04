@@ -48,7 +48,12 @@ export class AngularArchitectureModule {
         } catch (error) {
             console.info(`Pasta de módulo inexistente.`);
             chp.execSync(
-                `ng g module modules/${modulePath} --module modules/main --route ${modulePath} --routing --routing-scope Child`, 
+                `ng g module modules/${modulePath} --routing --routing-scope Child`, 
+                {cwd: projectPath}
+            );
+
+            chp.execSync(
+                `ng g c modules/${modulePath} --module modules/${modulePath}`, 
                 {cwd: projectPath}
             );
             
@@ -75,6 +80,56 @@ export class AngularArchitectureModule {
                 ComponentCodeTypeEnum.Navigation,
                 object
             );
+
+            await AngularArchitectureModule.createModuleLazyLoad(object);
+
+            await AngularArchitectureModule.setModuleComponentRoute(object);
+        }
+    }
+
+    static createModuleLazyLoad = async (object: MainInterface) => {
+        if (!object.module) return false;
+        
+        let modulePath = TextTransformation.kebabfy(object.module.id);
+        
+        const projectPath = object.projectPath;
+        const projectMainModuleRoutingPath = `${projectPath}/src/app/modules/main/main-routing.module.ts`;
+
+        try {
+            const file = fs.readFileSync(projectMainModuleRoutingPath);
+            const routeCode = (file.toString().search(`path: '${modulePath}'`) >= 0) ? '' : `{path: '${modulePath}', loadChildren: () => import('../${modulePath}/${modulePath}.module').then(m => m.${TextTransformation.setIdToClassName(object.module.id)}Module)}, `;
+            let code = '';
+            
+            code = file.toString().replace('children: [', `children: [${routeCode}`);
+
+            fs.writeFileSync(projectMainModuleRoutingPath, code);
+            
+            return true;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    static setModuleComponentRoute = async (object: MainInterface) => {
+        if (!object.module) return false;
+        
+        let modulePath = TextTransformation.kebabfy(object.module.id);
+        
+        const projectPath = object.projectPath;
+        const moduleRoutingPath = `${projectPath}/src/app/modules/${modulePath}/${modulePath}-routing.module.ts`;
+
+        try {
+            const file = fs.readFileSync(moduleRoutingPath);
+            const moduleComponentCode = (file.toString().search(`const routes: Routes = [];`) >= 0) ? '' : `import { ${TextTransformation.setIdToClassName(object.module.id)}Component } from './${TextTransformation.kebabfy(object.module.id)}.component'; const routes: Routes = [{ path: '', component: ${TextTransformation.setIdToClassName(object.module.id)}Component }];`;
+            let code = '';
+            
+            code = file.toString().replace('const routes: Routes = [];', `${moduleComponentCode}`);
+
+            fs.writeFileSync(moduleRoutingPath, code);
+            
+            return true;
+        } catch (error) {
+            console.error(error);
         }
     }
 }

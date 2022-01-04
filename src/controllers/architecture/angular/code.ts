@@ -27,8 +27,6 @@ export class AngularArchitectureCode {
             componentFilePath = `${projectPath}/src/app/modules/main/main.component.ts`;
 
         try {
-            const file = fs.readFileSync(componentFilePath);
-            
             console.info(`Arquivo ${componentPath} existente.`);
             fs.writeFileSync(componentFilePath, code);
             console.info(`Aquivo escrito com sucesso em ${componentFilePath}.`);

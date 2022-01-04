@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as chp from 'child_process';
 
 export class AngularArchitectureProject {
-    static createArchitectureProject = (
+    static createArchitectureProject = async (
         projectPath: string
     ) => {
         const projectFolder = projectPath.split(/[\/]+/).pop();
@@ -16,7 +16,7 @@ export class AngularArchitectureProject {
         } catch (error) {
             console.info(`Pasta de projeto inexistente.`);
             chp.execSync(
-                `git clone https://github.com/ryzzan/rapida-komenco ${projectFolder}`, 
+                `git clone https://github.com/ryzzan/kunlatek-quickstart ${projectFolder}`, 
                 {cwd: projectFolderParent}
             );
         }

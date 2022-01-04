@@ -21,10 +21,12 @@ export class CodeToAngularComponent {
                                     import { Component, OnInit } from '@angular/core';
                                     %IMPORTS%
 
+                                    %INTERFACES%
+
                                     @Component({
                                         selector: 'app-%kebabfy(${projectName})%',
                                         templateUrl: './%kebabfy(${projectName})%.component.html',
-                                        styleUrls: ['./%kebabfy(${projectName})%.component.sass']
+                                        styleUrls: ['./%kebabfy(${projectName})%.component.scss']
                                     })
                                     export class %pascalfy(${projectName})%Component implements OnInit {
                                         %PROPERTIES%
@@ -48,15 +50,19 @@ export class CodeToAngularComponent {
             
             const componentPropertyCode = this.customComponentFormCode.createProperty(object);
             code = code.replace('%PROPERTIES%', componentPropertyCode);
-
+            
             const componentConstructorArgCode = this.customComponentFormCode.createConstructorArg(object);
             code = code.replace('%CONSTRUCTOR%', componentConstructorArgCode);
-
+            
             const componentConstructorParamCode = this.customComponentFormCode.createConstructorParams(object);
             code = code.replace('%DEPENDENCIES%', componentConstructorParamCode);
-
+            
             const componentActionCode = this.customComponentFormCode.createMethod(object);
             code = code.replace('%METHODS%', componentActionCode);
+
+
+            const componentInterfaceCode = this.customComponentFormCode.createInterface(object);
+            code = code.replace('%INTERFACES%', componentInterfaceCode);
         }
 
         if (object.table) {
@@ -74,10 +80,9 @@ export class CodeToAngularComponent {
 
             const componentActionCode = this.customComponentTableCode.createMethod(object);
             code = code.replace('%METHODS%', componentActionCode);
-        }
-
-        if (object.module) {
             
+            const componentInterfaceCode = this.customComponentTableCode.createInterface(object);
+            code = code.replace('%INTERFACES%', componentInterfaceCode);
         }
 
         code = TextTransformation.replaceKebabfyFunctionToString(code);

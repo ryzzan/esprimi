@@ -55,7 +55,7 @@ export class CodeToAngularFormComponentMethod {
                 const newArray = `new${TextTransformation.pascalfy(element.array.id)}`;
 
                 methods += `${add}() {this.${element.array.id}.push(this.${newArray}())};
-                                    get ${element.array.id}(): FormArray {return this.${object.form?.id}Form.get('${element.array.id}') as FormArray};
+                                    get ${element.array.id}(): FormArray {return this.${object.form?.id}Form.get('${element.array.id}') as FormArray;};
                                     ${newArray}(): FormGroup { return this._formBuilder.group({
                                         ${CodeToAngularFormComponentConstructorArg.createFormBuilder(element.array.elements, object)}
                                     })};

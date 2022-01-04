@@ -13,22 +13,22 @@ export class AngularArchitecture {
         const projectPath = object.projectPath;
         
         console.info("First of all we are going to clone a quickstart structure to our project and run its depedencies if the project doesn't exist.");
-        AngularArchitectureProject.createArchitectureProject(projectPath);
+        await AngularArchitectureProject.createArchitectureProject(projectPath);
 
         if (!object.module) {            
             console.info("Now we are going to use Angular CLI to create the components and write in it the code we've created.");
-            AngularArchitectureComponent.createArchitectureComponent(code?.component, object);
+            await AngularArchitectureComponent.createArchitectureComponent(code?.component, object);
     
             console.info("Now we are going to use write the template in component the code we've created.");
-            AngularArchitectureTemplate.createArchitectureTemplate(code?.template, object);
+            await AngularArchitectureTemplate.createArchitectureTemplate(code?.template, object);
     
             console.info("Like we did with components and templates, now we are going to do the same with services.");
-            AngularArchitectureService.createArchitectureService(code?.service, object);
+            await AngularArchitectureService.createArchitectureService(code?.service, object);
         }
 
         if (object.module) {
             console.info("Are we nesting some components? Let's do it in a module!");
-            AngularArchitectureModule.createArchitectureModule(code, object);
+            await AngularArchitectureModule.createArchitectureModule(code, object);
         }
     }
 }

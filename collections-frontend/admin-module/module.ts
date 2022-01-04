@@ -5,6 +5,7 @@ export const MODULE: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     module: {
         id:'module',
+        title: 'Módulos',
         components: ['moduleForm', 'moduleTable'],
     }
 }

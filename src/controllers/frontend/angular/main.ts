@@ -33,12 +33,12 @@ export class CodeToAngular {
 
         if (object.module) {            
             module = await this.module.createModuleCode(this.projectName, object);
-            // navigation = await this.navigation.createNavigationCode(object);
+            navigation = await this.navigation.createNavigationCode(object);
         }
 
         template = await this.template.createTemplateCode(object);
         
-        return await {
+        return {
             component: component.replace(/\n/gi, '').replace(/    /gi, ''),
             template: template.replace(/\n/gi, '').replace(/    /gi, ''),
             service: service.replace(/\n/gi, '').replace(/    /gi, ''),

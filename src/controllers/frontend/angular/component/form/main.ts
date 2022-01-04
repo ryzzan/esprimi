@@ -7,6 +7,7 @@ import { CodeToAngularFormComponentConstructorParam } from "./constructor-param"
 import {
     CodeToAngularFormComponentImport
 } from "./import";
+import { CodeToAngularFormComponentInterface } from "./interface";
 import { CodeToAngularFormComponentMethod } from "./method";
 import { CodeToAngularFormComponentProperty } from "./property";
 
@@ -29,5 +30,9 @@ export class CodeToAngularFormComponent {
 
     createMethod = (object: MainInterface): string => {
         return CodeToAngularFormComponentMethod.customMethod(object);
+    }
+
+    createInterface = (object: MainInterface): string => {
+        return CodeToAngularFormComponentInterface.customInterface(object);
     }
 }

@@ -9,12 +9,13 @@ export class CodeToAngularFormComponentConstructorArg {
     static customConstructorArg = (objectToCode: MainInterface): string => {
         if (objectToCode.form) {
             const componentCode = `
-                                this.${objectToCode.form.id}Id = this._activatedRoute.snapshot.params['id'];
-                                this.isAddModule = !this.${objectToCode.form.id}Id;
-                                this.${objectToCode.form.id}Form = this._formBuilder.group({
-                                    ${CodeToAngularFormComponentConstructorArg.createFormBuilder(objectToCode.form.elements, objectToCode)}
-                                });
-                            `;
+                                    this.${objectToCode.form.id}Id = this._activatedRoute.snapshot.params['id'];
+                                    this.isAddModule = !this.${objectToCode.form.id}Id;
+                                    ${CodeToAngularFormComponentConstructorArg.createObjectService(objectToCode.form.elements, objectToCode)}
+                                    this.${objectToCode.form.id}Form = this._formBuilder.group({
+                                        ${CodeToAngularFormComponentConstructorArg.createFormBuilder(objectToCode.form.elements, objectToCode)}
+                                    });
+                                `;
 
             return componentCode;
         }
@@ -98,5 +99,75 @@ export class CodeToAngularFormComponentConstructorArg {
             codeValidator += `Validators.${validator},`;
         });
         return codeValidator;
+    }
+
+    static createObjectService = (
+        elements: Array<FormElementInterface>,
+        objectToCode: MainInterface
+    ): string => {
+        let selectObjectServiceCode = '';
+        let checkboxObjectServiceCode = '';
+
+        elements.forEach((object: any) => {
+            for (const key in object) {
+                if (Object.prototype.hasOwnProperty.call(object, key)) {
+                    const element = object[key];
+                    if (key === 'tabs') {
+                        const tabs = object[key];
+                        if (tabs) {
+                            tabs.forEach((tab: any) => {
+                                selectObjectServiceCode += CodeToAngularFormComponentConstructorArg.createObjectService(tab.elements, objectToCode);
+                                checkboxObjectServiceCode += CodeToAngularFormComponentConstructorArg.createObjectService(tab.elements, objectToCode);
+                            });
+                        }
+                    }
+
+                    if (key === 'array') {
+                        const array = object[key];
+
+                        selectObjectServiceCode += CodeToAngularFormComponentConstructorArg.createObjectService(array.elements, objectToCode);
+                        checkboxObjectServiceCode += CodeToAngularFormComponentConstructorArg.createObjectService(array.elements, objectToCode);
+                    }
+
+                    if (key === 'select') {
+                        if (element?.optionsApi) {
+                            selectObjectServiceCode += ` 
+                            this._${objectToCode.form?.id}Service.${object.select.name}SelectObjectGetAll()
+                            .then(
+                                (array: any) => {
+                                    for (let index = 0; index < array.length; index++) {
+                                        const object = array[index];
+                                        this.${object.select.name}SelectObject.push(
+                                            {label: object['${element.optionsApi.labelField}'], 
+                                            value: object['${element.optionsApi.valueField}']}
+                                        );
+                                    }
+                                }
+                            );`;
+                        }
+                    }
+
+                    if (key === 'checkbox') {
+                        if (element?.optionsApi) {
+                            checkboxObjectServiceCode += ` 
+                            this._${objectToCode.form?.id}Service.${object.checkbox.name}SelectObjectGetAll()
+                            .then(
+                                (array: any) => {
+                                    for (let index = 0; index < array.length; index++) {
+                                        const object = array[index];
+                                        this.${object.checkbox.name}SelectObject.push(
+                                            {label: object['${element.optionsApi.labelField}'], 
+                                            value: object['${element.optionsApi.valueField}']}
+                                        );
+                                    }
+                                }
+                            );`;
+                        }
+                    }
+                }
+            }
+        });
+
+        return selectObjectServiceCode;
     }
 }

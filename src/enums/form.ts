@@ -12,7 +12,6 @@ export enum FormAttributeEnum {
 
 export enum FormInputTypeEnum {
     Button = 'button',
-    Checkbox = 'checkbox',
     Color = 'color',
     Date = 'date',
     DatetimeLocal = 'datetime-local',
@@ -23,7 +22,6 @@ export enum FormInputTypeEnum {
     Month = 'month',
     Number = 'number',
     Password = 'password',
-    Radio = 'radio',
     Range = 'range',
     Reset = 'reset',
     Search = 'search',

@@ -42,10 +42,20 @@ export class CodeToAngularFormComponentProperty {
                     properties += `${element.select.name}SelectObject = ${JSON.stringify(element.select.optionsObject)};`;
                 }
 
-                if (element.select.optionsApiEndpoint) {
-                    properties += `${element.select.name}SelectObject = []`;
+                if (element.select.optionsApi) {
+                    properties += `${element.select.name}SelectObject: Array<SelectObjectInterface> = [];`;
                 }
-            }            
+            }
+
+            if (element.checkbox) {
+                if (element.checkbox.optionsObject) {                        
+                    properties += `${element.checkbox.name}CheckboxObject = ${JSON.stringify(element.checkbox.optionsObject)};`;
+                }
+
+                if (element.checkbox.optionsApi) {
+                    properties += `${element.checkbox.name}CheckboxObject: Array<CheckboxObjectInterface> = [];`;
+                }
+            }
         }
 
         return properties;

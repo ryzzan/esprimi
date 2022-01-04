@@ -4,6 +4,7 @@ import {
 import { CodeToAngularTableComponentConstructorArg } from "./constructor-arg";
 import { CodeToAngularTableComponentConstructorParam } from "./constructor-param";
 import { CodeToAngularTableComponentImport } from "./import";
+import { CodeToAngularTableComponentInterface } from "./interface";
 import { CodeToAngularTableComponentMethod } from "./method";
 import { CodeToAngularTableComponentProperty } from "./property";
 
@@ -26,5 +27,9 @@ export class CodeToAngularTableComponent {
 
     createMethod = (object: MainInterface): string => {
         return CodeToAngularTableComponentMethod.customMethod(object);
+    }
+
+    createInterface = (object: MainInterface): string => {
+        return CodeToAngularTableComponentInterface.customInterface(object);
     }
 }

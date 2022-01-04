@@ -1,14 +1,14 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../src/enums/form";
-import { FrontendFrameworkEnum } from "../src/enums/main";
-import { RequestTypeEnum } from "../src/enums/request";
-import { MainInterface } from "../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../src/enums/main";
+import { RequestTypeEnum } from "../../src/enums/request";
+import { MainInterface } from "../../src/interfaces/main";
 
 
-export const EXAMPLE_TABLE: MainInterface = {
+export const PERMISSION_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'exampleTable',
-    title: 'Exemplos',
+    id: 'permissionTable',
+    title: 'Permissões',
     data: {
       type: RequestTypeEnum.Object,
     },
@@ -42,7 +42,7 @@ export const EXAMPLE_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/example/123',
+                url: '/main/permission/123',
               },
               label: 'Editar',
             },
@@ -61,8 +61,8 @@ export const EXAMPLE_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'exampleTable',
-        title: 'Exemplo',
+        id: 'permissionTable',
+        title: 'Permissão',
         elements: [{
             input: {
                 label: 'Search input',
@@ -74,7 +74,7 @@ export const EXAMPLE_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'examples',
+        endPoint: 'permissions',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

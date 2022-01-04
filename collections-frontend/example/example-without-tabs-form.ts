@@ -1,6 +1,6 @@
-import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../src/enums/form";
-import { FrontendFrameworkEnum } from "../src/enums/main";
-import { MainInterface } from "../src/interfaces/main";
+import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../src/enums/main";
+import { MainInterface } from "../../src/interfaces/main";
 
 export const EXAMPLE_WITHOUT_TABS_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,

@@ -1,6 +1,6 @@
 // Interfaces
 import { MainInterface } from "../../../../interfaces/main";
-import { ServiceInterface } from "../../../../interfaces/form";
+import { FormElementInterface, ServiceInterface } from "../../../../interfaces/form";
 
 // Utils
 import { TextTransformation } from "../../../../utils/text.transformation";
@@ -28,11 +28,15 @@ export class CodeToAngularService {
 
         let code = serviceSkeletonCode;
 
-        if (object.form?.service) {
-            const serviceCode = this.createService(projectName, object.form.service);
-            
-            code = code.replace('%BASE_URL%', object.form.service.baseUrl);
-            code = code.replace('%SERVICES%', serviceCode);
+        if (object.form) {
+            let serviceCode = this.createFormService(object.form.elements);
+
+            if (object.form.service) {
+                serviceCode += this.createService(projectName, object.form.service);
+                
+                code = code.replace('%BASE_URL%', object.form.service.baseUrl);
+                code = code.replace('%SERVICES%', serviceCode);
+            }
         }
 
         if (object.table?.service) {
@@ -49,7 +53,10 @@ export class CodeToAngularService {
         return code;
     }
 
-    createService = (projectName: string, service: ServiceInterface) => {
+    createService = (
+        projectName: string, 
+        service: ServiceInterface
+    ) => {
         const array = service.methods;
         let code = '';
         array.forEach(element => {
@@ -64,7 +71,7 @@ export class CodeToAngularService {
                                     }
                                 }
                                 ).toPromise();
-                            }
+                            };
                             `;
                     break;
                 
@@ -79,7 +86,7 @@ export class CodeToAngularService {
                                         }
                                     }
                                 ).toPromise();
-                            }
+                            };
                             `;
                     break;
 
@@ -95,7 +102,7 @@ export class CodeToAngularService {
                                     }
                                 }
                                 ).toPromise();
-                            }
+                            };
                             `;
                     break;
                 
@@ -111,7 +118,7 @@ export class CodeToAngularService {
                                         }
                                     }
                                 ).toPromise();
-                            }
+                            };
                             `;
                     break;
 
@@ -126,7 +133,7 @@ export class CodeToAngularService {
                                         }
                                     }
                                 ).toPromise();
-                            }
+                            };
                             `;
                     break;
                 
@@ -141,7 +148,7 @@ export class CodeToAngularService {
                                         }
                                     }
                                 ).toPromise();
-                            }
+                            };
                             `;
                     break;
             
@@ -152,5 +159,45 @@ export class CodeToAngularService {
         });
 
         return code;
+    }
+
+    createFormService = (elements: Array<FormElementInterface>): string => {
+        let selectObjectServiceCode = '';
+        elements.forEach((object: any) => {
+            for (const key in object) {
+                if (Object.prototype.hasOwnProperty.call(object, key)) {
+                    const element = object[key];
+                    if (key === 'tabs') {
+                        const tabs = object[key];
+                        if (tabs) {
+                            tabs.forEach((tab: any) => {
+                                selectObjectServiceCode += this.createFormService(tab.elements);
+                            });
+                        }
+                    }
+
+                    if (key === 'array') {
+                        const array = object[key];
+
+                        selectObjectServiceCode += this.createFormService(array.elements);
+                    }
+
+                    if (key === 'select') {
+                        if (element?.optionsApi) {
+                            selectObjectServiceCode += `${object.select.name}SelectObjectGetAll() {
+                                return this._httpClient.get(
+                                    \`\${this.BASE_URL}/${element.optionsApi.endpoint}\`, {
+                                    headers: {
+                                        'Authorization': \`Bearer \${localStorage.getItem('token')}\`
+                                    }
+                                }
+                                ).toPromise();
+                            }`;
+                        }
+                    }
+                }
+            }
+        });
+        return selectObjectServiceCode;
     }
 }

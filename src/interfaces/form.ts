@@ -19,6 +19,7 @@ export interface ServiceInterface {
 export interface FormElementInterface {
     array ? : FormInterface;
     button ? : ButtonInterface;
+    checkbox ? : CheckboxInterface;
     datalist ? : DatalistInterface;
     fieldset ? : FieldsetInterface;
     input ? : InputInterface;
@@ -117,6 +118,15 @@ export interface DatalistInterface {
     isSelected?: boolean;
     todo?: string;
   }
+
+  export interface OptionApiInterface {
+    endpoint: string;
+    labelField: string;
+    valueField: string;
+    isDisabled?: boolean;
+    isSelected?: boolean;
+    todo?: string;
+  }
   
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   export interface OutputInterface {}
@@ -127,12 +137,43 @@ export interface DatalistInterface {
     condition?: string;
     optgroups?: Array<OptgroupInterface>;
     optionsObject?: Array<OptionInterface>;
-    optionsApiEndpoint?: string;
+    optionsApi?: OptionApiInterface;
     size?: number;
     validators?: Array<string>;
     isAutofocus?: boolean;
     isDisabled?: boolean;
     isMultiple?: boolean;
+    isRequired?: boolean;
+    todo?: string;
+  }
+
+  export interface CheckboxInterface {
+    name: string;
+    label: string;
+    condition?: string;
+    optgroups?: Array<OptgroupInterface>;
+    optionsObject?: Array<OptionInterface>;
+    optionsApi?: OptionApiInterface;
+    size?: number;
+    validators?: Array<string>;
+    isAutofocus?: boolean;
+    isDisabled?: boolean;
+    isRequired?: boolean;
+    isChecked?: boolean;
+    todo?: string;
+  }
+
+  export interface RadioInterface {
+    name: string;
+    label: string;
+    condition?: string;
+    optgroups?: Array<OptgroupInterface>;
+    optionsObject?: Array<OptionInterface>;
+    optionsApi?: OptionApiInterface;
+    size?: number;
+    validators?: Array<string>;
+    isAutofocus?: boolean;
+    isDisabled?: boolean;
     isRequired?: boolean;
     todo?: string;
   }
