@@ -33,7 +33,7 @@ export const MODULE_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/module/123',
+                url: '/main/module/{id}',
               },
               label: 'Editar',
             },

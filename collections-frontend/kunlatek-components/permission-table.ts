@@ -42,7 +42,7 @@ export const PERMISSION_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/permission/123',
+                url: '/main/permission/{id}',
               },
               label: 'Editar',
             },

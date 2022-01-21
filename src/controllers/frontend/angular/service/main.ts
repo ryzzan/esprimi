@@ -65,9 +65,9 @@ export class CodeToAngularService {
                     code += `
                             getAll() {
                                 return this._httpClient.get(
-                                    \`\${this.BASE_URL}/%pluralize${projectName}%\`, {
+                                    \`\${this.BASE_URL}/${service.endPoint}\`, {
                                     headers: {
-                                        'Authorization': \`Bearer \${localStorage.getItem('token')}\`
+                                        'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
                                     }
                                 }
                                 ).toPromise();
@@ -79,10 +79,10 @@ export class CodeToAngularService {
                     code += `
                             find(id: string) {
                                 return this._httpClient.get(
-                                    \`\${this.BASE_URL}/%pluralize${projectName}%/\${id}\`,
+                                    \`\${this.BASE_URL}/${service.endPoint}/\${id}\`,
                                     {
                                         headers: {
-                                            'Authorization': \`Bearer \${localStorage.getItem('token')}\`
+                                            'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
                                         }
                                     }
                                 ).toPromise();
@@ -94,11 +94,11 @@ export class CodeToAngularService {
                     code += `
                             save(body: any) {
                                 return this._httpClient.post(
-                                \`\${this.BASE_URL}/%pluralize${projectName}%\`, 
+                                \`\${this.BASE_URL}/${service.endPoint}\`, 
                                 body,
                                 {
                                     headers: {
-                                        'Authorization': \`Bearer \${localStorage.getItem('token')}\`
+                                        'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
                                     }
                                 }
                                 ).toPromise();
@@ -110,11 +110,11 @@ export class CodeToAngularService {
                     code += `
                             update(body: any, id: string) {
                                 return this._httpClient.put(
-                                    \`\${this.BASE_URL}/%pluralize${projectName}%/\${id}\`, 
+                                    \`\${this.BASE_URL}/${service.endPoint}/\${id}\`, 
                                     body,
                                     {
                                         headers: {
-                                            'Authorization': \`Bearer \${localStorage.getItem('token')}\`
+                                            'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
                                         }
                                     }
                                 ).toPromise();
@@ -126,10 +126,10 @@ export class CodeToAngularService {
                     code += `
                             delete(id: string) {
                                 return this._httpClient.delete(
-                                    \`\${this.BASE_URL}/%pluralize${projectName}%/\${id}\`,
+                                    \`\${this.BASE_URL}/${service.endPoint}/\${id}\`,
                                     {
                                         headers: {
-                                            'Authorization': \`Bearer \${localStorage.getItem('token')}\`
+                                            'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
                                         }
                                     }
                                 ).toPromise();
@@ -141,10 +141,10 @@ export class CodeToAngularService {
                     code += `
                             softDelete(id: string) {
                                 return this._httpClient.product(
-                                    \`\${this.BASE_URL}/%pluralize${projectName}%/\${id}\`,
+                                    \`\${this.BASE_URL}/${service.endPoint}/\${id}\`,
                                     {
                                         headers: {
-                                            'Authorization': \`Bearer \${localStorage.getItem('token')}\`
+                                            'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
                                         }
                                     }
                                 ).toPromise();
@@ -188,7 +188,7 @@ export class CodeToAngularService {
                                 return this._httpClient.get(
                                     \`\${this.BASE_URL}/${element.optionsApi.endpoint}\`, {
                                     headers: {
-                                        'Authorization': \`Bearer \${localStorage.getItem('token')}\`
+                                        'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
                                     }
                                 }
                                 ).toPromise();

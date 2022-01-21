@@ -4,18 +4,18 @@ import { RequestTypeEnum } from "../../src/enums/request";
 import { MainInterface } from "../../src/interfaces/main";
 
 
-export const PERMISSION_GROUP_TABLE: MainInterface = {
+export const MODULE_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'permissionGroupTable',
-    title: 'Grupos de permissão',
+    id: 'moduleTable',
+    title: 'Módulos',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Nome do grupo',
+          label: 'Módulo',
         },
         row: {
           type: 'string',
@@ -24,29 +24,20 @@ export const PERMISSION_GROUP_TABLE: MainInterface = {
       },
       {
         column: {
-          label: 'Módulo',
+          label: 'Descrição',
         },
         row: {
           type: 'string',
-          field: 'module',
+          field: 'description',
         },
       },
       {
         column: {
-          label: 'Aplicativo',
+          label: 'Componentes',
         },
         row: {
           type: 'string',
-          field: 'application',
-        },
-      },
-      {
-        column: {
-          label: 'Permissões',
-        },
-        row: {
-          type: 'string',
-          field: 'permissions',
+          field: 'components',
         },
       },
       {
@@ -60,7 +51,7 @@ export const PERMISSION_GROUP_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/permissionGroup/{id}',
+                url: '/main/module/{id}',
               },
               label: 'Editar',
             },
@@ -79,20 +70,20 @@ export const PERMISSION_GROUP_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'permissionGroupTable',
-        title: 'Grupo de permissão',
+        id: 'moduleTable',
+        title: 'Exemplo',
         elements: [{
             input: {
-                label: 'Grupo modelo',
-                name: 'name',
-                placeholder: 'Nome do grupo',
+                label: 'Search input',
+                name: 'searchInput',
+                placeholder: 'Placeholder to search input',
                 type: FormInputTypeEnum.Text
             }
         }]
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'permissionGroups',
+        endPoint: 'modules',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

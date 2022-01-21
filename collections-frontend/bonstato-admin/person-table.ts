@@ -60,7 +60,7 @@ export const PERSON_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/person/123',
+                url: '/main/person/{id}',
               },
               label: 'Editar',
             },

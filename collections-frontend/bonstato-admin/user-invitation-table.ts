@@ -51,7 +51,7 @@ export const USER_INVITATION_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/userInvitation/123',
+                url: '/main/userInvitation/{id}',
               },
               label: 'Editar',
             },

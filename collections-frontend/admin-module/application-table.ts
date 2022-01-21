@@ -42,7 +42,7 @@ export const APPLICATION_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/application/123',
+                url: '/main/application/{id}',
               },
               label: 'Editar',
             },

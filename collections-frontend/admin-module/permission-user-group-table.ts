@@ -42,7 +42,7 @@ export const PERMISSION_USER_GROUP_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/permissionUserGroup/123',
+                url: '/main/permissionUserGroup/{id}',
               },
               label: 'Editar',
             },

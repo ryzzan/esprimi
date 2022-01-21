@@ -42,7 +42,7 @@ export const USER_GROUP_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/userGroup/123',
+                url: '/main/userGroup/{id}',
               },
               label: 'Editar',
             },
