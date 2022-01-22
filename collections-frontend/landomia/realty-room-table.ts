@@ -4,10 +4,10 @@ import { RequestTypeEnum } from "../../src/enums/request";
 import { MainInterface } from "../../src/interfaces/main";
 
 
-export const PROJECT_TABLE: MainInterface = {
+export const REALTY_ROOM_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'projectTable',
+    id: 'realtyRoomTable',
     title: 'Projetos',
     data: {
       type: RequestTypeEnum.Object,
@@ -42,7 +42,7 @@ export const PROJECT_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/project',
+                url: '/main/realtyRoom',
                 param: '_id'
               },
               label: 'Editar',
@@ -62,7 +62,7 @@ export const PROJECT_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'projectTable',
+        id: 'realtyRoomTable',
         title: 'Exemplo',
         elements: [{
             input: {
@@ -75,7 +75,7 @@ export const PROJECT_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'projects',
+        endPoint: 'realtyRooms',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

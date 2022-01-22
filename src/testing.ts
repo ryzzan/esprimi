@@ -1,6 +1,6 @@
 import { Main } from './index';
 
-const projectPath = '/home/ryzzan/Projects/Kunlatek/fundamento';
+const projectPath = '/home/lopes/Projects/Kunlatek/fundamento';
 
 // import { EXAMPLE_WITHOUT_TABS_FORM } from '../collections-frontend/example-without-tabs-form';
 import { PROJECT } from '../collections-frontend/fundamento/project';

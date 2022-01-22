@@ -4,18 +4,18 @@ import { RequestTypeEnum } from "../../src/enums/request";
 import { MainInterface } from "../../src/interfaces/main";
 
 
-export const PROJECT_TABLE: MainInterface = {
+export const REALTY_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'projectTable',
-    title: 'Projetos',
+    id: 'realtyTable',
+    title: 'Imóveis',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Nome',
+          label: 'Proprietário',
         },
         row: {
           type: 'string',
@@ -24,11 +24,29 @@ export const PROJECT_TABLE: MainInterface = {
       },
       {
         column: {
-          label: 'Descrição',
+          label: 'Tipo de imóvel',
         },
         row: {
           type: 'string',
-          field: 'description',
+          field: 'realtyType',
+        },
+      },
+      {
+        column: {
+          label: 'Tipo de negócio',
+        },
+        row: {
+          type: 'string',
+          field: 'businessType',
+        },
+      },
+      {
+        column: {
+          label: 'Contatos',
+        },
+        row: {
+          type: 'string',
+          field: 'contacts',
         },
       },
       {
@@ -42,7 +60,7 @@ export const PROJECT_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/project',
+                url: '/main/realty',
                 param: '_id'
               },
               label: 'Editar',
@@ -62,7 +80,7 @@ export const PROJECT_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'projectTable',
+        id: 'realtyTable',
         title: 'Exemplo',
         elements: [{
             input: {
@@ -75,7 +93,7 @@ export const PROJECT_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'projects',
+        endPoint: 'realties',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,
