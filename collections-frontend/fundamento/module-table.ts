@@ -15,6 +15,15 @@ export const MODULE_TABLE: MainInterface = {
     elements: [
       {
         column: {
+          label: 'Id',
+        },
+        row: {
+          type: 'string',
+          field: '_id',
+        },
+      },
+      {
+        column: {
           label: 'Módulo',
         },
         row: {
@@ -51,7 +60,8 @@ export const MODULE_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/module/{id}',
+                url: '/main/module',
+                param: '_id'
               },
               label: 'Editar',
             },

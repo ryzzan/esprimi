@@ -22,11 +22,11 @@ export class CodeToAngularFormComponentMethod {
                                         this.isLoading = false;
                                     })
                                     .catch((err) => {
-                                        this.isLoading = false;
                                         const message = this._errorHandler.apiErrorMessage(err.error.error.message);
-                                        this._snackbar.open(message, undefined, {
-                                            duration: 4 * 1000,
-                                        });
+                                        
+                                        this.isLoading = false;
+
+                                        this.sendErrorMessage(message);
                                     })
                                 }
                                 `;

@@ -28,7 +28,7 @@ export class CodeToAngularTableTemplateRowMenu {
 
     const codeRowMenu = `
                         <mat-menu #${object.table.id}Menu="matMenu">
-                            ${CodeToAngularTableTemplateRowMenu.createRowMenuItems(menuArray)}
+                          ${CodeToAngularTableTemplateRowMenu.createRowMenuItems(menuArray)}
                         </mat-menu>
                         `;
     return codeRowMenu;
@@ -39,11 +39,15 @@ export class CodeToAngularTableTemplateRowMenu {
 
     rowMenuElements.forEach((element: RowMenuElementInterface) => {
       let menuButtonAction = '';
+      let menuParam = '';
           if (
             element.action.type &&
             element.action.type == RequestTypeEnum.Link
-          ) menuButtonAction = `[routerLink]="['${element.action.url}']"`;
-
+          ) {
+            menuButtonAction = `[routerLink]="['${element.action.url}'${element.action.param ? ', '+element.action.param : ''}]"`;
+            if (element.action.param) menuParam = `<ng-template matMenuContent let-${element.action.param}="element.${element.action.param}">`;
+          }
+          
           if (element.dialog && element.dialog?.templateFolder) {
             const dialogTemplateAsPropertyName =
               TextTransformation.setIdToPropertyName(
@@ -52,10 +56,12 @@ export class CodeToAngularTableTemplateRowMenu {
             menuButtonAction = `(click)="${dialogTemplateAsPropertyName}OpenDialog()"`;
           }
 
-          rowMenu += `<button mat-menu-item ${menuButtonAction}>
+          rowMenu += `${menuParam}<button mat-menu-item ${menuButtonAction}>
                         ${element.icon?`<mat-icon>${element.icon}</mat-icon>`:''}
                         <span>${element.label}</span>
                       </button>`;
+
+          if (menuParam !== '') rowMenu += `</ng-template>`;
     });
 
     return rowMenu;

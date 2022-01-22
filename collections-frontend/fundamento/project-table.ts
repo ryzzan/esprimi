@@ -42,7 +42,8 @@ export const PROJECT_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/project/{id}',
+                url: '/main/project',
+                param: '_id'
               },
               label: 'Editar',
             },

@@ -98,9 +98,10 @@ export class AngularArchitectureModule {
         try {
             const file = fs.readFileSync(projectMainModuleRoutingPath);
             const routeCode = (file.toString().search(`path: '${modulePath}'`) >= 0) ? '' : `{path: '${modulePath}', loadChildren: () => import('../${modulePath}/${modulePath}.module').then(m => m.${TextTransformation.setIdToClassName(object.module.id)}Module)}, `;
+            const editRouteCode = (file.toString().search(`path: '${modulePath}'`) >= 0) ? '' : `{path: '${modulePath}/:id', loadChildren: () => import('../${modulePath}/${modulePath}.module').then(m => m.${TextTransformation.setIdToClassName(object.module.id)}Module)}, `;
             let code = '';
             
-            code = file.toString().replace('children: [', `children: [${routeCode}`);
+            code = file.toString().replace('children: [', `children: [${routeCode} ${editRouteCode}`);
 
             fs.writeFileSync(projectMainModuleRoutingPath, code);
             

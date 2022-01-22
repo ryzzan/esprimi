@@ -18,8 +18,7 @@ export class CodeToAngularTableComponentConstructorParam {
             const componentCode = `
                                 ${hasAction}
                                 private _dialog: MatDialog, 
-                                private _${object.table.id}Service: %pascalfy(${object.table.id})%Service, 
-                                private _snackbar: MatSnackBar
+                                private _${object.table.id}Service: %pascalfy(${object.table.id})%Service,
                                 `;
 
             return componentCode;

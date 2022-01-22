@@ -9,8 +9,22 @@ export class CodeToAngularFormComponentConstructorArg {
     static customConstructorArg = (objectToCode: MainInterface): string => {
         if (objectToCode.form) {
             const componentCode = `
-                                    this.${objectToCode.form.id}Id = this._activatedRoute.snapshot.params['id'];
-                                    this.isAddModule = !this.${objectToCode.form.id}Id;
+                                    this._activatedRoute.params.subscribe(routeParams => {
+                                        this.${objectToCode.form.id}Id = routeParams['id'];
+                                        this.isAddModule = !this.${objectToCode.form.id}Id;
+                                    
+                                        if (this.${objectToCode.form.id}Id) {
+                                            this.${objectToCode.form.id}Service.find(this.${objectToCode.form.id}Id)
+                                            .then(res => {
+                                                if (res) this.${objectToCode.form.id}Form.patchValue(res);
+                                            })
+                                            .catch(err => {
+                                                const message = this._errorHandler.apiErrorMessage(err.error.error.message);
+                                                this.sendErrorMessage(message);
+                                            })
+                                        }
+                                    })
+                                    
                                     ${CodeToAngularFormComponentConstructorArg.createObjectService(objectToCode.form.elements, objectToCode)}
                                     this.${objectToCode.form.id}Form = this._formBuilder.group({
                                         ${CodeToAngularFormComponentConstructorArg.createFormBuilder(objectToCode.form.elements, objectToCode)}

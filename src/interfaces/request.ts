@@ -5,6 +5,7 @@ export interface RequestInterface {
     verb?: ActionVerbEnum;
     url?: string;
     body?: unknown;
+    param?: string;
 }
 
 export interface FilterWhereInterface {
