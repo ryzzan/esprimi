@@ -9,8 +9,8 @@ export class CodeToAngularFormComponentProperty {
             
             const componentCode = `
                                 ${properties}
-                                ${object.form.id}Id: string;
-                                isAddModule: boolean;
+                                ${object.form.id}Id: string = '';
+                                isAddModule: boolean = true;
                                 ${object.form.id}Form: FormGroup;
                                 isLoading = false;
                                 `;
