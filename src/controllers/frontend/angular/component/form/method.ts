@@ -7,8 +7,6 @@ import { CodeToAngularFormComponentConstructorArg } from "./constructor-arg";
 
 export class CodeToAngularFormComponentMethod {
     static customMethod = (object: MainInterface): string => {
-        let arrayMethodCode = '';
-
         if (object.form) {
             const elements = object.form.elements;
             const methods = CodeToAngularFormComponentMethod.createFormMethods(elements, object);            
@@ -23,7 +21,7 @@ export class CodeToAngularFormComponentMethod {
                                     })
                                     .catch((err) => {
                                         const message = this._errorHandler.apiErrorMessage(err.error.error.message);
-                                        
+
                                         this.isLoading = false;
 
                                         this.sendErrorMessage(message);

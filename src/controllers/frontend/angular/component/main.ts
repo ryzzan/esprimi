@@ -39,6 +39,12 @@ export class CodeToAngularComponent {
                                         }
 
                                         %METHODS%
+
+                                        sendErrorMessage = (errorMessage: string) => {
+                                            this._snackbar.open(errorMessage, undefined, {
+                                                duration: 4 * 1000,
+                                            });
+                                        }
                                     }
                                     `;
 

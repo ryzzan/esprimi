@@ -32,11 +32,6 @@ export class CodeToAngularTableComponentMethod {
         const componentCode = `
                             ${CodeToAngularTableComponentMethod.setTableElements(object.table.elements)}
                             ${hasAction}
-                            sendErrorMessage = (errorMessage: string) => {
-                                this._snackbar.open(errorMessage, undefined, {
-                                    duration: 4 * 1000,
-                                });
-                            }
                             `;
 
         return componentCode;

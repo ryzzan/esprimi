@@ -14,7 +14,7 @@ export class CodeToAngularFormComponentConstructorArg {
                                         this.isAddModule = !this.${objectToCode.form.id}Id;
                                     
                                         if (this.${objectToCode.form.id}Id) {
-                                            this.${objectToCode.form.id}Service.find(this.${objectToCode.form.id}Id)
+                                            this._${objectToCode.form.id}Service.find(this.${objectToCode.form.id}Id)
                                             .then(res => {
                                                 if (res) this.${objectToCode.form.id}Form.patchValue(res);
                                             })
@@ -23,7 +23,7 @@ export class CodeToAngularFormComponentConstructorArg {
                                                 this.sendErrorMessage(message);
                                             })
                                         }
-                                    })
+                                    });
                                     
                                     ${CodeToAngularFormComponentConstructorArg.createObjectService(objectToCode.form.elements, objectToCode)}
                                     this.${objectToCode.form.id}Form = this._formBuilder.group({

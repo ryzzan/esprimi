@@ -13,6 +13,7 @@ export class CodeToAngularTableComponentConstructorParam {
                 hasAction = `
                             private _formBuilder: FormBuilder, 
                             private _errorHandler: MyErrorHandler,
+                            private _snackbar: MatSnackBar,
                             `;
 
             const componentCode = `
