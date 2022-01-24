@@ -1,17 +1,27 @@
-import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { MainInterface } from "../../../src/interfaces/main";
 
-export const PROJECT_FORM: MainInterface = {
+export const PLANET_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     form: {
-        title: 'Projeto',
-        id: 'projectForm',
+        title: 'Planeta',
+        id: 'planetForm',
         elements: [{
+                select: {
+                    label: 'Sistema planetário',
+                    name: 'planetarySystemId',
+                    optionsApi: {
+                        endpoint: 'planetarySystems',
+                        labelField: 'name',
+                        valueField: '_id',
+                    }
+                }
+            }, {
                 input: {
                     label: 'Nome',
                     name: 'name',
-                    placeholder: 'Nome do projeto',
+                    placeholder: 'Nome do planeta',
                     type: FormInputTypeEnum.Text,
                     isRequired: true,
                 },
@@ -20,17 +30,8 @@ export const PROJECT_FORM: MainInterface = {
                 input: {
                     label: 'Descrição',
                     name: 'description',
-                    placeholder: 'Breve descrição do produto',
+                    placeholder: 'Breve descrição do planeta',
                     type: FormInputTypeEnum.Text,
-                },
-            },
-            {
-                input: {
-                    label: 'Chave',
-                    name: 'secret',
-                    placeholder: 'Senha de acesso ao projeto',
-                    type: FormInputTypeEnum.Text,
-                    isRequired: true,
                 },
             }
         ],
@@ -43,7 +44,7 @@ export const PROJECT_FORM: MainInterface = {
         }, ],
         service: {
             baseUrl: 'http://localhost:3000',
-            endPoint: 'projects',
+            endPoint: 'planets',
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

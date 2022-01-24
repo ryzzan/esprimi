@@ -126,7 +126,7 @@ export const REALTY_FORM: MainInterface = {
                       label: 'Terreno murado',
                       name: 'isWalled',
                       optionsObject: [{
-                          label: 'teste',
+                          label: 'Terreno murado',
                           value: 'teste'
                       }],
                       isRequired: true,

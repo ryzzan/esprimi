@@ -1,14 +1,14 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { RequestTypeEnum } from "../../src/enums/request";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { RequestTypeEnum } from "../../../src/enums/request";
+import { MainInterface } from "../../../src/interfaces/main";
 
 
-export const PROJECT_TABLE: MainInterface = {
+export const CONTINENT_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'projectTable',
-    title: 'Projetos',
+    id: 'continentTable',
+    title: 'Continentes',
     data: {
       type: RequestTypeEnum.Object,
     },
@@ -20,6 +20,15 @@ export const PROJECT_TABLE: MainInterface = {
         row: {
           type: 'string',
           field: 'name',
+        },
+      },
+      {
+        column: {
+          label: 'Planeta',
+        },
+        row: {
+          type: 'string',
+          field: 'planetName',
         },
       },
       {
@@ -42,7 +51,7 @@ export const PROJECT_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/project',
+                url: '/main/continent',
                 param: '_id'
               },
               label: 'Editar',
@@ -62,7 +71,7 @@ export const PROJECT_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'projectTable',
+        id: 'continentTable',
         title: 'Exemplo',
         elements: [{
             input: {
@@ -75,7 +84,7 @@ export const PROJECT_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'projects',
+        endPoint: 'continents',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

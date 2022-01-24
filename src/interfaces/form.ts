@@ -5,11 +5,11 @@ export interface FormInterface {
     elements: Array<FormElementInterface>;
     id: string;
     title: string;
-    label ? : string;
-    actions ? : Array<FormElementInterface>;
-    subtitle ? : string;
-    attributes ? : FormAttributeEnum;
-    service ? : ServiceInterface;
+    label?: string;
+    actions?: Array<FormElementInterface>;
+    subtitle?: string;
+    attributes?: FormAttributeEnum;
+    service?: ServiceInterface;
     todo?: string;
 }
 export interface ServiceInterface {
@@ -18,38 +18,39 @@ export interface ServiceInterface {
     methods: Array<ServiceFunctionsEnum>;
 }
 export interface FormElementInterface {
-    array ? : FormInterface;
-    button ? : ButtonInterface;
-    checkbox ? : CheckboxInterface;
-    datalist ? : DatalistInterface;
-    fieldset ? : FieldsetInterface;
-    input ? : InputInterface;
-    label ? : LabelInterface;
-    legend ? : LegendInterface;
-    optgroup ? : OptgroupInterface;
-    option ? : OptionInterface;
-    output ? : OutputInterface;
-    select ? : SelectInterface;
-    slide ? : InputInterface;
-    tabs ? : Array<FormInterface>;
-    textarea ? : TextareaInterface;
+    array?: FormInterface;
+    button?: ButtonInterface;
+    checkbox?: CheckboxInterface;
+    radio?: RadioInterface;
+    datalist?: DatalistInterface;
+    fieldset?: FieldsetInterface;
+    input?: InputInterface;
+    label?: LabelInterface;
+    legend?: LegendInterface;
+    optgroup?: OptgroupInterface;
+    option?: OptionInterface;
+    output?: OutputInterface;
+    select?: SelectInterface;
+    slide?: InputInterface;
+    tabs?: Array<FormInterface>;
+    textarea?: TextareaInterface;
 }
 
 export interface ButtonInterface {
     type: FormButtonTypeEnum;
     label: string;
-    dialog ? : DialogInterface;
-    name ? : string;
-    isAutofocus ? : boolean;
-    isDisabled ? : boolean;
-    isFormNoValidate ? : boolean;
-    icon ? : string;
-    value ? : string;
-    form ? : string;
-    formAction ? : string;
-    formEnctype ? : FormEncTypeEnum;
-    formMethod ? : FormMethodEnum;
-    formTarget ? : FormTargetEnum;
+    dialog?: DialogInterface;
+    name?: string;
+    isAutofocus?: boolean;
+    isDisabled?: boolean;
+    isFormNoValidate?: boolean;
+    icon?: string;
+    value?: string;
+    form?: string;
+    formAction?: string;
+    formEnctype?: FormEncTypeEnum;
+    formMethod?: FormMethodEnum;
+    formTarget?: FormTargetEnum;
     todo?: string;
 }
 

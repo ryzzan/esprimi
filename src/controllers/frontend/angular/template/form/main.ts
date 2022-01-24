@@ -15,6 +15,7 @@ import { CodeToAngularFormTemplateButton } from "./button";
 import { CodeToAngularFormTemplateCheckbox } from "./checkbox";
 
 import { CodeToAngularFormTemplateInput } from "./input";
+import { CodeToAngularFormTemplateRadio } from "./radio";
 import { CodeToAngularFormTemplateSelect } from "./select";
 
 export class CodeToAngularFormTemplate {
@@ -66,6 +67,7 @@ export class CodeToAngularFormTemplate {
             if (element.input) code += CodeToAngularFormTemplateInput.createInput(element.input);
             if (element.select) code += CodeToAngularFormTemplateSelect.createSelect(element.select);
             if (element.checkbox) code += CodeToAngularFormTemplateCheckbox.createCheckbox(element.checkbox);
+            if (element.radio) code += CodeToAngularFormTemplateRadio.createRadio(element.radio);
             if (element.tabs) code += this.createTab(element.tabs);
             if (element.array) code += this.createArray(element.array);
             if (element.button) code += CodeToAngularFormTemplateButton.createButton(element.button);

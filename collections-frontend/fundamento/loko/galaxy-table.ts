@@ -1,34 +1,34 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { RequestTypeEnum } from "../../src/enums/request";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { RequestTypeEnum } from "../../../src/enums/request";
+import { MainInterface } from "../../../src/interfaces/main";
 
 
-export const MODULE_TABLE: MainInterface = {
+export const GALAXY_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'moduleTable',
-    title: 'Módulos',
+    id: 'galaxyTable',
+    title: 'Galáxias',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Id',
-        },
-        row: {
-          type: 'string',
-          field: '_id',
-        },
-      },
-      {
-        column: {
-          label: 'Módulo',
+          label: 'Nome',
         },
         row: {
           type: 'string',
           field: 'name',
+        },
+      },
+      {
+        column: {
+          label: 'Metaverso',
+        },
+        row: {
+          type: 'string',
+          field: 'metaverseName',
         },
       },
       {
@@ -42,15 +42,6 @@ export const MODULE_TABLE: MainInterface = {
       },
       {
         column: {
-          label: 'Componentes',
-        },
-        row: {
-          type: 'string',
-          field: 'components',
-        },
-      },
-      {
-        column: {
           label: 'Ações',
         },
         row: {
@@ -60,7 +51,7 @@ export const MODULE_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/module',
+                url: '/main/galaxy',
                 param: '_id'
               },
               label: 'Editar',
@@ -80,7 +71,7 @@ export const MODULE_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'moduleTable',
+        id: 'galaxyTable',
         title: 'Exemplo',
         elements: [{
             input: {
@@ -93,7 +84,7 @@ export const MODULE_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'modules',
+        endPoint: 'galaxies',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

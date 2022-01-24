@@ -1,30 +1,31 @@
-import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { MainInterface } from "../../../src/interfaces/main";
 
-export const USER_INVITATION_FORM: MainInterface = {
+export const ZIPCODE_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     form: {
-        title: 'Usuário convidado',
-        id: 'userInvitationForm',
+        title: 'Código postal',
+        id: 'zipcodeForm',
         elements: [{
-                input: {
-                    label: 'E-mail',
-                    name: 'email',
-                    placeholder: 'E-mail para convidar usuário',
-                    type: FormInputTypeEnum.Text,
-                    isRequired: true,
-                },
-            },
-            {
+                select: {
+                    label: 'Address',
+                    name: 'addressId',
+                    optionsApi: {
+                        endpoint: 'addresses',
+                        labelField: 'name',
+                        valueField: '_id',
+                    }
+                }
+            }, {
                 input: {
                     label: 'Nome',
                     name: 'name',
-                    placeholder: 'Nome completo do usuário',
+                    placeholder: 'Valor do código postal',
                     type: FormInputTypeEnum.Text,
                     isRequired: true,
                 },
-            },
+            }
         ],
         actions: [{
             button: {
@@ -35,7 +36,7 @@ export const USER_INVITATION_FORM: MainInterface = {
         }, ],
         service: {
             baseUrl: 'http://localhost:3000',
-            endPoint: 'userInvitations',
+            endPoint: 'zipcodes',
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

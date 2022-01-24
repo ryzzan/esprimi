@@ -1,27 +1,18 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { RequestTypeEnum } from "../../src/enums/request";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { RequestTypeEnum } from "../../../src/enums/request";
+import { MainInterface } from "../../../src/interfaces/main";
 
 
-export const USER_INVITATION_TABLE: MainInterface = {
+export const ADDRESS_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'userInvitationTable',
-    title: 'Usuários convidados',
+    id: 'addressTable',
+    title: 'Endereços',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
-      {
-        column: {
-          label: 'E-mail',
-        },
-        row: {
-          type: 'string',
-          field: 'email',
-        },
-      },
       {
         column: {
           label: 'Nome',
@@ -33,11 +24,20 @@ export const USER_INVITATION_TABLE: MainInterface = {
       },
       {
         column: {
-          label: 'Status',
+          label: 'Bairro',
         },
         row: {
           type: 'string',
-          field: 'status',
+          field: 'districtName',
+        },
+      },
+      {
+        column: {
+          label: 'Descrição',
+        },
+        row: {
+          type: 'string',
+          field: 'description',
         },
       },
       {
@@ -51,7 +51,8 @@ export const USER_INVITATION_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/userInvitation/{id}',
+                url: '/main/address',
+                param: '_id'
               },
               label: 'Editar',
             },
@@ -70,27 +71,20 @@ export const USER_INVITATION_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'userInvitationTable',
-        title: 'Usuário convidado',
+        id: 'addressTable',
+        title: 'Exemplo',
         elements: [{
             input: {
-                label: 'E-mail',
-                name: 'email',
-                placeholder: 'E-mail do usuário convidado',
-                type: FormInputTypeEnum.Text
-            }
-        }, {
-            input: {
-                label: 'Nome',
-                name: 'name',
-                placeholder: 'Nome do usuário convidado',
+                label: 'Search input',
+                name: 'searchInput',
+                placeholder: 'Placeholder to search input',
                 type: FormInputTypeEnum.Text
             }
         }]
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'userInvitations',
+        endPoint: 'addresses',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,
