@@ -5,7 +5,7 @@ export const REALTY: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     module: {
         id:'realty',
-        title: 'Parâmetros de avaliação',
+        title: 'Imóveis',
         components: ['realtyForm', 'realtyTable'],
     }
 }

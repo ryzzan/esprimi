@@ -19,7 +19,7 @@ export class AngularArchitectureService {
         const projectAndComponentPath = `${projectPath}/src/app/components/${componentPath}`;
            
         try {
-            console.info(`Pasta de componente existente.`);
+            console.info(`Folder ${projectAndComponentPath}  already exists.`);
             fs.readdirSync(projectAndComponentPath);
             await AngularArchitectureCode.writeCodeToFile(
                 projectPath, 
@@ -29,7 +29,7 @@ export class AngularArchitectureService {
                 object
             );
         } catch (error) {
-            console.info(`Pasta de componente inexistente.`);
+            console.info(`Folder ${projectAndComponentPath}  doesn't exists. Going to make it.`);
             try {
                 fs.mkdirSync(projectAndComponentPath);
                 await AngularArchitectureCode.writeCodeToFile(

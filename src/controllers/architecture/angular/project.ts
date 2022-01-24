@@ -12,9 +12,9 @@ export class AngularArchitectureProject {
 
         try {
             fs.readdirSync(projectPath);
-            console.info(`Projeto existente.`);
+            console.info(`Project folder ${projectPath} already exists.`);
         } catch (error) {
-            console.info(`Pasta de projeto inexistente.`);
+            console.info(`Project folder ${projectPath} doesn't exist.`);
             chp.execSync(
                 `git clone https://github.com/ryzzan/kunlatek-quickstart ${projectFolder}`, 
                 {cwd: projectFolderParent}
@@ -23,9 +23,9 @@ export class AngularArchitectureProject {
 
         try {
             fs.readdirSync(nodeModulePath);
-            console.info(`Pasta node_module existente.`);
+            console.info(`Folder ${nodeModulePath} already exists.`);
         } catch (error) {
-            console.info(`Pasta node_module inexistente.`);
+            console.info(`Folder node_module isn't created. Going to run npm install.`);
             chp.execSync(
                 `npm install`,
                 {cwd: projectPath}

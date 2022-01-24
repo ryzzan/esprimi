@@ -44,9 +44,9 @@ export class AngularArchitectureModule {
                 object
             );
 
-            console.info(`Pasta de módulo existente.`);
+            console.info(`Module folder  modules/${modulePath} already exists.`);
         } catch (error) {
-            console.info(`Pasta de módulo inexistente.`);
+            console.info(`Module folder  modules/${modulePath} doesn't exist.`);
             chp.execSync(
                 `ng g module modules/${modulePath} --routing --routing-scope Child`, 
                 {cwd: projectPath}

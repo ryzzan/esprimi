@@ -23,7 +23,7 @@ export class Main {
                     await this.createArchitecture(codes, array[index]);
                 }
 
-                console.info("Here are the codes:", codes);
+                // console.info("Here are the codes:", codes);
             } catch (error) {
                 console.error({
                     component: '',

@@ -25,7 +25,7 @@ export class CodeToAngular {
         let service = '';
         let module = '';
         let navigation = '';
-
+        
         if (!object.module) {
             component = await this.component.createComponentCode(this.projectName, object);
             service = await this.service.createServiceCode(this.projectName, object);

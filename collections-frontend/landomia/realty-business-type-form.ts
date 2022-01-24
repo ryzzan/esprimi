@@ -2,16 +2,16 @@ import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../
 import { FrontendFrameworkEnum } from "../../src/enums/main";
 import { MainInterface } from "../../src/interfaces/main";
 
-export const REALTY_TYPE_FORM: MainInterface = {
+export const REALTY_BUSINESS_TYPE_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     form: {
-        title: 'Tipo de imóvel',
-        id: 'realtyTypeForm',
+        title: 'Cômodo',
+        id: 'realtyBusinessTypeForm',
         elements: [{
                 input: {
                     label: 'Nome',
                     name: 'name',
-                    placeholder: 'Nome do tipo de imóvel',
+                    placeholder: 'Nome do tipo de negócio',
                     type: FormInputTypeEnum.Text,
                     isRequired: true,
                 },
@@ -20,7 +20,7 @@ export const REALTY_TYPE_FORM: MainInterface = {
                 input: {
                     label: 'Descrição',
                     name: 'description',
-                    placeholder: 'Breve descrição do tipo de imóvel',
+                    placeholder: 'Breve descrição do tipo de negócio',
                     type: FormInputTypeEnum.Text,
                 },
             },
@@ -34,7 +34,7 @@ export const REALTY_TYPE_FORM: MainInterface = {
         }, ],
         service: {
             baseUrl: 'http://localhost:3000',
-            endPoint: 'realtyTypes',
+            endPoint: 'realtyBusinessTypes',
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

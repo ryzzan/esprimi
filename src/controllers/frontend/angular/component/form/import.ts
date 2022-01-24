@@ -1,15 +1,22 @@
 import { FormElementInterface } from "../../../../../interfaces/form";
+import { ImportInterface } from "../../../../../interfaces/import";
 import { MainInterface } from "../../../../../interfaces/main";
 
-export class CodeToAngularFormComponentImport {
-    static customImports = (object: MainInterface): string => {        
-        if (object.form) {
-            const elements = object.form.elements;
-            const imports = CodeToAngularFormComponentImport.createFormImports(elements, object);
 
+export class CodeToAngularFormComponentImport {
+    static imports: ImportInterface = {
+        hasArray: false
+    };
+
+    static customImports = (object: MainInterface): string => {        
+        if (object.form) {            
+            const elements = object.form.elements;
+            
+            CodeToAngularFormComponentImport.createFormImports(elements, object);
+            
+            const formArray = CodeToAngularFormComponentImport.imports.hasArray ? ', FormArray' : '';
             const componentCode = `
-            ${imports}
-            import { FormBuilder, FormGroup } from '@angular/forms';
+            import { FormBuilder, FormGroup${formArray} } from '@angular/forms';
             import { ActivatedRoute } from '@angular/router';
             import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -23,24 +30,22 @@ export class CodeToAngularFormComponentImport {
         return '';
     }
 
-    static createFormImports = (elements: Array<FormElementInterface>, object: MainInterface) => {
-        let imports = '';
-
+    static createFormImports = (elements: Array<FormElementInterface>, object: MainInterface): ImportInterface => {
         for (let index = 0; index < elements.length; index++) {
             const element = elements[index];
 
             if (element.tabs) {
                 element.tabs.forEach(elementTab => {
-                    imports += CodeToAngularFormComponentImport.createFormImports(elementTab.elements, object);
+                    CodeToAngularFormComponentImport.createFormImports(elementTab.elements, object);
                 })
             }
 
             if (element.array) {
-                imports += `import { FormArray } from '@angular/forms';`;
-                imports += CodeToAngularFormComponentImport.createFormImports(element.array.elements, object);
+                CodeToAngularFormComponentImport.imports.hasArray = true;
+                CodeToAngularFormComponentImport.createFormImports(element.array.elements, object);
             }
         }
 
-        return imports;
+        return CodeToAngularFormComponentImport.imports;
     }
 }

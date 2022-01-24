@@ -4,7 +4,7 @@ import {
   MainInterface,
 } from '../../src/interfaces/main';
 
-export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
+export const REALTY_FORM: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   form: {
     title: 'Imóvel',
@@ -125,6 +125,10 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
                   checkbox: {
                       label: 'Terreno murado',
                       name: 'isWalled',
+                      optionsObject: [{
+                          label: 'teste',
+                          value: 'teste'
+                      }],
                       isRequired: true,
                   }
               },
@@ -138,7 +142,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
               elements: [{
                 select: {
                     label: 'País',
-                    name: 'country',
+                    name: 'countryOwner',
                     optionsApi: {
                         endpoint: 'countries',
                         labelField: 'name',
@@ -213,7 +217,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
                 {
                     select: {
                         label: 'País',
-                        name: 'country',
+                        name: 'countryLocation',
                         optionsApi: {
                             endpoint: 'countries',
                             labelField: 'name',
@@ -306,6 +310,8 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
                     id: 'roomArray',
                     title: 'Cômodo',
                     label: 'Cômodo',
+                    todo: ` 1 - Adicionar uma array registrando as instalações que tem no cômodo e a quantidade de cada uma. Exemplo: 3 interruptores, 5 tomadas, 1 armário embutido
+                            2 - Dados específicos para determinados côpmodos. Exemplo: Dados do banheiro de SUÍTE`,
                     elements: [{
                         select: {
                             label: 'Cômodo',
@@ -358,31 +364,6 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
                             placeholder: 'Profundidade em m',
                             type: FormInputTypeEnum.Text,
                             isRequired: true,
-                        }
-                    },
-                    {
-                        array: {
-                            id: 'roomFacilitiesArray',
-                            title: 'Instalações do cômodo',
-                            elements: [{
-                                select: {
-                                    label: 'Instalações no cômodo',
-                                    name: 'roomFalicityId',
-                                    optionsApi: {
-                                        endpoint: 'room-facilities',
-                                        labelField: 'name',
-                                        valueField: '_id',
-                                    }
-                                }
-                            }, 
-                            {
-                                input: {
-                                    label: 'Quantidade',
-                                    name: 'facilityQuantity',
-                                    placeholder: 'Quantidade de instalações',
-                                    type: FormInputTypeEnum.Number,
-                                }
-                            }]
                         }
                     }
                 ]
@@ -471,7 +452,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
               elements: [{
                   select: {
                       label: 'Parâmetros existentes',
-                      name: 'rateParametersId',
+                      name: 'existingRateParametersId',
                       optionsApi: {
                           endpoint: 'realty-rate-parameters',
                           labelField: 'name',
@@ -488,7 +469,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
                       elements:[{
                         select: {
                             label: 'Parâmetro',
-                            name: 'rateParametersId',
+                            name: 'nonExistingRateParametersId',
                             optionsApi: {
                                 endpoint: 'realty-rate-parameters',
                                 labelField: 'name',

@@ -27,11 +27,11 @@ export class AngularArchitectureCode {
             componentFilePath = `${projectPath}/src/app/modules/main/main.component.ts`;
 
         try {
-            console.info(`Arquivo ${componentPath} existente.`);
+            console.info(`File ${componentPath} already exists.`);
             fs.writeFileSync(componentFilePath, code);
-            console.info(`Aquivo escrito com sucesso em ${componentFilePath}.`);
+            console.info(`File successfully written in ${componentFilePath}.`);
         } catch (error) {
-            console.info(`Arquivo ${componentPath} inexistente.`);
+            console.info(`File ${componentPath} doesn't exist.`);
 
             try {
                 chp.execSync(
@@ -44,7 +44,7 @@ export class AngularArchitectureCode {
 
             fs.writeFileSync(componentFilePath, code);
             
-            console.info(`Aquivo criado e escrito com sucesso em ${componentFilePath}`);
+            console.info(`File successfully created in ${componentFilePath}.`);
         }
         /** Make code prettier */
 

@@ -5,7 +5,7 @@ export const REALTY_TYPE: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     module: {
         id:'realtyType',
-        title: 'Parâmetros de avaliação',
+        title: 'Tipos de imóveis',
         components: ['realtyTypeForm', 'realtyTypeTable'],
     }
 }

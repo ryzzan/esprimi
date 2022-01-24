@@ -20,7 +20,7 @@ export class AngularArchitectureComponent {
         const projectFolder = projectPath.split(/[\/]+/).pop();
         
         try {
-            console.info(`Pasta de componente existente.`);
+            console.info(`Folder ${projectAndComponentPath}  already exists.`);
             fs.readdirSync(projectAndComponentPath);
             await AngularArchitectureCode.writeCodeToFile(
                 projectPath, 
@@ -30,7 +30,7 @@ export class AngularArchitectureComponent {
                 object
             );
         } catch (error) {
-            console.info(`Pasta de componente inexistente.`);
+            console.info(`Folder ${projectAndComponentPath}  doesn't exists. Going to make it.`);
             try {
                 chp.execSync(
                     `ng g c ${componentPath} --skip-import`, 

@@ -10,6 +10,7 @@ export interface FormInterface {
     subtitle ? : string;
     attributes ? : FormAttributeEnum;
     service ? : ServiceInterface;
+    todo?: string;
 }
 export interface ServiceInterface {
     baseUrl: string;
