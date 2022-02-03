@@ -74,7 +74,7 @@ export const REALTY_ROOM_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'http://localhost:3000',
+        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
         endPoint: 'realtyRooms',
         methods: [
             ServiceFunctionsEnum.Get,

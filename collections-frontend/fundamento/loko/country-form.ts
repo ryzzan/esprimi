@@ -43,7 +43,7 @@ export const COUNTRY_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'http://localhost:3000',
+            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
             endPoint: 'countries',
             methods: [
                 ServiceFunctionsEnum.Get,

@@ -190,7 +190,7 @@ export const COMPONENT_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'http://localhost:3000',
+            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
             endPoint: 'components',
             methods: [
                 ServiceFunctionsEnum.Get,

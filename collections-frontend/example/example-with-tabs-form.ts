@@ -116,7 +116,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
       },
     ],
     service: {
-      baseUrl: 'http://localhost:3000',
+      baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
       endPoint: 'examples',
       methods: [
         ServiceFunctionsEnum.Get,

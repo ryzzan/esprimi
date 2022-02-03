@@ -105,7 +105,7 @@ export const INVITATION_TABLE: MainInterface = {
             }]
         },
         service: {
-            baseUrl: 'http://localhost:3000',
+            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
             endPoint: 'invitations',
             methods: [
                 ServiceFunctionsEnum.Get,

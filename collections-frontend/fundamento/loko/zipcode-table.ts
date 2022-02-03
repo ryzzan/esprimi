@@ -74,7 +74,7 @@ export const ZIPCODE_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'http://localhost:3000',
+        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
         endPoint: 'zipcodes',
         methods: [
             ServiceFunctionsEnum.Get,
