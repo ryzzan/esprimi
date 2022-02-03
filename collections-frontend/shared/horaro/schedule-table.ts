@@ -1,34 +1,44 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { RequestTypeEnum } from "../../src/enums/request";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { RequestTypeEnum } from "../../../src/enums/request";
+import { MainInterface } from "../../../src/interfaces/main";
 
 
-export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
+export const SCHEDULE_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
+  comments: '1 - Código para confirmação de atendimento',
   table: {
-    id: 'realtyRateParameterTable',
-    title: 'Avaliações sobre os imóveis',
+    id: 'scheduleTable',
+    title: 'Compromissos',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Nome',
+          label: 'Título',
         },
         row: {
           type: 'string',
-          field: 'name',
+          field: 'scheduleName',
         },
       },
       {
         column: {
-          label: 'Potuações',
+          label: 'Início',
         },
         row: {
-          type: 'array',
-          field: 'rates',
+          type: 'dateTime',
+          field: 'dateTimeStart',
+        },
+      },
+      {
+        column: {
+          label: 'Fim',
+        },
+        row: {
+          type: 'dateTime',
+          field: 'dateTimeEnd',
         },
       },
       {
@@ -42,8 +52,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/realtyRateParameter',
-                param: '_id'
+                url: '/main/schedule/{id}',
               },
               label: 'Editar',
             },
@@ -62,8 +71,8 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'realtyRateParameterTable',
-        title: 'Exemplo',
+        id: 'scheduleTable',
+        title: 'Compromisso',
         elements: [{
             input: {
                 label: 'Search input',
@@ -75,7 +84,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'realtyRateParameters',
+        endPoint: 'schedules',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

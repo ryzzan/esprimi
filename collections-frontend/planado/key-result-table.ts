@@ -4,18 +4,36 @@ import { RequestTypeEnum } from "../../src/enums/request";
 import { MainInterface } from "../../src/interfaces/main";
 
 
-export const PERSON_TABLE: MainInterface = {
+export const KEY_RESULT_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'personTable',
-    title: 'Pessoas',
+    id: 'keyResultTable',
+    title: 'Resultados chave',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Nome',
+            label: 'Projeto',
+        },
+        row: {
+            type: 'string',
+            field: 'projectId',
+        },
+      },
+      {
+        column: {
+            label: 'Objeto',
+        },
+        row: {
+            type: 'string',
+            field: 'objectId',
+        },
+      },
+      {
+        column: {
+          label: 'Resultado chave',
         },
         row: {
           type: 'string',
@@ -24,29 +42,11 @@ export const PERSON_TABLE: MainInterface = {
       },
       {
         column: {
-          label: 'Nascimento',
-        },
-        row: {
-          type: 'date',
-          field: 'birthday',
-        },
-      },
-      {
-        column: {
-          label: 'Gênero',
+          label: 'Descrição',
         },
         row: {
           type: 'string',
-          field: 'gender',
-        },
-      },
-      {
-        column: {
-          label: 'E-mail',
-        },
-        row: {
-          type: 'string',
-          field: 'email',
+          field: 'description',
         },
       },
       {
@@ -60,7 +60,8 @@ export const PERSON_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/person/{id}',
+                url: '/main/keyResult',
+                param: '_id'
               },
               label: 'Editar',
             },
@@ -79,38 +80,20 @@ export const PERSON_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'personTable',
-        title: 'Pessoa',
-        elements: [
-          {
+        id: 'keyResultTable',
+        title: 'Exemplo',
+        elements: [{
             input: {
-              label: 'Nome',
-              placeholder: 'Pesquisar por nome',
-              name: 'name',
-              type: FormInputTypeEnum.Text,
-            },
-          },
-          {
-            select: {
-              label: 'Gênero',
-              name: 'gender',
-              optionsObject: [
-                {
-                  label: 'Masculino',
-                  value: 'M',
-                },
-                {
-                  label: 'Feminino',
-                  value: 'F',
-                },
-              ],
-            },
-          },
-        ],
+                label: 'Search input',
+                name: 'searchInput',
+                placeholder: 'Placeholder to search input',
+                type: FormInputTypeEnum.Text
+            }
+        }]
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'people',
+        endPoint: 'keyResults',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

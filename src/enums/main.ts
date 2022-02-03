@@ -1,8 +1,8 @@
 export enum BackendFrameworkEnum {
     Loopback = 'LOOPBACK',
     Nest = 'NEST',
-    Fastify = 'FASTIFY',
-    Express = 'EXPRESS',
+    Gin = 'GIN',
+    Django = 'DJANGO',
     Springboot = 'SPRINGBOOT',
 }
 

@@ -4,18 +4,45 @@ import { RequestTypeEnum } from "../../src/enums/request";
 import { MainInterface } from "../../src/interfaces/main";
 
 
-export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
+export const TASK_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'realtyRateParameterTable',
-    title: 'Avaliações sobre os imóveis',
+    id: 'taskTable',
+    title: 'Tarefas',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Nome',
+            label: 'Projeto',
+        },
+        row: {
+            type: 'string',
+            field: 'projectId',
+        },
+      },
+      {
+        column: {
+            label: 'Objeto',
+        },
+        row: {
+            type: 'string',
+            field: 'objectId',
+        },
+      },
+      {
+        column: {
+          label: 'Resultado chave',
+        },
+        row: {
+          type: 'string',
+          field: 'keyResultId',
+        },
+      },
+      {
+        column: {
+          label: 'Tarefa',
         },
         row: {
           type: 'string',
@@ -24,11 +51,11 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
       },
       {
         column: {
-          label: 'Potuações',
+          label: 'Descrição',
         },
         row: {
-          type: 'array',
-          field: 'rates',
+          type: 'string',
+          field: 'description',
         },
       },
       {
@@ -42,7 +69,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/realtyRateParameter',
+                url: '/main/task',
                 param: '_id'
               },
               label: 'Editar',
@@ -62,7 +89,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'realtyRateParameterTable',
+        id: 'taskTable',
         title: 'Exemplo',
         elements: [{
             input: {
@@ -75,7 +102,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'realtyRateParameters',
+        endPoint: 'tasks',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

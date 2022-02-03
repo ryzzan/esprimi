@@ -1,34 +1,25 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { RequestTypeEnum } from "../../src/enums/request";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { RequestTypeEnum } from "../../../src/enums/request";
+import { MainInterface } from "../../../src/interfaces/main";
 
 
-export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
+export const OCCUPATION_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'realtyRateParameterTable',
-    title: 'Avaliações sobre os imóveis',
+    id: 'occupationTable',
+    title: 'Ocupações',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Nome',
+          label: 'Grupo',
         },
         row: {
           type: 'string',
-          field: 'name',
-        },
-      },
-      {
-        column: {
-          label: 'Potuações',
-        },
-        row: {
-          type: 'array',
-          field: 'rates',
+          field: 'occupationGroupName',
         },
       },
       {
@@ -42,7 +33,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/realtyRateParameter',
+                url: '/main/occupation',
                 param: '_id'
               },
               label: 'Editar',
@@ -62,8 +53,8 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'realtyRateParameterTable',
-        title: 'Exemplo',
+        id: 'occupationTable',
+        title: 'Ocupação',
         elements: [{
             input: {
                 label: 'Search input',
@@ -75,7 +66,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'realtyRateParameters',
+        endPoint: 'occupations',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

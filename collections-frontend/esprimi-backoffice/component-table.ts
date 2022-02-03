@@ -4,31 +4,31 @@ import { RequestTypeEnum } from "../../src/enums/request";
 import { MainInterface } from "../../src/interfaces/main";
 
 
-export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
+export const COMPONENT_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'realtyRateParameterTable',
-    title: 'Avaliações sobre os imóveis',
+    id: 'componentTable',
+    title: 'Componentes',
     data: {
-      type: RequestTypeEnum.Object,
+      type: RequestTypeEnum.Api,
     },
     elements: [
       {
         column: {
-          label: 'Nome',
+          label: 'Título',
         },
         row: {
           type: 'string',
-          field: 'name',
+          field: 'title',
         },
       },
       {
         column: {
-          label: 'Potuações',
+          label: 'Identidade',
         },
         row: {
-          type: 'array',
-          field: 'rates',
+          type: 'string',
+          field: 'id',
         },
       },
       {
@@ -42,7 +42,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/realtyRateParameter',
+                url: '/main/component',
                 param: '_id'
               },
               label: 'Editar',
@@ -62,8 +62,8 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'realtyRateParameterTable',
-        title: 'Exemplo',
+        id: 'componentTable',
+        title: 'Componente',
         elements: [{
             input: {
                 label: 'Search input',
@@ -75,7 +75,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'realtyRateParameters',
+        endPoint: 'components',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

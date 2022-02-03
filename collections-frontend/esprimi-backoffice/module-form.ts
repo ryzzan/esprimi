@@ -2,28 +2,42 @@ import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../
 import { FrontendFrameworkEnum } from "../../src/enums/main";
 import { MainInterface } from "../../src/interfaces/main";
 
-export const REALTY_BUSINESS_TYPE_FORM: MainInterface = {
+export const MODULE_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
     form: {
-        title: 'Tipo de negócio',
-        id: 'realtyBusinessTypeForm',
-        elements: [{
+        title: 'Módulo',
+        id: 'moduleForm',
+        elements: [
+            {
                 input: {
-                    label: 'Nome',
-                    name: 'name',
-                    placeholder: 'Nome do tipo de negócio',
+                    label: 'Identidade',
+                    name: 'id',
+                    placeholder: 'Ex.: exampleModule',
                     type: FormInputTypeEnum.Text,
                     isRequired: true,
                 },
             },
             {
                 input: {
-                    label: 'Descrição',
-                    name: 'description',
-                    placeholder: 'Breve descrição do tipo de negócio',
+                    label: 'Legenda de menu',
+                    name: 'title',
+                    placeholder: 'Ex.: Examples',
                     type: FormInputTypeEnum.Text,
+                    isRequired: true,
                 },
             },
+            {
+                select: {
+                    label: 'Componentes',
+                    name: 'componentId',
+                    optionsApi: {
+                        endpoint: 'components',
+                        labelField: 'title',
+                        valueField: 'id'
+                    },
+                    isMultiple: true
+                }
+            }
         ],
         actions: [{
             button: {
@@ -34,7 +48,7 @@ export const REALTY_BUSINESS_TYPE_FORM: MainInterface = {
         }, ],
         service: {
             baseUrl: 'http://localhost:3000',
-            endPoint: 'realtyBusinessTypes',
+            endPoint: 'modules',
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

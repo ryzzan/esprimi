@@ -1,14 +1,15 @@
-import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from '../../src/enums/form';
-import { FrontendFrameworkEnum } from '../../src/enums/main';
+import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from '../../../src/enums/form';
+import { FrontendFrameworkEnum } from '../../../src/enums/main';
 import {
   MainInterface,
-} from '../../src/interfaces/main';
+} from '../../../src/interfaces/main';
 
-export const PERSON_FORM: MainInterface = {
+export const CLIENT_FORM: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
+  comments: 'Only to edit, not to create. Add data to client created via Bonstato client app and related to company via schedule',
   form: {
-    title: 'Pessoa',
-    id: 'personForm',
+    title: 'Cliente',
+    id: 'clientForm',
     elements: [
       {
         tabs: [
@@ -17,11 +18,32 @@ export const PERSON_FORM: MainInterface = {
             elements: [
               {
                 input: {
-                  label: 'CPF',
+                  label: 'Tipo de cliente',
+                  name: 'userType',
+                  placeholder: 'Pessoa ou empresa',
+                  type: FormInputTypeEnum.Text,
+                  isRequired: true,
+                  isDisabled: true,
+                },
+              },
+              {
+                input: {
+                  label: 'Documento único',
                   name: 'uniqueId',
                   placeholder: 'Apenas números',
                   type: FormInputTypeEnum.Text,
-                  isRequired: true,                  
+                  isRequired: true,
+                  isDisabled: true,
+                }
+              },
+              {
+                input: {
+                  label: 'Nascimento',
+                  name: 'birthdate',
+                  placeholder: 'dd/mm/aaaa',
+                  type: FormInputTypeEnum.Date,
+                  isRequired: true,
+                  isDisabled: true,
                 },
               },
               {
@@ -31,32 +53,44 @@ export const PERSON_FORM: MainInterface = {
                   placeholder: 'Nome completo',
                   type: FormInputTypeEnum.Text,
                   isRequired: true,
+                  isDisabled: true,
                 },
               },
               {
                 input: {
-                  label: 'Nascimento',
-                  name: 'birthdate',
-                  placeholder: 'dd/mm/aaaa',
-                  type: FormInputTypeEnum.Date,
+                  label: 'Gênero',
+                  name: 'gender',
+                  placeholder: 'Gênero oficial',
+                  type: FormInputTypeEnum.Text,
                   isRequired: true,
+                  isDisabled: true,
                 },
               },
               {
-                select: {
-                  label: 'Gênero',
-                  name: 'gender',
-                  optionsObject: [
-                    {
-                      label: 'Masculino',
-                      value: 'male',
-                    },
-                    {
-                      label: 'Feminino',
-                      value: 'female',
-                    },
-                  ],
-                  isRequired: true,
+                input: {
+                  label: 'Nome social',
+                  name: 'socialName',
+                  placeholder: 'Nome escolhido',
+                  type: FormInputTypeEnum.Text,
+                  isDisabled: true,
+                },
+              },
+              {
+                input: {
+                  label: 'Gênero social',
+                  name: 'socialGender',
+                  placeholder: 'Gênero escolhido',
+                  type: FormInputTypeEnum.Text,
+                  isDisabled: true,
+                },
+              },
+              {
+                input: {
+                  label: 'Sexo',
+                  name: 'biologicalSex',
+                  placeholder: 'Sexo biológico',
+                  type: FormInputTypeEnum.Text,
+                  isDisabled: true,
                 },
               },
             ],
@@ -114,40 +148,6 @@ export const PERSON_FORM: MainInterface = {
             ],
             id: 'contacts',
           },
-          {
-            title: 'Dados de acesso',
-            elements: [
-              {
-                select: {
-                  label: 'Grupo de permissão',
-                  name: 'permissionGroupId',
-                  optionsObject: [
-                    {
-                      label: 'Administrador',
-                      value: 'Administrador',
-                    },
-                    {
-                      label: 'Editor',
-                      value: 'Editor',
-                    },
-                    {
-                      label: 'Leitor',
-                      value: 'Leitor',
-                    },
-                  ],
-                },
-              },
-              {
-                slide: {
-                  label: 'Bloqueado',
-                  name: 'blocked',
-                  placeholder: 'Tirar acesso desta pessoa',
-                  type: FormInputTypeEnum.Text,      
-                },
-              },
-            ],
-            id: 'access',
-          },
         ],
       },
     ],
@@ -162,7 +162,7 @@ export const PERSON_FORM: MainInterface = {
     ],
     service: {
       baseUrl: 'http://localhost:3000',
-      endPoint: 'people',
+      endPoint: 'clients',
       methods: [
         ServiceFunctionsEnum.Get,
         ServiceFunctionsEnum.Delete,

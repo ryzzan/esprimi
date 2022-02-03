@@ -37,7 +37,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
                       label: 'Opção 2',
                       value: 'option2',
                     },
-                  ]
+                  ],
                 },
               },
               {

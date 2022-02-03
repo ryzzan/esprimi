@@ -8,7 +8,7 @@ export const REALTY_BUSINESS_TYPE_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
     id: 'realtyBusinessTypeTable',
-    title: 'Projetos',
+    title: 'Tipos de negócios',
     data: {
       type: RequestTypeEnum.Object,
     },

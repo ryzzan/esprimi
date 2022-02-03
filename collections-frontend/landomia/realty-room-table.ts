@@ -8,7 +8,7 @@ export const REALTY_ROOM_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
     id: 'realtyRoomTable',
-    title: 'Projetos',
+    title: 'Cômodos',
     data: {
       type: RequestTypeEnum.Object,
     },

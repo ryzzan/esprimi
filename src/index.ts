@@ -1,11 +1,13 @@
 import { Architecture } from "./controllers/architecture";
 import { FrontendCode } from "./controllers/frontend-code";
+import { BackendCode } from "./controllers/backend-code";
 import {
     BuildedCode,
     MainInterface
 } from "./interfaces/main";
 
 export class Main {
+    backendCode = new BackendCode;
     frontendCode = new FrontendCode;
     architecture = new Architecture;
 

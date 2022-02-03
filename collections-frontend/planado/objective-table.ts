@@ -4,31 +4,40 @@ import { RequestTypeEnum } from "../../src/enums/request";
 import { MainInterface } from "../../src/interfaces/main";
 
 
-export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
+export const OBJECTIVE_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'realtyRateParameterTable',
-    title: 'Avaliações sobre os imóveis',
+    id: 'objectiveTable',
+    title: 'Resultados chave',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Nome',
+            label: 'Projeto',
         },
         row: {
-          type: 'string',
-          field: 'name',
+            type: 'string',
+            field: 'projectId',
         },
       },
       {
         column: {
-          label: 'Potuações',
+            label: 'Objetivo',
         },
         row: {
-          type: 'array',
-          field: 'rates',
+            type: 'string',
+            field: 'name',
+        },
+      },
+      {
+        column: {
+          label: 'Descrição',
+        },
+        row: {
+          type: 'string',
+          field: 'description',
         },
       },
       {
@@ -42,7 +51,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/realtyRateParameter',
+                url: '/main/objective',
                 param: '_id'
               },
               label: 'Editar',
@@ -62,7 +71,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'realtyRateParameterTable',
+        id: 'objectiveTable',
         title: 'Exemplo',
         elements: [{
             input: {
@@ -75,7 +84,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
     },
     service: {
         baseUrl: 'http://localhost:3000',
-        endPoint: 'realtyRateParameters',
+        endPoint: 'objectives',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,
