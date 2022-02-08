@@ -1,11 +1,12 @@
 import { Main } from './index';
 
-// const projectPath = '/home/ryzzan/Projects/Kunlatek/landomia-backoffice-realtor';
-// const projectPath = '/home/ryzzan/Projects/Kunlatek/bonstato-backoffice-kunlatek';
-// const projectPath = '/home/ryzzan/Projects/Kunlatek/bonstato-backoffice-company';
-// const projectPath = '/home/ryzzan/Projects/Kunlatek/fundamento';
-// const projectPath = '/home/ryzzan/Projects/Kunlatek/planado';
-const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
+// const projectPath = '/home/lopes/Projects/Kunlatek/landomia-backoffice-realtor';
+// const projectPath = '/home/lopes/Projects/Kunlatek/bonstato-backoffice-kunlatek';
+// const projectPath = '/home/lopes/Projects/Kunlatek/bonstato-backoffice-company';
+// const projectPath = '/home/lopes/Projects/Kunlatek/fundamento';
+// const projectPath = '/home/lopes/Projects/Kunlatek/planado';
+// const projectPath = '/home/lopes/Projects/Kunlatek/esprimi-backoffice';
+const projectPath = '/home/lopes/Projects/Kunlatek/lopes-ocr';
 
 /**
  * EXAMPLE
@@ -157,25 +158,31 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // import { REALTY } from '../collections-frontend/landomia/realty';
 
 // ESPRIMI-BACKOFFICE
-import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
-import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
-import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
+// import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
+// import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
+// import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
 
-import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
-import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
-import { MODULE } from '../collections-frontend/esprimi-backoffice/module';
+// import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
+// import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
+// import { MODULE } from '../collections-frontend/esprimi-backoffice/module';
 
-import { COMPONENT_FORM } from '../collections-frontend/esprimi-backoffice/component-form';
-import { COMPONENT_TABLE } from '../collections-frontend/esprimi-backoffice/component-table';
-import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
+// import { COMPONENT_FORM } from '../collections-frontend/esprimi-backoffice/component-form';
+// import { COMPONENT_TABLE } from '../collections-frontend/esprimi-backoffice/component-table';
+// import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
 
+// LOPES OCR
+import { DOCUMENTATION_FORM } from '../collections-frontend/lopes-ocr/documentation-form';
+import { DOCUMENTATION_TABLE } from '../collections-frontend/lopes-ocr/documentation-table';
+import { DOCUMENTATION } from '../collections-frontend/lopes-ocr/documentation';
+
+import { FILE_FORM } from '../collections-frontend/lopes-ocr/file-form';
+import { FILE_TABLE } from '../collections-frontend/lopes-ocr/file-table';
+import { FILE } from '../collections-frontend/lopes-ocr/file';
 
 //////////////////////////////////////////////////////////
 const main = new Main(),
 array = [
     // EXAMPLE_WITH_TABS_FORM, EXAMPLE_TABLE, EXAMPLE
-
-    
 
     // REALTY_TYPE_FORM,REALTY_TYPE_TABLE,REALTY_TYPE,
     // REALTY_BUSINESS_TYPE_FORM,REALTY_BUSINESS_TYPE_TABLE,REALTY_BUSINESS_TYPE,
@@ -231,9 +238,15 @@ array = [
     /**
      * ESPRIMI BACKOFFICE
      */
-     PROJECT_FORM, PROJECT_TABLE, PROJECT,
-     MODULE_FORM, MODULE_TABLE, MODULE,
-     COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
+    //  PROJECT_FORM, PROJECT_TABLE, PROJECT,
+    //  MODULE_FORM, MODULE_TABLE, MODULE,
+    //  COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
+
+    /**
+     * LOPES OCR
+     */
+    DOCUMENTATION_FORM, DOCUMENTATION_TABLE, DOCUMENTATION,
+    FILE_FORM, FILE_TABLE, FILE,
 ];
 
 array.forEach(object => {
