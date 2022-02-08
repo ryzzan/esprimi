@@ -25,7 +25,7 @@ export class AngularArchitectureProject {
             fs.readdirSync(nodeModulePath);
             console.info(`Folder ${nodeModulePath} already exists.`);
         } catch (error) {
-            console.info(`Folder node_module isn't created. Going to run npm install.`);
+            console.info(`Folder node_module isn't created. Running npm install.`);
             chp.execSync(
                 `npm install`,
                 {cwd: projectPath}

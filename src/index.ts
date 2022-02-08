@@ -32,7 +32,6 @@ export class Main {
                     service: '',
                     template: '',
                     module: '',
-                    navigation: '',
                 });
             }
 

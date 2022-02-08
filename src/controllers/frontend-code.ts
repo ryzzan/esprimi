@@ -44,7 +44,6 @@ export class FrontendCode {
                     service: '',
                     template: '',
                     module: '',
-                    navigation: '',
                 };
 
                 break;

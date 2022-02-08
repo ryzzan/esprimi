@@ -36,14 +36,6 @@ export class AngularArchitectureModule {
                 object
             );
 
-            await AngularArchitectureCode.writeCodeToFile(
-                projectPath, 
-                modulePath, 
-                moduleCode?.navigation, 
-                ComponentCodeTypeEnum.Navigation,
-                object
-            );
-
             console.info(`Module folder  modules/${modulePath} already exists.`);
         } catch (error) {
             console.info(`Module folder  modules/${modulePath} doesn't exist.`);
@@ -70,14 +62,6 @@ export class AngularArchitectureModule {
                 modulePath, 
                 moduleCode?.module, 
                 ComponentCodeTypeEnum.Module,
-                object
-            );
-
-            await AngularArchitectureCode.writeCodeToFile(
-                projectPath, 
-                modulePath, 
-                moduleCode?.navigation, 
-                ComponentCodeTypeEnum.Navigation,
                 object
             );
 

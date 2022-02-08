@@ -39,7 +39,6 @@ export class BackendCode {
                     service: '',
                     template: '',
                     module: '',
-                    navigation: '',
                 };
 
                 break;

@@ -4,7 +4,6 @@ import {
 } from "../../../interfaces/main";
 import { CodeToAngularComponent } from "./component/main";
 import { CodeToAngularModule } from "./module/main";
-import { CodeToAngularNavigation } from "./navigation/main";
 import { CodeToAngularService } from "./service/main";
 import { CodeToAngularTemplate } from "./template/main";
 
@@ -13,7 +12,6 @@ export class CodeToAngular {
     template = new CodeToAngularTemplate;
     service = new CodeToAngularService;
     module = new CodeToAngularModule;
-    navigation = new CodeToAngularNavigation;
     projectName: any;
 
     createCode = async (
@@ -24,7 +22,6 @@ export class CodeToAngular {
         let template = '';
         let service = '';
         let module = '';
-        let navigation = '';
         
         if (!object.module) {
             component = await this.component.createComponentCode(this.projectName, object);
@@ -33,7 +30,6 @@ export class CodeToAngular {
 
         if (object.module) {            
             module = await this.module.createModuleCode(this.projectName, object);
-            navigation = await this.navigation.createNavigationCode(object);
         }
 
         template = await this.template.createTemplateCode(object);
@@ -43,7 +39,6 @@ export class CodeToAngular {
             template: template.replace(/\n/gi, '').replace(/    /gi, ''),
             service: service.replace(/\n/gi, '').replace(/    /gi, ''),
             module: module.replace(/\n/gi, '').replace(/    /gi, ''),
-            navigation: navigation.replace(/\n/gi, '').replace(/    /gi, ''),
         }
     }
 

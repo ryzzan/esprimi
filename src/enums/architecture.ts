@@ -3,5 +3,4 @@ export enum ComponentCodeTypeEnum {
     Template = 'template',
     Service = 'service',
     Module = 'module',
-    Navigation = 'navigation',
 }

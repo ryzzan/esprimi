@@ -23,9 +23,7 @@ export class AngularArchitectureCode {
             componentFilePath = object.module ? `${projectPath}/src/app/modules/${componentPath}/${componentPath}.service.ts` : `${projectPath}/src/app/components/${componentPath}/${componentPath}.service.ts`;
         if (codeType === ComponentCodeTypeEnum.Module) 
             componentFilePath = object.module ? `${projectPath}/src/app/modules/${componentPath}/${componentPath}.module.ts` : `${projectPath}/src/app/components/${componentPath}/${componentPath}.module.ts`;
-        if (codeType === ComponentCodeTypeEnum.Navigation)
-            componentFilePath = `${projectPath}/src/app/modules/main/main.component.ts`;
-
+        
         try {
             console.info(`File ${componentPath} already exists.`);
             fs.writeFileSync(componentFilePath, code);
