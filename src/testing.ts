@@ -6,7 +6,7 @@ import { Main } from './index';
 // const projectPath = '/home/lopes/Projects/Kunlatek/fundamento';
 // const projectPath = '/home/lopes/Projects/Kunlatek/planado';
 // const projectPath = '/home/lopes/Projects/Kunlatek/esprimi-backoffice';
-const projectPath = '/home/lopes/Projects/Kunlatek/lopes-ocr';
+const projectPath = '/home/ryzzan/Projects/Lopes/lopes-ocr';
 
 /**
  * EXAMPLE
