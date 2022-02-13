@@ -74,7 +74,7 @@ export const METAVERSE_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
+        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
         endPoint: 'metaverses',
         methods: [
             ServiceFunctionsEnum.Get,

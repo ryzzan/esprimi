@@ -23,7 +23,7 @@ export class CodeToAngularTableComponentConstructorArg {
                                     this.${objectToCode.table.id}DataSource = result;
                                     this.isLoading = false;
                                 }).catch(err => {
-                                    const message = this._errorHandler.apiErrorMessage(err.error.error.message);
+                                    const message = this._errorHandler.apiErrorMessage(err.message);
                                         
                                     this.isLoading = false;
 

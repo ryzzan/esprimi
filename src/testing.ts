@@ -5,7 +5,8 @@ import { Main } from './index';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/bonstato-backoffice-company';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/fundamento';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/planado';
-const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
+// const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
+const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
 
 /**
  * EXAMPLE
@@ -13,6 +14,18 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // import { EXAMPLE } from '../collections-frontend/example/example';
 // import { EXAMPLE_WITHOUT_TABS_FORM } from '../collections-frontend/example/example-without-tabs-form';
 // import { EXAMPLE_WITH_TABS_FORM } from '../collections-frontend/example/example-with-tabs-form';
+
+/**
+ * KUNLATEK QUICKSTART
+ */
+import { PERMISSION } from '../collections-frontend/kunlatek-quickstart/permission';
+import { PERMISSION_FORM } from '../collections-frontend/kunlatek-quickstart/permission-form';
+import { PERMISSION_TABLE } from '../collections-frontend/kunlatek-quickstart/permission-table';
+
+import { INVITATION } from '../collections-frontend/kunlatek-quickstart/invitation';
+import { INVITATION_FORM } from '../collections-frontend/kunlatek-quickstart/invitation-form';
+import { INVITATION_TABLE } from '../collections-frontend/kunlatek-quickstart/invitation-table';
+
 
 /**
  * HORARO
@@ -32,25 +45,25 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 //  import { CLIENT_FORM } from '../collections-frontend/shared/kliento/client-form';
 //  import { CLIENT_TABLE } from '../collections-frontend/shared/kliento/client-table';
 
- 
- /**
-  * FINANCA
-  */
+
+/**
+ * FINANCA
+ */
 //  import { INPUT } from '../collections-frontend/shared/financa/input';
 //  import { INPUT_FORM } from '../collections-frontend/shared/financa/input-form';
 //  import { INPUT_TABLE } from '../collections-frontend/shared/financa/input-table';
- 
+
 //  import { OUTPUT } from '../collections-frontend/shared/financa/output';
 //  import { OUTPUT_FORM } from '../collections-frontend/shared/financa/output-form';
 //  import { OUTPUT_TABLE } from '../collections-frontend/shared/financa/output-table';
- 
- /**
-  * PROJEKTO
-  */
+
+/**
+ * PROJEKTO
+ */
 //  import { PROJECT } from '../collections-frontend/fundamento/projekto/project';
 //  import { PROJECT_FORM } from '../collections-frontend/fundamento/projekto/project-form';
 //  import { PROJECT_TABLE } from '../collections-frontend/fundamento/projekto/project-table';
- 
+
 //  import { MODULE } from '../collections-frontend/fundamento/projekto/module';
 //  import { MODULE_FORM } from '../collections-frontend/fundamento/projekto/module-form';
 //  import { MODULE_TABLE } from '../collections-frontend/fundamento/projekto/module-table';
@@ -157,93 +170,100 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // import { REALTY } from '../collections-frontend/landomia/realty';
 
 // ESPRIMI-BACKOFFICE
-import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
-import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
-import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
+// import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
+// import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
+// import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
 
-import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
-import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
-import { MODULE } from '../collections-frontend/esprimi-backoffice/module';
+// import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
+// import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
+// import { MODULE } from '../collections-frontend/esprimi-backoffice/module';
 
-import { COMPONENT_FORM } from '../collections-frontend/esprimi-backoffice/component-form';
-import { COMPONENT_TABLE } from '../collections-frontend/esprimi-backoffice/component-table';
-import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
+// import { COMPONENT_FORM } from '../collections-frontend/esprimi-backoffice/component-form';
+// import { COMPONENT_TABLE } from '../collections-frontend/esprimi-backoffice/component-table';
+// import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
 
 
 //////////////////////////////////////////////////////////
 const main = new Main(),
-array = [
-    // EXAMPLE_WITH_TABS_FORM, EXAMPLE_TABLE, EXAMPLE
+    array = [
+        // EXAMPLE_WITH_TABS_FORM, EXAMPLE_TABLE, EXAMPLE
 
-    
+        /**
+         * LANDOMIA
+         */
+        // REALTY_TYPE_FORM,REALTY_TYPE_TABLE,REALTY_TYPE,
+        // REALTY_BUSINESS_TYPE_FORM,REALTY_BUSINESS_TYPE_TABLE,REALTY_BUSINESS_TYPE,
+        // REALTY_ROOM_FORM, REALTY_ROOM_TABLE, REALTY_ROOM,
+        // REALTY_RATE_PARAMETER_FORM, REALTY_RATE_PARAMETER_TABLE, REALTY_RATE_PARAMETER,
+        // REALTY_FORM, REALTY_TABLE, REALTY,
 
-    // REALTY_TYPE_FORM,REALTY_TYPE_TABLE,REALTY_TYPE,
-    // REALTY_BUSINESS_TYPE_FORM,REALTY_BUSINESS_TYPE_TABLE,REALTY_BUSINESS_TYPE,
-    // REALTY_ROOM_FORM, REALTY_ROOM_TABLE, REALTY_ROOM,
-    // REALTY_RATE_PARAMETER_FORM, REALTY_RATE_PARAMETER_TABLE, REALTY_RATE_PARAMETER,
-    // REALTY_FORM, REALTY_TABLE, REALTY,
+        /**
+         * KUNLATEK QUICKSTART
+         */
+        PERMISSION_FORM, PERMISSION_TABLE, PERMISSION,
+        INVITATION_FORM, INVITATION_TABLE, INVITATION,
 
-    /**
-     * PLANADO
-     */
-    // PROJECT_FORM, PROJECT_TABLE, PROJECT,
-    // OBJECTIVE_FORM, OBJECTIVE_TABLE, OBJECTIVE,
-    // KEY_RESULT_FORM, KEY_RESULT_TABLE, KEY_RESULT,
-    // TASK_FORM, TASK_TABLE, TASK,
+        /**
+         * PLANADO
+         */
+        // PROJECT_FORM, PROJECT_TABLE, PROJECT,
+        // OBJECTIVE_FORM, OBJECTIVE_TABLE, OBJECTIVE,
+        // KEY_RESULT_FORM, KEY_RESULT_TABLE, KEY_RESULT,
+        // TASK_FORM, TASK_TABLE, TASK,
 
-    /**
-     * BONSTATO BACKOFFICE KUNLATEK
-     */
-    // KLIENTO
-    // CLIENT_FORM, CLIENT_TABLE, CLIENT,
-    
-    // HORARO
-    // AVAILABILITY_FORM, AVAILABILITY_TABLE, AVAILABILITY,
-    // SCHEDULE_FORM, SCHEDULE_TABLE, SCHEDULE,
-    // FINANCA
-    // INPUT_FORM, INPUT_TABLE, INPUT,
-    // OUTPUT_FORM, OUTPUT_TABLE, OUTPUT,
+        /**
+         * BONSTATO BACKOFFICE KUNLATEK
+         */
+        // KLIENTO
+        // CLIENT_FORM, CLIENT_TABLE, CLIENT,
 
-    /**
-     * FUNDAMENTO
-     */
-    // PROJEKTO
-    // PROJECT_FORM, PROJECT_TABLE, PROJECT,
-    // MODULE_FORM, MODULE_TABLE, MODULE,
-    
-    // LOKO
-    // METAVERSE_FORM, METAVERSE_TABLE, METAVERSE,
-    // GALAXY_FORM, GALAXY_TABLE, GALAXY,
-    // STELAR_SYSTEM_FORM, STELAR_SYSTEM_TABLE, STELAR_SYSTEM,
-    // PLANETARY_SYSTEM_FORM, PLANETARY_SYSTEM_TABLE, PLANETARY_SYSTEM,
-    // PLANET_FORM, PLANET_TABLE, PLANET,
-    // CONTINENT_FORM, CONTINENT_TABLE, CONTINENT,
-    // COUNTRY_FORM, COUNTRY_TABLE, COUNTRY,
-    // STATE_FORM, STATE_TABLE, STATE,
-    // CITY_FORM, CITY_TABLE, CITY,
-    // DISTRICT_FORM, DISTRICT_TABLE, DISTRICT,
-    // ADDRESS_FORM, ADDRESS_TABLE, ADDRESS,
-    // ZIPCODE_FORM, ZIPCODE_TABLE, ZIPCODE,
-    
-    // SERVO
-    // OCCUPATION_FORM, OCCUPATION_TABLE, OCCUPATION,
+        // HORARO
+        // AVAILABILITY_FORM, AVAILABILITY_TABLE, AVAILABILITY,
+        // SCHEDULE_FORM, SCHEDULE_TABLE, SCHEDULE,
+        // FINANCA
+        // INPUT_FORM, INPUT_TABLE, INPUT,
+        // OUTPUT_FORM, OUTPUT_TABLE, OUTPUT,
 
-    /**
-     * ESPRIMI BACKOFFICE
-     */
-     PROJECT_FORM, PROJECT_TABLE, PROJECT,
-     MODULE_FORM, MODULE_TABLE, MODULE,
-     COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
-];
+        /**
+         * FUNDAMENTO
+         */
+        // PROJEKTO
+        // PROJECT_FORM, PROJECT_TABLE, PROJECT,
+        // MODULE_FORM, MODULE_TABLE, MODULE,
+
+        // LOKO
+        // METAVERSE_FORM, METAVERSE_TABLE, METAVERSE,
+        // GALAXY_FORM, GALAXY_TABLE, GALAXY,
+        // STELAR_SYSTEM_FORM, STELAR_SYSTEM_TABLE, STELAR_SYSTEM,
+        // PLANETARY_SYSTEM_FORM, PLANETARY_SYSTEM_TABLE, PLANETARY_SYSTEM,
+        // PLANET_FORM, PLANET_TABLE, PLANET,
+        // CONTINENT_FORM, CONTINENT_TABLE, CONTINENT,
+        // COUNTRY_FORM, COUNTRY_TABLE, COUNTRY,
+        // STATE_FORM, STATE_TABLE, STATE,
+        // CITY_FORM, CITY_TABLE, CITY,
+        // DISTRICT_FORM, DISTRICT_TABLE, DISTRICT,
+        // ADDRESS_FORM, ADDRESS_TABLE, ADDRESS,
+        // ZIPCODE_FORM, ZIPCODE_TABLE, ZIPCODE,
+
+        // SERVO
+        // OCCUPATION_FORM, OCCUPATION_TABLE, OCCUPATION,
+
+        /**
+         * ESPRIMI BACKOFFICE
+         */
+        //  PROJECT_FORM, PROJECT_TABLE, PROJECT,
+        //  MODULE_FORM, MODULE_TABLE, MODULE,
+        //  COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
+    ];
 
 array.forEach(object => {
     object.projectPath = projectPath;
 });
-    
+
 main.createCode(array)
-.then(res => {
-    console.log(res);
-})
-.catch(err => {
-    console.log(err);
-});
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.log(err);
+    });

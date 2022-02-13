@@ -74,7 +74,7 @@ export const REALTY_RATE_PARAMETER_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
+        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
         endPoint: 'realtyRateParameters',
         methods: [
             ServiceFunctionsEnum.Get,

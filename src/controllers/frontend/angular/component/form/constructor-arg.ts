@@ -19,7 +19,7 @@ export class CodeToAngularFormComponentConstructorArg {
                                                 if (res) this.${objectToCode.form.id}Form.patchValue(res);
                                             })
                                             .catch(err => {
-                                                const message = this._errorHandler.apiErrorMessage(err.error.error.message);
+                                                const message = this._errorHandler.apiErrorMessage(err.message);
                                                 this.sendErrorMessage(message);
                                             })
                                         }

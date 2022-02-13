@@ -166,7 +166,7 @@ export const INPUT_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
+            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'inputs',
             methods: [
                 ServiceFunctionsEnum.Get,

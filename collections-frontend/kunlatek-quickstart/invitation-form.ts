@@ -46,7 +46,7 @@ export const INVITATION_FORM: MainInterface = {
                     optionsApi: {
                         endpoint: 'permission-groups',
                         labelField: 'name',
-                        valueField: 'id'
+                        valueField: '_id'
                     },
                     isMultiple: true
                 },
@@ -60,7 +60,7 @@ export const INVITATION_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
+            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'permission-groups',
             methods: [
                 ServiceFunctionsEnum.Get,

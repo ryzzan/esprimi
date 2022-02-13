@@ -21,7 +21,7 @@ export class CodeToAngularTableComponentMethod {
                     this.isLoading = false;
                 })
                 .catch((err) => {
-                    const message = this._errorHandler.apiErrorMessage(err.error.error.message);
+                    const message = this._errorHandler.apiErrorMessage(err.message);
                                         
                     this.isLoading = false;
 
