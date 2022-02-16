@@ -6,7 +6,8 @@ import { Main } from './index';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/fundamento';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/planado';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
-const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
+// const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
+const projectPath = '/home/ryzzan/Projects/Kunlatek/projekto';
 
 /**
  * EXAMPLE
@@ -18,13 +19,13 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
 /**
  * KUNLATEK QUICKSTART
  */
-import { PERMISSION } from '../collections-frontend/kunlatek-quickstart/permission';
-import { PERMISSION_FORM } from '../collections-frontend/kunlatek-quickstart/permission-form';
-import { PERMISSION_TABLE } from '../collections-frontend/kunlatek-quickstart/permission-table';
+// import { PERMISSION } from '../collections-frontend/kunlatek-quickstart/permission';
+// import { PERMISSION_FORM } from '../collections-frontend/kunlatek-quickstart/permission-form';
+// import { PERMISSION_TABLE } from '../collections-frontend/kunlatek-quickstart/permission-table';
 
-import { INVITATION } from '../collections-frontend/kunlatek-quickstart/invitation';
-import { INVITATION_FORM } from '../collections-frontend/kunlatek-quickstart/invitation-form';
-import { INVITATION_TABLE } from '../collections-frontend/kunlatek-quickstart/invitation-table';
+// import { INVITATION } from '../collections-frontend/kunlatek-quickstart/invitation';
+// import { INVITATION_FORM } from '../collections-frontend/kunlatek-quickstart/invitation-form';
+// import { INVITATION_TABLE } from '../collections-frontend/kunlatek-quickstart/invitation-table';
 
 
 /**
@@ -60,13 +61,13 @@ import { INVITATION_TABLE } from '../collections-frontend/kunlatek-quickstart/in
 /**
  * PROJEKTO
  */
-//  import { PROJECT } from '../collections-frontend/fundamento/projekto/project';
-//  import { PROJECT_FORM } from '../collections-frontend/fundamento/projekto/project-form';
-//  import { PROJECT_TABLE } from '../collections-frontend/fundamento/projekto/project-table';
+ import { PROJECT } from '../collections-frontend/fundamento/projekto/project';
+ import { PROJECT_FORM } from '../collections-frontend/fundamento/projekto/project-form';
+ import { PROJECT_TABLE } from '../collections-frontend/fundamento/projekto/project-table';
 
-//  import { MODULE } from '../collections-frontend/fundamento/projekto/module';
-//  import { MODULE_FORM } from '../collections-frontend/fundamento/projekto/module-form';
-//  import { MODULE_TABLE } from '../collections-frontend/fundamento/projekto/module-table';
+ import { MODULE } from '../collections-frontend/fundamento/projekto/module';
+ import { MODULE_FORM } from '../collections-frontend/fundamento/projekto/module-form';
+ import { MODULE_TABLE } from '../collections-frontend/fundamento/projekto/module-table';
 
 /**
  * LOKO
@@ -200,8 +201,8 @@ const main = new Main(),
         /**
          * KUNLATEK QUICKSTART
          */
-        PERMISSION_FORM, PERMISSION_TABLE, PERMISSION,
-        INVITATION_FORM, INVITATION_TABLE, INVITATION,
+        // PERMISSION_FORM, PERMISSION_TABLE, PERMISSION,
+        // INVITATION_FORM, INVITATION_TABLE, INVITATION,
 
         /**
          * PLANADO
@@ -228,8 +229,8 @@ const main = new Main(),
          * FUNDAMENTO
          */
         // PROJEKTO
-        // PROJECT_FORM, PROJECT_TABLE, PROJECT,
-        // MODULE_FORM, MODULE_TABLE, MODULE,
+        PROJECT_FORM, PROJECT_TABLE, PROJECT,
+        MODULE_FORM, MODULE_TABLE, MODULE,
 
         // LOKO
         // METAVERSE_FORM, METAVERSE_TABLE, METAVERSE,

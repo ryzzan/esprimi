@@ -45,7 +45,7 @@ export const MODULE_FORM: MainInterface = {
                     },
                 },
             ],
-            id: 'moduleTabe',
+            id: 'moduleTab',
             label: 'Módulo',
           },
           {
