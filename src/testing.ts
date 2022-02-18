@@ -6,7 +6,8 @@ import { Main } from './index';
 // const projectPath = '/home/lopes/Projects/Kunlatek/fundamento';
 // const projectPath = '/home/lopes/Projects/Kunlatek/planado';
 // const projectPath = '/home/lopes/Projects/Kunlatek/esprimi-backoffice';
-const projectPath = '/home/ryzzan/Projects/Lopes/lopes-ocr';
+// const projectPath = '/home/ryzzan/Projects/Lopes/lopes-ocr';
+const projectPath = '/home/ryzzan/Projects/Lopes/modulo-admin';
 
 /**
  * EXAMPLE
@@ -171,6 +172,15 @@ const projectPath = '/home/ryzzan/Projects/Lopes/lopes-ocr';
 // import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
 
 // LOPES OCR
+// import { DOCUMENTATION_FORM } from '../collections-frontend/lopes-ocr/documentation-form';
+// import { DOCUMENTATION_TABLE } from '../collections-frontend/lopes-ocr/documentation-table';
+// import { DOCUMENTATION } from '../collections-frontend/lopes-ocr/documentation';
+
+// import { FILE_FORM } from '../collections-frontend/lopes-ocr/file-form';
+// import { FILE_TABLE } from '../collections-frontend/lopes-ocr/file-table';
+// import { FILE } from '../collections-frontend/lopes-ocr/file';
+
+// MÓDULO ADMIN
 import { DOCUMENTATION_FORM } from '../collections-frontend/lopes-ocr/documentation-form';
 import { DOCUMENTATION_TABLE } from '../collections-frontend/lopes-ocr/documentation-table';
 import { DOCUMENTATION } from '../collections-frontend/lopes-ocr/documentation';
@@ -245,8 +255,13 @@ array = [
     /**
      * LOPES OCR
      */
-    DOCUMENTATION_FORM, DOCUMENTATION_TABLE, DOCUMENTATION,
-    FILE_FORM, FILE_TABLE, FILE,
+    // DOCUMENTATION_FORM, DOCUMENTATION_TABLE, DOCUMENTATION,
+    // FILE_FORM, FILE_TABLE, FILE,
+
+    /**
+     * MÓDULO ADMIN
+     */
+    
 ];
 
 array.forEach(object => {
