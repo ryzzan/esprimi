@@ -83,7 +83,7 @@ export const ADDRESS_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app0',
+        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
         endPoint: 'addresses',
         methods: [
             ServiceFunctionsEnum.Get,

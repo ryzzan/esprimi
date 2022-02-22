@@ -1,3 +1,4 @@
+import { FormInputTypeEnum } from "../../../../../enums/form";
 import { FormElementInterface } from "../../../../../interfaces/form";
 import {
     MainInterface
@@ -9,11 +10,12 @@ export class CodeToAngularFormComponentMethod {
     static customMethod = (object: MainInterface): string => {
         if (object.form) {
             const elements = object.form.elements;
-            const methods = CodeToAngularFormComponentMethod.createFormMethods(elements, object);            
-            
+            const methods = CodeToAngularFormComponentMethod.createFormMethods(elements, object);
+            const file = CodeToAngularFormComponentMethod.setFileSubmit(elements, object);
             const componentCode = `
                                 ${methods}
                                 ${object.form.id}Submit() {
+                                    ${file}
                                     this._${object.form.id}Service
                                     .save(this.${object.form.id}Form.value)
                                     .then((res) => {
@@ -60,9 +62,36 @@ export class CodeToAngularFormComponentMethod {
                                     ${remove}(i:number) {this.${element.array.id}.removeAt(i)}`;
 
                 methods += CodeToAngularFormComponentMethod.createFormMethods(element.array.elements, object);
-            }        
+            }
+
+            if (element.input?.type === FormInputTypeEnum.File) {
+                methods += `onFileSelected(event: any) {
+                                if (event.target.files.length > 0) {
+                                    const file = event.target.files[0];
+                                    this.fileName = file.name;
+                                    const formData = new FormData();
+                                
+                                    this.fileFormForm.get('${element.input.name}')?.setValue(file);
+                                }
+                            }`;
+            }
         }
 
         return methods;
+    }
+
+    static setFileSubmit = (elements: Array<FormElementInterface>, object: MainInterface): string => {
+        let file = '';
+
+        for (let index = 0; index < elements.length; index++) {
+            const element = elements[index];
+
+            if (element.input?.type === FormInputTypeEnum.File) {
+                file += `const formData = new FormData();
+                        formData.append('myFile', this.${object.form?.id}Form.get('${element.input.name}')?.value);`
+            }
+        }
+
+        return file;
     }
 }

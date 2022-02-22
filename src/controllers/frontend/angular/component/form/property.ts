@@ -1,3 +1,4 @@
+import { FormInputTypeEnum } from "../../../../../enums/form";
 import { FormElementInterface } from "../../../../../interfaces/form";
 import { MainInterface } from "../../../../../interfaces/main";
 
@@ -26,6 +27,10 @@ export class CodeToAngularFormComponentProperty {
 
         for (let index = 0; index < elements.length; index++) {
             const element = elements[index];
+
+            if (element.input?.type === FormInputTypeEnum.File) {
+                properties += `fileName: string = '';`
+            }
 
             if (element.tabs) {
                 element.tabs.forEach(elementTab => {
