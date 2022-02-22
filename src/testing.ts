@@ -1,4 +1,6 @@
 import { Main } from './index';
+// const clonePath = 'https://github.com/ryzzan/kunlatek-quickstart';
+const clonePath = 'https://github.com/ryzzan/lopes-quickstart';
 
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/landomia-backoffice-realtor';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/bonstato-backoffice-kunlatek';
@@ -259,6 +261,7 @@ const main = new Main(),
 
 array.forEach(object => {
     object.projectPath = projectPath;
+    object.clonePath = clonePath;
 });
 
 main.createCode(array)
