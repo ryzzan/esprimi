@@ -1,13 +1,16 @@
 import { Main } from './index';
 
+// const clonePath = 'https://github.com/ryzzan/kunlatek-quickstart';
+const clonePath = 'https://github.com/ryzzan/lopes-quickstart';
+
 // const projectPath = '/home/lopes/Projects/Kunlatek/landomia-backoffice-realtor';
 // const projectPath = '/home/lopes/Projects/Kunlatek/bonstato-backoffice-kunlatek';
 // const projectPath = '/home/lopes/Projects/Kunlatek/bonstato-backoffice-company';
 // const projectPath = '/home/lopes/Projects/Kunlatek/fundamento';
 // const projectPath = '/home/lopes/Projects/Kunlatek/planado';
-// const projectPath = '/home/lopes/Projects/Kunlatek/esprimi-backoffice';
+const projectPath = '/home/lopes/Projects/Kunlatek/esprimi-backoffice';
 // const projectPath = '/home/ryzzan/Projects/Lopes/lopes-ocr';
-const projectPath = '/home/ryzzan/Projects/Lopes/modulo-admin';
+// const projectPath = '/home/ryzzan/Projects/Lopes/modulo-admin';
 
 /**
  * EXAMPLE
@@ -159,17 +162,17 @@ const projectPath = '/home/ryzzan/Projects/Lopes/modulo-admin';
 // import { REALTY } from '../collections-frontend/landomia/realty';
 
 // ESPRIMI-BACKOFFICE
-// import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
-// import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
-// import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
+import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
+import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
+import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
 
-// import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
-// import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
-// import { MODULE } from '../collections-frontend/esprimi-backoffice/module';
+import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
+import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
+import { MODULE } from '../collections-frontend/esprimi-backoffice/module';
 
-// import { COMPONENT_FORM } from '../collections-frontend/esprimi-backoffice/component-form';
-// import { COMPONENT_TABLE } from '../collections-frontend/esprimi-backoffice/component-table';
-// import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
+import { COMPONENT_FORM } from '../collections-frontend/esprimi-backoffice/component-form';
+import { COMPONENT_TABLE } from '../collections-frontend/esprimi-backoffice/component-table';
+import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
 
 // LOPES OCR
 // import { DOCUMENTATION_FORM } from '../collections-frontend/lopes-ocr/documentation-form';
@@ -264,9 +267,9 @@ array = [
     /**
      * ESPRIMI BACKOFFICE
      */
-    //  PROJECT_FORM, PROJECT_TABLE, PROJECT,
-    //  MODULE_FORM, MODULE_TABLE, MODULE,
-    //  COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
+     PROJECT_FORM, PROJECT_TABLE, PROJECT,
+     MODULE_FORM, MODULE_TABLE, MODULE,
+     COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
 
     /**
      * LOPES OCR
@@ -282,11 +285,12 @@ array = [
     // PERMISSION_GROUP_MODEL_FORM, PERMISSION_GROUP_MODEL_TABLE, PERMISSION_GROUP_MODEL,
     // PERMISSION_GROUP_FORM, PERMISSION_GROUP_TABLE, PERMISSION_GROUP,
     // PERMISSION_USER_GROUP_FORM, PERMISSION_USER_GROUP_TABLE, PERMISSION_USER_GROUP,
-    USER_GROUP_FORM, USER_GROUP_TABLE, USER_GROUP
+    // USER_GROUP_FORM, USER_GROUP_TABLE, USER_GROUP
 ];
 
 array.forEach(object => {
     object.projectPath = projectPath;
+    object.clonePath = clonePath;
 });
     
 main.createCode(array)

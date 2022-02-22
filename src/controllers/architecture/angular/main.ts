@@ -10,10 +10,8 @@ export class AngularArchitecture {
         code: BuildedCode | undefined,
         object: MainInterface
     ) => {
-        const projectPath = object.projectPath;
-        
         console.info("First of all we are going to clone a quickstart structure to our project and run its depedencies if the project doesn't exist.");
-        await AngularArchitectureProject.createArchitectureProject(projectPath);
+        await AngularArchitectureProject.createArchitectureProject(object);
 
         if (!object.module) {            
             console.info("Now we are going to use Angular CLI to create the components and write in it the code we've created.");
