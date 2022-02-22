@@ -5,9 +5,9 @@ import { Main } from './index';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/bonstato-backoffice-company';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/fundamento';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/planado';
-// const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
+const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
-const projectPath = '/home/ryzzan/Projects/Kunlatek/projekto';
+// const projectPath = '/home/ryzzan/Projects/Kunlatek/projekto';
 
 /**
  * EXAMPLE
@@ -61,13 +61,13 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/projekto';
 /**
  * PROJEKTO
  */
- import { PROJECT } from '../collections-frontend/fundamento/projekto/project';
- import { PROJECT_FORM } from '../collections-frontend/fundamento/projekto/project-form';
- import { PROJECT_TABLE } from '../collections-frontend/fundamento/projekto/project-table';
+//  import { PROJECT } from '../collections-frontend/fundamento/projekto/project';
+//  import { PROJECT_FORM } from '../collections-frontend/fundamento/projekto/project-form';
+//  import { PROJECT_TABLE } from '../collections-frontend/fundamento/projekto/project-table';
 
- import { MODULE } from '../collections-frontend/fundamento/projekto/module';
- import { MODULE_FORM } from '../collections-frontend/fundamento/projekto/module-form';
- import { MODULE_TABLE } from '../collections-frontend/fundamento/projekto/module-table';
+//  import { MODULE } from '../collections-frontend/fundamento/projekto/module';
+//  import { MODULE_FORM } from '../collections-frontend/fundamento/projekto/module-form';
+//  import { MODULE_TABLE } from '../collections-frontend/fundamento/projekto/module-table';
 
 /**
  * LOKO
@@ -171,9 +171,9 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/projekto';
 // import { REALTY } from '../collections-frontend/landomia/realty';
 
 // ESPRIMI-BACKOFFICE
-// import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
-// import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
-// import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
+import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
+import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
+import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
 
 // import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
 // import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
@@ -229,8 +229,8 @@ const main = new Main(),
          * FUNDAMENTO
          */
         // PROJEKTO
-        PROJECT_FORM, PROJECT_TABLE, PROJECT,
-        MODULE_FORM, MODULE_TABLE, MODULE,
+        // PROJECT_FORM, PROJECT_TABLE, PROJECT,
+        // MODULE_FORM, MODULE_TABLE, MODULE,
 
         // LOKO
         // METAVERSE_FORM, METAVERSE_TABLE, METAVERSE,
@@ -252,7 +252,7 @@ const main = new Main(),
         /**
          * ESPRIMI BACKOFFICE
          */
-        //  PROJECT_FORM, PROJECT_TABLE, PROJECT,
+         PROJECT_FORM, PROJECT_TABLE, PROJECT,
         //  MODULE_FORM, MODULE_TABLE, MODULE,
         //  COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
     ];
