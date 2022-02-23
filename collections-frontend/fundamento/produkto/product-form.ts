@@ -40,12 +40,33 @@ export const PRODUCT_FORM: MainInterface = {
                                 }
                             },
                             {
+                                select: {
+                                    label: 'Grupos de produto',
+                                    name: 'groups',
+                                    optionsApi: {
+                                        endpoint: 'group',
+                                        labelField: 'name',
+                                        valueField: 'id'
+                                    },
+                                    isMultiple: true,
+                                    isRequired: true
+                                }
+                            },
+                            {
                                 input: {
                                     label: 'Nome',
                                     name: 'name',
                                     placeholder: 'Nome do produto',
                                     type: FormInputTypeEnum.Text,
                                     isRequired: true,
+                                },
+                            },
+                            {
+                                input: {
+                                    label: 'Modelo',
+                                    name: 'model',
+                                    placeholder: 'Modelo do produto',
+                                    type: FormInputTypeEnum.Text,
                                 },
                             },
                             {
@@ -63,6 +84,53 @@ export const PRODUCT_FORM: MainInterface = {
                                     placeholder: 'Código EAN13 do produto',
                                     type: FormInputTypeEnum.Text,
                                 },
+                            },
+                            {
+                                select: {
+                                    label: 'NCM',
+                                    name: 'ncm',
+                                    optionsApi: {
+                                        endpoint: 'ncm',
+                                        labelField: 'name',
+                                        valueField: 'id'
+                                    },
+                                    isRequired: true
+                                }
+                            },
+                            {
+                                select: {
+                                    label: 'Unidade de medida',
+                                    name: 'unitOfMeasurement',
+                                    optionsObject: [{
+                                        label: 'Centímetro',
+                                        value: 'cm'
+                                    }, {
+                                        label: 'Gramas',
+                                        value: 'g'
+                                    }, {
+                                        label: 'Litro',
+                                        value: 'l'
+                                    }, {
+                                        label: 'Miligramas',
+                                        value: 'mg'
+                                    }, {
+                                        label: 'Mililitro',
+                                        value: 'ml'
+                                    }, {
+                                        label: 'Metro',
+                                        value: 'm'
+                                    }, {
+                                        label: 'Milímetro',
+                                        value: 'mm'
+                                    }, {
+                                        label: 'Quilograma',
+                                        value: 'kg'
+                                    }, {
+                                        label: 'Unidade',
+                                        value: 'un'
+                                    }],
+                                    isRequired: true
+                                }
                             }
                         ]
                     },
@@ -71,24 +139,135 @@ export const PRODUCT_FORM: MainInterface = {
                         title: 'Insumos',
                         elements: [
                             {
-                                select: {
-                                    label: 'Produto',
-                                    name: 'input',
-                                    optionsApi: {
-                                        endpoint: 'products',
-                                        labelField: 'name',
-                                        valueField: '_id'
-                                    }
+                                array: {
+                                    title: 'Insumo',
+                                    id: 'inputArray',
+                                    elements: [
+                                        {
+                                            select: {
+                                                label: 'Produto',
+                                                name: 'input',
+                                                optionsApi: {
+                                                    endpoint: 'products',
+                                                    labelField: 'name',
+                                                    valueField: '_id'
+                                                }
+                                            }
+                                        },
+                                        {
+                                            input: {
+                                                label: 'Quantidade',
+                                                name: 'inputQuantity',
+                                                placeholder: 'De acordo com a unidade de media padrão',
+                                                type: FormInputTypeEnum.Number,
+                                            }
+                                        }
+                                    ]
                                 }
-                            }
+                            },
                         ]
                     },
                     {
                         id: 'dimensionTab',
-                        title: 'Dimensões',
-                        elements: [{
-                            
-                        }]
+                        title: 'Dimensões para armazenamento',
+                        elements: [
+                            {
+                                input: {
+                                    label: 'Altura',
+                                    name: 'height',
+                                    placeholder: 'Altura considerando embalagem',
+                                    type: FormInputTypeEnum.Number
+                                }
+                            },
+                            {
+                                select: {
+                                    label: 'Unidade de medida da altura',
+                                    name: 'heightUnitOfMeasurement',
+                                    optionsObject: [
+                                        {
+                                            label: 'Centímetro',
+                                            value: 'cm'
+                                        },
+                                        {
+                                            label: 'Metro',
+                                            value: 'm'
+                                        },
+                                        {
+                                            label: 'Milímetro',
+                                            value: 'mm'
+                                        },
+                                        {
+                                            label: 'Quilômetro',
+                                            value: 'km'
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                input: {
+                                    label: 'Largura',
+                                    name: 'width',
+                                    placeholder: 'Largura considerando embalagem',
+                                    type: FormInputTypeEnum.Number
+                                }
+                            },
+                            {
+                                select: {
+                                    label: 'Unidade de medida da largura',
+                                    name: 'widthUnitOfMeasurement',
+                                    optionsObject: [
+                                        {
+                                            label: 'Centímetro',
+                                            value: 'cm'
+                                        },
+                                        {
+                                            label: 'Metro',
+                                            value: 'm'
+                                        },
+                                        {
+                                            label: 'Milímetro',
+                                            value: 'mm'
+                                        },
+                                        {
+                                            label: 'Quilômetro',
+                                            value: 'km'
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                input: {
+                                    label: 'Profundidade',
+                                    name: 'depth',
+                                    placeholder: 'Profundidade considerando embalagem',
+                                    type: FormInputTypeEnum.Number
+                                }
+                            },
+                            {
+                                select: {
+                                    label: 'Unidade de medida da profundidade',
+                                    name: 'depthUnitOfMeasurement',
+                                    optionsObject: [
+                                        {
+                                            label: 'Centímetro',
+                                            value: 'cm'
+                                        },
+                                        {
+                                            label: 'Metro',
+                                            value: 'm'
+                                        },
+                                        {
+                                            label: 'Milímetro',
+                                            value: 'mm'
+                                        },
+                                        {
+                                            label: 'Quilômetro',
+                                            value: 'km'
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
                     }
                 ]
             },

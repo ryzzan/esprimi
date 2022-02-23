@@ -7,9 +7,10 @@ const clonePath = 'https://github.com/ryzzan/lopes-quickstart';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/bonstato-backoffice-company';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/fundamento';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/planado';
-const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
+// const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/projekto';
+const projectPath = '/home/ryzzan/Projects/Kunlatek/produkto';
 
 /**
  * EXAMPLE
@@ -123,6 +124,13 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // import { ZIPCODE_TABLE } from '../collections-frontend/fundamento/loko/zipcode-table';
 
 /**
+ * PRODUKTO
+ */
+ import { PRODUCT } from '../collections-frontend/fundamento/produkto/product';
+ import { PRODUCT_FORM } from '../collections-frontend/fundamento/produkto/product-form';
+ import { PRODUCT_TABLE } from '../collections-frontend/fundamento/produkto/product-table';
+
+/**
  * SERVO
  */
 //  import { OCCUPATION } from '../collections-frontend/fundamento/servo/occupation';
@@ -173,9 +181,9 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // import { REALTY } from '../collections-frontend/landomia/realty';
 
 // ESPRIMI-BACKOFFICE
-import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
-import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
-import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
+// import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
+// import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
+// import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
 
 // import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
 // import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
@@ -220,7 +228,9 @@ const main = new Main(),
         // KLIENTO
         // CLIENT_FORM, CLIENT_TABLE, CLIENT,
 
-        // HORARO
+        /**
+         * HORARO
+         */
         // AVAILABILITY_FORM, AVAILABILITY_TABLE, AVAILABILITY,
         // SCHEDULE_FORM, SCHEDULE_TABLE, SCHEDULE,
         // FINANCA
@@ -234,7 +244,9 @@ const main = new Main(),
         // PROJECT_FORM, PROJECT_TABLE, PROJECT,
         // MODULE_FORM, MODULE_TABLE, MODULE,
 
-        // LOKO
+        /**
+         * LOKO
+         */
         // METAVERSE_FORM, METAVERSE_TABLE, METAVERSE,
         // GALAXY_FORM, GALAXY_TABLE, GALAXY,
         // STELAR_SYSTEM_FORM, STELAR_SYSTEM_TABLE, STELAR_SYSTEM,
@@ -248,15 +260,22 @@ const main = new Main(),
         // ADDRESS_FORM, ADDRESS_TABLE, ADDRESS,
         // ZIPCODE_FORM, ZIPCODE_TABLE, ZIPCODE,
 
-        // SERVO
+        /**
+         * PRODUKTO
+         */
+        PRODUCT_FORM, PRODUCT_TABLE, PRODUCT,
+        
+        /**
+         * SERVO
+         */
         // OCCUPATION_FORM, OCCUPATION_TABLE, OCCUPATION,
 
         /**
          * ESPRIMI BACKOFFICE
          */
-         PROJECT_FORM, PROJECT_TABLE, PROJECT,
-        //  MODULE_FORM, MODULE_TABLE, MODULE,
-        //  COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
+        // PROJECT_FORM, PROJECT_TABLE, PROJECT,
+        // MODULE_FORM, MODULE_TABLE, MODULE,
+        // COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
     ];
 
 array.forEach(object => {
