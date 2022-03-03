@@ -8,9 +8,9 @@ const clonePath = 'https://github.com/ryzzan/lopes-quickstart';
 // const projectPath = '/home/lopes/Projects/Kunlatek/bonstato-backoffice-company';
 // const projectPath = '/home/lopes/Projects/Kunlatek/fundamento';
 // const projectPath = '/home/lopes/Projects/Kunlatek/planado';
-const projectPath = '/home/lopes/Projects/Kunlatek/esprimi-backoffice';
+// const projectPath = '/home/lopes/Projects/Kunlatek/esprimi-backoffice';
 // const projectPath = '/home/ryzzan/Projects/Lopes/lopes-ocr';
-// const projectPath = '/home/ryzzan/Projects/Lopes/modulo-admin';
+const projectPath = '/home/ryzzan/Projects/Lopes/modulo-admin';
 
 /**
  * EXAMPLE
@@ -162,17 +162,17 @@ const projectPath = '/home/lopes/Projects/Kunlatek/esprimi-backoffice';
 // import { REALTY } from '../collections-frontend/landomia/realty';
 
 // ESPRIMI-BACKOFFICE
-import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
-import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
-import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
+// import { PROJECT_FORM } from '../collections-frontend/esprimi-backoffice/project-form';
+// import { PROJECT_TABLE } from '../collections-frontend/esprimi-backoffice/project-table';
+// import { PROJECT } from '../collections-frontend/esprimi-backoffice/project';
 
-import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
-import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
-import { MODULE } from '../collections-frontend/esprimi-backoffice/module';
+// import { MODULE_FORM } from '../collections-frontend/esprimi-backoffice/module-form';
+// import { MODULE_TABLE } from '../collections-frontend/esprimi-backoffice/module-table';
+// import { MODULE } from '../collections-frontend/esprimi-backoffice/module';
 
-import { COMPONENT_FORM } from '../collections-frontend/esprimi-backoffice/component-form';
-import { COMPONENT_TABLE } from '../collections-frontend/esprimi-backoffice/component-table';
-import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
+// import { COMPONENT_FORM } from '../collections-frontend/esprimi-backoffice/component-form';
+// import { COMPONENT_TABLE } from '../collections-frontend/esprimi-backoffice/component-table';
+// import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
 
 // LOPES OCR
 // import { DOCUMENTATION_FORM } from '../collections-frontend/lopes-ocr/documentation-form';
@@ -184,25 +184,25 @@ import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component'
 // import { FILE } from '../collections-frontend/lopes-ocr/file';
 
 // MÓDULO ADMIN
-// import { MODULE_FORM } from '../collections-frontend/admin-module/module-form';
-// import { MODULE_TABLE } from '../collections-frontend/admin-module/module-table';
-// import { MODULE } from '../collections-frontend/admin-module/module';
+import { MODULE_FORM } from '../collections-frontend/admin-module/module-form';
+import { MODULE_TABLE } from '../collections-frontend/admin-module/module-table';
+import { MODULE } from '../collections-frontend/admin-module/module';
 
-// import { APPLICATION_FORM } from '../collections-frontend/admin-module/application-form';
-// import { APPLICATION_TABLE } from '../collections-frontend/admin-module/application-table';
-// import { APPLICATION } from '../collections-frontend/admin-module/application';
+import { APPLICATION_FORM } from '../collections-frontend/admin-module/application-form';
+import { APPLICATION_TABLE } from '../collections-frontend/admin-module/application-table';
+import { APPLICATION } from '../collections-frontend/admin-module/application';
 
-// import { PERMISSION_GROUP_FORM } from '../collections-frontend/admin-module/permission-group-form';
-// import { PERMISSION_GROUP_TABLE } from '../collections-frontend/admin-module/permission-group-table';
-// import { PERMISSION_GROUP } from '../collections-frontend/admin-module/permission-group';
+import { PERMISSION_GROUP_FORM } from '../collections-frontend/admin-module/permission-group-form';
+import { PERMISSION_GROUP_TABLE } from '../collections-frontend/admin-module/permission-group-table';
+import { PERMISSION_GROUP } from '../collections-frontend/admin-module/permission-group';
 
-// import { PERMISSION_GROUP_MODEL_FORM } from '../collections-frontend/admin-module/permission-group-model-form';
-// import { PERMISSION_GROUP_MODEL_TABLE } from '../collections-frontend/admin-module/permission-group-model-table';
-// import { PERMISSION_GROUP_MODEL } from '../collections-frontend/admin-module/permission-group-model';
+import { PERMISSION_GROUP_MODEL_FORM } from '../collections-frontend/admin-module/permission-group-model-form';
+import { PERMISSION_GROUP_MODEL_TABLE } from '../collections-frontend/admin-module/permission-group-model-table';
+import { PERMISSION_GROUP_MODEL } from '../collections-frontend/admin-module/permission-group-model';
 
-// import { PERMISSION_USER_GROUP_FORM } from '../collections-frontend/admin-module/permission-user-group-form';
-// import { PERMISSION_USER_GROUP_TABLE } from '../collections-frontend/admin-module/permission-user-group-table';
-// import { PERMISSION_USER_GROUP } from '../collections-frontend/admin-module/permission-user-group';
+import { PERMISSION_USER_GROUP_FORM } from '../collections-frontend/admin-module/permission-user-group-form';
+import { PERMISSION_USER_GROUP_TABLE } from '../collections-frontend/admin-module/permission-user-group-table';
+import { PERMISSION_USER_GROUP } from '../collections-frontend/admin-module/permission-user-group';
 
 import { USER_GROUP_FORM } from '../collections-frontend/admin-module/user-group-form';
 import { USER_GROUP_TABLE } from '../collections-frontend/admin-module/user-group-table';
@@ -267,9 +267,9 @@ array = [
     /**
      * ESPRIMI BACKOFFICE
      */
-     PROJECT_FORM, PROJECT_TABLE, PROJECT,
-     MODULE_FORM, MODULE_TABLE, MODULE,
-     COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
+    //  PROJECT_FORM, PROJECT_TABLE, PROJECT,
+    //  MODULE_FORM, MODULE_TABLE, MODULE,
+    //  COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
 
     /**
      * LOPES OCR
@@ -280,12 +280,12 @@ array = [
     /**
      * MÓDULO ADMIN
      */
-    // MODULE_FORM, MODULE_TABLE, MODULE,
-    // APPLICATION_FORM, APPLICATION_TABLE, APPLICATION,
-    // PERMISSION_GROUP_MODEL_FORM, PERMISSION_GROUP_MODEL_TABLE, PERMISSION_GROUP_MODEL,
-    // PERMISSION_GROUP_FORM, PERMISSION_GROUP_TABLE, PERMISSION_GROUP,
-    // PERMISSION_USER_GROUP_FORM, PERMISSION_USER_GROUP_TABLE, PERMISSION_USER_GROUP,
-    // USER_GROUP_FORM, USER_GROUP_TABLE, USER_GROUP
+    MODULE_FORM, MODULE_TABLE, MODULE,
+    APPLICATION_FORM, APPLICATION_TABLE, APPLICATION,
+    PERMISSION_GROUP_MODEL_FORM, PERMISSION_GROUP_MODEL_TABLE, PERMISSION_GROUP_MODEL,
+    PERMISSION_GROUP_FORM, PERMISSION_GROUP_TABLE, PERMISSION_GROUP,
+    PERMISSION_USER_GROUP_FORM, PERMISSION_USER_GROUP_TABLE, PERMISSION_USER_GROUP,
+    USER_GROUP_FORM, USER_GROUP_TABLE, USER_GROUP
 ];
 
 array.forEach(object => {

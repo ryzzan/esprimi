@@ -9,13 +9,30 @@ export const MODULE_FORM: MainInterface = {
     form: {
         title: 'Módulo',
         id: 'moduleForm',
-        elements: [{
+        elements: [
+            {
                 input: {
                     label: 'Módulo',
-                    name: 'module',
+                    name: 'name',
                     placeholder: 'Nome do módulo',
                     type: FormInputTypeEnum.Text,
                     isRequired: true,
+                },
+            },
+            {
+                input: {
+                    label: 'Código',
+                    name: 'code',
+                    placeholder: 'Código do módulo',
+                    type: FormInputTypeEnum.Text,
+                },
+            },
+            {
+                input: {
+                    label: 'Descrição',
+                    name: 'description',
+                    placeholder: 'Descrição do módulo',
+                    type: FormInputTypeEnum.Text,
                 },
             }
         ],
@@ -27,7 +44,8 @@ export const MODULE_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+            hasAuthorization: false,
+            baseUrl: 'http://devbackadmin.lpsbr.com/api/v1',
             endPoint: 'modules',
             methods: [
                 ServiceFunctionsEnum.Get,

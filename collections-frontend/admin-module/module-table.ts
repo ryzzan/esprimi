@@ -19,7 +19,25 @@ export const MODULE_TABLE: MainInterface = {
         },
         row: {
           type: 'string',
-          field: 'module',
+          field: 'name',
+        },
+      },
+      {
+        column: {
+          label: 'Código',
+        },
+        row: {
+          type: 'string',
+          field: 'code',
+        },
+      },
+      {
+        column: {
+          label: 'UUID',
+        },
+        row: {
+          type: 'string',
+          field: 'uuid',
         },
       },
       {
@@ -64,8 +82,9 @@ export const MODULE_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
-        endPoint: 'modules',
+        hasAuthorization: false,
+        baseUrl: 'http://devbackadmin.lpsbr.com/api/v1',
+        endPoint: 'modules?page=0&size=25&sort=description(asc)',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

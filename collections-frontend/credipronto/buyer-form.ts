@@ -264,6 +264,7 @@ export const BUYER_FORM: MainInterface = {
             },
         }, ],
         service: {
+            hasAuthorization: true,
             baseUrl: 'https://api.credipronto.com.br',
             endPoint: 'buyers',
             methods: [

@@ -57,6 +57,7 @@ export class CodeToAngularService {
         projectName: string, 
         service: ServiceInterface
     ) => {
+        const hasAuthorization = service.hasAuthorization ? `'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`` : '';
         const array = service.methods;
         let code = '';
         array.forEach(element => {
@@ -67,7 +68,7 @@ export class CodeToAngularService {
                                 return this._httpClient.get(
                                     \`\${this.BASE_URL}/${service.endPoint}\`, {
                                     headers: {
-                                        'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
+                                        ${hasAuthorization}
                                     }
                                 }
                                 ).toPromise();
@@ -82,7 +83,7 @@ export class CodeToAngularService {
                                     \`\${this.BASE_URL}/${service.endPoint}/\${id}\`,
                                     {
                                         headers: {
-                                            'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
+                                            ${hasAuthorization}
                                         }
                                     }
                                 ).toPromise();
@@ -98,7 +99,7 @@ export class CodeToAngularService {
                                 body,
                                 {
                                     headers: {
-                                        'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
+                                        ${hasAuthorization}
                                     }
                                 }
                                 ).toPromise();
@@ -114,7 +115,7 @@ export class CodeToAngularService {
                                     body,
                                     {
                                         headers: {
-                                            'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
+                                            ${hasAuthorization}
                                         }
                                     }
                                 ).toPromise();
@@ -129,7 +130,7 @@ export class CodeToAngularService {
                                     \`\${this.BASE_URL}/${service.endPoint}/\${id}\`,
                                     {
                                         headers: {
-                                            'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
+                                            ${hasAuthorization}
                                         }
                                     }
                                 ).toPromise();
@@ -144,7 +145,7 @@ export class CodeToAngularService {
                                     \`\${this.BASE_URL}/${service.endPoint}/\${id}\`,
                                     {
                                         headers: {
-                                            'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
+                                            ${hasAuthorization}
                                         }
                                     }
                                 ).toPromise();

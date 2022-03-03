@@ -73,8 +73,9 @@ export const APPLICATION_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
-        endPoint: 'applications',
+        hasAuthorization: false,
+        baseUrl: 'http://devbackadmin.lpsbr.com/api/v1',
+        endPoint: 'applications?page=0&size=25&sort=description(asc)',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

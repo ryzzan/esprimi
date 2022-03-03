@@ -91,8 +91,9 @@ export const PERMISSION_GROUP_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
-        endPoint: 'permissionGroups',
+        hasAuthorization: false,
+        baseUrl: 'http://devbackadmin.lpsbr.com/api/v1',
+        endPoint: 'permissionGroups?page=0&size=25&sort=description(asc)',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

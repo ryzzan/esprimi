@@ -50,7 +50,8 @@ export const APPLICATION_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+            hasAuthorization: false,
+            baseUrl: 'http://devbackadmin.lpsbr.com/api/v1',
             endPoint: 'applications',
             methods: [
                 ServiceFunctionsEnum.Get,
