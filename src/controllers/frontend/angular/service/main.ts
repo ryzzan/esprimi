@@ -28,15 +28,12 @@ export class CodeToAngularService {
 
         let code = serviceSkeletonCode;
 
-        if (object.form) {
-            let serviceCode = this.createFormService(object.form.elements);
-
-            if (object.form.service) {
+        if (object.form?.service) {
+                let serviceCode = this.createFormService(object.form.elements, object.form.service);
                 serviceCode += this.createService(projectName, object.form.service);
                 
                 code = code.replace('%BASE_URL%', object.form.service.baseUrl);
                 code = code.replace('%SERVICES%', serviceCode);
-            }
         }
 
         if (object.table?.service) {
@@ -162,8 +159,13 @@ export class CodeToAngularService {
         return code;
     }
 
-    createFormService = (elements: Array<FormElementInterface>): string => {
+    createFormService = (
+        elements: Array<FormElementInterface>, 
+        service: ServiceInterface
+    ): string => {
+        const hasAuthorization = service?.hasAuthorization ? `'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`` : '';
         let selectObjectServiceCode = '';
+        
         elements.forEach((object: any) => {
             for (const key in object) {
                 if (Object.prototype.hasOwnProperty.call(object, key)) {
@@ -172,7 +174,7 @@ export class CodeToAngularService {
                         const tabs = object[key];
                         if (tabs) {
                             tabs.forEach((tab: any) => {
-                                selectObjectServiceCode += this.createFormService(tab.elements);
+                                selectObjectServiceCode += this.createFormService(tab.elements, service);
                             });
                         }
                     }
@@ -180,7 +182,7 @@ export class CodeToAngularService {
                     if (key === 'array') {
                         const array = object[key];
 
-                        selectObjectServiceCode += this.createFormService(array.elements);
+                        selectObjectServiceCode += this.createFormService(array.elements, service);
                     }
 
                     if (key === 'select') {
@@ -189,7 +191,7 @@ export class CodeToAngularService {
                                 return this._httpClient.get(
                                     \`\${this.BASE_URL}/${element.optionsApi.endpoint}\`, {
                                     headers: {
-                                        'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`
+                                        ${hasAuthorization}
                                     }
                                 }
                                 ).toPromise();
