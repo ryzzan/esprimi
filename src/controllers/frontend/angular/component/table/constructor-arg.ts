@@ -19,8 +19,8 @@ export class CodeToAngularTableComponentConstructorArg {
 
             const componentCode = `
                                 ${hasAction}
-                                this._${objectToCode.table.id}Service.getAll().then((result) => {
-                                    this.${objectToCode.table.id}DataSource = result;
+                                this._${objectToCode.table.id}Service.getAll().then((result: any) => {
+                                    this.${objectToCode.table.id}DataSource = result?.data;
                                     this.isLoading = false;
                                 }).catch(err => {
                                     const message = this._errorHandler.apiErrorMessage(err.message);

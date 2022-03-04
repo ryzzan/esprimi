@@ -13,27 +13,28 @@ export interface FormInterface {
     todo?: string;
 }
 export interface ServiceInterface {
-    baseUrl: string;
-    endPoint: string;
-    methods: Array<ServiceFunctionsEnum>;
+  baseUrl: string;
+  endPoint: string;
+  methods: Array<ServiceFunctionsEnum>;
+  hasAuthorization: boolean;
 }
 export interface FormElementInterface {
-    array?: FormInterface;
-    button?: ButtonInterface;
-    checkbox?: CheckboxInterface;
-    radio?: RadioInterface;
-    datalist?: DatalistInterface;
-    fieldset?: FieldsetInterface;
-    input?: InputInterface;
-    label?: LabelInterface;
-    legend?: LegendInterface;
-    optgroup?: OptgroupInterface;
-    option?: OptionInterface;
-    output?: OutputInterface;
-    select?: SelectInterface;
-    slide?: InputInterface;
-    tabs?: Array<FormInterface>;
-    textarea?: TextareaInterface;
+  array?: FormInterface;
+  button?: ButtonInterface;
+  checkbox?: CheckboxInterface;
+  radio?: RadioInterface;
+  datalist?: DatalistInterface;
+  fieldset?: FieldsetInterface;
+  input?: InputInterface;
+  label?: LabelInterface;
+  legend?: LegendInterface;
+  optgroup?: OptgroupInterface;
+  option?: OptionInterface;
+  output?: OutputInterface;
+  select?: SelectInterface;
+  slide?: InputInterface;
+  tabs?: Array<FormInterface>;
+  textarea?: TextareaInterface;
 }
 
 export interface ButtonInterface {

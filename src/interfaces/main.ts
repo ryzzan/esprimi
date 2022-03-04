@@ -7,6 +7,8 @@ import { TreeInterface } from "./tree";
 export interface MainInterface {
     backendFramework?: BackendFrameworkEnum;
     frontendFramework?: FrontendFrameworkEnum;
+    envFrontendDev?: string;
+    envFrontendProd?: string;
     clonePath?: string;
     projectPath?: any;
     comments?: string;

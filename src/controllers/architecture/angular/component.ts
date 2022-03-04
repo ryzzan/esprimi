@@ -20,8 +20,8 @@ export class AngularArchitectureComponent {
         const projectFolder = projectPath.split(/[\/]+/).pop();
         
         try {
-            console.info(`Folder ${projectAndComponentPath}  already exists.`);
             fs.readdirSync(projectAndComponentPath);
+            console.info(`Folder ${projectAndComponentPath} already exists.`);
             await AngularArchitectureCode.writeCodeToFile(
                 projectPath, 
                 componentPath, 

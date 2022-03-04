@@ -112,7 +112,8 @@ export const PROJECT_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+            hasAuthorization: true,
+            baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
             endPoint: 'projects',
             methods: [
                 ServiceFunctionsEnum.Get,

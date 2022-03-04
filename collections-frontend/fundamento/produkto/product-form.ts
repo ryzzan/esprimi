@@ -280,6 +280,7 @@ export const PRODUCT_FORM: MainInterface = {
             },
         }, ],
         service: {
+            hasAuthorization: true,
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'products',
             methods: [

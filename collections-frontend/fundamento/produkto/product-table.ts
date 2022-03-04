@@ -73,13 +73,14 @@ export const PRODUCT_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
-        endPoint: 'products',
-        methods: [
-            ServiceFunctionsEnum.Get,
-            ServiceFunctionsEnum.Delete,
-            ServiceFunctionsEnum.Find,
-        ],
+      hasAuthorization: true,
+      baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+      endPoint: 'products',
+      methods: [
+          ServiceFunctionsEnum.Get,
+          ServiceFunctionsEnum.Delete,
+          ServiceFunctionsEnum.Find,
+      ],
     },
   },
 };

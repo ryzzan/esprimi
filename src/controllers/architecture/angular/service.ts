@@ -19,8 +19,8 @@ export class AngularArchitectureService {
         const projectAndComponentPath = `${projectPath}/src/app/components/${componentPath}`;
            
         try {
-            console.info(`Folder ${projectAndComponentPath}  already exists.`);
             fs.readdirSync(projectAndComponentPath);
+            console.info(`Folder ${projectAndComponentPath}  already exists.`);
             await AngularArchitectureCode.writeCodeToFile(
                 projectPath, 
                 componentPath, 

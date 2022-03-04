@@ -12,7 +12,8 @@ export class AngularArchitectureProject {
         const splitProjectFolder = projectPath.split(/[\/]+/);
         const projectFolderParent = splitProjectFolder.slice(0, splitProjectFolder.length - 1).join('/');
         const nodeModulePath = `${projectPath}/node_modules`;
-        
+        const environmentPath = `${projectPath}/src/environments`;
+
         try {
             fs.readdirSync(projectPath);
             console.info(`Project folder ${projectPath} already exists.`);
@@ -22,6 +23,10 @@ export class AngularArchitectureProject {
                 `git clone ${clonePath} ${projectFolder}`, 
                 {cwd: projectFolderParent}
             );
+
+            if (object.envFrontendDev) fs.writeFileSync(`${environmentPath}/environment.ts`, object.envFrontendDev);
+
+            if (object.envFrontendProd) fs.writeFileSync(`${environmentPath}/environment.prod.ts`, object.envFrontendProd);
         }
 
         try {

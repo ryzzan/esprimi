@@ -25,8 +25,8 @@ export class AngularArchitectureCode {
             componentFilePath = object.module ? `${projectPath}/src/app/modules/${componentPath}/${componentPath}.module.ts` : `${projectPath}/src/app/components/${componentPath}/${componentPath}.module.ts`;
         
         try {
-            console.info(`File ${componentPath} already exists.`);
             fs.writeFileSync(componentFilePath, code);
+            console.info(`File ${componentPath} already exists.`);
             console.info(`File successfully written in ${componentFilePath}.`);
         } catch (error) {
             console.info(`File ${componentPath} doesn't exist.`);

@@ -1,6 +1,36 @@
 import { Main } from './index';
-// const clonePath = 'https://github.com/ryzzan/kunlatek-quickstart';
-const clonePath = 'https://github.com/ryzzan/lopes-quickstart';
+const envFrontDev = `
+export const environment = {
+    firebase: {
+        projectId: 'kunlatek-quickstart',
+        appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+        storageBucket: 'kunlatek-quickstart.appspot.com',
+        apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+        authDomain: 'kunlatek-quickstart.firebaseapp.com',
+        messagingSenderId: '61322235717',
+        measurementId: 'G-V8W65TSX41',
+    },
+    baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+    production: false
+};`;
+
+const envFrontProd = `
+export const environment = {
+    firebase: {
+        projectId: 'kunlatek-quickstart',
+        appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+        storageBucket: 'kunlatek-quickstart.appspot.com',
+        apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+        authDomain: 'kunlatek-quickstart.firebaseapp.com',
+        messagingSenderId: '61322235717',
+        measurementId: 'G-V8W65TSX41',
+    },
+    baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+    production: true
+};`;
+
+const clonePath = 'https://github.com/ryzzan/kunlatek-quickstart';
+// const clonePath = 'https://github.com/ryzzan/lopes-quickstart';
 
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/landomia-backoffice-realtor';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/bonstato-backoffice-kunlatek';
@@ -9,8 +39,8 @@ const clonePath = 'https://github.com/ryzzan/lopes-quickstart';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/planado';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
-// const projectPath = '/home/ryzzan/Projects/Kunlatek/projekto';
-const projectPath = '/home/ryzzan/Projects/Kunlatek/produkto';
+const projectPath = '/home/ryzzan/Projects/Kunlatek/projekto';
+// const projectPath = '/home/ryzzan/Projects/Kunlatek/produkto';
 
 /**
  * EXAMPLE
@@ -64,13 +94,13 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/produkto';
 /**
  * PROJEKTO
  */
-//  import { PROJECT } from '../collections-frontend/fundamento/projekto/project';
-//  import { PROJECT_FORM } from '../collections-frontend/fundamento/projekto/project-form';
-//  import { PROJECT_TABLE } from '../collections-frontend/fundamento/projekto/project-table';
+ import { PROJECT } from '../collections-frontend/fundamento/projekto/project';
+ import { PROJECT_FORM } from '../collections-frontend/fundamento/projekto/project-form';
+ import { PROJECT_TABLE } from '../collections-frontend/fundamento/projekto/project-table';
 
-//  import { MODULE } from '../collections-frontend/fundamento/projekto/module';
-//  import { MODULE_FORM } from '../collections-frontend/fundamento/projekto/module-form';
-//  import { MODULE_TABLE } from '../collections-frontend/fundamento/projekto/module-table';
+ import { MODULE } from '../collections-frontend/fundamento/projekto/module';
+ import { MODULE_FORM } from '../collections-frontend/fundamento/projekto/module-form';
+ import { MODULE_TABLE } from '../collections-frontend/fundamento/projekto/module-table';
 
 /**
  * LOKO
@@ -126,9 +156,9 @@ const projectPath = '/home/ryzzan/Projects/Kunlatek/produkto';
 /**
  * PRODUKTO
  */
- import { PRODUCT } from '../collections-frontend/fundamento/produkto/product';
- import { PRODUCT_FORM } from '../collections-frontend/fundamento/produkto/product-form';
- import { PRODUCT_TABLE } from '../collections-frontend/fundamento/produkto/product-table';
+//  import { PRODUCT } from '../collections-frontend/fundamento/produkto/product';
+//  import { PRODUCT_FORM } from '../collections-frontend/fundamento/produkto/product-form';
+//  import { PRODUCT_TABLE } from '../collections-frontend/fundamento/produkto/product-table';
 
 /**
  * SERVO
@@ -241,8 +271,8 @@ const main = new Main(),
          * FUNDAMENTO
          */
         // PROJEKTO
-        // PROJECT_FORM, PROJECT_TABLE, PROJECT,
-        // MODULE_FORM, MODULE_TABLE, MODULE,
+        PROJECT_FORM, PROJECT_TABLE, PROJECT,
+        MODULE_FORM, MODULE_TABLE, MODULE,
 
         /**
          * LOKO
@@ -263,7 +293,7 @@ const main = new Main(),
         /**
          * PRODUKTO
          */
-        PRODUCT_FORM, PRODUCT_TABLE, PRODUCT,
+        // PRODUCT_FORM, PRODUCT_TABLE, PRODUCT,
         
         /**
          * SERVO
@@ -281,6 +311,8 @@ const main = new Main(),
 array.forEach(object => {
     object.projectPath = projectPath;
     object.clonePath = clonePath;
+    object.envFrontendDev = envFrontDev;
+    object.envFrontendProd = envFrontProd;
 });
 
 main.createCode(array)
