@@ -19,7 +19,16 @@ export const APPLICATION_TABLE: MainInterface = {
         },
         row: {
           type: 'string',
-          field: 'application',
+          field: 'name',
+        },
+      },
+      {
+        column: {
+          label: 'UUID',
+        },
+        row: {
+          type: 'string',
+          field: 'uuid',
         },
       },
       {
@@ -28,7 +37,7 @@ export const APPLICATION_TABLE: MainInterface = {
         },
         row: {
           type: 'string',
-          field: 'module',
+          field: 'module.name',
         },
       },
       {
@@ -63,14 +72,32 @@ export const APPLICATION_TABLE: MainInterface = {
     actions: {
         id: 'applicationTable',
         title: 'Aplicações',
-        elements: [{
+        elements: [
+          {
             input: {
                 label: 'Aplicação',
                 name: 'name',
                 placeholder: 'Nome da aplicação',
                 type: FormInputTypeEnum.Text
             }
-        }]
+          },
+          {
+            input: {
+                label: 'Descrição',
+                name: 'description',
+                placeholder: 'Descrição da aplicação',
+                type: FormInputTypeEnum.Text
+            }
+          },
+          {
+            input: {
+                label: 'Código',
+                name: 'code',
+                placeholder: 'Código da aplicação',
+                type: FormInputTypeEnum.Text
+            }
+          }
+        ]
     },
     service: {
         hasAuthorization: false,

@@ -149,8 +149,9 @@ export class CodeToAngularFormComponentConstructorArg {
                             this._${objectToCode.form?.id}Service.${object.select.name}SelectObjectGetAll()
                             .then(
                                 (array: any) => {
-                                    for (let index = 0; index < array.length; index++) {
-                                        const object = array[index];
+                                    const data = array.data;
+                                    for (let index = 0; index < data.length; index++) {
+                                        const object = data[index];
                                         this.${object.select.name}SelectObject.push(
                                             {label: object['${element.optionsApi.labelField}'], 
                                             value: object['${element.optionsApi.valueField}']}

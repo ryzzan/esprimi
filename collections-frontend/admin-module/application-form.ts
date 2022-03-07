@@ -14,15 +14,11 @@ export const APPLICATION_FORM: MainInterface = {
                 select: {
                     label: 'Módulo',
                     name: 'module',
-                    optionsObject: [{
-                            label: 'Módulo 1',
-                            value: 'module1',
-                        },
-                        {
-                            label: 'Módulo 2',
-                            value: 'module2',
-                        },
-                    ],
+                    optionsApi: {
+                        endpoint: 'modules?page=0&size=25&sort=description(asc)',
+                        labelField: 'name',
+                        valueField: 'uuid'
+                    },
                     isRequired: true
                 },
             },

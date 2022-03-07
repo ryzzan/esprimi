@@ -184,29 +184,29 @@ const projectPath = '/home/ryzzan/Projects/Lopes/modulo-admin';
 // import { FILE } from '../collections-frontend/lopes-ocr/file';
 
 // MÓDULO ADMIN
-import { MODULE_FORM } from '../collections-frontend/admin-module/module-form';
-import { MODULE_TABLE } from '../collections-frontend/admin-module/module-table';
-import { MODULE } from '../collections-frontend/admin-module/module';
+// import { MODULE_FORM } from '../collections-frontend/admin-module/module-form';
+// import { MODULE_TABLE } from '../collections-frontend/admin-module/module-table';
+// import { MODULE } from '../collections-frontend/admin-module/module';
 
 import { APPLICATION_FORM } from '../collections-frontend/admin-module/application-form';
 import { APPLICATION_TABLE } from '../collections-frontend/admin-module/application-table';
 import { APPLICATION } from '../collections-frontend/admin-module/application';
 
-import { PERMISSION_GROUP_FORM } from '../collections-frontend/admin-module/permission-group-form';
-import { PERMISSION_GROUP_TABLE } from '../collections-frontend/admin-module/permission-group-table';
-import { PERMISSION_GROUP } from '../collections-frontend/admin-module/permission-group';
+// import { PERMISSION_GROUP_FORM } from '../collections-frontend/admin-module/permission-group-form';
+// import { PERMISSION_GROUP_TABLE } from '../collections-frontend/admin-module/permission-group-table';
+// import { PERMISSION_GROUP } from '../collections-frontend/admin-module/permission-group';
 
-import { PERMISSION_GROUP_MODEL_FORM } from '../collections-frontend/admin-module/permission-group-model-form';
-import { PERMISSION_GROUP_MODEL_TABLE } from '../collections-frontend/admin-module/permission-group-model-table';
-import { PERMISSION_GROUP_MODEL } from '../collections-frontend/admin-module/permission-group-model';
+// import { PERMISSION_GROUP_MODEL_FORM } from '../collections-frontend/admin-module/permission-group-model-form';
+// import { PERMISSION_GROUP_MODEL_TABLE } from '../collections-frontend/admin-module/permission-group-model-table';
+// import { PERMISSION_GROUP_MODEL } from '../collections-frontend/admin-module/permission-group-model';
 
-import { PERMISSION_USER_GROUP_FORM } from '../collections-frontend/admin-module/permission-user-group-form';
-import { PERMISSION_USER_GROUP_TABLE } from '../collections-frontend/admin-module/permission-user-group-table';
-import { PERMISSION_USER_GROUP } from '../collections-frontend/admin-module/permission-user-group';
+// import { PERMISSION_USER_GROUP_FORM } from '../collections-frontend/admin-module/permission-user-group-form';
+// import { PERMISSION_USER_GROUP_TABLE } from '../collections-frontend/admin-module/permission-user-group-table';
+// import { PERMISSION_USER_GROUP } from '../collections-frontend/admin-module/permission-user-group';
 
-import { USER_GROUP_FORM } from '../collections-frontend/admin-module/user-group-form';
-import { USER_GROUP_TABLE } from '../collections-frontend/admin-module/user-group-table';
-import { USER_GROUP } from '../collections-frontend/admin-module/user-group';
+// import { USER_GROUP_FORM } from '../collections-frontend/admin-module/user-group-form';
+// import { USER_GROUP_TABLE } from '../collections-frontend/admin-module/user-group-table';
+// import { USER_GROUP } from '../collections-frontend/admin-module/user-group';
 
 //////////////////////////////////////////////////////////
 const main = new Main(),
@@ -280,12 +280,12 @@ array = [
     /**
      * MÓDULO ADMIN
      */
-    MODULE_FORM, MODULE_TABLE, MODULE,
+    // MODULE_FORM, MODULE_TABLE, MODULE,
     APPLICATION_FORM, APPLICATION_TABLE, APPLICATION,
-    PERMISSION_GROUP_MODEL_FORM, PERMISSION_GROUP_MODEL_TABLE, PERMISSION_GROUP_MODEL,
-    PERMISSION_GROUP_FORM, PERMISSION_GROUP_TABLE, PERMISSION_GROUP,
-    PERMISSION_USER_GROUP_FORM, PERMISSION_USER_GROUP_TABLE, PERMISSION_USER_GROUP,
-    USER_GROUP_FORM, USER_GROUP_TABLE, USER_GROUP
+    // PERMISSION_GROUP_MODEL_FORM, PERMISSION_GROUP_MODEL_TABLE, PERMISSION_GROUP_MODEL,
+    // PERMISSION_GROUP_FORM, PERMISSION_GROUP_TABLE, PERMISSION_GROUP,
+    // PERMISSION_USER_GROUP_FORM, PERMISSION_USER_GROUP_TABLE, PERMISSION_USER_GROUP,
+    // USER_GROUP_FORM, USER_GROUP_TABLE, USER_GROUP
 ];
 
 array.forEach(object => {
