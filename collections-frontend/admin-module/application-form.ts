@@ -23,20 +23,89 @@ export const APPLICATION_FORM: MainInterface = {
                 },
             },
             {
-                array: {
-                    id: 'applications',
-                    title: 'Aplicações',
-                    elements: [{
-                        input: {
-                            label: 'Aplicação',
-                            placeholder: 'Nome da aplicação',
-                            name: 'application',
-                            type: FormInputTypeEnum.Text,
-                            isRequired: true
-                        }
-                    }]
+                input: {
+                    label: 'Aplicação',
+                    placeholder: 'Nome da aplicação',
+                    name: 'name',
+                    type: FormInputTypeEnum.Text,
+                    isRequired: true
+                }
+            },
+            {
+                input: {
+                    label: 'Código',
+                    placeholder: 'Código da aplicação',
+                    name: 'code',
+                    type: FormInputTypeEnum.Text
+                }
+            },
+            {
+                input: {
+                    label: 'Descrição',
+                    placeholder: 'Descrição da aplicação',
+                    name: 'description',
+                    type: FormInputTypeEnum.Text
+                }
+            },
+            {
+                select: {
+                    label: 'Features',
+                    name: 'features',
+                    optionsObject: [{
+                        label: '2bcef1e3-a1e3-44f8-bb3c-c28f5c53f467',
+                        value: '2bcef1e3-a1e3-44f8-bb3c-c28f5c53f467',
+                        isSelected: true
+                    }],
+                    isMultiple: true,
+                    isRequired: true
                 }
             }
+            // {
+            //     array: {
+            //         id: 'applications',
+            //         title: 'Aplicações',
+            //         elements: [
+            //             {
+            //                 input: {
+            //                     label: 'Aplicação',
+            //                     placeholder: 'Nome da aplicação',
+            //                     name: 'name',
+            //                     type: FormInputTypeEnum.Text,
+            //                     isRequired: true
+            //                 }
+            //             },
+            //             {
+            //                 input: {
+            //                     label: 'Código',
+            //                     placeholder: 'Código da aplicação',
+            //                     name: 'code',
+            //                     type: FormInputTypeEnum.Text
+            //                 }
+            //             },
+            //             {
+            //                 input: {
+            //                     label: 'Descrição',
+            //                     placeholder: 'Descrição da aplicação',
+            //                     name: 'description',
+            //                     type: FormInputTypeEnum.Text
+            //                 }
+            //             },
+            //             {
+            //                 select: {
+            //                     label: 'Features',
+            //                     name: 'features',
+            //                     optionsObject: [{
+            //                         label: '2bcef1e3-a1e3-44f8-bb3c-c28f5c53f467',
+            //                         value: '2bcef1e3-a1e3-44f8-bb3c-c28f5c53f467',
+            //                         isSelected: true
+            //                     }],
+            //                     isMultiple: true,
+            //                     isRequired: true
+            //                 }
+            //             }
+            //         ]
+            //     }
+            // }
         ],
         actions: [{
             button: {

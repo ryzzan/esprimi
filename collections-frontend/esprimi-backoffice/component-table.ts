@@ -74,6 +74,7 @@ export const COMPONENT_TABLE: MainInterface = {
         }]
     },
     service: {
+        hasAuthorization: true,
         baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
         endPoint: 'components',
         methods: [
