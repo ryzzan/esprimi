@@ -86,7 +86,7 @@ export const MODULE_FORM: MainInterface = {
     ],
     service: {
       hasAuthorization: true,
-      baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+      baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
       endPoint: 'modules',
       methods: [
         ServiceFunctionsEnum.Get,

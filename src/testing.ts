@@ -10,7 +10,7 @@ export const environment = {
         messagingSenderId: '61322235717',
         measurementId: 'G-V8W65TSX41',
     },
-    baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+    baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
     production: false
 };`;
 
@@ -25,7 +25,7 @@ export const environment = {
         messagingSenderId: '61322235717',
         measurementId: 'G-V8W65TSX41',
     },
-    baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+    baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
     production: true
 };`;
 
