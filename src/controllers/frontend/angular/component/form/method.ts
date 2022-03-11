@@ -22,7 +22,7 @@ export class CodeToAngularFormComponentMethod {
                                         this.isLoading = false;
                                     })
                                     .catch((err) => {
-                                        const message = this._errorHandler.apiErrorMessage(err.message);
+                                        const message = this._errorHandler.apiErrorMessage(err.error.message);
 
                                         this.isLoading = false;
 
