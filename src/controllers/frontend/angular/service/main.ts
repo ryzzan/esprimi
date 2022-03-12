@@ -57,6 +57,7 @@ export class CodeToAngularService {
         const hasAuthorization = service.hasAuthorization ? `'Authorization': \`Bearer \${sessionStorage.getItem('token')}\`` : '';
         const array = service.methods;
         let code = '';
+        
         array.forEach(element => {
             switch (element) {
                 case 'get':
@@ -155,6 +156,18 @@ export class CodeToAngularService {
                     break;
             }
         });
+
+        if (service.hasAuthorization) {
+            code += `refreshToken () {
+                return this._httpClient.get(
+                    \`\${this.BASE_URL}/auth/refresh-token\`, {
+                    headers: {
+                        'Authorization': \`Bearer \${sessionStorage.getItem('refreshToken')}\`
+                    }
+                }
+                ).toPromise();
+            }`
+        }
 
         return code;
     }

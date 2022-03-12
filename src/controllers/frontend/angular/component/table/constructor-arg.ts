@@ -4,6 +4,7 @@ import {
 import {
     MainInterface
 } from "../../../../../interfaces/main";
+import { TextTransformation } from "../../../../../utils/text.transformation";
 
 export class CodeToAngularTableComponentConstructorArg {
     static customConstructorArg = (objectToCode: MainInterface): string => {
@@ -19,16 +20,7 @@ export class CodeToAngularTableComponentConstructorArg {
 
             const componentCode = `
                                 ${hasAction}
-                                this._${objectToCode.table.id}Service.getAll().then((result: any) => {
-                                    this.${objectToCode.table.id}DataSource = result?.data;
-                                    this.isLoading = false;
-                                }).catch(err => {
-                                    const message = this._errorHandler.apiErrorMessage(err.error.message);
-                                        
-                                    this.isLoading = false;
-
-                                    this.sendErrorMessage(message);
-                                })
+                                this.set${TextTransformation.pascalfy(objectToCode.table.id)}Service();
                                 `;
 
             return componentCode;
