@@ -17,6 +17,7 @@ export class CodeToAngularTableComponentImport {
             
             hasAction = `
                         import { FormBuilder, FormGroup, ${hasArray} } from '@angular/forms';
+                        import { Router } from '@angular/router';
                         import { MyErrorHandler } from '../../utils/error-handler';
                         `;
         });

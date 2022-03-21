@@ -6,6 +6,7 @@ export class CodeToAngularFormComponentConstructorParam {
     static customConstructorParam = (object: MainInterface): string => {
         if (object.form) {
             const componentCode = `
+                                private router: Router,
                                 private _formBuilder: FormBuilder, 
                                 private _activatedRoute: ActivatedRoute, 
                                 private _${object.form.id}Service: %pascalfy(${object.form.id})%Service,

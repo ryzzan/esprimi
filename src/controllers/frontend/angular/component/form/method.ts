@@ -37,8 +37,25 @@ export class CodeToAngularFormComponentMethod {
         return '';
     }
 
-    static createFormMethods = (elements: Array<FormElementInterface>, object: MainInterface): string => {
-        let methods = '';
+    static createFormMethods = (
+        elements: Array<FormElementInterface>, 
+        object: MainInterface
+    ): string => {
+        let methods = `refreshToken = (method: Function) => {
+            this._${object.form?.id}Service.refreshToken()
+                .then((res: any) => {
+                    sessionStorage.setItem('token', res?.data.authToken);
+                    sessionStorage.setItem('refreshToken', res?.data.authRefreshToken);
+                    (method);
+                })
+                .catch(err => {
+                    const message = this._errorHandler.apiErrorMessage(err.error.message);
+                    this.isLoading = false;
+                    this.sendErrorMessage(message);
+                    sessionStorage.clear();
+                    this.router.navigate(['/']);
+                })
+        }`;
 
         for (let index = 0; index < elements.length; index++) {
             const element = elements[index];

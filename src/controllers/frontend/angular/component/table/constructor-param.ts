@@ -14,6 +14,7 @@ export class CodeToAngularTableComponentConstructorParam {
                             private _formBuilder: FormBuilder, 
                             private _errorHandler: MyErrorHandler,
                             private _snackbar: MatSnackBar,
+                            private router: Router,
                             `;
 
             const componentCode = `

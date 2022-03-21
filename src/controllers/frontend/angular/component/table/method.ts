@@ -22,14 +22,16 @@ export class CodeToAngularTableComponentMethod {
             refreshToken = `refreshToken = (method: Function) => {
                 this._${object.table.id}Service.refreshToken()
                     .then((res: any) => {
-                        sessionStorage.setItem('token', res?.authToken);
-                        sessionStorage.setItem('refreshToken', res?.authRefreshToken);
+                        sessionStorage.setItem('token', res?.data.authToken);
+                        sessionStorage.setItem('refreshToken', res?.data.authRefreshToken);
                         (method);
                     })
                     .catch(err => {
                         const message = this._errorHandler.apiErrorMessage(err.error.message);
                         this.isLoading = false;
                         this.sendErrorMessage(message);
+                        sessionStorage.clear();
+                        this.router.navigate(['/']);
                     })
             }`
         }
