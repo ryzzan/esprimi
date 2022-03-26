@@ -1,14 +1,17 @@
 import { FormButtonTypeEnum } from "../../../../../enums/form";
 import { ButtonInterface } from "../../../../../interfaces/form";
+import { MainInterface } from "../../../../../interfaces/main";
 
 export class CodeToAngularFormTemplateButton {
-    static createButton(button: ButtonInterface): string {
+    static createButton(object: MainInterface, button: ButtonInterface): string {
         let color = '';
         const dialogAction = '';
         const label =
             button.type === FormButtonTypeEnum.Submit ?
             `{{isAddModule?'Criar' : 'Editar'}}` :
             button.label;
+        const disabled = FormButtonTypeEnum.Submit ?
+            `[disabled]="!${object.form?.id}Form.valid || isLoading"` : '';
         let codeButton = '';
 
         if (button.type === FormButtonTypeEnum.Button) color = '';
@@ -20,7 +23,7 @@ export class CodeToAngularFormTemplateButton {
 
         if (button.type === FormButtonTypeEnum.Submit)
             codeButton += `<mat-card-actions>`;
-        codeButton += `<button mat-raised-button ${color}>${label}</button>`;
+        codeButton += `<button mat-raised-button ${color} ${disabled}>${label}</button>`;
         if (button.type === FormButtonTypeEnum.Submit)
             codeButton += `</mat-card-actions>`;
             

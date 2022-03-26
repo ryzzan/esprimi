@@ -31,6 +31,12 @@ export class CodeToAngularFormTemplate {
             '';
 
         const formTemplate = `
+                            <div class="loading" *ngIf="isLoading">
+                                <div class="centralized">
+                                    <mat-spinner></mat-spinner>
+                                </div>
+                            </div>
+
                             <mat-card>
                                 <mat-card-header>
                                     ${hasFormTitle}
@@ -38,8 +44,8 @@ export class CodeToAngularFormTemplate {
                                 </mat-card-header>
 
                                 <mat-card-content>
-                                    <form id="${object.form.id}" [formGroup]="${object.form.id}Form" (ngSubmit)="${object.form.id}Submit()">
-                                        ${this.createFormInputs(object.form)}
+                                    <form id="${object.form.id}" [formGroup]="${object.form.id}Form" #${object.form.id}Directive="ngForm" (ngSubmit)="${object.form.id}Submit(${object.form.id}Directive)">
+                                        ${this.createFormInputs(object, object.form)}
                                     </form>
                                 </mat-card-content>
                             </mat-card>
@@ -48,19 +54,19 @@ export class CodeToAngularFormTemplate {
         return formTemplate;
     }
 
-    private createFormInputs = (form: FormInterface): string => {
+    private createFormInputs = (object: MainInterface, form: FormInterface): string => {
         let formInputs = '';
 
         if (form.elements)
-            formInputs += this.createElements(form.elements);
+            formInputs += this.createElements(object, form.elements);
 
         if (form.actions)
-            formInputs += this.createElements(form.actions);
+            formInputs += this.createElements(object, form.actions);
             
         return formInputs;
     }
 
-    private createElements = (elements: Array<FormElementInterface>) => {
+    private createElements = (object: MainInterface, elements: Array<FormElementInterface>) => {
         let code = '';
 
         elements.forEach((element: FormElementInterface) => {
@@ -68,15 +74,15 @@ export class CodeToAngularFormTemplate {
             if (element.select) code += CodeToAngularFormTemplateSelect.createSelect(element.select);
             if (element.checkbox) code += CodeToAngularFormTemplateCheckbox.createCheckbox(element.checkbox);
             if (element.radio) code += CodeToAngularFormTemplateRadio.createRadio(element.radio);
-            if (element.tabs) code += this.createTab(element.tabs);
-            if (element.array) code += this.createArray(element.array);
-            if (element.button) code += CodeToAngularFormTemplateButton.createButton(element.button);
+            if (element.tabs) code += this.createTab(object, element.tabs);
+            if (element.array) code += this.createArray(object, element.array);
+            if (element.button) code += CodeToAngularFormTemplateButton.createButton(object, element.button);
         });
 
         return code;
     }
 
-    private createArray(array: FormInterface): string {
+    private createArray(object: MainInterface, array: FormInterface): string {
         const arrayClassName = TextTransformation.pascalfy(array.id);
         const add = `add${arrayClassName}`;
         const remove = `remove${arrayClassName}`;
@@ -89,7 +95,7 @@ export class CodeToAngularFormTemplate {
                                           ${array.title} {{1 + i}}
                                       </mat-list-item>
                                       <div>
-                                          ${this.createFormInputs(array)}
+                                          ${this.createFormInputs(object, array)}
                                       </div>
                                       <div>
                                           <button mat-button type="button" color="warn" (click)="${remove}(i)">
@@ -110,11 +116,11 @@ export class CodeToAngularFormTemplate {
         return codeArray;
     }
 
-    private createTab(tabs: Array < FormInterface > ): string {
+    private createTab(object: MainInterface, tabs: Array < FormInterface > ): string {
         let codeTab = `<mat-tab-group>`;
         tabs.forEach((tab: FormInterface) => {
             codeTab += `<mat-tab label="${tab.title}" id="${tab.id}">
-                ${this.createFormInputs(tab)}
+                ${this.createFormInputs(object, tab)}
             </mat-tab>`;
         });
         codeTab += `</mat-tab-group>`;

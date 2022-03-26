@@ -46,7 +46,7 @@ export const PRODUCT_FORM: MainInterface = {
                                     optionsApi: {
                                         endpoint: 'group',
                                         labelField: 'name',
-                                        valueField: 'id'
+                                        valueField: '_id'
                                     },
                                     isMultiple: true,
                                     isRequired: true
@@ -92,7 +92,7 @@ export const PRODUCT_FORM: MainInterface = {
                                     optionsApi: {
                                         endpoint: 'ncm',
                                         labelField: 'name',
-                                        valueField: 'id'
+                                        valueField: '_id'
                                     },
                                     isRequired: true
                                 }
@@ -148,7 +148,7 @@ export const PRODUCT_FORM: MainInterface = {
                                                 label: 'Produto',
                                                 name: 'input',
                                                 optionsApi: {
-                                                    endpoint: 'products',
+                                                    endpoint: 'product',
                                                     labelField: 'name',
                                                     valueField: '_id'
                                                 }
@@ -195,10 +195,6 @@ export const PRODUCT_FORM: MainInterface = {
                                         {
                                             label: 'Milímetro',
                                             value: 'mm'
-                                        },
-                                        {
-                                            label: 'Quilômetro',
-                                            value: 'km'
                                         }
                                     ]
                                 }

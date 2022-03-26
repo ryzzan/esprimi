@@ -19,12 +19,11 @@ export class CodeToAngularTableComponentMethod {
             return '';
 
         if (object.table.service?.hasAuthorization) {
-            refreshToken = `refreshToken = (method: Function) => {
+            refreshToken = `refreshToken = () => {
                 this._${object.table.id}Service.refreshToken()
-                    .then((res: any) => {
-                        sessionStorage.setItem('token', res?.data.authToken);
-                        sessionStorage.setItem('refreshToken', res?.data.authRefreshToken);
-                        (method);
+                    .then(async (res: any) => {
+                        await sessionStorage.setItem('refreshToken', res?.data.authRefreshToken);
+                        await sessionStorage.setItem('token', res?.data.authToken);
                     })
                     .catch(err => {
                         const message = this._errorHandler.apiErrorMessage(err.error.message);
@@ -39,6 +38,7 @@ export class CodeToAngularTableComponentMethod {
         if (object.table.actions)
             hasAction = `
             ${object.table.id}Submit() {
+                this.isLoading = true;
                 this._${object.table.id}Service
                 .find(this.${object.table.id}Form.value)
                 .then((res) => {
@@ -62,9 +62,10 @@ export class CodeToAngularTableComponentMethod {
                                   this.${object.table.id}DataSource = result?.data.result ? result?.data.result : result?.data;
                                   this.isLoading = false;
                                 })
-                                .catch(err => {
+                                .catch(async err => {
                                   if (err.error.logMessage === 'jwt expired') {
-                                    this.refreshToken(this.set${TextTransformation.pascalfy(object.table.id)}Service);
+                                    await this.refreshToken();
+                                    this.set${TextTransformation.pascalfy(object.table.id)}Service();
                                   } else {
                                     const message = this._errorHandler.apiErrorMessage(err.error.message);
                                     this.isLoading = false;

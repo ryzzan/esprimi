@@ -22,7 +22,7 @@ export const MODULE_FORM: MainInterface = {
                         optionsApi: {
                             endpoint: 'projects',
                             labelField: 'name',
-                            valueField: 'id'
+                            valueField: '_id'
                         },
                         isRequired: true,
                     },

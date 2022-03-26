@@ -16,8 +16,8 @@ export class CodeToAngularFormComponentImport {
             
             const formArray = CodeToAngularFormComponentImport.imports.hasArray ? ', FormArray' : '';
             const componentCode = `
-            import { FormBuilder, FormGroup${formArray} } from '@angular/forms';
-            import { ActivatedRoute } from '@angular/router';
+            import { FormBuilder, FormGroupDirective, FormGroup${formArray} } from '@angular/forms';
+            import { ActivatedRoute, Router } from '@angular/router';
             import { MatSnackBar } from '@angular/material/snack-bar';
 
             import { %pascalfy(${object.form?.id})%Service } from './%kebabfy${object.form?.id}%.service';

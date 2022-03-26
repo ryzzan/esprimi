@@ -40,7 +40,7 @@ const clonePath = 'https://github.com/ryzzan/kunlatek-quickstart';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
 const projectPath = '/home/ryzzan/Projects/projekto';
-// const projectPath = '/home/ryzzan/Projects/Kunlatek/produkto';
+// const projectPath = '/home/ryzzan/Projects/produkto';
 
 /**
  * EXAMPLE

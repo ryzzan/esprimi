@@ -14,20 +14,45 @@ export class CodeToAngularFormComponentMethod {
             const file = CodeToAngularFormComponentMethod.setFileSubmit(elements, object);
             const componentCode = `
                                 ${methods}
-                                ${object.form.id}Submit() {
+                                ${object.form.id}Submit(
+                                    ${object.form?.id}Directive: FormGroupDirective
+                                ) {
                                     ${file}
+                                    
+                                    this.${object.form?.id}Form.reset();
+                                    ${object.form?.id}Directive.resetForm();
+                                    this.isLoading = true;
+                                    
                                     this._${object.form.id}Service
                                     .save(this.${object.form.id}Form.value)
                                     .then((res) => {
                                         this.isLoading = false;
                                     })
-                                    .catch((err) => {
-                                        const message = this._errorHandler.apiErrorMessage(err.error.message);
-
-                                        this.isLoading = false;
-
-                                        this.sendErrorMessage(message);
+                                    .catch(async (err) => {
+                                        if (err.error.logMessage === 'jwt expired') {
+                                            await this.refreshToken();
+                                            this.${object.form.id}Submit(${object.form?.id}Directive);
+                                        } else {
+                                            const message = this._errorHandler.apiErrorMessage(err.error.message);
+                                            this.isLoading = false;
+                                            this.sendErrorMessage(message);
+                                        }
                                     })
+                                }
+
+                                refreshToken = () => {
+                                    this._${object.form.id}Service.refreshToken()
+                                        .then(async (res: any) => {
+                                            await sessionStorage.setItem('token', res?.data.authToken);
+                                            await sessionStorage.setItem('refreshToken', res?.data.authRefreshToken);
+                                        })
+                                        .catch(err => {
+                                            const message = this._errorHandler.apiErrorMessage(err.error.message);
+                                            this.isLoading = false;
+                                            this.sendErrorMessage(message);
+                                            sessionStorage.clear();
+                                            this.router.navigate(['/']);
+                                        })
                                 }
                                 `;
 
@@ -37,25 +62,8 @@ export class CodeToAngularFormComponentMethod {
         return '';
     }
 
-    static createFormMethods = (
-        elements: Array<FormElementInterface>, 
-        object: MainInterface
-    ): string => {
-        let methods = `refreshToken = (method: Function) => {
-            this._${object.form?.id}Service.refreshToken()
-                .then((res: any) => {
-                    sessionStorage.setItem('token', res?.data.authToken);
-                    sessionStorage.setItem('refreshToken', res?.data.authRefreshToken);
-                    (method);
-                })
-                .catch(err => {
-                    const message = this._errorHandler.apiErrorMessage(err.error.message);
-                    this.isLoading = false;
-                    this.sendErrorMessage(message);
-                    sessionStorage.clear();
-                    this.router.navigate(['/']);
-                })
-        }`;
+    static createFormMethods = (elements: Array<FormElementInterface>, object: MainInterface): string => {
+        let methods = '';
 
         for (let index = 0; index < elements.length; index++) {
             const element = elements[index];

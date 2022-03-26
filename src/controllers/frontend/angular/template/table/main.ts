@@ -15,6 +15,11 @@ export class CodeToAngularTableTemplate {
             '';
 
         const tableTemplate = `
+                            <div class="loading" *ngIf="isLoading">
+                                <div class="centralized">
+                                    <mat-spinner></mat-spinner>
+                                </div>
+                            </div>
                             <mat-card>
                                 <mat-card-header>
                                     ${hasTableTitle}
