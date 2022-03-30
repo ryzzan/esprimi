@@ -1,24 +1,25 @@
 import {
     BuildedBackendCode,
     MainInterface
-} from "../interfaces/main"
+} from "../interfaces/main";
 import {
-    CodeToLoopback
-} from './backend/loopback/main'
+    LoopbackArchitecture
+} from "./architecture/loopback/main";
 
-export class BackendCode {
-    codeToLoopback
+export class BackendArchitecture {
+    architectureToLoopback;
 
     constructor() {
-        this.codeToLoopback = new CodeToLoopback
+        this.architectureToLoopback = new LoopbackArchitecture;
     }
 
-    createCode = async (
+    createArchitecture = async (
+        code: BuildedBackendCode | undefined,
         object: MainInterface
-    ): Promise<BuildedBackendCode | undefined> => {
+    ) => {
         switch (object.backendFramework) {
             case 'LOOPBACK':
-                return await this.codeToLoopback.createCode(object)
+                return await this.architectureToLoopback.createArchitecture(code, object)
                 break;
 
             case 'NEST':
@@ -38,7 +39,7 @@ export class BackendCode {
                 break;
 
             default:
-                console.info('None or unknown frontend framework chosen.')
+                console.info('None or unknown backend framework chosen.')
                 return {
                     model: '',
                     controller: '',
