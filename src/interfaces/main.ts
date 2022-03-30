@@ -11,6 +11,7 @@ export interface MainInterface {
   envFrontendDev?: string;
   envFrontendProd?: string;
   clonePath?: string;
+  cloneBackendPath?: string;
   projectPath?: any;
   comments?: string;
   form?: FormInterface;
@@ -27,3 +28,10 @@ export interface BuildedCode {
   service: string;
   module: string;
 };
+
+export interface BuildedBackendCode {
+  model: string;
+  controller: string;
+  repository?: string;
+  service?: string;
+}
