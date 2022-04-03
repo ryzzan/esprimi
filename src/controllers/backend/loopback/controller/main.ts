@@ -2,11 +2,11 @@ import { MainInterface } from "../../../../interfaces/main";
 import { TextTransformation } from "../../../../utils/text.transformation";
 
 export class CodeToLoopbackController {
-  createComponentCode = async (
-    modelName: string,
-    object: MainInterface
-  ): Promise<string> => {
-    const controllerSkeletonCode = `
+    createComponentCode = async (
+        modelName: string,
+        object: MainInterface
+    ): Promise<string> => {
+        const controllerSkeletonCode = `
                                     import {authenticate} from '@loopback/authentication';
                                     import {inject} from '@loopback/core';
                                     import {repository} from '@loopback/repository';
@@ -238,11 +238,11 @@ export class CodeToLoopbackController {
                                     }
                                     `;
 
-    let code = controllerSkeletonCode;
+        let code = controllerSkeletonCode;
 
-    code = TextTransformation.replaceKebabfyFunctionToString(code);
-    code = TextTransformation.replacePascalfyFunctionToString(code);
+        code = TextTransformation.replaceKebabfyFunctionToString(code);
+        code = TextTransformation.replacePascalfyFunctionToString(code);
 
-    return code;
-  };
+        return code;
+    };
 }

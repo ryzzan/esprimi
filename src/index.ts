@@ -34,12 +34,6 @@ export class Main {
           module: "",
         });
       }
-
-      index = index + 1;
-
-      if (index < array.length) {
-        this.createCode(array, index);
-      }
     }
 
     if (array[index].backendFramework) {
@@ -58,12 +52,12 @@ export class Main {
           controller: "",
         });
       }
+    }
 
-      index = index + 1;
+    index = index + 1;
 
-      if (index < array.length) {
-        this.createCode(array, index);
-      }
+    if (index < array.length) {
+      this.createCode(array, index);
     }
   };
 

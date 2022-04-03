@@ -8,7 +8,7 @@ export class LoopbackArchitectureRepository {
         componentCode: string | undefined,
         object: MainInterface
     ) => {
-        let repositoryPath = object.model?.id!;
+        let repositoryPath = object.form?.id.replace("Form", '')!;
 
         const projectPath = `${object.projectPath}-api`;
         const projectAndRepositoryPath = `${projectPath}/src/repositories/`;
