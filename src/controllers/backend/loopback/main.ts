@@ -21,9 +21,9 @@ export class CodeToLoopback {
         let repository = ''
         let service = ''
 
-        model = await this.model.createComponentCode(object.model?.name!, object)
-        repository = await this.repository.createComponentCode(object.model?.name!, object)
-        controller = await this.controller.createComponentCode(object.model?.name!, object)
+        model = await this.model.createComponentCode(this.projectName!, object)
+        repository = await this.repository.createComponentCode(this.projectName!, object)
+        controller = await this.controller.createComponentCode(this.projectName!, object)
 
         return {
             model: model.replace(/\n/gi, '').replace(/    /gi, ''),
@@ -34,6 +34,6 @@ export class CodeToLoopback {
     }
 
     private createProjectName = (object: MainInterface) => {
-        return object.model!.id;
+        return object.form!.id.replace("Form", '')!;
     }
 }

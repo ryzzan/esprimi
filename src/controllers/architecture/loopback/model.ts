@@ -8,7 +8,7 @@ export class LoopbackArchitectureModel {
         componentCode: string | undefined,
         object: MainInterface
     ) => {
-        let modelPath = object.model?.id!;
+        let modelPath = object.form?.id.replace("Form", '')!;
 
         const projectPath = `${object.projectPath}-api`;
         const projectAndModelPath = `${projectPath}/src/models/`;
