@@ -82,6 +82,7 @@ export const PERMISSION_USER_GROUP_TABLE: MainInterface = {
     service: {
         baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
         endPoint: 'permissionUserGroups',
+        hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

@@ -75,6 +75,7 @@ export const APPLICATION_TABLE: MainInterface = {
     service: {
         baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
         endPoint: 'applications',
+        hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

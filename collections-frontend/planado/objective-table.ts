@@ -85,6 +85,7 @@ export const OBJECTIVE_TABLE: MainInterface = {
     service: {
         baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
         endPoint: 'objectives',
+        hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,
