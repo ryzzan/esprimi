@@ -32,6 +32,7 @@ export const USER_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Empresa',
                     name: 'company',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Empresa 1',
                             value: 'company1',
@@ -56,6 +57,7 @@ export const USER_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Usuários',
                     name: 'users',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Usuário 1',
                             value: 'user1',
@@ -88,6 +90,7 @@ export const USER_GROUP_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'userGroups',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

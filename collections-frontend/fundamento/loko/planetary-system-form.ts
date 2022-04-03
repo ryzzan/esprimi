@@ -11,6 +11,7 @@ export const PLANETARY_SYSTEM_FORM: MainInterface = {
                 select: {
                     label: 'Sistema estelar',
                     name: 'stelarSystemId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'stelarSystems',
                         labelField: 'name',
@@ -45,6 +46,7 @@ export const PLANETARY_SYSTEM_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'galaxies',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

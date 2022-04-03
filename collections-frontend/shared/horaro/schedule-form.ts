@@ -64,6 +64,7 @@ export const SCHEDULE_FORM: MainInterface = {
                 select: {
                   label: 'Convidados',
                   name: 'usersId',
+                  type: FormInputTypeEnum.Text,
                   optionsApi: {
                       endpoint: 'relatedUsers',
                       labelField: 'Documento único | Nome',
@@ -171,6 +172,7 @@ export const SCHEDULE_FORM: MainInterface = {
     service: {
       baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
       endPoint: 'schedules',
+      hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,
         ServiceFunctionsEnum.Delete,

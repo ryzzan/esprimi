@@ -11,6 +11,7 @@ export const STELAR_SYSTEM_FORM: MainInterface = {
                 select: {
                     label: 'Galáxia',
                     name: 'galaxyId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'galaxies',
                         labelField: 'name',
@@ -46,6 +47,7 @@ export const STELAR_SYSTEM_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'stelarSystems',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

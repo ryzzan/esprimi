@@ -14,6 +14,7 @@ export const PERMISSION_USER_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Grupo de permissão',
                     name: 'permissionGroup',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Grupo de permissão 1',
                             value: 'Grupo de permissão 1',
@@ -39,6 +40,7 @@ export const PERMISSION_USER_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Grupos de usuários',
                     name: 'usersGroups',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                         label: 'Grupo de usuários 1',
                         value: 'Grupo de usuários 1'
@@ -66,6 +68,7 @@ export const PERMISSION_USER_GROUP_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'permissionUserGroups',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

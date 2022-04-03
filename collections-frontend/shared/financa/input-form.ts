@@ -12,6 +12,7 @@ export const INPUT_FORM: MainInterface = {
                 select: {
                     label: 'Tipo',
                     name: 'inputType',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [
                         {
                             label: 'Investimento',
@@ -74,6 +75,7 @@ export const INPUT_FORM: MainInterface = {
                             select: {
                                 label: 'Código',
                                 name: 'productId',
+                                type: FormInputTypeEnum.Text,
                                 optionsApi: {
                                     endpoint: 'products',
                                     labelField: 'Código | Nome do serviço',
@@ -105,6 +107,7 @@ export const INPUT_FORM: MainInterface = {
                             select: {
                                 label: 'Código',
                                 name: 'serviceId',
+                                type: FormInputTypeEnum.Text,
                                 optionsApi: {
                                     endpoint: 'services',
                                     labelField: 'Código | Nome do serviço',
@@ -136,6 +139,7 @@ export const INPUT_FORM: MainInterface = {
                             select: {
                                 label: 'Código',
                                 name: 'investimentId',
+                                type: FormInputTypeEnum.Text,
                                 optionsApi: {
                                     endpoint: 'investiments',
                                     labelField: 'Código | Nome do investimento',
@@ -168,6 +172,7 @@ export const INPUT_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'inputs',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

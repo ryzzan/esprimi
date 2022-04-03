@@ -40,6 +40,7 @@ export const PERSON_FORM: MainInterface = {
                 select: {
                     label: 'Gênero',
                     name: 'gender',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Feminino',
                             value: 'female',
@@ -81,6 +82,7 @@ export const PERSON_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'people',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

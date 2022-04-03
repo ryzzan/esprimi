@@ -17,6 +17,7 @@ export const AVAILABILITY_FORM: MainInterface = {
                             select: {
                                 label: 'Dias da semana',
                                 name: 'availabilityDaysOfTheWeek',
+                                type: FormInputTypeEnum.Text,
                                 optionsObject: [
                                     {
                                         label: 'Todos',
@@ -59,6 +60,7 @@ export const AVAILABILITY_FORM: MainInterface = {
                             select: {
                                 label: 'Horários disponíveis',
                                 name: 'availabilityTimetable',
+                                type: FormInputTypeEnum.Text,
                                 optionsObject: [
                                     {
                                         label: 'Todos',
@@ -284,6 +286,7 @@ export const AVAILABILITY_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'availabilities',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

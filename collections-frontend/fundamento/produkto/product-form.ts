@@ -18,6 +18,7 @@ export const PRODUCT_FORM: MainInterface = {
                                 select: {
                                     label: 'Tipo de produto',
                                     name: 'type',
+                                    type: FormInputTypeEnum.Text,
                                     optionsObject: [
                                         {
                                             label: 'Artesanal',
@@ -41,14 +42,14 @@ export const PRODUCT_FORM: MainInterface = {
                             },
                             {
                                 select: {
-                                    label: 'Grupos de produto',
-                                    name: 'groups',
+                                    label: 'NCM',
+                                    name: 'ncm',
+                                    type: FormInputTypeEnum.Text,
                                     optionsApi: {
-                                        endpoint: 'group',
+                                        endpoint: 'ncm',
                                         labelField: 'name',
                                         valueField: '_id'
                                     },
-                                    isMultiple: true,
                                     isRequired: true
                                 }
                             },
@@ -87,20 +88,9 @@ export const PRODUCT_FORM: MainInterface = {
                             },
                             {
                                 select: {
-                                    label: 'NCM',
-                                    name: 'ncm',
-                                    optionsApi: {
-                                        endpoint: 'ncm',
-                                        labelField: 'name',
-                                        valueField: '_id'
-                                    },
-                                    isRequired: true
-                                }
-                            },
-                            {
-                                select: {
                                     label: 'Unidade de medida',
                                     name: 'unitOfMeasurement',
+                                    type: FormInputTypeEnum.Text,
                                     optionsObject: [{
                                         label: 'Centímetro',
                                         value: 'cm'
@@ -147,6 +137,7 @@ export const PRODUCT_FORM: MainInterface = {
                                             select: {
                                                 label: 'Produto',
                                                 name: 'input',
+                                                type: FormInputTypeEnum.Text,
                                                 optionsApi: {
                                                     endpoint: 'product',
                                                     labelField: 'name',
@@ -183,6 +174,7 @@ export const PRODUCT_FORM: MainInterface = {
                                 select: {
                                     label: 'Unidade de medida da altura',
                                     name: 'heightUnitOfMeasurement',
+                                    type: FormInputTypeEnum.Text,
                                     optionsObject: [
                                         {
                                             label: 'Centímetro',
@@ -211,6 +203,7 @@ export const PRODUCT_FORM: MainInterface = {
                                 select: {
                                     label: 'Unidade de medida da largura',
                                     name: 'widthUnitOfMeasurement',
+                                    type: FormInputTypeEnum.Text,
                                     optionsObject: [
                                         {
                                             label: 'Centímetro',
@@ -243,6 +236,7 @@ export const PRODUCT_FORM: MainInterface = {
                                 select: {
                                     label: 'Unidade de medida da profundidade',
                                     name: 'depthUnitOfMeasurement',
+                                    type: FormInputTypeEnum.Text,
                                     optionsObject: [
                                         {
                                             label: 'Centímetro',

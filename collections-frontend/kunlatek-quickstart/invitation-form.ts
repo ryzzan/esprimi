@@ -12,6 +12,7 @@ export const INVITATION_FORM: MainInterface = {
                 select: {
                     label: 'Tipo',
                     name: 'type',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                         label: 'Pessoa',
                         value: 'person'
@@ -43,6 +44,7 @@ export const INVITATION_FORM: MainInterface = {
                 select: {
                     label: 'Grupos de permissão',
                     name: 'permissionGroups',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'permission-groups',
                         labelField: 'name',
@@ -62,6 +64,7 @@ export const INVITATION_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'permission-groups',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

@@ -14,6 +14,7 @@ export const APPLICATION_FORM: MainInterface = {
                 select: {
                     label: 'Módulo',
                     name: 'module',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Módulo 1',
                             value: 'module1',
@@ -52,6 +53,7 @@ export const APPLICATION_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'applications',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

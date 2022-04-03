@@ -11,6 +11,7 @@ export const ZIPCODE_FORM: MainInterface = {
                 select: {
                     label: 'Address',
                     name: 'addressId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'addresses',
                         labelField: 'name',
@@ -37,6 +38,7 @@ export const ZIPCODE_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'zipcodes',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

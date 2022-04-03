@@ -11,6 +11,7 @@ export const CONTINENT_FORM: MainInterface = {
                 select: {
                     label: 'Planeta',
                     name: 'planetId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'planets',
                         labelField: 'name',
@@ -45,6 +46,7 @@ export const CONTINENT_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'continents',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

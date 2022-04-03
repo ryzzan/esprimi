@@ -30,6 +30,7 @@ export const MODULE_FORM: MainInterface = {
                 select: {
                     label: 'Componentes',
                     name: 'componentId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'components',
                         labelField: 'title',

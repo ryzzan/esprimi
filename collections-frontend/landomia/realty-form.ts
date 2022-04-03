@@ -19,6 +19,7 @@ export const REALTY_FORM: MainInterface = {
                 select: {
                   label: 'Tipo de imóvel',
                   name: 'realtyTypeId',
+                  type: FormInputTypeEnum.Text,
                   optionsApi: {
                       endpoint: 'realty-types',
                       labelField: 'name',
@@ -35,6 +36,7 @@ export const REALTY_FORM: MainInterface = {
                         select: {
                           label: 'Tipo de negociação',
                           name: 'businessType',
+                          type: FormInputTypeEnum.Text,
                           optionsApi: {
                               endpoint: 'realty-business',
                               labelField: 'name',
@@ -47,6 +49,7 @@ export const REALTY_FORM: MainInterface = {
                         select: {
                           label: 'Moeda',
                           name: 'tradingCurrency',
+                          type: FormInputTypeEnum.Text,
                           optionsApi: {
                               endpoint: 'trading-currencies',
                               labelField: 'name',
@@ -130,6 +133,7 @@ export const REALTY_FORM: MainInterface = {
                           value: 'teste'
                       }],
                       isRequired: true,
+                      isMultiple: true
                   }
               },
             ],
@@ -143,6 +147,7 @@ export const REALTY_FORM: MainInterface = {
                 select: {
                     label: 'País',
                     name: 'countryOwner',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'countries',
                         labelField: 'name',
@@ -185,6 +190,7 @@ export const REALTY_FORM: MainInterface = {
                         select: {
                             label: 'Tipo de contato',
                             name: 'contactTypeId',
+                            type: FormInputTypeEnum.Text,
                             optionsApi: {
                                 endpoint: 'contactTypes',
                                 labelField: 'name',
@@ -218,6 +224,7 @@ export const REALTY_FORM: MainInterface = {
                     select: {
                         label: 'País',
                         name: 'countryLocation',
+                        type: FormInputTypeEnum.Text,
                         optionsApi: {
                             endpoint: 'countries',
                             labelField: 'name',
@@ -316,6 +323,7 @@ export const REALTY_FORM: MainInterface = {
                         select: {
                             label: 'Cômodo',
                             name: 'realtyRoomId',
+                            type: FormInputTypeEnum.Text,
                             optionsApi: {
                                 endpoint: 'realtyRooms',
                                 labelField: 'name',
@@ -378,6 +386,7 @@ export const REALTY_FORM: MainInterface = {
                         select: {
                             label: 'Instalação',
                             name: 'facilityId',
+                            type: FormInputTypeEnum.Text,
                             optionsApi: {
                                 endpoint: 'facilities',
                                 labelField: 'name',
@@ -453,6 +462,7 @@ export const REALTY_FORM: MainInterface = {
                   select: {
                       label: 'Parâmetros existentes',
                       name: 'existingRateParametersId',
+                      type: FormInputTypeEnum.Text,
                       optionsApi: {
                           endpoint: 'realty-rate-parameters',
                           labelField: 'name',
@@ -470,6 +480,7 @@ export const REALTY_FORM: MainInterface = {
                         select: {
                             label: 'Parâmetro',
                             name: 'nonExistingRateParametersId',
+                            type: FormInputTypeEnum.Text,
                             optionsApi: {
                                 endpoint: 'realty-rate-parameters',
                                 labelField: 'name',
@@ -503,6 +514,7 @@ export const REALTY_FORM: MainInterface = {
     service: {
       baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
       endPoint: 'realties',
+      hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,
         ServiceFunctionsEnum.Delete,

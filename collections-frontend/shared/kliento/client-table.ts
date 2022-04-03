@@ -95,6 +95,7 @@ export const CLIENT_TABLE: MainInterface = {
             select: {
               label: 'Gênero',
               name: 'gender',
+              type: FormInputTypeEnum.Text,
               optionsObject: [
                 {
                   label: 'Masculino',
@@ -112,6 +113,7 @@ export const CLIENT_TABLE: MainInterface = {
     service: {
         baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
         endPoint: 'people',
+        hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

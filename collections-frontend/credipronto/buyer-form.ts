@@ -22,6 +22,7 @@ export const BUYER_FORM: MainInterface = {
                                     select: {
                                         label: 'Nacionalidade',
                                         name: 'nacionalidade',
+                                        type: FormInputTypeEnum.Text,
                                         optionsApi: {
                                             endpoint: 'crm/auxlist/get/nacionalidade_list',
                                             labelField: 'name',
@@ -58,6 +59,7 @@ export const BUYER_FORM: MainInterface = {
                                     select: {
                                         label: 'Gênero',
                                         name: 'sexo',
+                                        type: FormInputTypeEnum.Text,
                                         optionsApi: {
                                             endpoint: 'crm/auxlist/get/contact_sexo_list',
                                             labelField: 'name',
@@ -69,6 +71,7 @@ export const BUYER_FORM: MainInterface = {
                                     select: {
                                         label: 'Estado civil',
                                         name: 'estado_civil',
+                                        type: FormInputTypeEnum.Text,
                                         optionsApi: {
                                             endpoint: 'crm/auxlist/get/estado_civil_list',
                                             labelField: 'name',
@@ -80,6 +83,7 @@ export const BUYER_FORM: MainInterface = {
                                     select: {
                                         label: 'União estável',
                                         name: 'uniao_estavel',
+                                        type: FormInputTypeEnum.Text,
                                         optionsApi: {
                                             endpoint: 'crm/auxlist/get/true_false',
                                             labelField: 'name',
@@ -207,6 +211,7 @@ export const BUYER_FORM: MainInterface = {
                                         select: {
                                             label: 'Fonte de renda',
                                             name: 'fonte_renda',
+                                            type: FormInputTypeEnum.Text,
                                             optionsObject: [
                                                 {
                                                     label: 'Assalariado',
@@ -266,6 +271,7 @@ export const BUYER_FORM: MainInterface = {
         service: {
             baseUrl: 'https://api.credipronto.com.br',
             endPoint: 'buyers',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

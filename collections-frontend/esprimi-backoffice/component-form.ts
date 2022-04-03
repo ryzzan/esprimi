@@ -12,6 +12,7 @@ export const COMPONENT_FORM: MainInterface = {
                 select: {
                     label: 'Tipo',
                     name: 'componentType',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Formulário',
                             value: 'form',
@@ -51,6 +52,7 @@ export const COMPONENT_FORM: MainInterface = {
                             select: {
                                 label: 'Elemento',
                                 name: 'element',
+                                type: FormInputTypeEnum.Text,
                                 optionsObject: [
                                     {
                                         label: 'Checkbox',
@@ -94,6 +96,7 @@ export const COMPONENT_FORM: MainInterface = {
                             select: {
                                 label: 'Tipagem do elemento',
                                 name: 'type',
+                                type: FormInputTypeEnum.Text,
                                 optionsObject: [
                                     {
                                         label: 'Color',

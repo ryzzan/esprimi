@@ -11,6 +11,7 @@ export const PLANET_FORM: MainInterface = {
                 select: {
                     label: 'Sistema planetário',
                     name: 'planetarySystemId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'planetarySystems',
                         labelField: 'name',
@@ -45,6 +46,7 @@ export const PLANET_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'planets',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

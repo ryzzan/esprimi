@@ -11,6 +11,7 @@ export const COUNTRY_FORM: MainInterface = {
                 select: {
                     label: 'Continente',
                     name: 'continentId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'continents',
                         labelField: 'name',
@@ -45,6 +46,7 @@ export const COUNTRY_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'countries',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

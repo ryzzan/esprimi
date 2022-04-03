@@ -32,6 +32,7 @@ export const REALTY_RATE_PARAMETER_FORM: MainInterface = {
                         select: {
                             label: 'Tipo de imóvel',
                             name: 'realtyTypeId',
+                            type: FormInputTypeEnum.Text,
                             optionsApi: {
                                 endpoint: 'realty-types',
                                 labelField: 'name',
@@ -62,6 +63,7 @@ export const REALTY_RATE_PARAMETER_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'realty-rate-parameters',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

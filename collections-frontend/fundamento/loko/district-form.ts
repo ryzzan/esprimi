@@ -11,6 +11,7 @@ export const DISTRICT_FORM: MainInterface = {
                 select: {
                     label: 'Cidade',
                     name: 'cityId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'cities',
                         labelField: 'name',
@@ -45,6 +46,7 @@ export const DISTRICT_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'districts',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

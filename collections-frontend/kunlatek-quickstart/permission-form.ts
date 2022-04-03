@@ -30,6 +30,7 @@ export const PERMISSION_FORM: MainInterface = {
                 select: {
                     label: 'Usuários relacionados',
                     name: 'users',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'projects',
                         labelField: 'name',
@@ -45,6 +46,7 @@ export const PERMISSION_FORM: MainInterface = {
                         select: {
                             label: 'Módulo',
                             name: 'module',
+                            type: FormInputTypeEnum.Text,
                             optionsApi: {
                                 endpoint: 'modules',
                                 labelField: 'name',
@@ -58,6 +60,7 @@ export const PERMISSION_FORM: MainInterface = {
                         select: {
                             label: 'Permissões',
                             name: 'permissions',
+                            type: FormInputTypeEnum.Text,
                             optionsApi: {
                                 endpoint: 'permissions',
                                 labelField: 'name',
@@ -80,6 +83,7 @@ export const PERMISSION_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'permissions',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

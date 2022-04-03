@@ -11,6 +11,7 @@ export const CITY_FORM: MainInterface = {
                 select: {
                     label: 'Estado',
                     name: 'stateId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'states',
                         labelField: 'name',
@@ -45,6 +46,7 @@ export const CITY_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'cities',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

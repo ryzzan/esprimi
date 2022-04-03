@@ -19,6 +19,7 @@ export const MODULE_FORM: MainInterface = {
                     select: {
                         label: 'Projeto',
                         name: 'projectId',
+                        type: FormInputTypeEnum.Text,
                         optionsApi: {
                             endpoint: 'projects',
                             labelField: 'name',

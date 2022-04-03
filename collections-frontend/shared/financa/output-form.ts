@@ -12,6 +12,7 @@ export const OUTPUT_FORM: MainInterface = {
                 select: {
                     label: 'Tipo',
                     name: 'outputType',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [
                         {
                             label: 'Atividade financeira',
@@ -79,6 +80,7 @@ export const OUTPUT_FORM: MainInterface = {
                             select: {
                                 label: 'Código',
                                 name: 'productId',
+                                type: FormInputTypeEnum.Text,
                                 optionsApi: {
                                     endpoint: 'products',
                                     labelField: 'Código | Nome do serviço',
@@ -110,6 +112,7 @@ export const OUTPUT_FORM: MainInterface = {
                             select: {
                                 label: 'Código',
                                 name: 'serviceId',
+                                type: FormInputTypeEnum.Text,
                                 optionsApi: {
                                     endpoint: 'services',
                                     labelField: 'Código | Nome do serviço',
@@ -141,6 +144,7 @@ export const OUTPUT_FORM: MainInterface = {
                             select: {
                                 label: 'Código',
                                 name: 'investimentId',
+                                type: FormInputTypeEnum.Text,
                                 optionsApi: {
                                     endpoint: 'investiments',
                                     labelField: 'Código | Nome do investimento',
@@ -173,6 +177,7 @@ export const OUTPUT_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'outputs',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

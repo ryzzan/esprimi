@@ -39,6 +39,7 @@ export const PROJECT_FORM: MainInterface = {
                 select: {
                     label: 'Framework do backend',
                     name: 'backendFramework',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [
                         {
                             label: 'Django',
@@ -67,6 +68,7 @@ export const PROJECT_FORM: MainInterface = {
                 select: {
                     label: 'Framework do frontend',
                     name: 'frontendFramework',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [
                         {
                             label: 'Angular',
@@ -96,6 +98,7 @@ export const PROJECT_FORM: MainInterface = {
                     label: 'Módulos',
                     name: 'moduleId',
                     isMultiple: true,
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'modules',
                         labelField: 'title',

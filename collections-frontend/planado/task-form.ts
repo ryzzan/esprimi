@@ -11,6 +11,7 @@ export const TASK_FORM: MainInterface = {
                 select: {
                     label: 'Resultado chave',
                     name: 'keyResultId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'keyResults',
                         labelField: 'name',
@@ -54,6 +55,7 @@ export const TASK_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'tasks',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

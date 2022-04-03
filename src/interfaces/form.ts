@@ -135,6 +135,7 @@ export interface DatalistInterface {
   export interface OutputInterface {}
   
   export interface SelectInterface {
+    type: FormInputTypeEnum;
     name: string;
     label: string;
     condition?: string;
@@ -164,6 +165,7 @@ export interface DatalistInterface {
     isRequired?: boolean;
     isChecked?: boolean;
     todo?: string;
+    isMultiple: boolean;
   }
 
   export interface RadioInterface {

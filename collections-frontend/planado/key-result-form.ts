@@ -11,6 +11,7 @@ export const KEY_RESULT_FORM: MainInterface = {
                 select: {
                     label: 'Objetivo',
                     name: 'objectId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'objects',
                         labelField: 'name',
@@ -54,6 +55,7 @@ export const KEY_RESULT_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'keyResult',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

@@ -107,6 +107,7 @@ export const CLIENT_FORM: MainInterface = {
                     select: {
                       label: 'Tipo de contato',
                       name: 'contactType',
+                      type: FormInputTypeEnum.Text,
                       optionsObject: [
                         {
                           label: 'Celular',
@@ -163,6 +164,7 @@ export const CLIENT_FORM: MainInterface = {
     service: {
       baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
       endPoint: 'clients',
+      hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,
         ServiceFunctionsEnum.Delete,

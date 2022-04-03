@@ -28,6 +28,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
                 select: {
                   label: 'Um select',
                   name: 'oneSelect',
+                  type: FormInputTypeEnum.Text,
                   optionsObject: [
                     {
                       label: 'Opção 1',
@@ -63,6 +64,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
                       select: {
                         label: 'Outro select',
                         name: 'otherSelect',
+                        type: FormInputTypeEnum.Text,
                         optionsObject: [
                           {
                             label: 'Opção 1',
@@ -118,6 +120,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
     service: {
       baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
       endPoint: 'examples',
+      hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,
         ServiceFunctionsEnum.Delete,

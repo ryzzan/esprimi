@@ -32,6 +32,7 @@ export const PERMISSION_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Módulo',
                     name: 'module',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Módulo 1',
                             value: 'module1',
@@ -48,6 +49,7 @@ export const PERMISSION_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Grupos de usuários',
                     name: 'userGroups',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Grupo de usuários 1',
                             value: 'Grupo de usuários 1',
@@ -84,6 +86,7 @@ export const PERMISSION_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Permissões',
                     name: 'permissions1',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Criar',
                             value: 'create',
@@ -120,6 +123,7 @@ export const PERMISSION_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Permissões',
                     name: 'permissions2',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Criar',
                             value: 'create',
@@ -156,6 +160,7 @@ export const PERMISSION_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Permissões',
                     name: 'permissions3',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Criar',
                             value: 'create',
@@ -192,6 +197,7 @@ export const PERMISSION_GROUP_FORM: MainInterface = {
                 select: {
                     label: 'Permissões',
                     name: 'permissions4',
+                    type: FormInputTypeEnum.Text,
                     optionsObject: [{
                             label: 'Criar',
                             value: 'create',
@@ -224,6 +230,7 @@ export const PERMISSION_GROUP_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'permissionGroups',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

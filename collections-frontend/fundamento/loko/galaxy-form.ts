@@ -11,6 +11,7 @@ export const GALAXY_FORM: MainInterface = {
                 select: {
                     label: 'Metaverso',
                     name: 'metaverseId',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'metaverses',
                         labelField: 'name',
@@ -45,6 +46,7 @@ export const GALAXY_FORM: MainInterface = {
         service: {
             baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
             endPoint: 'galaxies',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,

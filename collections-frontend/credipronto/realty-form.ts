@@ -12,6 +12,7 @@ export const REALTY_FORM: MainInterface = {
                 select: {
                     label: 'Tipo de imóvel',
                     name: 'tipo_imovel',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'crm/auxlist/get/tipo_imovel_list',
                         labelField: 'name',
@@ -23,6 +24,7 @@ export const REALTY_FORM: MainInterface = {
                 select: {
                     label: 'Tipo de produto',
                     name: 'tipo_produto',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'crm/auxlist/get/tipo_produto_list',
                         labelField: 'name',
@@ -34,6 +36,7 @@ export const REALTY_FORM: MainInterface = {
                 select: {
                     label: 'Tipo de taxa',
                     name: 'tabela_amortizacao',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'crm/auxlist/get/tipo_amortizacao_list',
                         labelField: 'name',
@@ -45,6 +48,7 @@ export const REALTY_FORM: MainInterface = {
                 select: {
                     label: 'UF do imóvel',
                     name: 'uf',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'crm/auxlist/get/uf_list',
                         labelField: 'name',
@@ -92,6 +96,7 @@ export const REALTY_FORM: MainInterface = {
                 select: {
                     label: 'Incorporar financiamento',
                     name: 'incorporar_financiamento',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'crm/auxlist/get/true_false',
                         labelField: 'name',
@@ -103,6 +108,7 @@ export const REALTY_FORM: MainInterface = {
                 select: {
                     label: 'Incorporar tarifa de avaliação',
                     name: 'incorporar_tarifa_avaliacao',
+                    type: FormInputTypeEnum.Text,
                     optionsApi: {
                         endpoint: 'crm/auxlist/get/true_false',
                         labelField: 'name',
@@ -121,6 +127,7 @@ export const REALTY_FORM: MainInterface = {
         service: {
             baseUrl: 'https://api.credipronto.com.br',
             endPoint: 'realties',
+            hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,
                 ServiceFunctionsEnum.Delete,
