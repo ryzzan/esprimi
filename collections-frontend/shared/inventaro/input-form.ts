@@ -1,14 +1,14 @@
-import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from '../../src/enums/form';
-import { FrontendFrameworkEnum } from '../../src/enums/main';
+import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from '../../../src/enums/form';
+import { FrontendFrameworkEnum } from '../../../src/enums/main';
 import {
   MainInterface,
-} from '../../src/interfaces/main';
+} from '../../../src/interfaces/main';
 
-export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
+export const INPUT_FORM: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   form: {
-    title: 'Título exemplo',
-    id: 'exampleForm',
+    title: 'Entrada',
+    id: 'inputForm',
     elements: [
       {
         tabs: [
@@ -16,41 +16,30 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
             title: 'Título exemplo',
             elements: [
               {
-                input: {
-                  label: 'Um input',
-                  name: 'oneInput',
-                  placeholder: 'Placeholder prum input',
-                  type: FormInputTypeEnum.Text,
-                  isRequired: true,
-                },
-              },
-              {
                 select: {
-                  label: 'Um select',
-                  name: 'oneSelect',
+                  label: 'Produto',
+                  name: 'product',
                   type: FormInputTypeEnum.Text,
-                  optionsObject: [
-                    {
-                      label: 'Opção 1',
-                      value: 'option1',
-                    },
-                    {
-                      label: 'Opção 2',
-                      value: 'option2',
-                    },
-                  ],
+                  optionsApi: {
+                    endpoint: '/products',
+                    labelField: 'name',
+                    valueField: '_id',
+                  },
                 },
               },
               {
-                  slide: {
-                      label: 'Um slide',
-                      name: 'oneSlide',
-                      placeholder: 'Placeholder prum slide',
-                      type: FormInputTypeEnum.Text
-                  }
+                input: {
+                  label: 'Quantidade',
+                  name: 'quantity',
+                  placeholder: 'Quantidade de produto',
+                  type: FormInputTypeEnum.Number,
+                  isRequired: true,
+                  todo: 'Anotar unidade de medidade de acordo com o produto escolhido'
+                },
               },
             ],
             id: 'exampleTab',
+            label: 'Rótulo exemplo',
           },
           {
             title: 'Outro título',
@@ -102,6 +91,7 @@ export const EXAMPLE_WITH_TABS_FORM: MainInterface = {
               },
             ],
             id: 'exampleOtherTab',
+            label: 'Outro rótulo',
           },
         ],
       },

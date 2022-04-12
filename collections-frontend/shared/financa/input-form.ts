@@ -88,7 +88,7 @@ export const INPUT_FORM: MainInterface = {
                             input: {
                                 label: 'Preço',
                                 name: 'productPrice',
-                                placeholder: 'Preço do serviço',
+                                placeholder: 'Preço do produto',
                                 type: FormInputTypeEnum.Text,
                                 isRequired: true,
                                 todo: 'set mask to price. set validator to only number. must create an enum of validators. must create mask attribute with enum of masks'
