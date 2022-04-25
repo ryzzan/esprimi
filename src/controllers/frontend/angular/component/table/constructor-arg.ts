@@ -21,6 +21,15 @@ export class CodeToAngularTableComponentConstructorArg {
             const componentCode = `
                                 ${hasAction}
                                 this.set${TextTransformation.pascalfy(objectToCode.table.id)}Service();
+
+                                try {
+                                    this._activatedRoute.params.subscribe(async (routeParams) => {
+                                      this.${objectToCode.table.id}Id = routeParams["id"];
+                                    });
+                                  } catch (error: any) {
+                                    const message = this._errorHandler.apiErrorMessage(error.error.message);
+                                    this.sendErrorMessage(message);
+                                  };
                                 `;
 
             return componentCode;

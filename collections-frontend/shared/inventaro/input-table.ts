@@ -4,31 +4,31 @@ import { RequestTypeEnum } from "../../../src/enums/request";
 import { MainInterface } from "../../../src/interfaces/main";
 
 
-export const PROJECT_TABLE: MainInterface = {
+export const INPUT_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'projectTable',
-    title: 'Projetos',
+    id: 'exampleTable',
+    title: 'Exemplos',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Nome',
+          label: 'Input',
         },
         row: {
           type: 'string',
-          field: 'name',
+          field: 'oneInput',
         },
       },
       {
         column: {
-          label: 'Descrição',
+          label: 'Select',
         },
         row: {
-          type: 'string',
-          field: 'description',
+          type: 'date',
+          field: 'oneSelect',
         },
       },
       {
@@ -42,15 +42,13 @@ export const PROJECT_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/project',
-                param: '_id'
+                url: '/main/example/{id}',
               },
               label: 'Editar',
             },
             {
               action: {
                 type: RequestTypeEnum.Dialog,
-                param: '_id'
               },
               label: 'Remover',
               dialog: {
@@ -63,7 +61,7 @@ export const PROJECT_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'projectTable',
+        id: 'exampleTable',
         title: 'Exemplo',
         elements: [{
             input: {
@@ -75,9 +73,9 @@ export const PROJECT_TABLE: MainInterface = {
         }]
     },
     service: {
-      hasAuthorization: true,
-        baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
-        endPoint: 'projects',
+        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+        endPoint: 'examples',
+        hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

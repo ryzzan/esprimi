@@ -68,6 +68,7 @@ export const MODULE_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Dialog,
+                param: '_id'
               },
               label: 'Remover',
               dialog: {

@@ -56,7 +56,7 @@ export class CodeToLoopbackController {
                                                     response: this.httpResponse,
                                                 })
                                         
-                                            } catch (err) {
+                                            } catch (err: any) {
                                         
                                                 return HttpResponseToClient.badRequestErrorHttpResponse({
                                                     logMessage: err.message,
@@ -95,7 +95,7 @@ export class CodeToLoopbackController {
                                                     response: this.httpResponse,
                                                 })
                                         
-                                            } catch (err) {
+                                            } catch (err: any) {
                                         
                                                 return HttpResponseToClient.badRequestErrorHttpResponse({
                                                     logMessage: err.message,
@@ -129,7 +129,7 @@ export class CodeToLoopbackController {
                                                     response: this.httpResponse,
                                                 })
                                         
-                                            } catch (err) {
+                                            } catch (err: any) {
                                         
                                                 return HttpResponseToClient.badRequestErrorHttpResponse({
                                                     logMessage: err.message,
@@ -161,7 +161,7 @@ export class CodeToLoopbackController {
                                                     response: this.httpResponse,
                                                 })
                                         
-                                            } catch (err) {
+                                            } catch (err: any) {
                                         
                                                 return HttpResponseToClient.badRequestErrorHttpResponse({
                                                     logMessage: err.message,
@@ -193,7 +193,7 @@ export class CodeToLoopbackController {
                                                     response: this.httpResponse,
                                                 })
                                         
-                                            } catch (err) {
+                                            } catch (err: any) {
                                         
                                                 return HttpResponseToClient.badRequestErrorHttpResponse({
                                                     logMessage: err.message,
@@ -224,7 +224,7 @@ export class CodeToLoopbackController {
                                                     response: this.httpResponse,
                                                 })
                                         
-                                            } catch (err) {
+                                            } catch (err: any) {
                                         
                                                 return HttpResponseToClient.badRequestErrorHttpResponse({
                                                     logMessage: err.message,

@@ -36,7 +36,7 @@ export class LoopbackArchitectureCode {
 
       console.info(`File ${componentPath} already exists.`);
       console.info(`File successfully written in ${componentFilePath}.`);
-    } catch (error) {
+    } catch (error: any) {
       console.info(`File ${componentPath} doesn't exist.`);
 
       fs.writeFileSync(componentFilePath, code);

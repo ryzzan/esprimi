@@ -13,7 +13,7 @@ export class CodeToAngularFormComponentProperty {
                                 ${object.form.id}Id: string = '';
                                 isAddModule: boolean = true;
                                 ${object.form.id}Form: FormGroup;
-                                isLoading = false;
+                                isLoading = true;
                                 `;
                                 
             return componentCode;

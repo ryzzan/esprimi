@@ -28,7 +28,7 @@ export class AngularArchitectureTemplate {
                 ComponentCodeTypeEnum.Template,
                 object
             );
-        } catch (error) {
+        } catch (error: any) {
             console.info(`Folder ${projectAndComponentPath}  doesn't exists. Going to make it.`);
             try {
                 fs.mkdirSync(projectAndComponentPath);
@@ -39,7 +39,7 @@ export class AngularArchitectureTemplate {
                     ComponentCodeTypeEnum.Template,
                     object
                 );
-            } catch (error) {
+            } catch (error: any) {
                 await AngularArchitectureCode.writeCodeToFile(
                     projectPath, 
                     componentPath, 

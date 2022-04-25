@@ -13,6 +13,7 @@ export class CodeToAngularTableComponentProperty {
                 
                 hasAction = `
                             ${properties}
+                            ${object.table.id}Id: string = '';
                             ${object.table.id}Form: FormGroup;
                             `;
             }

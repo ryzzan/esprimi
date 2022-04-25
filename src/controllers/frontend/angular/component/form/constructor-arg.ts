@@ -4,31 +4,38 @@ import {
 import {
     MainInterface
 } from "../../../../../interfaces/main";
+import { TextTransformation } from "../../../../../utils/text.transformation";
 
 export class CodeToAngularFormComponentConstructorArg {
     static customConstructorArg = (objectToCode: MainInterface): string => {
         if (objectToCode.form) {
             const componentCode = `
-                                    this._activatedRoute.params.subscribe(routeParams => {
-                                        this.${objectToCode.form.id}Id = routeParams['id'];
-                                        this.isAddModule = !this.${objectToCode.form.id}Id;
+                                    try {
+                                        this._activatedRoute.params.subscribe(async (routeParams) => {
+                                            this.${objectToCode.form.id}Id = routeParams['id'];
+                                            this.isAddModule = !this.${objectToCode.form.id}Id;
+                                        
+                                            if (this.${objectToCode.form.id}Id) {
+                                                const res: any = await this._${objectToCode.form.id}Service.find(this.${objectToCode.form.id}Id);
+                                                this.${objectToCode.form.id}Form.patchValue(res.data);
+                                            }
+                                        });
+                                    } catch(error: any) {
+                                        const message = this._errorHandler.apiErrorMessage(error.error.message);
+                                        this.sendErrorMessage(message);
+                                    };
                                     
-                                        if (this.${objectToCode.form.id}Id) {
-                                            this._${objectToCode.form.id}Service.find(this.${objectToCode.form.id}Id)
-                                            .then(res => {
-                                                if (res) this.${objectToCode.form.id}Form.patchValue(res);
-                                            })
-                                            .catch(err => {
-                                                const message = this._errorHandler.apiErrorMessage(err.error.message);
-                                                this.sendErrorMessage(message);
-                                            })
-                                        }
-                                    });
                                     
-                                    ${CodeToAngularFormComponentConstructorArg.createObjectService(objectToCode.form.elements, objectToCode)}
                                     this.${objectToCode.form.id}Form = this._formBuilder.group({
                                         ${CodeToAngularFormComponentConstructorArg.createFormBuilder(objectToCode.form.elements, objectToCode)}
                                     });
+
+                                    this.checkOptionsCreation(
+                                        [
+                                            ${CodeToAngularFormComponentConstructorArg.createObjectService(objectToCode.form.elements, objectToCode)}
+                                        ],
+                                        0
+                                    );
                                 `;
 
             return componentCode;
@@ -145,22 +152,7 @@ export class CodeToAngularFormComponentConstructorArg {
 
                     if (key === 'select') {
                         if (element?.optionsApi) {
-                            selectObjectServiceCode += ` 
-                            this._${objectToCode.form?.id}Service.${object.select.name}SelectObjectGetAll()
-                            .then(
-                                (array: any) => {
-                                    if (array.data?.result) {
-                                        for (let index = 0; index < array.data?.result.length; index++) {
-                                          const object = array.data.result[index];
-                                          
-                                          this.${object.select.name}SelectObject.push({
-                                            label: object['${element.optionsApi.labelField}'],
-                                            value: object['${element.optionsApi.valueField}']
-                                          });
-                                        }
-                                    }
-                                }
-                            );`;
+                            selectObjectServiceCode += `this.set${TextTransformation.pascalfy(element.name)}SelectObject`;
                         }
                     }
 

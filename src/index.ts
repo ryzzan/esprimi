@@ -26,7 +26,7 @@ export class Main {
         }
 
         // console.info("Here are the codes:", codes);
-      } catch (error) {
+      } catch (error: any) {
         console.error({
           component: "",
           service: "",
@@ -45,7 +45,7 @@ export class Main {
           console.info("Now the architecture!");
           await this.createBackendArchitecture(codes, array[index]);
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error({
           model: "",
           repository: "",

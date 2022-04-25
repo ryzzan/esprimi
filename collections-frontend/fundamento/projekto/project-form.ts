@@ -23,15 +23,6 @@ export const PROJECT_FORM: MainInterface = {
                     placeholder: 'Breve descrição do produto',
                     type: FormInputTypeEnum.Text,
                 },
-            },
-            {
-                input: {
-                    label: 'Chave',
-                    name: 'secret',
-                    placeholder: 'Senha de acesso ao projeto',
-                    type: FormInputTypeEnum.Text,
-                    isRequired: true,
-                },
             }
         ],
         actions: [{

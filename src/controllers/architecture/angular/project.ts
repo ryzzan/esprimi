@@ -17,7 +17,7 @@ export class AngularArchitectureProject {
         try {
             fs.readdirSync(projectPath);
             console.info(`Project folder ${projectPath} already exists.`);
-        } catch (error) {
+        } catch (error: any) {
             console.info(`Project folder ${projectPath} doesn't exist.`);
             chp.execSync(
                 `git clone ${clonePath} ${projectFolder}`, 
@@ -32,7 +32,7 @@ export class AngularArchitectureProject {
         try {
             fs.readdirSync(nodeModulePath);
             console.info(`Folder ${nodeModulePath} already exists.`);
-        } catch (error) {
+        } catch (error: any) {
             console.info(`Folder node_module isn't created. Running npm install.`);
             chp.execSync(
                 `npm install`,

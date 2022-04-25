@@ -41,8 +41,8 @@ const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/planado';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
-// const projectPath = '/home/ryzzan/Projects/projekto';
-const projectPath = '/home/ryzzan/Projects/produkto';
+const projectPath = '/home/ryzzan/Projects/projekto';
+// const projectPath = '/home/ryzzan/Projects/produkto';
 
 /**
  * EXAMPLE
@@ -96,13 +96,13 @@ const projectPath = '/home/ryzzan/Projects/produkto';
 /**
  * PROJEKTO
  */
-// import { PROJECT } from '../collections-frontend/fundamento/projekto/project';
-// import { PROJECT_FORM } from '../collections-frontend/fundamento/projekto/project-form';
-// import { PROJECT_TABLE } from '../collections-frontend/fundamento/projekto/project-table';
+import { PROJECT } from '../collections-frontend/fundamento/projekto/project';
+import { PROJECT_FORM } from '../collections-frontend/fundamento/projekto/project-form';
+import { PROJECT_TABLE } from '../collections-frontend/fundamento/projekto/project-table';
 
-// import { MODULE } from '../collections-frontend/fundamento/projekto/module';
-// import { MODULE_FORM } from '../collections-frontend/fundamento/projekto/module-form';
-// import { MODULE_TABLE } from '../collections-frontend/fundamento/projekto/module-table';
+import { MODULE } from '../collections-frontend/fundamento/projekto/module';
+import { MODULE_FORM } from '../collections-frontend/fundamento/projekto/module-form';
+import { MODULE_TABLE } from '../collections-frontend/fundamento/projekto/module-table';
 
 /**
  * LOKO
@@ -158,10 +158,10 @@ const projectPath = '/home/ryzzan/Projects/produkto';
 /**
  * PRODUKTO
  */
-import { PRODUCT } from '../collections-frontend/fundamento/produkto/product';
-import { PRODUCT_FORM } from '../collections-frontend/fundamento/produkto/product-form';
-import { PRODUCT_TABLE } from '../collections-frontend/fundamento/produkto/product-table';
-import { PRODUCT_API } from '../collections-backend/fundamento/produkto/product';
+// import { PRODUCT } from '../collections-frontend/fundamento/produkto/product';
+// import { PRODUCT_FORM } from '../collections-frontend/fundamento/produkto/product-form';
+// import { PRODUCT_TABLE } from '../collections-frontend/fundamento/produkto/product-table';
+// import { PRODUCT_API } from '../collections-backend/fundamento/produkto/product';
 
 /**
  * SERVO
@@ -226,7 +226,42 @@ import { PRODUCT_API } from '../collections-backend/fundamento/produkto/product'
 // import { COMPONENT_TABLE } from '../collections-frontend/esprimi-backoffice/component-table';
 // import { COMPONENT } from '../collections-frontend/esprimi-backoffice/component';
 
+/**
+ * INVENTARO
+ */
+// import { BORROW_FORM } from '../collections-frontend/shared/inventaro/borrow-form';
+// import { BORROW_TABLE } from '../collections-frontend/shared/inventaro/borrow-table';
+// import { BORROW } from '../collections-frontend/shared/inventaro/borrow';
 
+// import { INPUT_FORM } from '../collections-frontend/shared/inventaro/input-form';
+// import { INPUT_TABLE } from '../collections-frontend/shared/inventaro/input-table';
+// import { INPUT } from '../collections-frontend/shared/inventaro/input';
+
+// import { OUTPUT_FORM } from '../collections-frontend/shared/inventaro/output-form';
+// import { OUTPUT_TABLE } from '../collections-frontend/shared/inventaro/output-table';
+// import { OUTPUT } from '../collections-frontend/shared/inventaro/output';
+
+/**
+ * LEGOMO: BACKOFFICE ADMINISTRATIVO
+ */
+
+//  import { INVITATION } from '../collections-frontend/kunlatek-quickstart/invitation';
+//  import { INVITATION_FORM } from '../collections-frontend/kunlatek-quickstart/invitation-form';
+//  import { INVITATION_TABLE } from '../collections-frontend/kunlatek-quickstart/invitation-table';
+
+//  import { PERMISSION } from '../collections-frontend/kunlatek-quickstart/permission';
+//  import { PERMISSION_FORM } from '../collections-frontend/kunlatek-quickstart/permission-form';
+//  import { PERMISSION_TABLE } from '../collections-frontend/kunlatek-quickstart/permission-table';
+  
+//  import { PRODUCT } from '../collections-frontend/fundamento/produkto/product';
+//  import { PRODUCT_FORM } from '../collections-frontend/fundamento/produkto/product-form';
+//  import { PRODUCT_TABLE } from '../collections-frontend/fundamento/produkto/product-table';
+
+//  import { INPUT_FORM } from '../collections-frontend/shared/inventaro/input-form';
+//  import { INPUT_TABLE } from '../collections-frontend/shared/inventaro/input-table';
+//  import { INPUT } from '../collections-frontend/shared/inventaro/input';
+
+ // TO-DO: FINANCIAL REPORT
 //////////////////////////////////////////////////////////
 const main = new Main(),
     array = [
@@ -266,16 +301,18 @@ const main = new Main(),
          */
         // AVAILABILITY_FORM, AVAILABILITY_TABLE, AVAILABILITY,
         // SCHEDULE_FORM, SCHEDULE_TABLE, SCHEDULE,
-        // FINANCA
+        
+        /**
+         * FINANCA
+         */
         // INPUT_FORM, INPUT_TABLE, INPUT,
         // OUTPUT_FORM, OUTPUT_TABLE, OUTPUT,
-
+        
         /**
-         * FUNDAMENTO
+         * PROJEKTO
          */
-        // PROJEKTO
-        // PROJECT_FORM, PROJECT_TABLE, PROJECT,
-        // MODULE_FORM, MODULE_TABLE, MODULE,
+        PROJECT_FORM, PROJECT_TABLE, PROJECT,
+        MODULE_FORM, MODULE_TABLE, MODULE,
 
         /**
          * LOKO
@@ -296,7 +333,7 @@ const main = new Main(),
         /**
          * PRODUKTO
          */
-        PRODUCT_FORM, PRODUCT_TABLE, PRODUCT, PRODUCT_API
+        // PRODUCT_FORM, PRODUCT_TABLE, PRODUCT,
 
         /**
          * SERVO
@@ -309,6 +346,21 @@ const main = new Main(),
         // PROJECT_FORM, PROJECT_TABLE, PROJECT,
         // MODULE_FORM, MODULE_TABLE, MODULE,
         // COMPONENT_FORM, COMPONENT_TABLE, COMPONENT,
+
+        /**
+         * INVENTARO
+         */
+        // INPUT_FORM, INPUT_TABLE, INPUT,
+        // OUTPUT_FORM, OUTPUT_TABLE, OUTPUT,
+        // BORROW_FORM, BORROW_TABLE, BORROW,
+
+        /**
+         * LEGOMO
+         */
+        //  PRODUCT_FORM, PRODUCT_TABLE, PRODUCT,
+        //  PERMISSION_FORM, PERMISSION_TABLE, PERMISSION,
+        //  INVITATION_FORM, INVITATION_TABLE, INVITATION,
+        //  INPUT_FORM, INPUT_TABLE, INPUT,
     ];
 
 array.forEach(object => {
@@ -323,6 +375,6 @@ main.createCode(array)
     .then(res => {
         console.log(res);
     })
-    .catch(err => {
-        console.log(err);
+    .catch(error => {
+        console.log(error);
     });

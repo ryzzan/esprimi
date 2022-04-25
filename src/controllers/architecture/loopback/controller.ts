@@ -23,7 +23,7 @@ export class LoopbackArchitectureController {
                 ComponentCodeTypeEnum.Controller,
                 object
             );
-        } catch (error) {
+        } catch (error: any) {
             console.info(`Folder ${projectAndControllerPath}  doesn't exists. Going to make it.`);
             try {
                 await LoopbackArchitectureCode.writeCodeToFile(
@@ -33,7 +33,7 @@ export class LoopbackArchitectureController {
                     ComponentCodeTypeEnum.Controller,
                     object
                 );
-            } catch (error) {
+            } catch (error: any) {
                 await LoopbackArchitectureCode.writeCodeToFile(
                     projectPath,
                     controllerPath,

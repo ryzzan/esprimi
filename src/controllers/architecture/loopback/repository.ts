@@ -23,7 +23,7 @@ export class LoopbackArchitectureRepository {
                 ComponentCodeTypeEnum.Repository,
                 object
             );
-        } catch (error) {
+        } catch (error: any) {
             console.info(`Folder ${projectAndRepositoryPath}  doesn't exists. Going to make it.`);
             try {
                 await LoopbackArchitectureCode.writeCodeToFile(
@@ -33,7 +33,7 @@ export class LoopbackArchitectureRepository {
                     ComponentCodeTypeEnum.Repository,
                     object
                 );
-            } catch (error) {
+            } catch (error: any) {
                 await LoopbackArchitectureCode.writeCodeToFile(
                     projectPath,
                     repositoryPath,

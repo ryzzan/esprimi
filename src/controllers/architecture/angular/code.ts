@@ -28,7 +28,7 @@ export class AngularArchitectureCode {
             fs.writeFileSync(componentFilePath, code);
             console.info(`File ${componentPath} already exists.`);
             console.info(`File successfully written in ${componentFilePath}.`);
-        } catch (error) {
+        } catch (error: any) {
             console.info(`File ${componentPath} doesn't exist.`);
 
             try {
@@ -36,7 +36,7 @@ export class AngularArchitectureCode {
                     `ng g c components/${componentPath} --skip-import`,
                     {cwd: projectPath}
                 );
-            } catch (error) {
+            } catch (error: any) {
                 console.warn(error);
             }
 

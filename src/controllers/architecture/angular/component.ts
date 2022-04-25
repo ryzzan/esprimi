@@ -29,7 +29,7 @@ export class AngularArchitectureComponent {
                 ComponentCodeTypeEnum.Component,
                 object
             );
-        } catch (error) {
+        } catch (error: any) {
             console.info(`Folder ${projectAndComponentPath}  doesn't exists. Going to make it.`);
             try {
                 chp.execSync(
@@ -43,7 +43,7 @@ export class AngularArchitectureComponent {
                     ComponentCodeTypeEnum.Component,
                     object
                 );
-            } catch (error) {
+            } catch (error: any) {
                 await AngularArchitectureCode.writeCodeToFile(
                     projectPath, 
                     componentPath, 
