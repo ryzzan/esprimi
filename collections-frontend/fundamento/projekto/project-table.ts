@@ -15,6 +15,15 @@ export const PROJECT_TABLE: MainInterface = {
     elements: [
       {
         column: {
+          label: 'Id',
+        },
+        row: {
+          type: 'string',
+          field: '_id',
+        },
+      },
+      {
+        column: {
           label: 'Nome',
         },
         row: {

@@ -19,6 +19,13 @@ export class CodeToAngularFormComponentConstructorArg {
                                                 const res: any = await this._${objectToCode.form.id}Service.find(this.${objectToCode.form.id}Id);
                                                 this.${objectToCode.form.id}Form.patchValue(res.data);
                                             }
+
+                                            this.checkOptionsCreation(
+                                                [
+                                                    ${CodeToAngularFormComponentConstructorArg.createObjectService(objectToCode.form.elements, objectToCode)}
+                                                ],
+                                                0
+                                            );
                                         });
                                     } catch(error: any) {
                                         const message = this._errorHandler.apiErrorMessage(error.error.message);
@@ -29,13 +36,6 @@ export class CodeToAngularFormComponentConstructorArg {
                                     this.${objectToCode.form.id}Form = this._formBuilder.group({
                                         ${CodeToAngularFormComponentConstructorArg.createFormBuilder(objectToCode.form.elements, objectToCode)}
                                     });
-
-                                    this.checkOptionsCreation(
-                                        [
-                                            ${CodeToAngularFormComponentConstructorArg.createObjectService(objectToCode.form.elements, objectToCode)}
-                                        ],
-                                        0
-                                    );
                                 `;
 
             return componentCode;

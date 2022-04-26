@@ -57,7 +57,7 @@ export class CodeToAngularTableComponentMethod {
             };
 
             redirectTo = (uri:string) => {
-                this.router.navigateByUrl('/', {skipLocationChange: true})
+                this.router.navigateByUrl('/main', {skipLocationChange: true})
                 .then(() => {
                     this.router.navigate([uri]);
                 });

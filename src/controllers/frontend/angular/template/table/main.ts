@@ -15,24 +15,19 @@ export class CodeToAngularTableTemplate {
             '';
 
         const tableTemplate = `
-                            <div class="loading" *ngIf="isLoading">
-                                <div class="centralized">
-                                    <mat-spinner></mat-spinner>
-                                </div>
-                            </div>
                             <mat-card>
                                 <mat-card-header>
                                     ${hasTableTitle}
                                     ${hasTableSubtitle}
                                 </mat-card-header>
 
-                                <mat-card-content>
+                                <mat-card-content class="table-container">
                                     <table mat-table [dataSource]="${object.table.id}DataSource" class="mat-elevation-z8">
                                     ${CodeToAngularTableTemplateColumnsAndRows.createColumnsAndRows(object)}                                    
                                         <tr mat-header-row *matHeaderRowDef="${object.table.id}DisplayedColumns"></tr>
                                         <tr mat-row *matRowDef="let row; columns: ${object.table.id}DisplayedColumns;"></tr>                                        
                                     </table>
-                                    <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; background: white;">
+                                    <div *ngIf="isLoading" class="loading">
                                         <mat-progress-spinner color="primary" mode="indeterminate">
                                         </mat-progress-spinner>
                                     </div>
