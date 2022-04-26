@@ -31,12 +31,6 @@ export class CodeToAngularFormTemplate {
             '';
 
         const formTemplate = `
-                            <div class="loading" *ngIf="isLoading">
-                                <div class="centralized">
-                                    <mat-spinner></mat-spinner>
-                                </div>
-                            </div>
-
                             <mat-card>
                                 <mat-card-header>
                                     ${hasFormTitle}

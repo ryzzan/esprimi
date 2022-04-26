@@ -21,6 +21,18 @@ export class CodeToAngularTableTemplate {
                                     ${hasTableSubtitle}
                                 </mat-card-header>
 
+                                <mat-card-actions>
+                                    <form id="${object.table.id}" [formGroup]="${object.table.id}SearchForm" (ngSubmit)="${object.table.id}Search()">
+                                        <mat-form-field appearance="standard">
+                                            <mat-label>Filtro</mat-label>
+                                            <input matInput formControlName="searchInput" placeholder="Procure qualquer coisa">
+                                        </mat-form-field>
+                                        <button mat-raised-button color="primary">
+                                            <mat-icon>search</mat-icon> Filtrar
+                                        </button>
+                                    </form>
+                                </mat-card-actions>
+
                                 <mat-card-content class="table-container">
                                     <table mat-table [dataSource]="${object.table.id}DataSource" class="mat-elevation-z8">
                                     ${CodeToAngularTableTemplateColumnsAndRows.createColumnsAndRows(object)}                                    

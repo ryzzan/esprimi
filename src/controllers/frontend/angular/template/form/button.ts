@@ -10,6 +10,10 @@ export class CodeToAngularFormTemplateButton {
             button.type === FormButtonTypeEnum.Submit ?
             `{{isAddModule?'Criar' : 'Editar'}}` :
             button.label;
+        const icon = 
+            button.type === FormButtonTypeEnum.Submit ?
+            `{{isAddModule?'save' : 'edit'}}` :
+            button.icon;
         const disabled = FormButtonTypeEnum.Submit ?
             `[disabled]="!${object.form?.id}Form.valid || isLoading"` : '';
         let codeButton = '';
@@ -21,9 +25,10 @@ export class CodeToAngularFormTemplateButton {
             color = `color="warn" ${dialogAction}`;
         if (button.type === FormButtonTypeEnum.Reset) color = `color="accent"`;
 
-        if (button.type === FormButtonTypeEnum.Submit)
+        if (button.type === FormButtonTypeEnum.Submit){
             codeButton += `<mat-card-actions>`;
-        codeButton += `<button mat-raised-button ${color} ${disabled}>${label}</button>`;
+        }
+        codeButton += `<button mat-raised-button ${color} ${disabled}><mat-icon>${icon}</mat-icon>${label}</button>`;
         if (button.type === FormButtonTypeEnum.Submit)
             codeButton += `</mat-card-actions>`;
             

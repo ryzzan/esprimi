@@ -66,8 +66,22 @@ export class CodeToAngularTableComponentMethod {
         const componentCode = `
                             ${CodeToAngularTableComponentMethod.setTableElements(object, object.table.elements)}
                             ${hasAction}
-                            set${TextTransformation.pascalfy(object.table.id)}Service = () => {
-                                this._${object.table.id}Service.getAll()
+                            
+                            ${object.table.id}Search() {
+                              this.isLoading = true;
+                          
+                              const filter = \`?"where":{"or":[\${this.${object.table.id}DisplayedColumns.map((element: string) => {
+                                if(element !== "undefined") { 
+                                  return \`{"\${element}":"\${this.${object.table.id}SearchForm.value.searchInput}"}\`
+                                }
+                                return "";
+                              })}]}\`;
+                          
+                              this.set${TextTransformation.pascalfy(object.table.id)}Service(filter);
+                            }
+
+                            set${TextTransformation.pascalfy(object.table.id)}Service = (filter: string = '') => {
+                                this._${object.table.id}Service.getAll(filter)
                                 .then((result: any) => {
                                   this.${object.table.id}DataSource = result?.data.result ? result?.data.result : result?.data;
                                   this.isLoading = false;

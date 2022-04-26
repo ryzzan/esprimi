@@ -20,6 +20,11 @@ export class CodeToAngularTableComponentConstructorArg {
 
             const componentCode = `
                                 ${hasAction}
+                                
+                                this.${objectToCode.table.id}SearchForm = this._formBuilder.group({
+                                    searchInput: [null, []],
+                                });
+
                                 this.set${TextTransformation.pascalfy(objectToCode.table.id)}Service();
 
                                 try {

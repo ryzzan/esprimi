@@ -62,9 +62,9 @@ export class CodeToAngularService {
             switch (element) {
                 case 'get':
                     code += `
-                            getAll() {
+                            getAll(filter: string = "") {
                                 return this._httpClient.get(
-                                    \`\${this.BASE_URL}/${service.endPoint}\`, {
+                                    \`\${this.BASE_URL}/${service.endPoint}\${filter}\`, {
                                     headers: {
                                         ${hasAuthorization}
                                     }

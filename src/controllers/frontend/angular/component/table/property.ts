@@ -21,7 +21,8 @@ export class CodeToAngularTableComponentProperty {
             const componentCode = `
                                 ${hasAction}
                                 ${CodeToAngularTableComponentProperty.setTableObject(object)}
-                                ${object.table.id}DataSource: any = []; 
+                                ${object.table.id}DataSource: any = [];
+                                ${object.table.id}SearchForm: FormGroup;
                                 isLoading = true;
                                 `;
 
