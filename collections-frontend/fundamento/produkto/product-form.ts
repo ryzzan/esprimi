@@ -1,9 +1,10 @@
 import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../../../src/enums/main";
 import { MainInterface } from "../../../src/interfaces/main";
 
 export const PRODUCT_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
+    // backendFramework: BackendFrameworkEnum.Loopback,
     form: {
         title: 'Produto',
         id: 'productForm',
@@ -139,7 +140,7 @@ export const PRODUCT_FORM: MainInterface = {
                                                 name: 'input',
                                                 type: FormInputTypeEnum.Text,
                                                 optionsApi: {
-                                                    endpoint: 'product',
+                                                    endpoint: 'products',
                                                     labelField: 'name',
                                                     valueField: '_id'
                                                 }
@@ -271,7 +272,7 @@ export const PRODUCT_FORM: MainInterface = {
         }, ],
         service: {
             hasAuthorization: true,
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+            baseUrl: 'http://localhost:3000',
             endPoint: 'products',
             methods: [
                 ServiceFunctionsEnum.Get,

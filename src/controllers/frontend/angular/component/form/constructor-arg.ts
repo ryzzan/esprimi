@@ -152,7 +152,7 @@ export class CodeToAngularFormComponentConstructorArg {
 
                     if (key === 'select') {
                         if (element?.optionsApi) {
-                            selectObjectServiceCode += `this.set${TextTransformation.pascalfy(element.name)}SelectObject`;
+                            selectObjectServiceCode += `this.set${TextTransformation.pascalfy(element.name)}SelectObject,`;
                         }
                     }
 

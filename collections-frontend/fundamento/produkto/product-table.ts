@@ -42,13 +42,15 @@ export const PRODUCT_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/product/{id}',
+                url: '/main/products',
+                param: '_id'
               },
               label: 'Editar',
             },
             {
               action: {
                 type: RequestTypeEnum.Dialog,
+                param: '_id'
               },
               label: 'Remover',
               dialog: {
@@ -74,7 +76,7 @@ export const PRODUCT_TABLE: MainInterface = {
     },
     service: {
       hasAuthorization: true,
-      baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+      baseUrl: 'http://localhost:3000',
       endPoint: 'products',
       methods: [
           ServiceFunctionsEnum.Get,
