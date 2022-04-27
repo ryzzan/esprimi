@@ -10,7 +10,7 @@ export const environment = {
         messagingSenderId: '61322235717',
         measurementId: 'G-V8W65TSX41',
     },
-    baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
+    baseUrl: 'http://localhost:3000',
     production: false
 };`;
 
@@ -25,9 +25,39 @@ export const environment = {
         messagingSenderId: '61322235717',
         measurementId: 'G-V8W65TSX41',
     },
-    baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
+    baseUrl: 'http://localhost:3000',
     production: true
 };`;
+
+// const envFrontDev = `
+// export const environment = {
+//     firebase: {
+//         projectId: 'kunlatek-quickstart',
+//         appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+//         storageBucket: 'kunlatek-quickstart.appspot.com',
+//         apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+//         authDomain: 'kunlatek-quickstart.firebaseapp.com',
+//         messagingSenderId: '61322235717',
+//         measurementId: 'G-V8W65TSX41',
+//     },
+//     baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
+//     production: false
+// };`;
+
+// const envFrontProd = `
+// export const environment = {
+//     firebase: {
+//         projectId: 'kunlatek-quickstart',
+//         appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+//         storageBucket: 'kunlatek-quickstart.appspot.com',
+//         apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+//         authDomain: 'kunlatek-quickstart.firebaseapp.com',
+//         messagingSenderId: '61322235717',
+//         measurementId: 'G-V8W65TSX41',
+//     },
+//     baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
+//     production: true
+// };`;
 
 const clonePath = 'https://github.com/ryzzan/kunlatek-quickstart';
 // const clonePath = 'https://github.com/ryzzan/lopes-quickstart';

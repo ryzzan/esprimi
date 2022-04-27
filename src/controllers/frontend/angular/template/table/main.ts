@@ -40,8 +40,8 @@ export class CodeToAngularTableTemplate {
                                         <tr mat-row *matRowDef="let row; columns: ${object.table.id}DisplayedColumns;"></tr>                                        
                                     </table>
                                     <div *ngIf="isLoading" class="loading">
-                                        <mat-progress-spinner color="primary" mode="indeterminate">
-                                        </mat-progress-spinner>
+                                        <mat-progress-bar color="primary" mode="buffer">
+                                        </mat-progress-bar>
                                     </div>
                                 </mat-card-content>
                             </mat-card>

@@ -39,8 +39,8 @@ export class CodeToAngularFormTemplate {
 
                                 <mat-card-content>
                                     <div *ngIf="isLoading" class="loading">
-                                        <mat-progress-spinner color="primary" mode="indeterminate">
-                                        </mat-progress-spinner>
+                                        <mat-progress-bar color="primary" mode="buffer">
+                                        </mat-progress-bar>
                                     </div>
                                     <form id="${object.form.id}" [formGroup]="${object.form.id}Form" #${object.form.id}Directive="ngForm" (ngSubmit)="${object.form.id}Submit(${object.form.id}Directive)" *ngIf="!isLoading">
                                         ${this.createFormInputs(object, object.form)}
