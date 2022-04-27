@@ -31,7 +31,7 @@ export class CodeToLoopbackController {
                                         ) { }
                                         
                                         @authenticate({strategy: 'autentikigo', options: {collection: '%pascalfy(${modelName})%', action: 'createOne'}})
-                                        @post('/%kebabfy(${modelName})%')
+                                        @post('/%pluralize(%kebabfy(${modelName})%)%')
                                         @response(200, {
                                             description: '%pascalfy(${modelName})% model instance',
                                             properties: HttpDocumentation.createDocResponseSchemaForFindOneResult(%pascalfy(${modelName})%)
@@ -69,7 +69,7 @@ export class CodeToLoopbackController {
                                         }
                                         
                                         @authenticate({strategy: 'autentikigo', options: {collection: '%pascalfy(${modelName})%', action: 'read'}})
-                                        @get('/%kebabfy(${modelName})%')
+                                        @get('/%pluralize(%kebabfy(${modelName})%)%')
                                         @response(200, {
                                             description: 'Array of %pascalfy(${modelName})% model instances',
                                             properties: HttpDocumentation.createDocResponseSchemaForFindManyResults(%pascalfy(${modelName})%)
@@ -108,7 +108,7 @@ export class CodeToLoopbackController {
                                         }
                                         
                                         @authenticate({strategy: 'autentikigo', options: {collection: '%pascalfy(${modelName})%', action: 'readOne'}})
-                                        @get('/%kebabfy(${modelName})%/{id}')
+                                        @get('/%pluralize(%kebabfy(${modelName})%)%/{id}')
                                         @response(200, {
                                             description: '%pascalfy(${modelName})% model instance',
                                             properties: HttpDocumentation.createDocResponseSchemaForFindOneResult(%pascalfy(${modelName})%)
@@ -142,7 +142,7 @@ export class CodeToLoopbackController {
                                         }
                                         
                                         @authenticate({strategy: 'autentikigo', options: {collection: '%pascalfy(${modelName})%', action: 'updateOne'}})
-                                        @put('/%kebabfy(${modelName})%/{id}')
+                                        @put('/%pluralize(%kebabfy(${modelName})%)%/{id}')
                                         @response(200, {description: '%pascalfy(${modelName})% PUT success'})
                                         async updateById(
                                             @param.path.string('id') id: string,
@@ -174,7 +174,7 @@ export class CodeToLoopbackController {
                                         }
                                         
                                         @authenticate({strategy: 'autentikigo', options: {collection: '%pascalfy(${modelName})%', action: 'updateOne'}})
-                                        @patch('/%kebabfy(${modelName})%/{id}')
+                                        @patch('/%pluralize(%kebabfy(${modelName})%)%/{id}')
                                         @response(200, {description: '%pascalfy(${modelName})% PATCH success'})
                                         async partialUpdateById(
                                             @param.path.string('id') id: string,
@@ -206,7 +206,7 @@ export class CodeToLoopbackController {
                                         }
                                         
                                         @authenticate({strategy: 'autentikigo', options: {collection: '%pascalfy(${modelName})%', action: 'deleteOne'}})
-                                        @del('/%kebabfy(${modelName})%/{id}')
+                                        @del('/%pluralize(%kebabfy(${modelName})%)%/{id}')
                                         @response(204, {description: 'Project DELETE success'})
                                         async deleteById(
                                             @param.path.string('id') id: string,
@@ -242,6 +242,7 @@ export class CodeToLoopbackController {
 
         code = TextTransformation.replaceKebabfyFunctionToString(code);
         code = TextTransformation.replacePascalfyFunctionToString(code);
+        code = TextTransformation.replacePlurarizeFunctionToString(code);
 
         return code;
     };
