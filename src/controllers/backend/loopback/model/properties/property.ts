@@ -25,7 +25,7 @@ export class CodeToLoopbackModelProperty {
 
             if (validTypes.includes(type)) {
 
-                const propertyType = value.isMultiple ? 'array' : (value.type === 'number' ? 'number' : 'string')
+                const propertyType = value.isMultiple ? 'array' : 'any' //(value.type === 'number' ? 'number' : 'string')
 
                 properties += `
                             @property({
