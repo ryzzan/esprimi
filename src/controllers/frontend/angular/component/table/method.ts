@@ -70,14 +70,14 @@ export class CodeToAngularTableComponentMethod {
                             ${object.table.id}Search() {
                               this.isLoading = true;
                           
-                              const filter = \`?"where":{"or":[\${this.${object.table.id}DisplayedColumns.map((element: string) => {
+                              const filter = \`?filter={"or":[\${this.${object.table.id}DisplayedColumns.map((element: string) => {
                                 if(element !== "undefined") { 
                                   return \`{"\${element}":"\${this.${object.table.id}SearchForm.value.searchInput}"}\`
                                 }
                                 return "";
                               })}]}\`;
                           
-                              this.set${TextTransformation.pascalfy(object.table.id)}Service(filter);
+                              this.set${TextTransformation.pascalfy(object.table.id)}Service(filter.replace("},]", "}]"));
                             }
 
                             set${TextTransformation.pascalfy(object.table.id)}Service = (filter: string = '') => {

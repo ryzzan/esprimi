@@ -4,7 +4,7 @@ import { MainInterface } from "../../../src/interfaces/main";
 
 export const PRODUCT_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
-    // backendFramework: BackendFrameworkEnum.Loopback,
+    backendFramework: BackendFrameworkEnum.Loopback,
     form: {
         title: 'Produto',
         id: 'productForm',
@@ -46,11 +46,29 @@ export const PRODUCT_FORM: MainInterface = {
                                     label: 'NCM',
                                     name: 'ncm',
                                     type: FormInputTypeEnum.Text,
-                                    optionsApi: {
-                                        endpoint: 'ncm',
-                                        labelField: 'name',
-                                        valueField: '_id'
-                                    },
+                                    optionsObject: [
+                                        {
+                                            label: 'Artesanal',
+                                            value: 'ARTISANAL'
+                                        },
+                                        {
+                                            label: 'Básico',
+                                            value: 'BASIC'
+                                        },
+                                        {
+                                            label: 'Manufaturado',
+                                            value: 'MANUFACTURED'
+                                        },
+                                        {
+                                            label: 'Semimanufaturado',
+                                            value: 'SEMIMANUFACTURED'
+                                        }
+                                    ],
+                                    // optionsApi: {
+                                    //     endpoint: 'ncm',
+                                    //     labelField: 'name',
+                                    //     valueField: '_id'
+                                    // },
                                     isRequired: true
                                 }
                             },
