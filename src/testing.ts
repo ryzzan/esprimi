@@ -1,4 +1,44 @@
 import { Main } from './index';
+/**
+ * LOPES API
+ */
+// const envFrontDev = `
+// export const environment = {
+//     firebase: {
+//         projectId: 'kunlatek-quickstart',
+//         appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+//         storageBucket: 'kunlatek-quickstart.appspot.com',
+//         apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+//         authDomain: 'kunlatek-quickstart.firebaseapp.com',
+//         messagingSenderId: '61322235717',
+//         measurementId: 'G-V8W65TSX41',
+//     },
+//     baseUrl: 'https://devapilogin.lpsbr.com/api/v1',
+//     clientId: '3bb9f7e7-a96f-4657-8039-4755de62a233',
+//     clientSecret: 'b80a0043-c89d-4571-bb96-515e27a4808f',
+//     production: false
+// };`;
+
+// const envFrontProd = `
+// export const environment = {
+//     firebase: {
+//         projectId: 'kunlatek-quickstart',
+//         appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+//         storageBucket: 'kunlatek-quickstart.appspot.com',
+//         apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+//         authDomain: 'kunlatek-quickstart.firebaseapp.com',
+//         messagingSenderId: '61322235717',
+//         measurementId: 'G-V8W65TSX41',
+//     },
+//     baseUrl: '????',
+//     clientId: '3bb9f7e7-a96f-4657-8039-4755de62a233',
+//     clientSecret: 'b80a0043-c89d-4571-bb96-515e27a4808f',
+//     production: true
+// };`;
+
+/**
+ * LOCAL API
+ */
 const envFrontDev = `
 export const environment = {
     firebase: {
@@ -29,6 +69,9 @@ export const environment = {
     production: true
 };`;
 
+/**
+ * PROJEKTO API
+ */
 // const envFrontDev = `
 // export const environment = {
 //     firebase: {
@@ -60,7 +103,7 @@ export const environment = {
 // };`;
 
 const clonePath = 'https://github.com/ryzzan/kunlatek-quickstart';
-// const clonePath = 'https://github.com/ryzzan/lopes-quickstart';
+// const clonePath = 'https://github.com/ryzzan/new-lopes-quickstart';
 
 const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api';
 
@@ -72,7 +115,8 @@ const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/esprimi-backoffice';
 // const projectPath = '/home/ryzzan/Projects/Kunlatek/kunlatek-quickstart';
 // const projectPath = '/home/ryzzan/Projects/projekto';
-const projectPath = '/home/ryzzan/Projects/produkto';
+// const projectPath = '/home/ryzzan/Projects/produkto';
+const projectPath = '/home/ryzzan/Projects/generic-test';
 
 /**
  * EXAMPLE
@@ -290,6 +334,13 @@ import { PRODUCT_TABLE } from '../collections-frontend/fundamento/produkto/produ
 //  import { INPUT_TABLE } from '../collections-frontend/shared/inventaro/input-table';
 //  import { INPUT } from '../collections-frontend/shared/inventaro/input';
 
+/**
+ * GENERIC TEST
+ */
+// import {USER_GROUP_FORM} from '../collections-frontend/generic-test/user-group-form';
+// import {USER_GROUP_TABLE} from '../collections-frontend/generic-test/user-group-table';
+// import {USER_GROUP} from '../collections-frontend/generic-test/user-group';
+
  // TO-DO: FINANCIAL REPORT
 //////////////////////////////////////////////////////////
 const main = new Main(),
@@ -390,6 +441,11 @@ const main = new Main(),
         //  PERMISSION_FORM, PERMISSION_TABLE, PERMISSION,
         //  INVITATION_FORM, INVITATION_TABLE, INVITATION,
         //  INPUT_FORM, INPUT_TABLE, INPUT,
+
+        /**
+         * GENERIC TEST
+         */
+        // USER_GROUP_FORM, USER_GROUP_TABLE, USER_GROUP
     ];
 
 array.forEach(object => {

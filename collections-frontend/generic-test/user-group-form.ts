@@ -88,8 +88,8 @@ export const USER_GROUP_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
-            endPoint: 'userGroups',
+            baseUrl: 'http://devbackadmin.lpsbr.com:/api/v1',
+            endPoint: 'user-groups',
             hasAuthorization: true,
             methods: [
                 ServiceFunctionsEnum.Get,

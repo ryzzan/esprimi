@@ -15,20 +15,20 @@ export const USER_GROUP_TABLE: MainInterface = {
     elements: [
       {
         column: {
+          label: 'UUID',
+        },
+        row: {
+          type: 'string',
+          field: 'uuid',
+        },
+      },
+      {
+        column: {
           label: 'Nome do grupo',
         },
         row: {
           type: 'string',
           field: 'name',
-        },
-      },
-      {
-        column: {
-          label: 'Usuários',
-        },
-        row: {
-          type: 'string',
-          field: 'users',
         },
       },
       {
@@ -42,13 +42,15 @@ export const USER_GROUP_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/userGroup/{id}',
+                url: '/main/user-group',
+                param: 'uuid'
               },
               label: 'Editar',
             },
             {
               action: {
                 type: RequestTypeEnum.Dialog,
+                param: 'uuid'
               },
               label: 'Remover',
               dialog: {
@@ -73,8 +75,8 @@ export const USER_GROUP_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
-        endPoint: 'userGroups',
+        baseUrl: 'http://devbackadmin.lpsbr.com:/api/v1',
+        endPoint: 'user-groups?sort=description (asc)&page=0&size=25',
         hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,
