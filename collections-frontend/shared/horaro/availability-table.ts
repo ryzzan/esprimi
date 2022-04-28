@@ -82,7 +82,7 @@ export const AVAILABILITY_TABLE: MainInterface = {
         }]
     },
     service: {
-        baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+        baseUrl: 'http://localhost:3000',
         endPoint: 'availabilities',
         hasAuthorization: true,
         methods: [

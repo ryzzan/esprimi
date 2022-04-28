@@ -75,7 +75,7 @@ export const COMPONENT_TABLE: MainInterface = {
     },
     service: {
       hasAuthorization: true,
-      baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
+      baseUrl: 'http://localhost:3000',
         endPoint: 'components',
         methods: [
             ServiceFunctionsEnum.Get,

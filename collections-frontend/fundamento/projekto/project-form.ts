@@ -1,9 +1,10 @@
 import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../../../src/enums/main";
 import { MainInterface } from "../../../src/interfaces/main";
 
 export const PROJECT_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
+    backendFramework: BackendFrameworkEnum.Loopback,
     form: {
         title: 'Projeto',
         id: 'projectForm',
@@ -34,7 +35,7 @@ export const PROJECT_FORM: MainInterface = {
         }, ],
         service: {
             hasAuthorization: true,
-            baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
+            baseUrl: 'http://localhost:3000',
             endPoint: 'projects',
             methods: [
                 ServiceFunctionsEnum.Get,

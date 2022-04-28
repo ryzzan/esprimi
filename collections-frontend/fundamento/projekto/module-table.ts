@@ -94,7 +94,7 @@ export const MODULE_TABLE: MainInterface = {
     },
     service: {
       hasAuthorization: true,
-        baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
+        baseUrl: 'http://localhost:3000',
         endPoint: 'modules',
         methods: [
             ServiceFunctionsEnum.Get,

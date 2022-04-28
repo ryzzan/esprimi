@@ -44,7 +44,7 @@ export const ADDRESS_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+            baseUrl: 'http://localhost:3000',
             endPoint: 'addresses',
             hasAuthorization: true,
             methods: [

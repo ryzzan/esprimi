@@ -1,5 +1,5 @@
 import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../../../src/enums/main";
 import { RequestTypeEnum } from "../../../src/enums/request";
 import { MainInterface } from "../../../src/interfaces/main";
 
@@ -85,7 +85,7 @@ export const PROJECT_TABLE: MainInterface = {
     },
     service: {
       hasAuthorization: true,
-        baseUrl: 'https://projekto-tftftsuywa-uc.a.run.app',
+        baseUrl: 'http://localhost:3000',
         endPoint: 'projects',
         methods: [
             ServiceFunctionsEnum.Get,

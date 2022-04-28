@@ -61,7 +61,7 @@ export const REALTY_RATE_PARAMETER_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+            baseUrl: 'http://localhost:3000',
             endPoint: 'realty-rate-parameters',
             hasAuthorization: true,
             methods: [

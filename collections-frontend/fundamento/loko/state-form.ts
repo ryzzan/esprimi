@@ -44,7 +44,7 @@ export const STATE_FORM: MainInterface = {
             },
         }, ],
         service: {
-            baseUrl: 'https://kunlatek-quickstart-api-tftftsuywa-uc.a.run.app',
+            baseUrl: 'http://localhost:3000',
             endPoint: 'states',
             hasAuthorization: true,
             methods: [
