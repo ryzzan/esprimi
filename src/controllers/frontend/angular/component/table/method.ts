@@ -71,8 +71,8 @@ export class CodeToAngularTableComponentMethod {
                               this.isLoading = true;
                           
                               const filter = \`?filter={"or":[\${this.${object.table.id}DisplayedColumns.map((element: string) => {
-                                if(element !== "undefined") { 
-                                  return \`{"\${element}":"\${this.${object.table.id}SearchForm.value.searchInput}"}\`
+                                if(element !== "undefined") {
+                                  return \`{"\${element}":{"like": "\${this.${object.table.id}SearchForm.value.searchInput}", "options": "i"}}\`
                                 }
                                 return "";
                               })}]}\`;
