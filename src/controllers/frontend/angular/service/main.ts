@@ -211,6 +211,20 @@ export class CodeToAngularService {
                             }`;
                         }
                     }
+
+                    if (key === 'autocomplete') {
+                        selectObjectServiceCode += `
+                        ${object.autocomplete.name}SelectObjectGetAll(filter: string = "") {
+                            return this._httpClient.get(
+                                \`\${this.BASE_URL}/${element.optionsApi.endpoint}\${filter}\`, {
+                                headers: {
+                                    ${hasAuthorization}
+                                }
+                            }
+                            ).toPromise();
+                        }
+                        `;
+                    }
                 }
             }
         });

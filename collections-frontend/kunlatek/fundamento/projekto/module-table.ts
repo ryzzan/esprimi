@@ -1,25 +1,25 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { RequestTypeEnum } from "../../src/enums/request";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../../../src/enums/main";
+import { RequestTypeEnum } from "../../../../src/enums/request";
+import { MainInterface } from "../../../../src/interfaces/main";
 
 
-export const PERMISSION_GROUP_TABLE: MainInterface = {
+export const MODULE_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'permissionGroupTable',
-    title: 'Grupos de permissão',
+    id: 'moduleTable',
+    title: 'Módulos',
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Nome do grupo',
+          label: 'Id',
         },
         row: {
           type: 'string',
-          field: 'name',
+          field: '_id',
         },
       },
       {
@@ -28,25 +28,25 @@ export const PERMISSION_GROUP_TABLE: MainInterface = {
         },
         row: {
           type: 'string',
-          field: 'module',
+          field: 'name',
         },
       },
       {
         column: {
-          label: 'Aplicativo',
+          label: 'Descrição',
         },
         row: {
           type: 'string',
-          field: 'application',
+          field: 'description',
         },
       },
       {
         column: {
-          label: 'Permissões',
+          label: 'Componentes',
         },
         row: {
           type: 'string',
-          field: 'permissions',
+          field: 'components',
         },
       },
       {
@@ -60,15 +60,15 @@ export const PERMISSION_GROUP_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/permissionGroup',
-                param: 'uuid'
+                url: '/main/module',
+                param: '_id'
               },
               label: 'Editar',
             },
             {
               action: {
                 type: RequestTypeEnum.Dialog,
-                param: 'uuid'
+                param: '_id'
               },
               label: 'Remover',
               dialog: {
@@ -81,21 +81,21 @@ export const PERMISSION_GROUP_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'permissionGroupTable',
-        title: 'Grupo de permissão',
+        id: 'moduleTable',
+        title: 'Exemplo',
         elements: [{
             input: {
-                label: 'Grupo modelo',
-                name: 'name',
-                placeholder: 'Nome do grupo',
+                label: 'Search input',
+                name: 'searchInput',
+                placeholder: 'Placeholder to search input',
                 type: FormInputTypeEnum.Text
             }
         }]
     },
     service: {
+      hasAuthorization: true,
         baseUrl: 'http://localhost:3000',
-        endPoint: 'permissionGroups',
-        hasAuthorization: true,
+        endPoint: 'modules',
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,

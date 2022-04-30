@@ -18,7 +18,7 @@ export class CodeToAngularComponent {
         object: MainInterface
     ): Promise<string> => {
         const componentSkeletonCode = `
-                                    import { Component, OnInit } from '@angular/core';
+                                    import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
                                     %IMPORTS%
 
                                     %INTERFACES%

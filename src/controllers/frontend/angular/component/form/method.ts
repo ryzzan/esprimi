@@ -123,15 +123,17 @@ export class CodeToAngularFormComponentMethod {
             }
 
             if (element.input?.type === FormInputTypeEnum.File) {
-                methods += `onFileSelected(event: any) {
-                                if (event.target.files.length > 0) {
-                                    const file = event.target.files[0];
-                                    this.fileName = file.name;
-                                    const formData = new FormData();
-                                
-                                    this.fileFormForm.get('${element.input.name}')?.setValue(file);
-                                }
-                            }`;
+                methods += `
+                onFileSelected(event: any) {
+                    if (event.target.files.length > 0) {
+                        const file = event.target.files[0];
+                        this.fileName = file.name;
+                        const formData = new FormData();
+                    
+                        this.fileFormForm.get('${element.input.name}')?.setValue(file);
+                    }
+                }
+                `;
             }
 
             if (element.select?.optionsApi) {
@@ -155,7 +157,76 @@ export class CodeToAngularFormComponentMethod {
                         );
                         this.sendErrorMessage(message);
                     };
-                };`;
+                };
+                `;
+            }
+
+            if (element.autocomplete) {
+                methods += `
+                add${TextTransformation.pascalfy(element.autocomplete.name)}(event: MatChipInputEvent): void {
+                    const value = (event.value || '').trim();
+                    
+                    if (value) {
+                        this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.push(value);
+                    }
+
+                    event.chipInput!.clear();
+
+                    this.${object.form?.id}Form.get('${element.autocomplete.name}')?.setValue(null);
+                };
+
+                remove${TextTransformation.pascalfy(element.autocomplete.name)}(element: string): void {
+                    const index = this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.indexOf(element);
+                
+                    if (index >= 0) {
+                        this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.splice(index, 1);
+                    }
+                };
+
+                selected${TextTransformation.pascalfy(element.autocomplete.name)}(event: MatAutocompleteSelectedEvent): void {
+                    this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.push(event.option.viewValue);
+                    this.${element.autocomplete.name}Input.nativeElement.value = '';
+                    this.${object.form?.id}Form.get('${element.autocomplete.name}')?.setValue(null);
+                };
+
+                setFiltered${TextTransformation.pascalfy(element.autocomplete.name)} = async () => {
+                    try {
+                        const paramsToFilter = [${element.autocomplete.optionsApi.paramsToFilter.map(element => {
+                            return `"${element}"`;
+                        })}];
+
+                        if(this.${object.form?.id}Form.value.${element.autocomplete.name}.length > 0) {
+                            const filter = \`?filter={"or":[\${paramsToFilter.map((element: string) => {
+                                if(element !== "undefined") {
+                                    return \`{"\${element}":{"like": "\${this.${object.form?.id}Form.value.${element.autocomplete.name}}", "options": "i"}}\`
+                                }
+                                return "";
+                            })}]}\`;
+                            
+                            this._${object.form?.id}Service.${element.autocomplete.name}SelectObjectGetAll(filter.replace("},]", "}]"))
+                            .then((result: any) => {
+                                this.filtered${TextTransformation.pascalfy(element.autocomplete.name)} = result?.data.result ? result?.data.result : result?.data;
+                            })
+                            .catch(async err => {
+                                if (err.error.logMessage === 'jwt expired') {
+                                    await this.refreshToken();
+                                    this.setFiltered${TextTransformation.pascalfy(element.autocomplete.name)}();
+                                } else {
+                                    const message = this._errorHandler.apiErrorMessage(err.error.message);
+                                    this.sendErrorMessage(message);
+                                };
+                            });
+                        }
+                    } catch (error: any) {
+                        const message = this._errorHandler.apiErrorMessage(
+                          error.error.message
+                        );
+                        this.sendErrorMessage(message);
+                    };
+                };
+
+                callSetFiltered${TextTransformation.pascalfy(element.autocomplete.name)} = MyPerformance.debounce(() => this.setFiltered${TextTransformation.pascalfy(element.autocomplete.name)}());
+                `;
             }
         }
 
@@ -169,8 +240,10 @@ export class CodeToAngularFormComponentMethod {
             const element = elements[index];
 
             if (element.input?.type === FormInputTypeEnum.File) {
-                file += `const formData = new FormData();
-                        formData.append('myFile', this.${object.form?.id}Form.get('${element.input.name}')?.value);`
+                file += `
+                const formData = new FormData();
+                formData.append('myFile', this.${object.form?.id}Form.get('${element.input.name}')?.value);
+                `
             }
         }
 

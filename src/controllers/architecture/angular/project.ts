@@ -7,7 +7,7 @@ export class AngularArchitectureProject {
         object: MainInterface
     ) => {
         const projectPath = object.projectPath;
-        const clonePath = object.clonePath;
+        const cloneFrontendPath = object.cloneFrontendPath;
         const projectFolder = projectPath.split(/[\/]+/).pop();
         const splitProjectFolder = projectPath.split(/[\/]+/);
         const projectFolderParent = splitProjectFolder.slice(0, splitProjectFolder.length - 1).join('/');
@@ -20,7 +20,7 @@ export class AngularArchitectureProject {
         } catch (error: any) {
             console.info(`Project folder ${projectPath} doesn't exist.`);
             chp.execSync(
-                `git clone ${clonePath} ${projectFolder}`, 
+                `git clone ${cloneFrontendPath} ${projectFolder}`, 
                 {cwd: projectFolderParent}
             );
 

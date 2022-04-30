@@ -1,6 +1,7 @@
 import { FormInputTypeEnum } from "../../../../../enums/form";
 import { FormElementInterface } from "../../../../../interfaces/form";
 import { MainInterface } from "../../../../../interfaces/main";
+import { TextTransformation } from "../../../../../utils/text.transformation";
 
 export class CodeToAngularFormComponentProperty {
     static customProperties = (object: MainInterface): string => {
@@ -50,6 +51,16 @@ export class CodeToAngularFormComponentProperty {
                 if (element.select.optionsApi) {
                     properties += `${element.select.name}SelectObject: Array<SelectObjectInterface> = [];`;
                 }
+            }
+
+            if (element.autocomplete) {
+                properties += `
+                separatorKeysCodes: number[] = [ENTER, COMMA];
+                filtered${TextTransformation.pascalfy(element.autocomplete.name)}: Array<any> = [];
+                chosen${TextTransformation.pascalfy(element.autocomplete.name)}: string[] = [];
+                
+                @ViewChild('${element.autocomplete.name}Input') ${element.autocomplete.name}Input!: ElementRef<HTMLInputElement>;
+                `;
             }
 
             if (element.checkbox) {

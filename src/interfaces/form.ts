@@ -20,6 +20,7 @@ export interface ServiceInterface {
 }
 export interface FormElementInterface {
   array?: FormInterface;
+  autocomplete?: AutocompleteInterface;
   button?: ButtonInterface;
   checkbox?: CheckboxInterface;
   radio?: RadioInterface;
@@ -69,7 +70,7 @@ export interface DatalistInterface {
     type: FormInputTypeEnum;
     label: string;
     name: string;
-    placeholder: string;
+    placeholder?: string;
     condition?: string;
     isAutoFocus?: boolean; // Specifies that an <input> element should automatically get focus when the page loads
     isChecked?: boolean; // Specifies that an <input> element should be pre-selected when the page loads (for type="checkbox" or type="radio")
@@ -130,6 +131,15 @@ export interface DatalistInterface {
     isSelected?: boolean;
     todo?: string;
   }
+
+  export interface AutocompleteApiInterface {
+    endpoint: string;
+    labelField: string;
+    paramsToFilter: Array<string>;
+    isDisabled?: boolean;
+    isSelected?: boolean;
+    todo?: string;
+  }
   
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   export interface OutputInterface {}
@@ -142,6 +152,23 @@ export interface DatalistInterface {
     optgroups?: Array<OptgroupInterface>;
     optionsObject?: Array<OptionInterface>;
     optionsApi?: OptionApiInterface;
+    size?: number;
+    validators?: Array<string>;
+    isAutofocus?: boolean;
+    isDisabled?: boolean;
+    isMultiple?: boolean;
+    isRequired?: boolean;
+    todo?: string;
+  }
+
+  export interface AutocompleteInterface {
+    type: FormInputTypeEnum;
+    name: string;
+    label: string;
+    placeholder?: string;
+    condition?: string;
+    optgroups?: Array<OptgroupInterface>;
+    optionsApi: AutocompleteApiInterface;
     size?: number;
     validators?: Array<string>;
     isAutofocus?: boolean;

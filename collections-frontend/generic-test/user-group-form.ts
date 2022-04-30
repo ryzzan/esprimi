@@ -53,32 +53,46 @@ export const USER_GROUP_FORM: MainInterface = {
                     todo: 'Autocomplete'
                 },
             },
+            // {
+            //     select: {
+            //         label: 'Usuários',
+            //         name: 'users',
+            //         type: FormInputTypeEnum.Text,
+            //         optionsObject: [{
+            //                 label: 'Usuário 1',
+            //                 value: 'user1',
+            //             },
+            //             {
+            //                 label: 'Usuário 2',
+            //                 value: 'user2',
+            //             }, 
+            //             {
+            //                 label: 'Usuário 3',
+            //                 value: 'user3',
+            //             },
+            //             {
+            //                 label: 'Usuário 4',
+            //                 value: 'user4',
+            //             }
+            //         ],
+            //         isMultiple: true,
+            //         todo: 'Autocomplete'
+            //     },
+            // },
             {
-                select: {
+                autocomplete: {
                     label: 'Usuários',
                     name: 'users',
                     type: FormInputTypeEnum.Text,
-                    optionsObject: [{
-                            label: 'Usuário 1',
-                            value: 'user1',
-                        },
-                        {
-                            label: 'Usuário 2',
-                            value: 'user2',
-                        }, 
-                        {
-                            label: 'Usuário 3',
-                            value: 'user3',
-                        },
-                        {
-                            label: 'Usuário 4',
-                            value: 'user4',
-                        }
-                    ],
+                    optionsApi: {
+                        endpoint: 'users?sort=description (asc)&page=0&size=25',
+                        labelField: 'name',
+                        paramsToFilter: ['name'],
+                    },
                     isMultiple: true,
                     todo: 'Autocomplete'
                 },
-            }
+            },
         ],
         actions: [{
             button: {

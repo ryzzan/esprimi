@@ -7,53 +7,55 @@ import { MainInterface } from "../../src/interfaces/main";
 export const EXAMPLE_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'exampleTable',
-    title: 'Exemplos',
+    id: "exampleTable",
+    title: "Exemplos",
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Input',
+          label: "Input",
         },
         row: {
-          type: 'string',
-          field: 'oneInput',
+          type: "string",
+          field: "oneInput",
         },
       },
       {
         column: {
-          label: 'Select',
+          label: "Select",
         },
         row: {
-          type: 'date',
-          field: 'oneSelect',
+          type: "date",
+          field: "oneSelect",
         },
       },
       {
         column: {
-          label: 'Ações',
+          label: "Ações",
         },
         row: {
-          type: 'menu',
-          icon: 'more_vert',
+          type: "menu",
+          icon: "more_vert",
           menu: [
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/example/{id}',
+                url: "/main/example",
+                param: "_id",
               },
-              label: 'Editar',
+              label: "Editar",
             },
             {
               action: {
                 type: RequestTypeEnum.Dialog,
+                param: "_id",
               },
-              label: 'Remover',
+              label: "Remover",
               dialog: {
-                templateFolder: 'remove-confirmation-dialog',
-                id: 'removeConfirmationDialog',
+                templateFolder: "remove-confirmation-dialog",
+                id: "removeConfirmationDialog",
               },
             },
           ],
@@ -61,20 +63,20 @@ export const EXAMPLE_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'exampleTable',
-        title: 'Exemplo',
+        id: "exampleTable",
+        title: "Exemplo",
         elements: [{
             input: {
-                label: 'Search input',
-                name: 'searchInput',
-                placeholder: 'Placeholder to search input',
+                label: "Search input",
+                name: "searchInput",
+                placeholder: "Placeholder to search input",
                 type: FormInputTypeEnum.Text
             }
         }]
     },
     service: {
-        baseUrl: 'http://localhost:3000',
-        endPoint: 'examples',
+        baseUrl: "http://localhost:3000",
+        endPoint: "examples",
         hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,

@@ -11,12 +11,14 @@ import {
 import {
     TextTransformation
 } from "../../../../../utils/text.transformation";
+import { CodeToAngularFormTemplateAutocomplete } from "./autocomplete";
 import { CodeToAngularFormTemplateButton } from "./button";
 import { CodeToAngularFormTemplateCheckbox } from "./checkbox";
 
 import { CodeToAngularFormTemplateInput } from "./input";
 import { CodeToAngularFormTemplateRadio } from "./radio";
 import { CodeToAngularFormTemplateSelect } from "./select";
+import { CodeToAngularFormTemplateSlide } from "./slide";
 
 export class CodeToAngularFormTemplate {
     createFormSkeleton(object: MainInterface): string {
@@ -69,6 +71,8 @@ export class CodeToAngularFormTemplate {
 
         elements.forEach((element: FormElementInterface) => {
             if (element.input) code += CodeToAngularFormTemplateInput.createInput(element.input);
+            if (element.slide) code += CodeToAngularFormTemplateSlide.createSlide(element.slide);
+            if (element.autocomplete) code += CodeToAngularFormTemplateAutocomplete.createAutocomplete(element.autocomplete);
             if (element.select) code += CodeToAngularFormTemplateSelect.createSelect(element.select);
             if (element.checkbox) code += CodeToAngularFormTemplateCheckbox.createCheckbox(element.checkbox);
             if (element.radio) code += CodeToAngularFormTemplateRadio.createRadio(element.radio);

@@ -99,7 +99,7 @@ export class CodeToAngularFormComponentConstructorArg {
                                         ],`;
                     }
 
-                    if (key === 'select') {
+                    if (key === 'select' || key === 'autocomplete') {
                         if (element?.isRequired) element.validators?.push('required');
                         
                         codeElement += `${element?.name}: 
