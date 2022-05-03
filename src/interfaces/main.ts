@@ -10,6 +10,7 @@ export interface MainInterface {
   frontendFramework?: FrontendFrameworkEnum;
   envFrontendDev?: string;
   envFrontendProd?: string;
+  envBackend?: string;
   cloneFrontendPath?: string;
   cloneBackendPath?: string;
   projectPath?: any;

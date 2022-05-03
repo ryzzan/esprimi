@@ -30,6 +30,8 @@ export const environment = {
     production: true
 };`;
 
+const envBackend = `PROJECT_ID=627029a156c838db880e4b92`
+
 const cloneFrontendPath = 'https://github.com/ryzzan/kunlatek-quickstart';
 
 const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api';
@@ -78,13 +80,13 @@ import { CHARACTER } from '../collections-frontend/example/character';
 // import {FINANCE} from '../collections-frontend/clients/daxtv/finance';
 
 
- // TO-DO: FINANCIAL REPORT
+// TO-DO: FINANCIAL REPORT
 //////////////////////////////////////////////////////////
 const main = new Main(),
     array = [
         ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
         CHARACTER_FORM, CHARACTER_TABLE, CHARACTER,
-        
+
         /**
          * GENERIC TEST
          */
@@ -106,6 +108,7 @@ array.forEach(object => {
     object.cloneBackendPath = cloneBackendPath;
     object.envFrontendDev = envFrontDev;
     object.envFrontendProd = envFrontProd;
+    object.envBackend = envBackend;
 });
 
 main.createCode(array)
