@@ -32,9 +32,9 @@ PORT=3000
 SERVER_ROOT_URI=http://localhost
 CLIENT_REDIRECT_URI=http://localhost:4200
 MONGO_URL=mongodb+srv://kunlatek:Kunlatek751@cluster0.b0pfr.mongodb.net/fundamento\n
-PROJECT_ID=\n
 NODEMAILER_USER=
 NODEMAILER_PASS=
+${object.envBackend}
                 `
             );
         }

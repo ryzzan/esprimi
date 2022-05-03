@@ -13,7 +13,10 @@ export class CodeToLoopbackModelProperty {
     }
 
     static createModelProperties = (elements: Array<FormElementInterface>): string => {
-        const validTypes = ['checkbox', 'radio', 'datalist', 'fieldset', 'input', 'select', 'slide', 'textarea']
+        const validTypes = ['checkbox', 'radio', 'datalist', 'fieldset', 'input', 'select', 'slide', 'textarea', 'autocomplete']
+
+        const stringTypes = ['email', 'password', 'tel', 'text', 'url']
+        const numberTypes = ['number']
 
         let properties = '';
 
@@ -25,7 +28,12 @@ export class CodeToLoopbackModelProperty {
 
             if (validTypes.includes(type)) {
 
-                const propertyType = value.isMultiple ? 'array' : 'any' //(value.type === 'number' ? 'number' : 'string')
+                const propertyType = value.isMultiple ?
+                    'array' :
+                    (
+                        stringTypes.includes(value.type) ? 'String' :
+                            (numberTypes.includes(value.type) ? 'number' : 'any')
+                    )
 
                 properties += `
                             @property({
