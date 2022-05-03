@@ -30,7 +30,7 @@ export const environment = {
     production: true
 };`;
 
-const envBackend = `PROJECT_ID=627029a156c838db880e4b92`
+const envBackend = `PROJECT_ID=`
 
 const cloneFrontendPath = 'https://github.com/ryzzan/kunlatek-quickstart';
 
