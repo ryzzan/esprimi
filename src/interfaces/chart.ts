@@ -1,4 +1,6 @@
-export interface ChartConfigInterface {
+export interface ChartInterface {
+  title?: string;
+  subtitle?: string;
   bar?: ChartBarInterface;
   bubble?: ChartBubbleInterface;
   doughnut?: ChartDoughtnutInterface;
@@ -12,6 +14,7 @@ export interface ChartConfigInterface {
 // https://www.chartjs.org/docs/latest/charts/bar.html
 
 export interface ChartBarInterface {
+  id: string;
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -29,6 +32,7 @@ export interface ChartBarInterface {
 
 // https://www.chartjs.org/docs/latest/charts/bubble.html
 export interface ChartBubbleInterface {
+  id: string;
   datasets: [{
     data: [{
       x: number;
@@ -44,6 +48,7 @@ export interface ChartBubbleInterface {
 
 // https://www.chartjs.org/docs/latest/charts/doughnut.html
 export interface ChartDoughtnutInterface {
+  id: string;
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -64,6 +69,7 @@ export interface ChartDoughtnutInterface {
 };
 
 export interface ChartPieInterface {
+  id: string;
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -85,6 +91,7 @@ export interface ChartPieInterface {
 
 // https://www.chartjs.org/docs/latest/charts/line.html
 export interface ChartLineInterface {
+  id: string;
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -108,6 +115,7 @@ export interface ChartLineInterface {
 
 // https://www.chartjs.org/docs/latest/charts/polar.html
 export interface ChartPolaAreaInterface {
+  id: string;
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -126,6 +134,7 @@ export interface ChartPolaAreaInterface {
 
 // https://www.chartjs.org/docs/latest/charts/radar.html
 export interface ChartRadarInterface {
+  id: string;
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -151,6 +160,7 @@ export interface ChartRadarInterface {
 
 // https://www.chartjs.org/docs/latest/charts/scatter.html
 export interface ChartScatterInterface {
+  id: string;
   labels: Array<string>;
   datasets: [{
     data: [{
