@@ -46,8 +46,10 @@ export class CodeToLoopbackController {
                                         
                                                 const createdBy = this.currentUser?.[securityId] as string;
                                                 const ownerId = this.currentUser?.ownerId as string;
+
+                                                const dataWithoutNullProperties = Object.fromEntries(Object.entries(data).filter(([_, v]) => v != null));
                                             
-                                                const dataCreated = await this.repository.create({...data, _createdBy: createdBy, _ownerId: ownerId});
+                                                const dataCreated = await this.repository.create({...dataWithoutNullProperties, _createdBy: createdBy, _ownerId: ownerId});
                                             
                                                 return HttpResponseToClient.createHttpResponse({
                                                     data: dataCreated,
@@ -152,8 +154,10 @@ export class CodeToLoopbackController {
                                             @param.query.string('locale') locale?: LocaleEnum,
                                         ): Promise<IHttpResponse> {
                                             try {
+
+                                                const dataWithoutNullProperties = Object.fromEntries(Object.entries(data).filter(([_, v]) => v != null));
                                         
-                                                await this.repository.updateById(id, data);
+                                                await this.repository.updateById(id, dataWithoutNullProperties);
                                             
                                                 return HttpResponseToClient.noContentHttpResponse({
                                                     locale,
@@ -184,8 +188,10 @@ export class CodeToLoopbackController {
                                             @param.query.string('locale') locale?: LocaleEnum,
                                         ): Promise<IHttpResponse> {
                                             try {
+
+                                                const dataWithoutNullProperties = Object.fromEntries(Object.entries(data).filter(([_, v]) => v != null));
                                         
-                                                await this.repository.updateById(id, data);
+                                                await this.repository.updateById(id, dataWithoutNullProperties);
                                             
                                                 return HttpResponseToClient.noContentHttpResponse({
                                                     locale,
