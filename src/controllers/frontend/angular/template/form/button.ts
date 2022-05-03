@@ -8,11 +8,11 @@ export class CodeToAngularFormTemplateButton {
         const dialogAction = '';
         const label =
             button.type === FormButtonTypeEnum.Submit ?
-            `{{isAddModule?'Criar' : 'Editar'}}` :
+            `{{isAddModule ? 'Criar' : 'Editar'}}` :
             button.label;
         const icon = 
             button.type === FormButtonTypeEnum.Submit ?
-            `{{isAddModule?'save' : 'edit'}}` :
+            `{{isAddModule ? 'save' : 'edit'}}` :
             button.icon;
         const disabled = FormButtonTypeEnum.Submit ?
             `[disabled]="!${object.form?.id}Form.valid || isLoading"` : '';

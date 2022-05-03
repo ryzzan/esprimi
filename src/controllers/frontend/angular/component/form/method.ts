@@ -162,33 +162,36 @@ export class CodeToAngularFormComponentMethod {
             }
 
             if (element.autocomplete) {
-                methods += `
-                add${TextTransformation.pascalfy(element.autocomplete.name)}(event: MatChipInputEvent): void {
-                    const value = (event.value || '').trim();
+                if (element.autocomplete.isMultiple) {
+                    methods += `
+                    add${TextTransformation.pascalfy(element.autocomplete.name)}(event: MatChipInputEvent): void {
+                        const value = (event.value || '').trim();
+                        
+                        if (value) {
+                            this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.push(value);
+                        }
+    
+                        event.chipInput!.clear();
+    
+                        this.${object.form?.id}Form.get('${element.autocomplete.name}')?.setValue(null);
+                    };
+    
+                    remove${TextTransformation.pascalfy(element.autocomplete.name)}(element: string): void {
+                        const index = this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.indexOf(element);
                     
-                    if (value) {
-                        this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.push(value);
-                    }
+                        if (index >= 0) {
+                            this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.splice(index, 1);
+                        }
+                    };
+                    
+                    selected${TextTransformation.pascalfy(element.autocomplete.name)}(event: MatAutocompleteSelectedEvent): void {
+                        this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.push(event.option.viewValue);
+                        this.${element.autocomplete.name}Input.nativeElement.value = '';
+                        this.${object.form?.id}Form.get('${element.autocomplete.name}')?.setValue(null);
+                    };`;
+                }
 
-                    event.chipInput!.clear();
-
-                    this.${object.form?.id}Form.get('${element.autocomplete.name}')?.setValue(null);
-                };
-
-                remove${TextTransformation.pascalfy(element.autocomplete.name)}(element: string): void {
-                    const index = this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.indexOf(element);
-                
-                    if (index >= 0) {
-                        this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.splice(index, 1);
-                    }
-                };
-
-                selected${TextTransformation.pascalfy(element.autocomplete.name)}(event: MatAutocompleteSelectedEvent): void {
-                    this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.push(event.option.viewValue);
-                    this.${element.autocomplete.name}Input.nativeElement.value = '';
-                    this.${object.form?.id}Form.get('${element.autocomplete.name}')?.setValue(null);
-                };
-
+                methods += `
                 setFiltered${TextTransformation.pascalfy(element.autocomplete.name)} = async () => {
                     try {
                         const paramsToFilter = [${element.autocomplete.optionsApi.paramsToFilter.map(element => {

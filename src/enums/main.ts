@@ -4,7 +4,7 @@ export enum BackendFrameworkEnum {
     Gin = 'GIN',
     Django = 'DJANGO',
     Springboot = 'SPRINGBOOT',
-}
+};
 
 export enum FrontendFrameworkEnum {
     Angular = 'ANGULAR',
@@ -12,4 +12,4 @@ export enum FrontendFrameworkEnum {
     Svelte = 'SVELTE',
     Vue = 'VUE',
     Pure = 'FLUTTER',
-}
+};

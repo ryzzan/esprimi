@@ -4,31 +4,29 @@ import { RequestTypeEnum } from "../../src/enums/request";
 import { MainInterface } from "../../src/interfaces/main";
 
 
-export const EXAMPLE_TABLE: MainInterface = {
+export const CHARACTER_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: "exampleTable",
-    title: "Exemplos",
+    id: "characterTable",
+    title: "Personagens",
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: "Input",
+          label: "Nome",
         },
         row: {
-          type: "string",
-          field: "oneInput",
+          field: "name",
         },
       },
       {
         column: {
-          label: "Select",
+          label: "Animação relacionada",
         },
         row: {
-          type: "date",
-          field: "oneSelect",
+          field: "animationId",
         },
       },
       {
@@ -42,7 +40,7 @@ export const EXAMPLE_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: "/main/example",
+                url: "/main/character",
                 param: "_id",
               },
               label: "Editar",
@@ -63,7 +61,7 @@ export const EXAMPLE_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: "exampleTable",
+        id: "characterTable",
         title: "Exemplo",
         elements: [{
             input: {
@@ -76,7 +74,7 @@ export const EXAMPLE_TABLE: MainInterface = {
     },
     service: {
         baseUrl: "http://localhost:3000",
-        endPoint: "examples",
+        endPoint: "characters",
         hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,

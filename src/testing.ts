@@ -34,14 +34,18 @@ const cloneFrontendPath = 'https://github.com/ryzzan/kunlatek-quickstart';
 
 const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api';
 
-const projectPath = '/home/ryzzan/Projects/daxtv';
+const projectPath = '/home/ryzzan/Projects/example';
 
 /**
  * EXAMPLE
  */
-// import { EXAMPLE } from '../collections-frontend/example/example';
-// import { EXAMPLE_WITHOUT_TABS_FORM } from '../collections-frontend/example/example-without-tabs-form';
-// import { EXAMPLE_WITH_TABS_FORM } from '../collections-frontend/example/example-with-tabs-form';
+import { ANIMATION_FORM } from '../collections-frontend/example/animation-form';
+import { ANIMATION_TABLE } from '../collections-frontend/example/animation-table';
+import { ANIMATION } from '../collections-frontend/example/animation';
+
+import { CHARACTER_FORM } from '../collections-frontend/example/character-form';
+import { CHARACTER_TABLE } from '../collections-frontend/example/character-table';
+import { CHARACTER } from '../collections-frontend/example/character';
 
 
 /**
@@ -58,19 +62,29 @@ const projectPath = '/home/ryzzan/Projects/daxtv';
 /**
  * CLIENT
  */
-import {FINANCE_TABLE} from '../collections-frontend/clients/daxtv/finance-table';
-import {FINANCE} from '../collections-frontend/clients/daxtv/finance';
+//  import {PACK_FORM} from '../collections-frontend/clients/daxtv/pack-form';
+//  import {PACK_TABLE} from '../collections-frontend/clients/daxtv/pack-table';
+//  import {PACK} from '../collections-frontend/clients/daxtv/pack';
 
-import {COMPANY_CLIENT_FORM} from '../collections-frontend/clients/daxtv/company-client-form';
-import {COMPANY_CLIENT_TABLE} from '../collections-frontend/clients/daxtv/company-client-table';
-import {COMPANY_CLIENT} from '../collections-frontend/clients/daxtv/company-client';
+// import {PERSON_CLIENT_FORM} from '../collections-frontend/clients/daxtv/person-client-form';
+// import {PERSON_CLIENT_TABLE} from '../collections-frontend/clients/daxtv/person-client-table';
+// import {PERSON_CLIENT} from '../collections-frontend/clients/daxtv/person-client';
+
+// import {COMPANY_CLIENT_FORM} from '../collections-frontend/clients/daxtv/company-client-form';
+// import {COMPANY_CLIENT_TABLE} from '../collections-frontend/clients/daxtv/company-client-table';
+// import {COMPANY_CLIENT} from '../collections-frontend/clients/daxtv/company-client';
+
+// import {FINANCE_TABLE} from '../collections-frontend/clients/daxtv/finance-table';
+// import {FINANCE} from '../collections-frontend/clients/daxtv/finance';
+
 
  // TO-DO: FINANCIAL REPORT
 //////////////////////////////////////////////////////////
 const main = new Main(),
     array = [
-        // EXAMPLE_WITH_TABS_FORM, EXAMPLE_TABLE, EXAMPLE
-
+        ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
+        CHARACTER_FORM, CHARACTER_TABLE, CHARACTER,
+        
         /**
          * GENERIC TEST
          */
@@ -80,8 +94,10 @@ const main = new Main(),
         /**
          * CLIENT
          */
-        FINANCE_TABLE, FINANCE,
-        COMPANY_CLIENT_FORM, COMPANY_CLIENT_TABLE, COMPANY_CLIENT,
+        // FINANCE_TABLE, FINANCE,
+        // COMPANY_CLIENT_FORM, COMPANY_CLIENT_TABLE, COMPANY_CLIENT,
+        // PERSON_CLIENT_FORM, PERSON_CLIENT_TABLE, PERSON_CLIENT,
+        // PACK_FORM, PACK_TABLE, PACK,
     ];
 
 array.forEach(object => {

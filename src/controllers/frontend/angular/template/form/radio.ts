@@ -2,7 +2,7 @@ import { RadioInterface } from "../../../../../interfaces/form";
 
 export class CodeToAngularFormTemplateRadio {
     static createRadio(radio: RadioInterface): string {
-        const required = radio.isRequired?'required' : '';
+        const required = radio.isRequired ? 'required' : '';
         
         const codeRadio = `<label id="${radio.name}-radio-group-label">{{${radio.label}}}</label>
         <mat-radio-group

@@ -55,7 +55,7 @@ export class CodeToAngularFormComponentProperty {
 
             if (element.autocomplete) {
                 properties += `
-                separatorKeysCodes: number[] = [ENTER, COMMA];
+                ${element.autocomplete.name}SeparatorKeysCodes: number[] = [ENTER, COMMA];
                 filtered${TextTransformation.pascalfy(element.autocomplete.name)}: Array<any> = [];
                 chosen${TextTransformation.pascalfy(element.autocomplete.name)}: string[] = [];
                 

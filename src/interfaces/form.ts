@@ -76,7 +76,7 @@ export interface DatalistInterface {
     isChecked?: boolean; // Specifies that an <input> element should be pre-selected when the page loads (for type="checkbox" or type="radio")
     isDisabled?: boolean;
     isFormNoValidate?: boolean;
-    isMultiple?: boolean;
+    isMultipleLines?: boolean;
     isReadOnly?: boolean;
     isRequired?: boolean;
     accept?: string; // Specifies a filter for what file types the user can pick from the file input dialog box (only for type="file")
@@ -135,6 +135,7 @@ export interface DatalistInterface {
   export interface AutocompleteApiInterface {
     endpoint: string;
     labelField: string;
+    valueField: string;
     paramsToFilter: Array<string>;
     isDisabled?: boolean;
     isSelected?: boolean;

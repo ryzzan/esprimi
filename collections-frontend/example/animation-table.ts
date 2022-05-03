@@ -1,14 +1,14 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../../src/enums/main";
-import { RequestTypeEnum } from "../../../src/enums/request";
-import { MainInterface } from "../../../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
+import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../../src/enums/main";
+import { RequestTypeEnum } from "../../src/enums/request";
+import { MainInterface } from "../../src/interfaces/main";
 
 
-export const PACK_TABLE: MainInterface = {
+export const ANIMATION_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: "packTable",
-    title: "Pacotes",
+    id: "animationTable",
+    title: "Exemplos",
     data: {
       type: RequestTypeEnum.Object,
     },
@@ -23,34 +23,18 @@ export const PACK_TABLE: MainInterface = {
       },
       {
         column: {
-          label: "Canais",
+          label: "Data de início",
         },
         row: {
-          field: "channels",
+          field: "startDate",
         },
       },
       {
         column: {
-          label: "Preço",
+          label: "Data do fim",
         },
         row: {
-          field: "price",
-        },
-      },
-      {
-        column: {
-          label: "Telas",
-        },
-        row: {
-          field: "screenQuantity",
-        },
-      },
-      {
-        column: {
-          label: "Gravação",
-        },
-        row: {
-          field: "recordingTime",
+          field: "finishDate",
         },
       },
       {
@@ -64,7 +48,7 @@ export const PACK_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: "/main/pack",
+                url: "/main/animation",
                 param: "_id",
               },
               label: "Editar",
@@ -85,8 +69,8 @@ export const PACK_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: "packTable",
-        title: "Pacote",
+        id: "animationTable",
+        title: "Exemplo",
         elements: [{
             input: {
                 label: "Search input",
@@ -98,7 +82,7 @@ export const PACK_TABLE: MainInterface = {
     },
     service: {
         baseUrl: "http://localhost:3000",
-        endPoint: "packs",
+        endPoint: "animations",
         hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,
