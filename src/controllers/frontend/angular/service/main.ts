@@ -43,6 +43,13 @@ export class CodeToAngularService {
             code = code.replace('%SERVICES%', serviceCode);
         }
 
+        if (object.chart?.service) {
+            const serviceCode = this.createService(projectName, object.chart.service);
+            
+            code = code.replace('%BASE_URL%', object.chart.service.baseUrl);
+            code = code.replace('%SERVICES%', serviceCode);
+        }
+
         code = TextTransformation.replaceKebabfyFunctionToString(code);
         code = TextTransformation.replacePascalfyFunctionToString(code);
         code = TextTransformation.replacePlurarizeFunctionToString(code);

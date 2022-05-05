@@ -13,7 +13,13 @@ export class CodeToAngularChartComponentProperty {
     }
     
     static createChartProperties = (chart: ChartInterface): string => {
-        let properties = "";
+        let properties = `
+        ${chart.id}Id: string = '';
+        ${chart.id}DataSource: any = [];
+        ${chart.id}SearchForm: FormGroup;
+        isLoading = true;
+        `;
+        
         if (chart.line) {
           properties += `
           ${chart.id}LineChartData: ChartConfiguration["data"] = {

@@ -1,3 +1,6 @@
+import { FormInterface, ServiceInterface } from "./form";
+import { TableElementInterface } from "./table";
+
 export interface ChartInterface {
   id: string;
   title?: string;
@@ -10,6 +13,8 @@ export interface ChartInterface {
   polarArea?: ChartPolarAreaInterface;
   radar?: ChartRadarInterface;
   scatter?: ChartScatterInterface;
+  service?: ServiceInterface;
+  actions?: FormInterface;
 };
 
 // https://www.chartjs.org/docs/latest/charts/bar.html

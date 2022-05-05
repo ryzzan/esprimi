@@ -100,9 +100,11 @@ export class CodeToAngularComponent {
             const componentPropertyCode = this.customComponentChartCode.createProperty(object);
             code = code.replace("%PROPERTIES%", componentPropertyCode);
 
-            code = code.replace("%CONSTRUCTOR%", "");
+            const componentConstructorArgCode = this.customComponentChartCode.createConstructorArg(object);
+            code = code.replace("%CONSTRUCTOR%", componentConstructorArgCode);
 
-            code = code.replace("%DEPENDENCIES%", "");
+            const componentConstructorParamCode = this.customComponentChartCode.createConstructorParams(object);
+            code = code.replace("%DEPENDENCIES%", componentConstructorParamCode);
 
             const componentActionCode = this.customComponentChartCode.createMethod(object);
             code = code.replace("%METHODS%", componentActionCode);

@@ -30,13 +30,13 @@ export const environment = {
     production: true
 };`;
 
-const envBackend = `PROJECT_ID=`
+const envBackend = `PROJECT_ID=`;
 
 const cloneFrontendPath = 'https://github.com/ryzzan/kunlatek-quickstart';
 
 const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api';
 
-const projectPath = '/home/ryzzan/Projects/example';
+const projectPath = '/home/lopes/Projects/example';
 
 /**
  * EXAMPLE
