@@ -1,19 +1,18 @@
-import { ChartBarInterface } from "../../../../../interfaces/chart";
-import { TextTransformation } from "../../../../../utils/text.transformation";
+import { ChartInterface } from "../../../../../interfaces/chart";
 
-export class CodeToAngularChartTemplateBar {
-    static createBar = (bar: ChartBarInterface): string => {
-        const codeBar = `
+export class CodeToAngularChartTemplateLine {
+    static createLine = (chart: ChartInterface): string => {
+        const codeLine = `
         <div>
           <canvas baseChart width="300" height="300"
-                  [data]="${bar.id}LineChartData"
-                  [options]="${bar.id}LineChartOptions"
-                  [type]="${bar.id}LineChartType"
-                  (chartHover)="${bar.id}LineChartHovered($event)"
-                  (chartClick)="${bar.id}LineChartClicked($event)"></canvas>
+                  [data]="${chart.id}LineChartData"
+                  [options]="${chart.id}LineChartOptions"
+                  [type]="${chart.id}LineChartType"
+                  (chartHover)="${chart.id}LineChartHovered($event)"
+                  (chartClick)="${chart.id}LineChartClicked($event)"></canvas>
         </div>
         `;
 
-        return codeBar;
+        return codeLine;
     }
 }

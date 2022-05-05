@@ -41,6 +41,7 @@ const projectPath = '/home/ryzzan/Projects/example';
 /**
  * EXAMPLE
  */
+import { ANIMATION_CHART } from '../collections-frontend/example/animation-chart';
 import { ANIMATION_FORM } from '../collections-frontend/example/animation-form';
 import { ANIMATION_TABLE } from '../collections-frontend/example/animation-table';
 import { ANIMATION } from '../collections-frontend/example/animation';
@@ -84,7 +85,7 @@ import { CHARACTER } from '../collections-frontend/example/character';
 //////////////////////////////////////////////////////////
 const main = new Main(),
     array = [
-        ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
+        ANIMATION_CHART, ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
         CHARACTER_FORM, CHARACTER_TABLE, CHARACTER,
 
         /**

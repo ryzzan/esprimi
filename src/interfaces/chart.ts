@@ -1,12 +1,13 @@
 export interface ChartInterface {
+  id: string;
   title?: string;
   subtitle?: string;
   bar?: ChartBarInterface;
   bubble?: ChartBubbleInterface;
-  doughnut?: ChartDoughtnutInterface;
+  doughnut?: ChartDoughnutInterface;
   pie?: ChartPieInterface;
   line?: ChartLineInterface;
-  polarArea?: ChartPolaAreaInterface;
+  polarArea?: ChartPolarAreaInterface;
   radar?: ChartRadarInterface;
   scatter?: ChartScatterInterface;
 };
@@ -14,7 +15,6 @@ export interface ChartInterface {
 // https://www.chartjs.org/docs/latest/charts/bar.html
 
 export interface ChartBarInterface {
-  id: string;
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -32,7 +32,6 @@ export interface ChartBarInterface {
 
 // https://www.chartjs.org/docs/latest/charts/bubble.html
 export interface ChartBubbleInterface {
-  id: string;
   datasets: [{
     data: [{
       x: number;
@@ -47,8 +46,7 @@ export interface ChartBubbleInterface {
 };
 
 // https://www.chartjs.org/docs/latest/charts/doughnut.html
-export interface ChartDoughtnutInterface {
-  id: string;
+export interface ChartDoughnutInterface {
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -69,7 +67,6 @@ export interface ChartDoughtnutInterface {
 };
 
 export interface ChartPieInterface {
-  id: string;
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -91,13 +88,13 @@ export interface ChartPieInterface {
 
 // https://www.chartjs.org/docs/latest/charts/line.html
 export interface ChartLineInterface {
-  id: string;
   labels: Array<string>;
+  tension?: number;
   datasets: [{
     data: Array<number>;
     label?: string;
     backgroundColor?: Array<string>; // Default: 'rgba(0, 0, 0, 0.1)'
-    borderAlign: Enumerator<'center' | 'inner'>;
+    borderAlign?: Enumerator<'center' | 'inner'>;
     borderColor?: Array<String>;
     borderDash?: Array<number>;
     borderDashOffset?: number;
@@ -109,19 +106,17 @@ export interface ChartLineInterface {
     hoverBoderJoinStyle?: Enumerator<'round'|'bevel'|'miter'>;
     hoverBorderWidth?: number;
     order?:number;
-    tension?: number;
   }];
 };
 
 // https://www.chartjs.org/docs/latest/charts/polar.html
-export interface ChartPolaAreaInterface {
-  id: string;
+export interface ChartPolarAreaInterface {
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
     label?: string;
     backgroundColor?: Array<string>; // Default: 'rgba(0, 0, 0, 0.1)'
-    borderAlign: Enumerator<'center' | 'inner'>;
+    borderAlign?: Enumerator<'center' | 'inner'>;
     borderColor?: Array<String>;
     borderJoinStyle?: Enumerator<'round'|'bevel'|'miter'>;
     borderWidth?: number;
@@ -134,7 +129,6 @@ export interface ChartPolaAreaInterface {
 
 // https://www.chartjs.org/docs/latest/charts/radar.html
 export interface ChartRadarInterface {
-  id: string;
   labels: Array<string>;
   datasets: [{
     data: Array<number>;
@@ -160,7 +154,6 @@ export interface ChartRadarInterface {
 
 // https://www.chartjs.org/docs/latest/charts/scatter.html
 export interface ChartScatterInterface {
-  id: string;
   labels: Array<string>;
   datasets: [{
     data: [{

@@ -4,6 +4,7 @@ import {
 import { 
     TextTransformation
 } from "../../../../utils/text.transformation";
+import { CodeToAngularChartTemplate } from "./chart/main";
 import {
     CodeToAngularFormTemplate
 } from "./form/main";
@@ -16,6 +17,7 @@ export class CodeToAngularTemplate {
     customTemplateFormCode = new CodeToAngularFormTemplate;
     customTemplateTableCode = new CodeToAngularTableTemplate;
     customTemplateModuleCode = new CodeToAngularModuleTemplate;
+    customTemplateChartCode = new CodeToAngularChartTemplate;
 
     createTemplateCode = async (
         object: MainInterface
@@ -37,6 +39,11 @@ export class CodeToAngularTemplate {
         if (object.table) {
             const templateTableCode = this.customTemplateTableCode.createTableSkeleton(object);
             code = code.replace('%CONTENT%', templateTableCode);
+        }
+
+        if (object.chart) {
+            const templateChartCode = this.customTemplateChartCode.createChartSkeleton(object);
+            code = code.replace('%CONTENT%', templateChartCode);
         }
 
         code = TextTransformation.replaceKebabfyFunctionToString(code);

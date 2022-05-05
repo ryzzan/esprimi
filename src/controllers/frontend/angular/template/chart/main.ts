@@ -2,10 +2,14 @@ import {
     MainInterface
 } from "../../../../../interfaces/main";
 import { ChartInterface } from "../../../../../interfaces/chart";
-import {
-    TextTransformation
-} from "../../../../../utils/text.transformation";
 import { CodeToAngularChartTemplateBar } from "./bar";
+import { CodeToAngularChartTemplateLine } from "./line";
+import { CodeToAngularChartTemplateBubble } from "./bubble";
+import { CodeToAngularChartTemplateDoughnut } from "./doughnut";
+import { CodeToAngularChartTemplatePie } from "./pie";
+import { CodeToAngularChartTemplatePolarArea } from "./polar-area";
+import { CodeToAngularChartTemplateRadar } from "./radar";
+import { CodeToAngularChartTemplateScatter } from "./scatter";
 
 export class CodeToAngularChartTemplate {
     createChartSkeleton(object: MainInterface): string {
@@ -40,14 +44,14 @@ export class CodeToAngularChartTemplate {
     private createChartComponents = (object: MainInterface, chart: ChartInterface): string => {
         let code = '';
 
-        if (chart.bar) code += CodeToAngularChartTemplateBar.createBar(chart.bar);
-        // if (chart.bubble) code += CodeToAngularChartTemplateBubble.createBubble(chart.bubble);
-        // if (chart.doughnut) code += CodeToAngularChartTemplateDoughnut.createDoughnut(chart.doughnut);
-        // if (chart.line) code += CodeToAngularChartTemplateLine.createLine(chart.line);
-        // if (chart.pie) code += CodeToAngularChartTemplatePie.createPie(chart.pie);
-        // if (chart.polarArea) code += CodeToAngularChartTemplatePolarArea.createPolarArea(chart.polarArea);
-        // if (chart.radar) code += CodeToAngularChartTemplateRadar.createRadar(chart.radar);
-        // if (chart.scatter) code += CodeToAngularChartTemplateScatter.createScatter(chart.scatter);
+        if (chart.bar) code += CodeToAngularChartTemplateBar.createBar(chart);
+        if (chart.bubble) code += CodeToAngularChartTemplateBubble.createBubble(chart);
+        if (chart.doughnut) code += CodeToAngularChartTemplateDoughnut.createDoughnut(chart);
+        if (chart.line) code += CodeToAngularChartTemplateLine.createLine(chart);
+        if (chart.pie) code += CodeToAngularChartTemplatePie.createPie(chart);
+        if (chart.polarArea) code += CodeToAngularChartTemplatePolarArea.createPolarArea(chart);
+        if (chart.radar) code += CodeToAngularChartTemplateRadar.createRadar(chart);
+        if (chart.scatter) code += CodeToAngularChartTemplateScatter.createScatter(chart);
 
         return code;
     }
