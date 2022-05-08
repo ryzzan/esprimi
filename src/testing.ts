@@ -30,7 +30,15 @@ export const environment = {
     production: true
 };`;
 
-const envBackend = `PROJECT_ID=`
+const envBackend = `
+PORT=3000
+SERVER_ROOT_URI=http://localhost
+CLIENT_REDIRECT_URI=http://localhost:4200
+MONGO_URL=mongodb://127.0.0.1:27017
+DB=test
+NODEMAILER_USER=
+NODEMAILER_PASS=
+`
 
 const cloneFrontendPath = 'https://github.com/ryzzan/kunlatek-quickstart';
 
