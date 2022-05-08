@@ -15,7 +15,7 @@ export class CodeToLoopbackModelProperty {
     static createModelProperties = (elements: Array<FormElementInterface>): string => {
         const validTypes = ['checkbox', 'radio', 'datalist', 'fieldset', 'input', 'select', 'slide', 'textarea', 'autocomplete']
 
-        const stringTypes = ['email', 'password', 'tel', 'text', 'url']
+        const stringTypes = ['email', 'password', 'tel', 'text', 'url', 'date', 'datetime-local', 'month', 'range', 'time', 'url', 'week']
         const numberTypes = ['number']
 
         let properties = '';
