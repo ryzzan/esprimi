@@ -24,16 +24,23 @@ export class CodeToAngularChartComponentImport {
         if (action.array) hasArray = ', FormArray';
     });
     
-    let imports = "";
+    let imports = `
+    import { MatSnackBar } from '@angular/material/snack-bar';
+    import { %pascalfy(${chart.id})%Service } from './%kebabfy${chart.id}%.service';
+    import { FormBuilder, FormGroupDirective, FormGroup, ${hasArray} } from '@angular/forms';
+    import { ActivatedRoute, Router } from '@angular/router';
+    import { MyErrorHandler } from '../../utils/error-handler';
+    `;
 
     if (chart.line) {
-      imports += `
-      import { MatSnackBar } from '@angular/material/snack-bar';
-      import { %pascalfy(${chart.id})%Service } from './%kebabfy${chart.id}%.service';
-      import { FormBuilder, FormGroupDirective, FormGroup, ${hasArray} } from '@angular/forms';
-      import { ActivatedRoute, Router } from '@angular/router';
-      import { MyErrorHandler } from '../../utils/error-handler';
+      imports += `      
       import { ChartConfiguration, ChartEvent, ChartType } from "chart.js";
+      `;
+    }
+
+    if (chart.bar) {
+      imports += `      
+      import { ChartConfiguration, ChartEvent, ChartType, ChartData } from "chart.js";
       `;
     }
 

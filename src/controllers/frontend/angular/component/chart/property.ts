@@ -23,14 +23,14 @@ export class CodeToAngularChartComponentProperty {
         if (chart.line) {
           properties += `
           ${chart.id}LineChartData: ChartConfiguration["data"] = {
-            datasets: [],
-            labels: [],
+            datasets: [${ (chart.line.datasets.length > 0) ? chart.line.datasets : `this.${chart.id}OpenDialog()` }],
+            labels: [${ chart.line.labels }],
           };
 
           ${chart.id}LineChartOptions: ChartConfiguration["options"] = {
             elements: {
               line: {
-                tension: ${chart.line.tension ? chart.line.tension : "0.5"},
+                tension: ${chart.line.tension ? chart.line.tension : 0.5},
               },
             },
             scales: {
@@ -51,6 +51,27 @@ export class CodeToAngularChartComponentProperty {
           };
 
           ${chart.id}LineChartType: ChartType = "line";
+          `;
+        }
+
+        if (chart.bar) {
+          properties += `
+          ${chart.id}LineChartData: ChartConfiguration["data"] = {
+            datasets: [${ (chart.bar.datasets.length > 0) ? chart.bar.datasets : `this.${chart.id}OpenDialog()` }],
+            labels: [${ chart.bar.labels }],
+          };
+
+          ${chart.id}LineChartOptions: ChartConfiguration["options"] = {
+            responsive: true,
+            scales: {
+              x: {},
+              y: {
+                min: 0
+              }
+            },
+          };
+
+          ${chart.id}BarChartType: ChartType = "bar";
           `;
         }
 

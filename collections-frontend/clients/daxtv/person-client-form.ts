@@ -1,11 +1,12 @@
 import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../../../src/enums/main";
 import {
   MainInterface,
 } from "../../../src/interfaces/main";
 
 export const PERSON_CLIENT_FORM: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
+  backendFramework: BackendFrameworkEnum.Loopback,
   form: {
     title: "Pessoa",
     id: "personClientForm",

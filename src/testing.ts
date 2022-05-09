@@ -30,25 +30,25 @@ export const environment = {
     production: true
 };`;
 
-const envBackend = `PROJECT_ID=`;
+const envBackend = `PROJECT_ID=6275c6ec23ecaba49a5a6fd8`;
 
 const cloneFrontendPath = 'https://github.com/ryzzan/kunlatek-quickstart';
 
 const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api';
 
-const projectPath = '/home/lopes/Projects/example';
+const projectPath = '/home/ryzzan/Projects/lopes-report';
 
 /**
  * EXAMPLE
  */
-import { ANIMATION_CHART } from '../collections-frontend/example/animation-chart';
-import { ANIMATION_FORM } from '../collections-frontend/example/animation-form';
-import { ANIMATION_TABLE } from '../collections-frontend/example/animation-table';
-import { ANIMATION } from '../collections-frontend/example/animation';
+// import { ANIMATION_CHART } from '../collections-frontend/example/animation-chart';
+// import { ANIMATION_FORM } from '../collections-frontend/example/animation-form';
+// import { ANIMATION_TABLE } from '../collections-frontend/example/animation-table';
+// import { ANIMATION } from '../collections-frontend/example/animation';
 
-import { CHARACTER_FORM } from '../collections-frontend/example/character-form';
-import { CHARACTER_TABLE } from '../collections-frontend/example/character-table';
-import { CHARACTER } from '../collections-frontend/example/character';
+// import { CHARACTER_FORM } from '../collections-frontend/example/character-form';
+// import { CHARACTER_TABLE } from '../collections-frontend/example/character-table';
+// import { CHARACTER } from '../collections-frontend/example/character';
 
 
 /**
@@ -65,28 +65,33 @@ import { CHARACTER } from '../collections-frontend/example/character';
 /**
  * CLIENT
  */
-//  import {PACK_FORM} from '../collections-frontend/clients/daxtv/pack-form';
-//  import {PACK_TABLE} from '../collections-frontend/clients/daxtv/pack-table';
-//  import {PACK} from '../collections-frontend/clients/daxtv/pack';
+//  import {PACK} from "../collections-frontend/clients/daxtv/pack";
+//  import {PACK_FORM} from "../collections-frontend/clients/daxtv/pack-form";
+//  import {PACK_TABLE} from "../collections-frontend/clients/daxtv/pack-table";
 
-// import {PERSON_CLIENT_FORM} from '../collections-frontend/clients/daxtv/person-client-form';
-// import {PERSON_CLIENT_TABLE} from '../collections-frontend/clients/daxtv/person-client-table';
-// import {PERSON_CLIENT} from '../collections-frontend/clients/daxtv/person-client';
+// import {PERSON_CLIENT} from "../collections-frontend/clients/daxtv/person-client";
+// import {PERSON_CLIENT_FORM} from "../collections-frontend/clients/daxtv/person-client-form";
+// import {PERSON_CLIENT_TABLE} from "../collections-frontend/clients/daxtv/person-client-table";
 
-// import {COMPANY_CLIENT_FORM} from '../collections-frontend/clients/daxtv/company-client-form';
-// import {COMPANY_CLIENT_TABLE} from '../collections-frontend/clients/daxtv/company-client-table';
-// import {COMPANY_CLIENT} from '../collections-frontend/clients/daxtv/company-client';
+// import {COMPANY_CLIENT} from "../collections-frontend/clients/daxtv/company-client";
+// import {COMPANY_CLIENT_FORM} from "../collections-frontend/clients/daxtv/company-client-form";
+// import {COMPANY_CLIENT_TABLE} from "../collections-frontend/clients/daxtv/company-client-table";
 
-// import {FINANCE_TABLE} from '../collections-frontend/clients/daxtv/finance-table';
-// import {FINANCE} from '../collections-frontend/clients/daxtv/finance';
+// import {FINANCE} from "../collections-frontend/clients/daxtv/finance";
+// import {FINANCE_TABLE} from "../collections-frontend/clients/daxtv/finance-table";
 
+/**
+ * LOPES
+ */
+import {STORE_ACTIVITY_CHART} from "../collections-frontend/lopes/report/store-activity-chart";
+import {STORE_ACITVITY} from "../collections-frontend/lopes/report/store-activity";
 
 // TO-DO: FINANCIAL REPORT
 //////////////////////////////////////////////////////////
 const main = new Main(),
     array = [
-        ANIMATION_CHART, ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
-        CHARACTER_FORM, CHARACTER_TABLE, CHARACTER,
+        // ANIMATION_CHART, ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
+        // CHARACTER_FORM, CHARACTER_TABLE, CHARACTER,
 
         /**
          * GENERIC TEST
@@ -101,6 +106,11 @@ const main = new Main(),
         // COMPANY_CLIENT_FORM, COMPANY_CLIENT_TABLE, COMPANY_CLIENT,
         // PERSON_CLIENT_FORM, PERSON_CLIENT_TABLE, PERSON_CLIENT,
         // PACK_FORM, PACK_TABLE, PACK,
+
+        /**
+         * LOPES
+         */
+        STORE_ACTIVITY_CHART, STORE_ACITVITY,
     ];
 
 array.forEach(object => {

@@ -12,6 +12,7 @@ export class CodeToAngularChartComponentConstructorParam {
             private _${object.chart.id}Service: %pascalfy(${object.chart.id})%Service,
             private _errorHandler: MyErrorHandler,
             private _snackbar: MatSnackBar,
+            private _dialog: MatDialog,
             `;
 
             return componentCode;
