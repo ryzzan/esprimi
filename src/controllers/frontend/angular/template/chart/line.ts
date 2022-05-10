@@ -3,7 +3,7 @@ import { ChartInterface } from "../../../../../interfaces/chart";
 export class CodeToAngularChartTemplateLine {
     static createLine = (chart: ChartInterface): string => {
         const codeLine = `
-        <div>
+        <div *ngIf="!isLoading">
           <canvas baseChart width="300" height="300"
                   [data]="${chart.id}LineChartData"
                   [options]="${chart.id}LineChartOptions"

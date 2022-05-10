@@ -3,7 +3,7 @@ import { ChartInterface } from "../../../../../interfaces/chart";
 export class CodeToAngularChartTemplateBar {
     static createBar = (chart: ChartInterface): string => {
         const codeBar = `
-        <div>
+        <div *ngIf="!isLoading">
           <canvas baseChart width="300" height="300"
                   [data]="${chart.id}BarChartData"
                   [options]="${chart.id}BarChartOptions"

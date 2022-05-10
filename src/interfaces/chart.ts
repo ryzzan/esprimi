@@ -21,7 +21,6 @@ export interface ChartInterface {
 export interface ChartBarInterface {
   labels: Array<string>;
   datasets: Array<ChartBarDatasetInterface>;
-  dataFromApi?: ChartBarApiInterface;
 };
 
 // https://www.chartjs.org/docs/latest/charts/bubble.html

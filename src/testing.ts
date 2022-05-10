@@ -43,7 +43,7 @@ export const environment = {
  
 const envFrontProd = `
 export const environment = {
-    baseUrl: '????',
+    baseUrl: 'https://devapilogin.lpsbr.com/api/v1',
     clientId: '3bb9f7e7-a96f-4657-8039-4755de62a233',
     clientSecret: 'b80a0043-c89d-4571-bb96-515e27a4808f',
     production: true
@@ -100,8 +100,15 @@ const projectPath = '/home/ryzzan/Projects/lopes-report';
 /**
  * LOPES
  */
-import {STORE_ACTIVITY_CHART} from "../collections-frontend/lopes/report/store-activity-chart";
-import {STORE_ACITVITY} from "../collections-frontend/lopes/report/store-activity";
+import {ORIGIN_CHANNEL_CHART} from "../collections-frontend/lopes/report/origin-channel-chart";
+
+import {INTERMEDIARY_CHART} from "../collections-frontend/lopes/report/intermediary-chart";
+
+import {AVERAGE_TICKET_CHART} from "../collections-frontend/lopes/report/average-ticket-chart";
+
+import {TOP_VALUE_ZONE_CHART} from "../collections-frontend/lopes/report/top-value-zone-chart";
+
+import {PROPOSAL_NEGOTIATION} from "../collections-frontend/lopes/report/proposal-negotiation";
 
 // TO-DO: FINANCIAL REPORT
 //////////////////////////////////////////////////////////
@@ -127,7 +134,11 @@ const main = new Main(),
         /**
          * LOPES
          */
-        STORE_ACTIVITY_CHART, STORE_ACITVITY,
+        ORIGIN_CHANNEL_CHART, 
+        INTERMEDIARY_CHART,
+        AVERAGE_TICKET_CHART,
+        TOP_VALUE_ZONE_CHART,
+        PROPOSAL_NEGOTIATION,
     ];
 
 array.forEach(object => {

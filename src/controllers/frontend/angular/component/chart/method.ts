@@ -59,28 +59,75 @@ export class CodeToAngularChartComponentMethod {
       }): void {
         this.${chart.id}OpenDialog();
       };
-
-      set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
-        this._${chart.id}Service.getAll(filter)
-        .then((result: any) => {
-          this.${chart.id}DataSource = result?.data.result ? result?.data.result : result?.data;
-          this.isLoading = false;
-        })
-        .catch(async err => {
-          if (err.error.logMessage === 'jwt expired') {
-            await this.refreshToken();
-            this.set${TextTransformation.pascalfy(chart.id)}Service();
-          } else {
-            const message = this._errorHandler.apiErrorMessage(err.error.message);
-            this.isLoading = false;
-            this.sendErrorMessage(message);
-          };
-        });
-      };
       `;
+      
+      if (chart.bar.datasets.length < 1) {
+        methods += `
+        set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
+          this._${chart.id}Service.getAll(filter)
+          .then((result: any) => {
+            this.${chart.id}DataSource = result?.data.result ? result?.data.result : result?.data;
+            this.isLoading = false;
+            
+            this.${chart.id}BarChartData.datasets = this.${chart.id}DataSource.datasets;
+            this.${chart.id}BarChartData.labels = this.${chart.id}DataSource.labels;
+          })
+          .catch(async err => {
+            if (err.error.logMessage === 'jwt expired') {
+              await this.refreshToken();
+              this.set${TextTransformation.pascalfy(chart.id)}Service();
+            } else {
+              const message = this._errorHandler.apiErrorMessage(err.error.message);
+              this.isLoading = false;
+              this.sendErrorMessage(message);
+            };
+          });
+        };
+        `;
+      }
     }
 
-    methods += `${chart.id}OpenDialog = (filter: string = '') => {
+    if (chart.pie) {
+      methods += `
+      ${chart.id}PieChartClicked({
+        event,
+        active,
+      }: {
+        event?: ChartEvent;
+        active?: {}[];
+      }): void {
+        this.${chart.id}OpenDialog();
+      };
+      `;
+      
+      if (chart.pie.datasets.length < 1) {
+        methods += `
+        set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
+          this._${chart.id}Service.getAll(filter)
+          .then((result: any) => {
+            this.${chart.id}DataSource = result?.data.result ? result?.data.result : result?.data;
+            this.isLoading = false;
+            
+            this.${chart.id}PieChartData.datasets = this.${chart.id}DataSource.datasets;
+            this.${chart.id}PieChartData.labels = this.${chart.id}DataSource.labels;
+          })
+          .catch(async err => {
+            if (err.error.logMessage === 'jwt expired') {
+              await this.refreshToken();
+              this.set${TextTransformation.pascalfy(chart.id)}Service();
+            } else {
+              const message = this._errorHandler.apiErrorMessage(err.error.message);
+              this.isLoading = false;
+              this.sendErrorMessage(message);
+            };
+          });
+        };
+        `;
+      }
+    }
+
+    methods += `
+    ${chart.id}OpenDialog = (filter: string = '') => {
       const ${chart.id}DialogRef = this._dialog.open(
         GenericAnalyticReportComponent,
         {

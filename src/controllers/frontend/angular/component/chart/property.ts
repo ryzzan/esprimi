@@ -24,7 +24,7 @@ export class CodeToAngularChartComponentProperty {
         if (chart.line) {
           properties += `
           ${chart.id}LineChartData: ChartConfiguration["data"] = {
-            datasets: ${ (chart.line.datasets.length > 0) ? JSON.stringify(chart.line.datasets) : `set${TextTransformation.pascalfy(chart.id)}Service()` },
+            datasets: ${ JSON.stringify(chart.line.datasets) },
             labels: ${ JSON.stringify(chart.line.labels) },
           };
 
@@ -58,7 +58,7 @@ export class CodeToAngularChartComponentProperty {
         if (chart.bar) {
           properties += `
           ${chart.id}BarChartData: ChartConfiguration["data"] = {
-            datasets: ${ (chart.bar.datasets.length > 0) ? JSON.stringify(chart.bar.datasets) : `set${TextTransformation.pascalfy(chart.id)}Service()` },
+            datasets: ${ JSON.stringify(chart.bar.datasets) },
             labels: ${ JSON.stringify(chart.bar.labels) },
           };
 
@@ -73,6 +73,21 @@ export class CodeToAngularChartComponentProperty {
           };
 
           ${chart.id}BarChartType: ChartType = "bar";
+          `;
+        }
+
+        if (chart.pie) {
+          properties += `
+          ${chart.id}PieChartData: ChartData<"pie", number[], string | string[]> = {
+            datasets: ${ JSON.stringify(chart.pie.datasets) },
+            labels: ${ JSON.stringify(chart.pie.labels) },
+          };
+
+          ${chart.id}PieChartOptions: ChartConfiguration["options"] = {
+            responsive: true,
+          };
+
+          ${chart.id}PieChartType: ChartType = "pie";
           `;
         }
 

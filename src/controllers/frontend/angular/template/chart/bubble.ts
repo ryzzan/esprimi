@@ -3,7 +3,7 @@ import { ChartBubbleInterface, ChartInterface } from "../../../../../interfaces/
 export class CodeToAngularChartTemplateBubble {
     static createBubble = (chart: ChartInterface): string => {
         const codeBubble = `
-        <div>
+        <div *ngIf="!isLoading">
           <canvas baseChart width="300" height="300"
                   [data]="${chart.id}BubbleChartData"
                   [options]="${chart.id}BubbleChartOptions"

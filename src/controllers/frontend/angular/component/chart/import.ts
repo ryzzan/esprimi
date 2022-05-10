@@ -46,6 +46,12 @@ export class CodeToAngularChartComponentImport {
       `;
     }
 
+    if (chart.pie) {
+      imports += `      
+      import { ChartConfiguration, ChartEvent, ChartType, ChartData } from "chart.js";
+      `;
+    }
+
     return imports;
   };
 }
