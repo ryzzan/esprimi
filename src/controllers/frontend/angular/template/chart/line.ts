@@ -8,7 +8,6 @@ export class CodeToAngularChartTemplateLine {
                   [data]="${chart.id}LineChartData"
                   [options]="${chart.id}LineChartOptions"
                   [type]="${chart.id}LineChartType"
-                  (chartHover)="${chart.id}LineChartHovered($event)"
                   (chartClick)="${chart.id}LineChartClicked($event)"></canvas>
         </div>
         `;

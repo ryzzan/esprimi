@@ -72,6 +72,7 @@ export class AngularArchitectureModule {
 
       object.module.components.map(element => {
         const kebabfyedElement = TextTransformation.kebabfy(element);
+        console.log(kebabfyedElement, "757575757575757575757575757575757575757575757575757575757575");
         if (kebabfyedElement.split('-').pop() === "chart") {
           hasChart = true;
         }

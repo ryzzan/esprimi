@@ -8,7 +8,6 @@ export class CodeToAngularChartTemplateBar {
                   [data]="${chart.id}BarChartData"
                   [options]="${chart.id}BarChartOptions"
                   [type]="${chart.id}BarChartType"
-                  (chartHover)="${chart.id}BarChartHovered($event)"
                   (chartClick)="${chart.id}BarChartClicked($event)">
           </canvas>
         </div>

@@ -25,12 +25,13 @@ export class CodeToAngularChartComponentImport {
     });
     
     let imports = `
-    import { MatSnackBar } from '@angular/material/snack-bar';
-    import { MatDialog } from '@angular/material/dialog';
-    import { %pascalfy(${chart.id})%Service } from './%kebabfy${chart.id}%.service';
-    import { FormBuilder, FormGroupDirective, FormGroup, ${hasArray} } from '@angular/forms';
-    import { ActivatedRoute, Router } from '@angular/router';
-    import { MyErrorHandler } from '../../utils/error-handler';
+    import { MatSnackBar } from "@angular/material/snack-bar";
+    import { MatDialog } from "@angular/material/dialog";
+    import { %pascalfy(${chart.id})%Service } from "./%kebabfy${chart.id}%.service";
+    import { FormBuilder, FormGroupDirective, FormGroup, ${hasArray} } from "@angular/forms";
+    import { ActivatedRoute, Router } from "@angular/router";
+    import { MyErrorHandler } from "../../utils/error-handler";
+    import { GenericAnalyticReportComponent } from "../generic-analytic-report/generic-analytic-report.component";
     `;
 
     if (chart.line) {

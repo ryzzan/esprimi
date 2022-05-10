@@ -1,38 +1,55 @@
 import { Main } from './index';
 
+// const envFrontDev = `
+// export const environment = {
+//     firebase: {
+//         projectId: 'kunlatek-quickstart',
+//         appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+//         storageBucket: 'kunlatek-quickstart.appspot.com',
+//         apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+//         authDomain: 'kunlatek-quickstart.firebaseapp.com',
+//         messagingSenderId: '61322235717',
+//         measurementId: 'G-V8W65TSX41',
+//     },
+//     baseUrl: 'http://localhost:3000',
+//     production: false
+// };`;
+
+// const envFrontProd = `
+// export const environment = {
+//     firebase: {
+//         projectId: 'kunlatek-quickstart',
+//         appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+//         storageBucket: 'kunlatek-quickstart.appspot.com',
+//         apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+//         authDomain: 'kunlatek-quickstart.firebaseapp.com',
+//         messagingSenderId: '61322235717',
+//         measurementId: 'G-V8W65TSX41',
+//     },
+//     baseUrl: 'http://localhost:3000',
+//     production: true
+// };`;
+
+/**
+* LOPES API
+*/
 const envFrontDev = `
 export const environment = {
-    firebase: {
-        projectId: 'kunlatek-quickstart',
-        appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
-        storageBucket: 'kunlatek-quickstart.appspot.com',
-        apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
-        authDomain: 'kunlatek-quickstart.firebaseapp.com',
-        messagingSenderId: '61322235717',
-        measurementId: 'G-V8W65TSX41',
-    },
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://devapilogin.lpsbr.com/api/v1',
+    clientId: '3bb9f7e7-a96f-4657-8039-4755de62a233',
+    clientSecret: 'b80a0043-c89d-4571-bb96-515e27a4808f',
     production: false
 };`;
-
+ 
 const envFrontProd = `
 export const environment = {
-    firebase: {
-        projectId: 'kunlatek-quickstart',
-        appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
-        storageBucket: 'kunlatek-quickstart.appspot.com',
-        apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
-        authDomain: 'kunlatek-quickstart.firebaseapp.com',
-        messagingSenderId: '61322235717',
-        measurementId: 'G-V8W65TSX41',
-    },
-    baseUrl: 'http://localhost:3000',
+    baseUrl: '????',
+    clientId: '3bb9f7e7-a96f-4657-8039-4755de62a233',
+    clientSecret: 'b80a0043-c89d-4571-bb96-515e27a4808f',
     production: true
 };`;
 
-const envBackend = `PROJECT_ID=6275c6ec23ecaba49a5a6fd8`;
-
-const cloneFrontendPath = 'https://github.com/ryzzan/kunlatek-quickstart';
+const cloneFrontendPath = 'https://github.com/ryzzan/new-lopes-quickstart';
 
 const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api';
 
@@ -119,7 +136,7 @@ array.forEach(object => {
     object.cloneBackendPath = cloneBackendPath;
     object.envFrontendDev = envFrontDev;
     object.envFrontendProd = envFrontProd;
-    object.envBackend = envBackend;
+    // object.envBackend = envBackend;
 });
 
 main.createCode(array)
