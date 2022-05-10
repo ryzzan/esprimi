@@ -26,6 +26,7 @@ export class CodeToAngularChartComponentImport {
     
     let imports = `
     import { MatSnackBar } from '@angular/material/snack-bar';
+    import { MatDialog } from '@angular/material/dialog';
     import { %pascalfy(${chart.id})%Service } from './%kebabfy${chart.id}%.service';
     import { FormBuilder, FormGroupDirective, FormGroup, ${hasArray} } from '@angular/forms';
     import { ActivatedRoute, Router } from '@angular/router';

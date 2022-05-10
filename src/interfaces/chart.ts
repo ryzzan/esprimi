@@ -82,8 +82,8 @@ export interface ChartBarDatasetInterface {
   base?: number;
   barPercentage?: number;
   barThickness?: number | string;
-  maxBarThickness: number;
-  minBarLength: number;
+  maxBarThickness?: number;
+  minBarLength?: number;
 };
 
 export interface ChartBubbleDatasetInterface {

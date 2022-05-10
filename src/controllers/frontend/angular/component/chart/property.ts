@@ -1,5 +1,6 @@
-import { ChartInterface } from "../../../../../interfaces/chart";
+import { ChartBarDatasetInterface, ChartBubbleDatasetInterface, ChartDoughnutDatasetInterface, ChartInterface, ChartLineDatasetInterface, ChartPieDatasetInterface, ChartPolarAreaDatasetInterface, ChartRadarDatasetInterface, ChartScatterDatasetInterface } from "../../../../../interfaces/chart";
 import { MainInterface } from "../../../../../interfaces/main";
+import { TextTransformation } from "../../../../../utils/text.transformation";
 
 export class CodeToAngularChartComponentProperty {
     static customProperties = (object: MainInterface): string => {
@@ -10,7 +11,7 @@ export class CodeToAngularChartComponentProperty {
         const componentCode = `${properties}`;
                             
         return componentCode;
-    }
+    };
     
     static createChartProperties = (chart: ChartInterface): string => {
         let properties = `
@@ -23,8 +24,8 @@ export class CodeToAngularChartComponentProperty {
         if (chart.line) {
           properties += `
           ${chart.id}LineChartData: ChartConfiguration["data"] = {
-            datasets: [${ (chart.line.datasets.length > 0) ? chart.line.datasets : `this.${chart.id}OpenDialog()` }],
-            labels: [${ chart.line.labels }],
+            datasets: ${ (chart.line.datasets.length > 0) ? JSON.stringify(chart.line.datasets) : `set${TextTransformation.pascalfy(chart.id)}Service()` },
+            labels: ${ JSON.stringify(chart.line.labels) },
           };
 
           ${chart.id}LineChartOptions: ChartConfiguration["options"] = {
@@ -56,12 +57,12 @@ export class CodeToAngularChartComponentProperty {
 
         if (chart.bar) {
           properties += `
-          ${chart.id}LineChartData: ChartConfiguration["data"] = {
-            datasets: [${ (chart.bar.datasets.length > 0) ? chart.bar.datasets : `this.${chart.id}OpenDialog()` }],
-            labels: [${ chart.bar.labels }],
+          ${chart.id}BarChartData: ChartConfiguration["data"] = {
+            datasets: ${ (chart.bar.datasets.length > 0) ? JSON.stringify(chart.bar.datasets) : `set${TextTransformation.pascalfy(chart.id)}Service()` },
+            labels: ${ JSON.stringify(chart.bar.labels) },
           };
 
-          ${chart.id}LineChartOptions: ChartConfiguration["options"] = {
+          ${chart.id}BarChartOptions: ChartConfiguration["options"] = {
             responsive: true,
             scales: {
               x: {},
@@ -76,5 +77,18 @@ export class CodeToAngularChartComponentProperty {
         }
 
         return properties;
-    }
+    };
+
+    setChartDataset = (dataset: Array<
+      ChartBarDatasetInterface | 
+      ChartPieDatasetInterface | 
+      ChartLineDatasetInterface | 
+      ChartRadarDatasetInterface |
+      ChartBubbleDatasetInterface |
+      ChartScatterDatasetInterface |
+      ChartDoughnutDatasetInterface |
+      ChartPolarAreaDatasetInterface
+    >) => {
+      let response = '';
+    };
 }
