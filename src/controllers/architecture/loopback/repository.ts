@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import { ComponentCodeTypeEnum } from '../../../enums/architecture';
 import { MainInterface } from '../../../interfaces/main';
+import { TextTransformation } from '../../../utils/text.transformation';
 import { LoopbackArchitectureCode } from './code';
 
 export class LoopbackArchitectureRepository {
@@ -8,10 +9,12 @@ export class LoopbackArchitectureRepository {
         componentCode: string | undefined,
         object: MainInterface
     ) => {
-        let repositoryPath = object.form?.id.replace("Form", '')!;
+        let repositoryPath = TextTransformation.kebabfy(object.form?.id.replace("Form", '')!);
 
         const projectPath = `${object.projectPath}-api`;
         const projectAndRepositoryPath = `${projectPath}/src/repositories/`;
+
+        componentCode += `/* moduleName->${object.form?.title}<- */`
 
         try {
             fs.readdirSync(projectAndRepositoryPath);
