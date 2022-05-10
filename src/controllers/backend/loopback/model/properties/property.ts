@@ -38,8 +38,7 @@ export class CodeToLoopbackModelProperty {
                 properties += `
                             @property({
                                 type: '${propertyType}',
-                                jsonSchema: {nullable: true},
-                                ${value.isMultiple ? "itemType: 'any'," : ""}
+                                ${value.isMultiple ? "itemType: 'any'," : 'jsonSchema: {nullable: true},'}
                             })
                             ${value.name}?: ${value.isMultiple ? 'any[]' : propertyType};
                             `
