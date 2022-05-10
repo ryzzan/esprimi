@@ -3,11 +3,12 @@ import {
   FormInputTypeEnum,
   ServiceFunctionsEnum,
 } from "../../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../../../src/enums/main";
 import { MainInterface } from "../../../src/interfaces/main";
 
 export const PACK_FORM: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
+  backendFramework: BackendFrameworkEnum.Loopback,
   form: {
     title: "Planos e extras",
     id: "packForm",

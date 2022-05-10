@@ -49,13 +49,13 @@ const projectPath = '/home/ryzzan/Projects/example';
 /**
  * EXAMPLE
  */
-import { ANIMATION_FORM } from '../collections-frontend/example/animation-form';
-import { ANIMATION_TABLE } from '../collections-frontend/example/animation-table';
-import { ANIMATION } from '../collections-frontend/example/animation';
+// import { ANIMATION_FORM } from '../collections-frontend/example/animation-form';
+// import { ANIMATION_TABLE } from '../collections-frontend/example/animation-table';
+// import { ANIMATION } from '../collections-frontend/example/animation';
 
-import { CHARACTER_FORM } from '../collections-frontend/example/character-form';
-import { CHARACTER_TABLE } from '../collections-frontend/example/character-table';
-import { CHARACTER } from '../collections-frontend/example/character';
+// import { CHARACTER_FORM } from '../collections-frontend/example/character-form';
+// import { CHARACTER_TABLE } from '../collections-frontend/example/character-table';
+// import { CHARACTER } from '../collections-frontend/example/character';
 
 
 /**
@@ -72,28 +72,28 @@ import { CHARACTER } from '../collections-frontend/example/character';
 /**
  * CLIENT
  */
-//  import {PACK_FORM} from '../collections-frontend/clients/daxtv/pack-form';
-//  import {PACK_TABLE} from '../collections-frontend/clients/daxtv/pack-table';
-//  import {PACK} from '../collections-frontend/clients/daxtv/pack';
+ import {PACK_FORM} from '../collections-frontend/clients/daxtv/pack-form';
+ import {PACK_TABLE} from '../collections-frontend/clients/daxtv/pack-table';
+ import {PACK} from '../collections-frontend/clients/daxtv/pack';
 
-// import {PERSON_CLIENT_FORM} from '../collections-frontend/clients/daxtv/person-client-form';
-// import {PERSON_CLIENT_TABLE} from '../collections-frontend/clients/daxtv/person-client-table';
-// import {PERSON_CLIENT} from '../collections-frontend/clients/daxtv/person-client';
+import {PERSON_CLIENT_FORM} from '../collections-frontend/clients/daxtv/person-client-form';
+import {PERSON_CLIENT_TABLE} from '../collections-frontend/clients/daxtv/person-client-table';
+import {PERSON_CLIENT} from '../collections-frontend/clients/daxtv/person-client';
 
-// import {COMPANY_CLIENT_FORM} from '../collections-frontend/clients/daxtv/company-client-form';
-// import {COMPANY_CLIENT_TABLE} from '../collections-frontend/clients/daxtv/company-client-table';
-// import {COMPANY_CLIENT} from '../collections-frontend/clients/daxtv/company-client';
+import {COMPANY_CLIENT_FORM} from '../collections-frontend/clients/daxtv/company-client-form';
+import {COMPANY_CLIENT_TABLE} from '../collections-frontend/clients/daxtv/company-client-table';
+import {COMPANY_CLIENT} from '../collections-frontend/clients/daxtv/company-client';
 
-// import {FINANCE_TABLE} from '../collections-frontend/clients/daxtv/finance-table';
-// import {FINANCE} from '../collections-frontend/clients/daxtv/finance';
+import {FINANCE_TABLE} from '../collections-frontend/clients/daxtv/finance-table';
+import {FINANCE} from '../collections-frontend/clients/daxtv/finance';
 
 
 // TO-DO: FINANCIAL REPORT
 //////////////////////////////////////////////////////////
 const main = new Main(),
     array = [
-        ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
-        CHARACTER_FORM, CHARACTER_TABLE, CHARACTER,
+        // ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
+        // CHARACTER_FORM, CHARACTER_TABLE, CHARACTER,
 
         /**
          * GENERIC TEST
@@ -104,10 +104,10 @@ const main = new Main(),
         /**
          * CLIENT
          */
-        // FINANCE_TABLE, FINANCE,
-        // COMPANY_CLIENT_FORM, COMPANY_CLIENT_TABLE, COMPANY_CLIENT,
-        // PERSON_CLIENT_FORM, PERSON_CLIENT_TABLE, PERSON_CLIENT,
-        // PACK_FORM, PACK_TABLE, PACK,
+        FINANCE_TABLE, FINANCE,
+        COMPANY_CLIENT_FORM, COMPANY_CLIENT_TABLE, COMPANY_CLIENT,
+        PERSON_CLIENT_FORM, PERSON_CLIENT_TABLE, PERSON_CLIENT,
+        PACK_FORM, PACK_TABLE, PACK,
     ];
 
 array.forEach(object => {
