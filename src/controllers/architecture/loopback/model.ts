@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import { ComponentCodeTypeEnum } from '../../../enums/architecture';
 import { MainInterface } from '../../../interfaces/main';
+import { TextTransformation } from '../../../utils/text.transformation';
 import { LoopbackArchitectureCode } from './code';
 
 export class LoopbackArchitectureModel {
@@ -8,7 +9,7 @@ export class LoopbackArchitectureModel {
         componentCode: string | undefined,
         object: MainInterface
     ) => {
-        let modelPath = object.form?.id.replace("Form", '')!;
+        let modelPath = TextTransformation.kebabfy(object.form?.id.replace("Form", '')!);
 
         const projectPath = `${object.projectPath}-api`;
         const projectAndModelPath = `${projectPath}/src/models/`;
