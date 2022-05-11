@@ -67,13 +67,15 @@ export const INVITATION_TABLE: MainInterface = {
                     menu: [{
                             action: {
                                 type: RequestTypeEnum.Link,
-                                url: '/main/invitation/{id}',
+                                url: '/main/invitation',
+                                param: "_id",
                             },
                             label: 'Editar',
                         },
                         {
                             action: {
                                 type: RequestTypeEnum.Dialog,
+                                param: "_id",
                             },
                             label: 'Remover',
                             dialog: {

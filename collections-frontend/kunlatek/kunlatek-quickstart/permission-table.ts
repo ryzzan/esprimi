@@ -1,59 +1,61 @@
-import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { RequestTypeEnum } from "../../src/enums/request";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
+import { FrontendFrameworkEnum } from "../../../src/enums/main";
+import { RequestTypeEnum } from "../../../src/enums/request";
+import { MainInterface } from "../../../src/interfaces/main";
 
 
 export const PERMISSION_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'permissionTable',
-    title: 'Permissões',
+    id: "permissionTable",
+    title: "Permissões",
     data: {
       type: RequestTypeEnum.Object,
     },
     elements: [
       {
         column: {
-          label: 'Input',
+          label: "Input",
         },
         row: {
-          type: 'string',
-          field: 'oneInput',
+          type: "string",
+          field: "oneInput",
         },
       },
       {
         column: {
-          label: 'Select',
+          label: "Select",
         },
         row: {
-          type: 'date',
-          field: 'oneSelect',
+          type: "date",
+          field: "oneSelect",
         },
       },
       {
         column: {
-          label: 'Ações',
+          label: "Ações",
         },
         row: {
-          type: 'menu',
-          icon: 'more_vert',
+          type: "menu",
+          icon: "more_vert",
           menu: [
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/permission/{id}',
+                url: "/main/permission",
+                param: "_id"
               },
-              label: 'Editar',
+              label: "Editar",
             },
             {
               action: {
                 type: RequestTypeEnum.Dialog,
+                param: "_id",
               },
-              label: 'Remover',
+              label: "Remover",
               dialog: {
-                templateFolder: 'remove-confirmation-dialog',
-                id: 'removeConfirmationDialog',
+                templateFolder: "remove-confirmation-dialog",
+                id: "removeConfirmationDialog",
               },
             },
           ],
@@ -61,20 +63,20 @@ export const PERMISSION_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'permissionTable',
-        title: 'Permissão',
+        id: "permissionTable",
+        title: "Permissão",
         elements: [{
             input: {
-                label: 'Search input',
-                name: 'searchInput',
-                placeholder: 'Placeholder to search input',
+                label: "Search input",
+                name: "searchInput",
+                placeholder: "Placeholder to search input",
                 type: FormInputTypeEnum.Text
             }
         }]
     },
     service: {
-        baseUrl: 'http://localhost:3000',
-        endPoint: 'permissions',
+        baseUrl: "http://localhost:3000",
+        endPoint: "permissions",
         hasAuthorization: true,
         methods: [
             ServiceFunctionsEnum.Get,

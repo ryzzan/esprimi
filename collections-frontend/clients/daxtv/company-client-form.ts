@@ -61,53 +61,18 @@ export const COMPANY_CLIENT_FORM: MainInterface = {
             elements: [
               {
                 input: {
-                  label: "Identificador",
-                  name: "contactIdentifier",
-                  placeholder: "Apelido para o contato",
-                  type: FormInputTypeEnum.Text,
-                  isRequired: true,
-                },
-              },
-              {
-                select: {
-                  label: "Tipo de contato",
-                  name: "contactType",
-                  type: FormInputTypeEnum.Text,
-                  optionsObject: [
-                    {
-                      label: "Celular",
-                      value: "mobile",
-                    },
-                    {
-                      label: "E-mail",
-                      value: "email",
-                    },
-                    {
-                      label: "Telefone",
-                      value: "phone",
-                    },
-                    {
-                      label: "Rede social",
-                      value: "socialMedia",
-                    },
-                  ],
-                  isRequired: true,
-                },
-              },
-              {
-                input: {
-                  label: "Valor",
-                  name: "contactValue",
-                  placeholder: "Valor correspondente ao contato",
+                  label: "E-mail",
+                  name: "email",
+                  placeholder: "E-mail da empresa",
                   type: FormInputTypeEnum.Text,
                   isRequired: true,
                 },
               },
               {
                 input: {
-                  label: "Complemento",
-                  name: "contactComplement",
-                  placeholder: "Informação adicional do contato",
+                  label: "Celular",
+                  name: "mobile",
+                  placeholder: "Celular da empresa",
                   type: FormInputTypeEnum.Text,
                 },
               },

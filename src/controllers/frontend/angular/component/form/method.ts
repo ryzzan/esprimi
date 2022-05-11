@@ -34,7 +34,7 @@ export class CodeToAngularFormComponentMethod {
                                             );
                                         }
 
-                                        this.redirectTo("main/${object.form.id.split('Form')[0]}");
+                                        this.redirectTo("main/${TextTransformation.kebabfy(object.form.id.split('Form')[0])}");
                                         this.isLoading = false;
                                     } catch (error: any) {
                                         if (error.error.logMessage === 'jwt expired') {
