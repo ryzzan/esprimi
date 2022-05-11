@@ -86,21 +86,32 @@ export class CodeToAngularTableComponentMethod {
             )}Service = (filter: string = '') => {
                 this._${object.table.id}Service.getAll(filter)
                 .then((result: any) => {
-                    this.${
-                      object.table.id
-                    }DataSource = result?.data.result ? result?.data.result : result?.data;
-                    this.isLoading = false;
+                  if (result) {
+                    if (result.data) {
+                      if (result.data.result) {
+                        this.${object.table.id}DataSource = result.data.result;
+                      }
+        
+                      this.${object.table.id}DataSource = result.data;
+                    }
+        
+                    this.${object.table.id}DataSource = result;
+                  }
+
+                  const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
+                  this.sendErrorMessage(message);
+                  this.isLoading = false;
                 })
                 .catch(async err => {
                     if (err.error.logMessage === 'jwt expired') {
-                    await this.refreshToken();
-                    this.set${TextTransformation.pascalfy(
-                      object.table.id
-                    )}Service();
+                      await this.refreshToken();
+                      this.set${TextTransformation.pascalfy(
+                        object.table.id
+                      )}Service();
                     } else {
-                    const message = this._errorHandler.apiErrorMessage(err.error.message);
-                    this.isLoading = false;
-                    this.sendErrorMessage(message);
+                      const message = this._errorHandler.apiErrorMessage(err.error.message);
+                      this.isLoading = false;
+                      this.sendErrorMessage(message);
                     };
                 });
             };

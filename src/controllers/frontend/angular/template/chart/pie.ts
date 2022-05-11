@@ -7,7 +7,8 @@ export class CodeToAngularChartTemplatePie {
           <canvas baseChart width="300" height="300"
                   [data]="${chart.id}PieChartData"
                   [options]="${chart.id}PieChartOptions"
-                  [type]="${chart.id}PieChartType">
+                  [type]="${chart.id}PieChartType"
+                  (chartClick)="${chart.id}PieChartClicked($event)">
           </canvas>
         </div>
         `;

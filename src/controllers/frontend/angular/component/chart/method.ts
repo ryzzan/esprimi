@@ -18,20 +18,33 @@ export class CodeToAngularChartComponentMethod {
 
     if (chart.line) {
       methods += `
-      ${chart.id}LineChartClicked({
+      ${chart.id}LineChartClicked = ({
         event,
         active,
       }: {
         event?: ChartEvent;
-        active?: {}[];
-      }): void {
-        this.${chart.id}OpenDialog();
+        active?: any;
+      }): void => {
+        this.${chart.id}OpenDialog(this.${chart.id}DataSource.identifiers[active[0].index]);
       };
 
       set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
         this._${chart.id}Service.getAll(filter)
         .then((result: any) => {
-          this.${chart.id}DataSource = result?.data.result ? result?.data.result : result?.data;
+          if (result) {
+            if (result.data) {
+              if (result.data.result) {
+                this.${chart.id}DataSource = result.data.result;
+              }
+
+              this.${chart.id}DataSource = result.data;
+            }
+
+            this.${chart.id}DataSource = result;
+          }
+
+          const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");          
+          this.sendErrorMessage(message);          
           this.isLoading = false;
         })
         .catch(async err => {
@@ -50,14 +63,14 @@ export class CodeToAngularChartComponentMethod {
 
     if (chart.bar) {
       methods += `
-      ${chart.id}BarChartClicked({
+      ${chart.id}BarChartClicked = ({
         event,
         active,
       }: {
         event?: ChartEvent;
-        active?: {}[];
-      }): void {
-        this.${chart.id}OpenDialog();
+        active?: any;
+      }): void => {
+        this.${chart.id}OpenDialog(this.${chart.id}DataSource.identifiers[active[0].index]);
       };
       `;
       
@@ -66,7 +79,20 @@ export class CodeToAngularChartComponentMethod {
         set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
           this._${chart.id}Service.getAll(filter)
           .then((result: any) => {
-            this.${chart.id}DataSource = result?.data.result ? result?.data.result : result?.data;
+            if (result) {
+              if (result.data) {
+                if (result.data.result) {
+                  this.${chart.id}DataSource = result.data.result;
+                }
+  
+                this.${chart.id}DataSource = result.data;
+              }
+  
+              this.${chart.id}DataSource = result;
+            }
+
+            const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
+            this.sendErrorMessage(message);
             this.isLoading = false;
             
             this.${chart.id}BarChartData.datasets = this.${chart.id}DataSource.datasets;
@@ -89,14 +115,14 @@ export class CodeToAngularChartComponentMethod {
 
     if (chart.pie) {
       methods += `
-      ${chart.id}PieChartClicked({
+      ${chart.id}PieChartClicked = ({
         event,
         active,
       }: {
         event?: ChartEvent;
-        active?: {}[];
-      }): void {
-        this.${chart.id}OpenDialog();
+        active?: any;
+      }): void => {
+        this.${chart.id}OpenDialog(this.${chart.id}DataSource.identifiers[active[0].index]);
       };
       `;
       
@@ -105,7 +131,20 @@ export class CodeToAngularChartComponentMethod {
         set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
           this._${chart.id}Service.getAll(filter)
           .then((result: any) => {
-            this.${chart.id}DataSource = result?.data.result ? result?.data.result : result?.data;
+            if (result) {
+              if (result.data) {
+                if (result.data.result) {
+                  this.${chart.id}DataSource = result.data.result;
+                }
+  
+                this.${chart.id}DataSource = result.data;
+              }
+  
+              this.${chart.id}DataSource = result;
+            }
+
+            const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
+            this.sendErrorMessage(message);  
             this.isLoading = false;
             
             this.${chart.id}PieChartData.datasets = this.${chart.id}DataSource.datasets;

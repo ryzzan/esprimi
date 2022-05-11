@@ -1,45 +1,61 @@
 import { FormInputTypeEnum } from "../../../../../enums/form";
 import { FormElementInterface } from "../../../../../interfaces/form";
-import {
-    MainInterface
-} from "../../../../../interfaces/main";
+import { MainInterface } from "../../../../../interfaces/main";
 import { TextTransformation } from "../../../../../utils/text.transformation";
 import { CodeToAngularFormComponentConstructorArg } from "./constructor-arg";
 
 export class CodeToAngularFormComponentMethod {
-    static customMethod = (object: MainInterface): string => {
-        if (object.form) {
-            const elements = object.form.elements;
-            const methods = CodeToAngularFormComponentMethod.createFormMethods(elements, object);            
-            const file = CodeToAngularFormComponentMethod.setFileSubmit(elements, object);
-            const componentCode = `
+  static customMethod = (object: MainInterface): string => {
+    if (object.form) {
+      const elements = object.form.elements;
+      const methods = CodeToAngularFormComponentMethod.createFormMethods(
+        elements,
+        object
+      );
+      const file = CodeToAngularFormComponentMethod.setFileSubmit(
+        elements,
+        object
+      );
+      const componentCode = `
                                 ${methods}
                                 ${object.form.id}Submit = async (
-                                    ${object.form?.id}Directive: FormGroupDirective
+                                    ${
+                                      object.form?.id
+                                    }Directive: FormGroupDirective
                                 ) => {
                                     this.isLoading = true;
 
                                     try {
                                         ${file}
                                         if(this.isAddModule) {
-                                            await this._${object.form.id}Service.save(
+                                            await this._${
+                                              object.form.id
+                                            }Service.save(
                                                 this.${object.form.id}Form.value
                                             );
                                         }
                                 
                                         if(!this.isAddModule) {
-                                            await this._${object.form.id}Service.update(
-                                                this.${object.form.id}Form.value,
+                                            await this._${
+                                              object.form.id
+                                            }Service.update(
+                                                this.${
+                                                  object.form.id
+                                                }Form.value,
                                                 this.${object.form.id}Id
                                             );
                                         }
 
-                                        this.redirectTo("main/${object.form.id.split('Form')[0]}");
+                                        this.redirectTo("main/${
+                                          object.form.id.split("Form")[0]
+                                        }");
                                         this.isLoading = false;
                                     } catch (error: any) {
                                         if (error.error.logMessage === 'jwt expired') {
                                             await this.refreshToken();
-                                            this.${object.form.id}Submit(${object.form?.id}Directive);
+                                            this.${object.form.id}Submit(${
+        object.form?.id
+      }Directive);
                                         } else {
                                             const message = this._errorHandler
                                                                 .apiErrorMessage(error.error.message);
@@ -54,7 +70,9 @@ export class CodeToAngularFormComponentMethod {
 
                                 refreshToken = async () => {
                                     try {
-                                        const res: any = await this._${object.form.id}Service.refreshToken();
+                                        const res: any = await this._${
+                                          object.form.id
+                                        }Service.refreshToken();
 
                                         if (res) {
                                             sessionStorage.setItem('token', res?.data.authToken);
@@ -89,41 +107,61 @@ export class CodeToAngularFormComponentMethod {
                                 };
                                 `;
 
-            return componentCode;
-        }
-
-        return '';
+      return componentCode;
     }
 
-    static createFormMethods = (elements: Array<FormElementInterface>, object: MainInterface): string => {
-        let methods = '';
+    return "";
+  };
 
-        for (let index = 0; index < elements.length; index++) {
-            const element = elements[index];
+  static createFormMethods = (
+    elements: Array<FormElementInterface>,
+    object: MainInterface
+  ): string => {
+    let methods = "";
 
-            if (element.tabs) {
-                element.tabs.forEach(elementTab => {
-                    methods += CodeToAngularFormComponentMethod.createFormMethods(elementTab.elements, object);
-                })
-            }
+    for (let index = 0; index < elements.length; index++) {
+      const element = elements[index];
 
-            if (element.array) {
-                const add = `add${TextTransformation.pascalfy(element.array.id)}`;
-                const remove = `remove${TextTransformation.pascalfy(element.array.id)}`;
-                const newArray = `new${TextTransformation.pascalfy(element.array.id)}`;
+      if (element.tabs) {
+        element.tabs.forEach((elementTab) => {
+          methods += CodeToAngularFormComponentMethod.createFormMethods(
+            elementTab.elements,
+            object
+          );
+        });
+      }
 
-                methods += `${add}() {this.${element.array.id}.push(this.${newArray}())};
-                                    get ${element.array.id}(): FormArray {return this.${object.form?.id}Form.get('${element.array.id}') as FormArray;};
+      if (element.array) {
+        const add = `add${TextTransformation.pascalfy(element.array.id)}`;
+        const remove = `remove${TextTransformation.pascalfy(element.array.id)}`;
+        const newArray = `new${TextTransformation.pascalfy(element.array.id)}`;
+
+        methods += `${add}() {this.${
+          element.array.id
+        }.push(this.${newArray}())};
+                                    get ${
+                                      element.array.id
+                                    }(): FormArray {return this.${
+          object.form?.id
+        }Form.get('${element.array.id}') as FormArray;};
                                     ${newArray}(): FormGroup { return this._formBuilder.group({
-                                        ${CodeToAngularFormComponentConstructorArg.createFormBuilder(element.array.elements, object)}
+                                        ${CodeToAngularFormComponentConstructorArg.createFormBuilder(
+                                          element.array.elements,
+                                          object
+                                        )}
                                     })};
-                                    ${remove}(i:number) {this.${element.array.id}.removeAt(i)}`;
+                                    ${remove}(i:number) {this.${
+          element.array.id
+        }.removeAt(i)}`;
 
-                methods += CodeToAngularFormComponentMethod.createFormMethods(element.array.elements, object);
-            }
+        methods += CodeToAngularFormComponentMethod.createFormMethods(
+          element.array.elements,
+          object
+        );
+      }
 
-            if (element.input?.type === FormInputTypeEnum.File) {
-                methods += `
+      if (element.input?.type === FormInputTypeEnum.File) {
+        methods += `
                 onFileSelected(event: any) {
                     if (event.target.files.length > 0) {
                         const file = event.target.files[0];
@@ -134,14 +172,18 @@ export class CodeToAngularFormComponentMethod {
                     }
                 }
                 `;
-            }
+      }
 
-            if (element.select?.optionsApi) {
-                methods += `
-                set${TextTransformation.pascalfy(element.select?.name)}SelectObject = async () => {
+      if (element.select?.optionsApi) {
+        methods += `
+                set${TextTransformation.pascalfy(
+                  element.select?.name
+                )}SelectObject = async () => {
                     try {
                         const array: any = await this._${object.form?.id}Service
-                                                    .${element.select.name}SelectObjectGetAll();
+                                                    .${
+                                                      element.select.name
+                                                    }SelectObjectGetAll();
 
                         if (array.data?.result) {
                             array.data?.result.map((object: any) => {
@@ -159,61 +201,115 @@ export class CodeToAngularFormComponentMethod {
                     };
                 };
                 `;
-            }
+      }
 
-            if (element.autocomplete) {
-                if (element.autocomplete.isMultiple) {
-                    methods += `
-                    add${TextTransformation.pascalfy(element.autocomplete.name)}(event: MatChipInputEvent): void {
+      if (element.autocomplete) {
+        if (element.autocomplete.isMultiple) {
+          methods += `
+                    add${TextTransformation.pascalfy(
+                      element.autocomplete.name
+                    )}(event: MatChipInputEvent): void {
                         const value = (event.value || '').trim();
                         
                         if (value) {
-                            this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.push(value);
+                            this.chosen${TextTransformation.pascalfy(
+                              element.autocomplete.name
+                            )}.push(value);
                         }
     
                         event.chipInput!.clear();
     
-                        this.${object.form?.id}Form.get('${element.autocomplete.name}')?.setValue(null);
+                        this.${object.form?.id}Form.get('${
+            element.autocomplete.name
+          }')?.setValue(null);
                     };
     
-                    remove${TextTransformation.pascalfy(element.autocomplete.name)}(element: string): void {
-                        const index = this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.indexOf(element);
+                    remove${TextTransformation.pascalfy(
+                      element.autocomplete.name
+                    )}(element: string): void {
+                        const index = this.chosen${TextTransformation.pascalfy(
+                          element.autocomplete.name
+                        )}.indexOf(element);
                     
                         if (index >= 0) {
-                            this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.splice(index, 1);
+                            this.chosen${TextTransformation.pascalfy(
+                              element.autocomplete.name
+                            )}.splice(index, 1);
                         }
                     };
                     
-                    selected${TextTransformation.pascalfy(element.autocomplete.name)}(event: MatAutocompleteSelectedEvent): void {
-                        this.chosen${TextTransformation.pascalfy(element.autocomplete.name)}.push(event.option.viewValue);
-                        this.${element.autocomplete.name}Input.nativeElement.value = '';
-                        this.${object.form?.id}Form.get('${element.autocomplete.name}')?.setValue(null);
+                    selected${TextTransformation.pascalfy(
+                      element.autocomplete.name
+                    )}(event: MatAutocompleteSelectedEvent): void {
+                        this.chosen${TextTransformation.pascalfy(
+                          element.autocomplete.name
+                        )}.push(event.option.viewValue);
+                        this.${
+                          element.autocomplete.name
+                        }Input.nativeElement.value = '';
+                        this.${object.form?.id}Form.get('${
+            element.autocomplete.name
+          }')?.setValue(null);
                     };`;
-                }
+        }
 
-                methods += `
-                setFiltered${TextTransformation.pascalfy(element.autocomplete.name)} = async () => {
+        methods += `
+                setFiltered${TextTransformation.pascalfy(
+                  element.autocomplete.name
+                )} = async () => {
                     try {
-                        const paramsToFilter = [${element.autocomplete.optionsApi.paramsToFilter.map(element => {
+                        const paramsToFilter = [${element.autocomplete.optionsApi.paramsToFilter.map(
+                          (element) => {
                             return `"${element}"`;
-                        })}];
+                          }
+                        )}];
 
-                        if(this.${object.form?.id}Form.value.${element.autocomplete.name}.length > 0) {
+                        if(this.${object.form?.id}Form.value.${
+          element.autocomplete.name
+        }.length > 0) {
                             const filter = \`?filter={"or":[\${paramsToFilter.map((element: string) => {
                                 if(element !== "undefined") {
-                                    return \`{"\${element}":{"like": "\${this.${object.form?.id}Form.value.${element.autocomplete.name}}", "options": "i"}}\`
+                                    return \`{"\${element}":{"like": "\${this.${
+                                      object.form?.id
+                                    }Form.value.${
+          element.autocomplete.name
+        }}", "options": "i"}}\`
                                 }
                                 return "";
                             })}]}\`;
                             
-                            this._${object.form?.id}Service.${element.autocomplete.name}SelectObjectGetAll(filter.replace("},]", "}]"))
+                            this._${object.form?.id}Service.${
+          element.autocomplete.name
+        }SelectObjectGetAll(filter.replace("},]", "}]"))
                             .then((result: any) => {
-                                this.filtered${TextTransformation.pascalfy(element.autocomplete.name)} = result?.data.result ? result?.data.result : result?.data;
+                                if (result) {
+                                    if (result.data) {
+                                        if (result.data.result) {
+                                            this.filtered${TextTransformation.pascalfy(
+                                              element.autocomplete.name
+                                            )} = result.data.result;
+                                        }
+                        
+                                        this.filtered${TextTransformation.pascalfy(
+                                          element.autocomplete.name
+                                        )} = result.data;
+                                    }
+                        
+                                    this.filtered${TextTransformation.pascalfy(
+                                      element.autocomplete.name
+                                    )} = result;
+                                }
+
+                                const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
+                                this.sendErrorMessage(message);
+                                this.isLoading = false;
                             })
                             .catch(async err => {
                                 if (err.error.logMessage === 'jwt expired') {
                                     await this.refreshToken();
-                                    this.setFiltered${TextTransformation.pascalfy(element.autocomplete.name)}();
+                                    this.setFiltered${TextTransformation.pascalfy(
+                                      element.autocomplete.name
+                                    )}();
                                 } else {
                                     const message = this._errorHandler.apiErrorMessage(err.error.message);
                                     this.sendErrorMessage(message);
@@ -228,28 +324,35 @@ export class CodeToAngularFormComponentMethod {
                     };
                 };
 
-                callSetFiltered${TextTransformation.pascalfy(element.autocomplete.name)} = MyPerformance.debounce(() => this.setFiltered${TextTransformation.pascalfy(element.autocomplete.name)}());
+                callSetFiltered${TextTransformation.pascalfy(
+                  element.autocomplete.name
+                )} = MyPerformance.debounce(() => this.setFiltered${TextTransformation.pascalfy(
+          element.autocomplete.name
+        )}());
                 `;
-            }
-        }
-
-        return methods;
+      }
     }
 
-    static setFileSubmit = (elements: Array<FormElementInterface>, object: MainInterface): string => {
-        let file = '';
+    return methods;
+  };
 
-        for (let index = 0; index < elements.length; index++) {
-            const element = elements[index];
+  static setFileSubmit = (
+    elements: Array<FormElementInterface>,
+    object: MainInterface
+  ): string => {
+    let file = "";
 
-            if (element.input?.type === FormInputTypeEnum.File) {
-                file += `
+    for (let index = 0; index < elements.length; index++) {
+      const element = elements[index];
+
+      if (element.input?.type === FormInputTypeEnum.File) {
+        file += `
                 const formData = new FormData();
                 formData.append('myFile', this.${object.form?.id}Form.get('${element.input.name}')?.value);
-                `
-            }
-        }
-
-        return file;
+                `;
+      }
     }
+
+    return file;
+  };
 }

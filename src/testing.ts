@@ -53,7 +53,7 @@ const cloneFrontendPath = 'https://github.com/ryzzan/new-lopes-quickstart';
 
 const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api';
 
-const projectPath = '/home/ryzzan/Projects/lopes-report';
+const projectPath = '/home/ryzzan/Projects/example';
 
 /**
  * EXAMPLE
