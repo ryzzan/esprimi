@@ -1,4 +1,3 @@
-import { FormInputTypeEnum } from "../../../../../enums/form";
 import { AutocompleteInterface } from "../../../../../interfaces/form";
 import { TextTransformation } from "../../../../../utils/text.transformation";
 

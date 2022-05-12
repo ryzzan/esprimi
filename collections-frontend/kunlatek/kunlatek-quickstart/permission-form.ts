@@ -46,7 +46,7 @@ export const PERMISSION_FORM: MainInterface = {
                     elements: [{
                         select: {
                             label: 'Módulo',
-                            name: 'module',
+                            name: 'modules',
                             type: FormInputTypeEnum.Text,
                             optionsApi: {
                                 endpoint: 'modules',
