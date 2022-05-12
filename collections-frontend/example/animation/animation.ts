@@ -9,7 +9,6 @@ export const ANIMATION: MainInterface = {
         components: [
             "animationForm",
             "animationTable",
-            "animationChart",
         ],
     }
 }

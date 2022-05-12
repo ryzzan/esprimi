@@ -34,7 +34,10 @@ export class CodeToAngularFormTemplateAutocomplete {
                 ${required}
               >
             </mat-chip-list>
-            <mat-autocomplete #auto${TextTransformation.pascalfy(autocomplete.name)}="matAutocomplete" (optionSelected)="selected${TextTransformation.pascalfy(autocomplete.name)}($event)">
+            <mat-autocomplete 
+              #auto${TextTransformation.pascalfy(autocomplete.name)}="matAutocomplete" 
+              (optionSelected)="selected${TextTransformation.pascalfy(autocomplete.name)}($event)"
+            >
               <mat-option *ngFor="let ${autocomplete.name}Item of filtered${TextTransformation.pascalfy(autocomplete.name)}" [value]="${autocomplete.name}Item.${autocomplete.optionsApi.valueField}">
                 {{${autocomplete.name}Item.${autocomplete.optionsApi.labelField}}}
               </mat-option>
@@ -57,7 +60,10 @@ export class CodeToAngularFormTemplateAutocomplete {
                 (keyup)="callSetFiltered${TextTransformation.pascalfy(autocomplete.name)}()" 
                 ${required}
           >
-          <mat-autocomplete #auto${TextTransformation.pascalfy(autocomplete.name)}="matAutocomplete">
+          <mat-autocomplete 
+            #auto${TextTransformation.pascalfy(autocomplete.name)}="matAutocomplete" 
+            [displayWith]="displayFnTo${TextTransformation.pascalfy(autocomplete.name)}.bind(this)"
+          >
             <mat-option *ngFor="let ${autocomplete.name}Item of filtered${TextTransformation.pascalfy(autocomplete.name)}" [value]="${autocomplete.name}Item.${autocomplete.optionsApi.valueField}">
               {{${autocomplete.name}Item.${autocomplete.optionsApi.labelField}}}
             </mat-option>

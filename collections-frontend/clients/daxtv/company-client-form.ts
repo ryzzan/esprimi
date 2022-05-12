@@ -23,6 +23,7 @@ export const COMPANY_CLIENT_FORM: MainInterface = {
                   placeholder: "Apenas números",
                   type: FormInputTypeEnum.Text,
                   isRequired: true,
+                  mask: "00.000.000/0000-00",
                   todo: "Mask validator",
                 },
               },
@@ -74,6 +75,7 @@ export const COMPANY_CLIENT_FORM: MainInterface = {
                   name: "mobile",
                   placeholder: "Celular da empresa",
                   type: FormInputTypeEnum.Text,
+                  mask: "(00)00000-0000",
                 },
               },
             ],
@@ -90,6 +92,7 @@ export const COMPANY_CLIENT_FORM: MainInterface = {
                   placeholder: "Código postal",
                   type: FormInputTypeEnum.Text,
                   isRequired: true,
+                  mask: "00.000-000",
                   todo: "Validator mask | Address API?",
                 }
               },

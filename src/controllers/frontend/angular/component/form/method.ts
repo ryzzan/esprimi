@@ -192,6 +192,10 @@ export class CodeToAngularFormComponentMethod {
                 }
 
                 methods += `
+                displayFnTo${TextTransformation.pascalfy(element.autocomplete.name)} = (value?: any) => {
+                    return value ? this.filtered${TextTransformation.pascalfy(element.autocomplete.name)}.find(_ => _.${element.autocomplete.optionsApi?.valueField} === value).${element.autocomplete.optionsApi?.labelField} : null;
+                };
+
                 setFiltered${TextTransformation.pascalfy(element.autocomplete.name)} = async () => {
                     try {
                         const paramsToFilter = [${element.autocomplete.optionsApi.paramsToFilter.map(element => {
