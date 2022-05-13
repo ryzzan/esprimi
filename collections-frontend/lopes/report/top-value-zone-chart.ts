@@ -13,7 +13,7 @@ export const TOP_VALUE_ZONE_CHART: MainInterface = {
     },
     service: {
       baseUrl: "https://back-data-report.dev.lpsbr.com/api/v1/",
-      endPoint: "proposals/top-value-zones?start_date=2022-05-01&finish_date=2022-05-10",
+      endPoint: "proposals/top-value-zones?start_date=2022-05-01&finish_date=2022-05-10&company_id=37",
       hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,

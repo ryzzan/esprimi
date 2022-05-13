@@ -16,6 +16,8 @@ export class CodeToAngularModule {
                                       import { SharedModule } from '../shared/shared.module';
                                       import { %pascalfy(${projectName})%RoutingModule } from './%kebabfy(${projectName})%-routing.module';
                                       import { %pascalfy(${projectName})%Component } from './%kebabfy(${projectName})%.component';
+                                      import { NgChartsModule } from "ng2-charts";
+
                                       %IMPORTS%
                                       
                                       @NgModule({
@@ -26,7 +28,8 @@ export class CodeToAngularModule {
                                         imports: [
                                           CommonModule,
                                           %pascalfy(${projectName})%RoutingModule,
-                                          SharedModule
+                                          NgChartsModule,
+                                          SharedModule,
                                         ]
                                       })
                                       export class %pascalfy(${projectName})%Module { }

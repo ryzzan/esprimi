@@ -53,7 +53,7 @@ const cloneFrontendPath = 'https://github.com/ryzzan/new-lopes-quickstart';
 
 const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api';
 
-const projectPath = '/home/ryzzan/Projects/example';
+const projectPath = '/home/ryzzan/Projects/lopes-report';
 
 /**
  * EXAMPLE
@@ -108,6 +108,8 @@ import {AVERAGE_TICKET_CHART} from "../collections-frontend/lopes/report/average
 
 import {TOP_VALUE_ZONE_CHART} from "../collections-frontend/lopes/report/top-value-zone-chart";
 
+import {PROPOSAL_NEGOTIATION_LIST} from "../collections-frontend/lopes/report/proposal-negotiation-list";
+
 import {PROPOSAL_NEGOTIATION} from "../collections-frontend/lopes/report/proposal-negotiation";
 
 // TO-DO: FINANCIAL REPORT
@@ -138,6 +140,7 @@ const main = new Main(),
         INTERMEDIARY_CHART,
         AVERAGE_TICKET_CHART,
         TOP_VALUE_ZONE_CHART,
+        PROPOSAL_NEGOTIATION_LIST,
         PROPOSAL_NEGOTIATION,
     ];
 

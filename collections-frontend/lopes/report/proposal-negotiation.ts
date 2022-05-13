@@ -7,6 +7,7 @@ export const PROPOSAL_NEGOTIATION: MainInterface = {
     id: "proposalNegotiation",
     title: "Cards de propostas",
     components: [
+      "proposalNegotiationList",
       "originChannelChart",
       "intermediaryChart",
       "averageTicketChart",

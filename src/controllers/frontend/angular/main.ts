@@ -48,5 +48,7 @@ export class CodeToAngular {
     if (object.table) return object.table.id;
 
     if (object.chart) return object.chart.id;
+
+    if (object.list) return object.list.id;
   };
 }

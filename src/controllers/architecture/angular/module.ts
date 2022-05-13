@@ -72,14 +72,21 @@ export class AngularArchitectureModule {
 
       object.module.components.map(element => {
         const kebabfyedElement = TextTransformation.kebabfy(element);
-        console.log(kebabfyedElement, "757575757575757575757575757575757575757575757575757575757575");
         if (kebabfyedElement.split('-').pop() === "chart") {
           hasChart = true;
         }
       })
 
       if (hasChart) {
-        await AngularArchitectureModule.importNgChartsModule(object);
+        chp.execSync(
+          `npm install ng2-charts --save`, 
+          {cwd: projectPath}
+        );
+
+        chp.execSync(
+          `npm install chart.js --save`, 
+          {cwd: projectPath}
+        );
       }
     }
   };
@@ -153,49 +160,4 @@ export class AngularArchitectureModule {
       console.error(error);
     }
   };
-
-  static importNgChartsModule = async (object: MainInterface) => {
-    if (!object.module) return false;
-
-    let modulePath = TextTransformation.kebabfy(object.module.id);
-
-    const projectPath = object.projectPath;
-    const modulePathToImport = `${projectPath}/src/app/modules/${modulePath}/${modulePath}.module.ts`;
-
-    try {
-      const file = fs.readFileSync(modulePathToImport);
-      let moduleImportCode = "";
-      let moduleImportsCode = "";
-      if (file.toString().search(`import { NgChartsModule } from "ng2-charts";`) <= 1) {
-        console.info("Intalling ng charts");
-        
-        chp.execSync(
-          `npm install ng2-charts --save`, 
-          {cwd: projectPath}
-        );
-
-        chp.execSync(
-          `npm install chart.js --save`, 
-          {cwd: projectPath}
-        );
-
-        moduleImportCode = `import { SharedModule } from '../shared/shared.module'; import { NgChartsModule } from "ng2-charts";`;
-        moduleImportsCode = `SharedModule, NgChartsModule]`
-      }
-
-      let code = "";
-
-      code = file
-        .toString()
-        .replace("import { SharedModule } from '../shared/shared.module';", `${moduleImportCode}`);
-
-      code = code.replace("SharedModule]", moduleImportsCode);
-
-      fs.writeFileSync(modulePathToImport, code);
-
-      return true;
-    } catch (error: any) {
-      console.error(error);
-    }
-  }
 }

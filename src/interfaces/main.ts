@@ -5,6 +5,7 @@ import { ModuleInterface } from "./module";
 import { TableInterface } from "./table";
 import { TreeInterface } from "./tree";
 import { ChartInterface } from './chart';
+import { ListInterface } from './list';
 
 export interface MainInterface {
   backendFramework?: BackendFrameworkEnum;
@@ -19,6 +20,7 @@ export interface MainInterface {
   form?: FormInterface;
   table?: TableInterface;
   chart?: ChartInterface;
+  list?: ListInterface;
   tree?: TreeInterface;
   module?: ModuleInterface;
   model?: ModelInterface;
