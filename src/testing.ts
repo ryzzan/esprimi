@@ -1,32 +1,32 @@
-import { Main } from './index';
+import { Main } from "./index";
 
 const envFrontDev = `
 export const environment = {
     firebase: {
-        projectId: 'kunlatek-quickstart',
-        appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
-        storageBucket: 'kunlatek-quickstart.appspot.com',
-        apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
-        authDomain: 'kunlatek-quickstart.firebaseapp.com',
-        messagingSenderId: '61322235717',
-        measurementId: 'G-V8W65TSX41',
+        projectId: "kunlatek-quickstart",
+        appId: "1:61322235717:web:2c454bc7bd593cc6d3f82c",
+        storageBucket: "kunlatek-quickstart.appspot.com",
+        apiKey: "AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ",
+        authDomain: "kunlatek-quickstart.firebaseapp.com",
+        messagingSenderId: "61322235717",
+        measurementId: "G-V8W65TSX41",
     },
-    baseUrl: 'http://localhost:3000',
+    baseUrl: "http://localhost:3000",
     production: false
 };`;
 
 const envFrontProd = `
 export const environment = {
     firebase: {
-        projectId: 'kunlatek-quickstart',
-        appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
-        storageBucket: 'kunlatek-quickstart.appspot.com',
-        apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
-        authDomain: 'kunlatek-quickstart.firebaseapp.com',
-        messagingSenderId: '61322235717',
-        measurementId: 'G-V8W65TSX41',
+        projectId: "kunlatek-quickstart",
+        appId: "1:61322235717:web:2c454bc7bd593cc6d3f82c",
+        storageBucket: "kunlatek-quickstart.appspot.com",
+        apiKey: "AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ",
+        authDomain: "kunlatek-quickstart.firebaseapp.com",
+        messagingSenderId: "61322235717",
+        measurementId: "G-V8W65TSX41",
     },
-    baseUrl: 'http://localhost:3000',
+    baseUrl: "http://localhost:3000",
     production: true
 };`;
 
@@ -35,58 +35,50 @@ PORT=3000
 SERVER_ROOT_URI=http://localhost
 CLIENT_REDIRECT_URI=http://localhost:4200
 MONGO_URL=mongodb+srv://kunlatek:Kunlatek751@cluster0.b0pfr.mongodb.net/?authSource=admin&replicaSet=atlas-zft6fn-shard-0&readPreference=primary&ssl=true
-DB=animation
+DB=esprimi
 NODEMAILER_USER=
 NODEMAILER_PASS=
 `
 
-const cloneFrontendPath = 'https://github.com/ryzzan/kunlatek-quickstart';
+const cloneFrontendPath = "https://github.com/ryzzan/kunlatek-quickstart";
 
-const cloneBackendPath = 'https://github.com/kunlabori-teknologio/quickstart-api';
+const cloneBackendPath = "https://github.com/kunlabori-teknologio/quickstart-api";
 
-const projectPath = '/home/ryzzan/Projects/animation';
+const projectPath = "/home/ryzzan/Projects/esprimi-backoffice";
 
 /**
  * ANIMATION
  */
-import { ANIMATION_FORM } from '../collections-frontend/example/animation-form';
-import { ANIMATION_TABLE } from '../collections-frontend/example/animation-table';
-import { ANIMATION } from '../collections-frontend/example/animation';
+// import { ANIMATION_FORM } from "../collections-frontend/example/animation-form";
+// import { ANIMATION_TABLE } from "../collections-frontend/example/animation-table";
+// import { ANIMATION } from "../collections-frontend/example/animation";
 
-import { CHARACTER_FORM } from '../collections-frontend/example/character-form';
-import { CHARACTER_TABLE } from '../collections-frontend/example/character-table';
-import { CHARACTER } from '../collections-frontend/example/character';
+// import { CHARACTER_FORM } from "../collections-frontend/example/character-form";
+// import { CHARACTER_TABLE } from "../collections-frontend/example/character-table";
+// import { CHARACTER } from "../collections-frontend/example/character";
 
 
 /**
  * GENERIC TEST
  */
-// import {USER_GROUP_FORM} from '../collections-frontend/generic-test/user-group-form';
-// import {USER_GROUP_TABLE} from '../collections-frontend/generic-test/user-group-table';
-// import {USER_GROUP} from '../collections-frontend/generic-test/user-group';
+// import {USER_GROUP_FORM} from "../collections-frontend/generic-test/user-group-form";
+// import {USER_GROUP_TABLE} from "../collections-frontend/generic-test/user-group-table";
+// import {USER_GROUP} from "../collections-frontend/generic-test/user-group";
 
-// import {PERMISSION_GROUP_FORM} from '../collections-frontend/generic-test/permission-group-form';
-// import {PERMISSION_GROUP_TABLE} from '../collections-frontend/generic-test/permission-group-table';
-// import {PERMISSION_GROUP} from '../collections-frontend/generic-test/permission-group';
+// import {PERMISSION_GROUP_FORM} from "../collections-frontend/generic-test/permission-group-form";
+// import {PERMISSION_GROUP_TABLE} from "../collections-frontend/generic-test/permission-group-table";
+// import {PERMISSION_GROUP} from "../collections-frontend/generic-test/permission-group";
 
 /**
  * CLIENTS
  */
-// import {COMPANY_CLIENT} from "../collections-frontend/clients/daxtv/company-client";
-// import {COMPANY_CLIENT_FORM} from "../collections-frontend/clients/daxtv/company-client-form";
-// import {COMPANY_CLIENT_TABLE} from "../collections-frontend/clients/daxtv/company-client-table";
+import {PROJECT} from "../collections-frontend/kunlatek/esprimi-backoffice/project";
+import {PROJECT_FORM} from "../collections-frontend/kunlatek/esprimi-backoffice/project-form";
+import {PROJECT_TABLE} from "../collections-frontend/kunlatek/esprimi-backoffice/project-table";
 
-// import {PERSON_CLIENT} from "../collections-frontend/clients/daxtv/person-client";
-// import {PERSON_CLIENT_FORM} from "../collections-frontend/clients/daxtv/person-client-form";
-// import {PERSON_CLIENT_TABLE} from "../collections-frontend/clients/daxtv/person-client-table";
-
-// import {PACK} from "../collections-frontend/clients/daxtv/pack";
-// import {PACK_FORM} from "../collections-frontend/clients/daxtv/pack-form";
-// import {PACK_TABLE} from "../collections-frontend/clients/daxtv/pack-table";
-
-// import {PERMISSION_GROUP} from "../collections-frontend/clients/daxtv/permission-group";
-// import {PERMISSION_GROUP_FORM} from "../collections-frontend/clients/daxtv/permission-group-form";
-// import {PERMISSION_GROUP_TABLE} from "../collections-frontend/clients/daxtv/permission-group-table";
+import {MODULE} from "../collections-frontend/kunlatek/esprimi-backoffice/module";
+import {MODULE_FORM} from "../collections-frontend/kunlatek/esprimi-backoffice/module-form";
+import {MODULE_TABLE} from "../collections-frontend/kunlatek/esprimi-backoffice/module-table";
 
 // TO-DO: FINANCIAL REPORT
 //////////////////////////////////////////////////////////
@@ -95,8 +87,8 @@ const main = new Main(),
         /**
          * ANIMATION
          */
-        ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
-        CHARACTER_FORM, CHARACTER_TABLE, CHARACTER,
+        // ANIMATION_FORM, ANIMATION_TABLE, ANIMATION,
+        // CHARACTER_FORM, CHARACTER_TABLE, CHARACTER,
 
         /**
          * GENERIC TEST
@@ -107,10 +99,8 @@ const main = new Main(),
         /**
          * CLIENT
          */
-        // COMPANY_CLIENT_FORM, COMPANY_CLIENT_TABLE, COMPANY_CLIENT,
-        // PERSON_CLIENT_FORM, PERSON_CLIENT_TABLE, PERSON_CLIENT,
-        // PACK_FORM, PACK_TABLE, PACK,
-        // PERMISSION_GROUP_FORM, PERMISSION_GROUP_TABLE, PERMISSION_GROUP,
+        PROJECT_FORM, PROJECT_TABLE, PROJECT,
+        MODULE_FORM, MODULE_TABLE, MODULE,
     ];
 
 array.forEach(object => {

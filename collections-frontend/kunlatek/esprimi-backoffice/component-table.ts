@@ -7,54 +7,55 @@ import { MainInterface } from "../../../src/interfaces/main";
 export const COMPONENT_TABLE: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
   table: {
-    id: 'componentTable',
-    title: 'Componentes',
+    id: "componentTable",
+    title: "Componentes",
     data: {
       type: RequestTypeEnum.Api,
     },
     elements: [
       {
         column: {
-          label: 'Título',
+          label: "Título",
         },
         row: {
-          type: 'string',
-          field: 'title',
+          type: "string",
+          field: "title",
         },
       },
       {
         column: {
-          label: 'Identidade',
+          label: "Identidade",
         },
         row: {
-          type: 'string',
-          field: 'id',
+          type: "string",
+          field: "id",
         },
       },
       {
         column: {
-          label: 'Ações',
+          label: "Ações",
         },
         row: {
-          type: 'menu',
-          icon: 'more_vert',
+          type: "menu",
+          icon: "more_vert",
           menu: [
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: '/main/component',
-                param: '_id'
+                url: "/main/component",
+                param: "_id"
               },
-              label: 'Editar',
+              label: "Editar",
             },
             {
               action: {
                 type: RequestTypeEnum.Dialog,
+                param: "_id",
               },
-              label: 'Remover',
+              label: "Remover",
               dialog: {
-                templateFolder: 'remove-confirmation-dialog',
-                id: 'removeConfirmationDialog',
+                templateFolder: "remove-confirmation-dialog",
+                id: "removeConfirmationDialog",
               },
             },
           ],
@@ -62,21 +63,21 @@ export const COMPONENT_TABLE: MainInterface = {
       },
     ],
     actions: {
-        id: 'componentTable',
-        title: 'Componente',
+        id: "componentTable",
+        title: "Componente",
         elements: [{
             input: {
-                label: 'Search input',
-                name: 'searchInput',
-                placeholder: 'Placeholder to search input',
+                label: "Search input",
+                name: "searchInput",
+                placeholder: "Placeholder to search input",
                 type: FormInputTypeEnum.Text
             }
         }]
     },
     service: {
       hasAuthorization: true,
-      baseUrl: 'http://localhost:3000',
-        endPoint: 'components',
+      baseUrl: "http://localhost:3000",
+        endPoint: "components",
         methods: [
             ServiceFunctionsEnum.Get,
             ServiceFunctionsEnum.Delete,
