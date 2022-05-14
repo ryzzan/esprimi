@@ -6,6 +6,7 @@ export class LoopbackArchitectureProject {
     static createArchitectureProject = async (
         object: MainInterface
     ) => {
+        const projectName = object.projectPath.split('/').slice(-1)
         const projectPath = `${object.projectPath}-api`;
         const clonePath = object.cloneBackendPath;
         const projectFolder = projectPath.split(/[\/]+/).pop();
@@ -22,9 +23,15 @@ export class LoopbackArchitectureProject {
                 `git clone ${clonePath} ${projectFolder}`,
                 { cwd: projectFolderParent }
             );
-
-            fs.writeFileSync(`${projectPath}/.env`, `${object.envBackend}`);
         }
+
+        fs.writeFileSync(
+            `${projectPath}/.env`,
+            `
+PROJECT=${projectName}
+${object.envBackend}
+`
+        );
 
         try {
             fs.readdirSync(nodeModulePath);
