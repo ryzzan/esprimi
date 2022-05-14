@@ -38,6 +38,7 @@ MONGO_URL=mongodb+srv://kunlatek:Kunlatek751@cluster0.b0pfr.mongodb.net/?authSou
 DB=esprimi
 NODEMAILER_USER=
 NODEMAILER_PASS=
+ADMIN_USERS=
 `
 
 const cloneFrontendPath = "https://github.com/ryzzan/kunlatek-quickstart";
@@ -72,13 +73,13 @@ const projectPath = "/home/ryzzan/Projects/esprimi-backoffice";
 /**
  * CLIENTS
  */
-import {PROJECT} from "../collections-frontend/kunlatek/esprimi-backoffice/project";
-import {PROJECT_FORM} from "../collections-frontend/kunlatek/esprimi-backoffice/project-form";
-import {PROJECT_TABLE} from "../collections-frontend/kunlatek/esprimi-backoffice/project-table";
+import { PROJECT } from "../collections-frontend/kunlatek/esprimi-backoffice/project";
+import { PROJECT_FORM } from "../collections-frontend/kunlatek/esprimi-backoffice/project-form";
+import { PROJECT_TABLE } from "../collections-frontend/kunlatek/esprimi-backoffice/project-table";
 
-import {MODULE} from "../collections-frontend/kunlatek/esprimi-backoffice/module";
-import {MODULE_FORM} from "../collections-frontend/kunlatek/esprimi-backoffice/module-form";
-import {MODULE_TABLE} from "../collections-frontend/kunlatek/esprimi-backoffice/module-table";
+import { MODULE } from "../collections-frontend/kunlatek/esprimi-backoffice/module";
+import { MODULE_FORM } from "../collections-frontend/kunlatek/esprimi-backoffice/module-form";
+import { MODULE_TABLE } from "../collections-frontend/kunlatek/esprimi-backoffice/module-table";
 
 // TO-DO: FINANCIAL REPORT
 //////////////////////////////////////////////////////////

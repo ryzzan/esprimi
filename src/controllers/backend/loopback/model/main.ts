@@ -13,10 +13,10 @@ export class CodeToLoopbackModel {
     ): Promise<string> => {
         const modelSkeletonCode = `
                                     import {model, property} from '@loopback/repository';
-                                    import {Default} from '.';
+                                    import {__Default} from '.';
 
                                     @model()
-                                    export class %pascalfy(${modelName})% extends Default {
+                                    export class %pascalfy(${modelName})% extends __Default {
 
                                         @property({
                                             type: 'string',
