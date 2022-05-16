@@ -12,8 +12,8 @@ export class CodeToLoopbackModel {
         object: MainInterface
     ): Promise<string> => {
         const modelSkeletonCode = `
-                                    import {model, property} from '@loopback/repository';
-                                    import {__Default} from '.';
+                                    import {belongsTo, model, property} from '@loopback/repository';
+                                    import {%MODULE_IMPORTS%__Default} from '.';
 
                                     @model()
                                     export class %pascalfy(${modelName})% extends __Default {
@@ -42,7 +42,8 @@ export class CodeToLoopbackModel {
         let code = modelSkeletonCode;
 
         const propertyCode = this.customModelPropertyCode.createProperties(object);
-        code = code.replace('%PROPERTIES%', propertyCode);
+        code = code.replace('%MODULE_IMPORTS%', propertyCode.modulesImports);
+        code = code.replace('%PROPERTIES%', propertyCode.properties);
 
         code = TextTransformation.replaceKebabfyFunctionToString(code);
         code = TextTransformation.replacePascalfyFunctionToString(code);
