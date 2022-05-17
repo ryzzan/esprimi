@@ -1,7 +1,11 @@
 import { MainInterface } from "../../../../interfaces/main";
 import { TextTransformation } from "../../../../utils/text.transformation";
+import { CodeToLoopbackControllerProperties } from "./properties/main";
 
 export class CodeToLoopbackController {
+
+    customControllerPropertyCode = new CodeToLoopbackControllerProperties;
+
     createComponentCode = async (
         modelName: string,
         object: MainInterface
@@ -86,7 +90,7 @@ export class CodeToLoopbackController {
                                         
                                                 const filters = HttpDocumentation.createFilterRequestParams(this.httpRequest.url);
                                             
-                                                const result = await this.repository.find(filters);
+                                                const result = await this.repository.find({...filters, include: [%PROPERTIES_RELATED_FIND%]});
                                             
                                                 const total = await this.repository.count(filters['where']);
                                             
@@ -121,7 +125,10 @@ export class CodeToLoopbackController {
                                         ): Promise<IHttpResponse> {
                                             try {
                                         
-                                                const data = await this.repository.findOne({where: {and: [{_id: id}, {_deletedAt: {eq: null}}]}});
+                                                const data = await this.repository.findOne({
+                                                    where: {and: [{_id: id}, {_deletedAt: {eq: null}}]},
+                                                    include: [%PROPERTIES_RELATED_FIND_ONE%],
+                                                });
                                                 if (!data) throw new Error(serverMessages['httpResponse']['notFoundError'][locale ?? LocaleEnum['pt-BR']]);
                                             
                                                 return HttpResponseToClient.okHttpResponse({
@@ -245,6 +252,10 @@ export class CodeToLoopbackController {
                                     `;
 
         let code = controllerSkeletonCode;
+
+        const propertiesRelatedCode = this.customControllerPropertyCode.createProperties(object);
+        code = code.replace('%PROPERTIES_RELATED_FIND%', propertiesRelatedCode);
+        code = code.replace('%PROPERTIES_RELATED_FIND_ONE%', propertiesRelatedCode);
 
         code = TextTransformation.replaceKebabfyFunctionToString(code);
         code = TextTransformation.replacePascalfyFunctionToString(code);
