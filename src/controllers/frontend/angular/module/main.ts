@@ -10,12 +10,14 @@ export class CodeToAngularModule {
         object: MainInterface
     ): Promise<string> => {
         const moduleSkeletonCode = `
+        
         import { NgModule } from '@angular/core';
         import { CommonModule } from '@angular/common';
         
         import { SharedModule } from '../shared/shared.module';
         import { %pascalfy(${projectName})%RoutingModule } from './%kebabfy(${projectName})%-routing.module';
         import { %pascalfy(${projectName})%Component } from './%kebabfy(${projectName})%.component';
+        import { NgChartsModule } from "ng2-charts";
 
         import {
           NgxMaskModule,
@@ -36,6 +38,7 @@ export class CodeToAngularModule {
             CommonModule,
             %pascalfy(${projectName})%RoutingModule,
             NgxMaskModule.forRoot(maskConfig),
+            NgChartsModule,
             SharedModule
           ]
         })

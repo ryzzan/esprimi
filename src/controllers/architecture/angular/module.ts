@@ -13,6 +13,7 @@ export class AngularArchitectureModule {
     if (!object.module) return false;
 
     let modulePath = TextTransformation.kebabfy(object.module.id);
+    let hasChart: boolean = false;
 
     const projectPath = object.projectPath;
     const projectAndModulePath = `${projectPath}/src/app/modules/${modulePath}`;
@@ -68,6 +69,25 @@ export class AngularArchitectureModule {
       await AngularArchitectureModule.createModuleLazyLoad(object);
 
       await AngularArchitectureModule.setModuleComponentRoute(object);
+
+      object.module.components.map(element => {
+        const kebabfyedElement = TextTransformation.kebabfy(element);
+        if (kebabfyedElement.split('-').pop() === "chart") {
+          hasChart = true;
+        }
+      })
+
+      if (hasChart) {
+        chp.execSync(
+          `npm install ng2-charts --save`, 
+          {cwd: projectPath}
+        );
+
+        chp.execSync(
+          `npm install chart.js --save`, 
+          {cwd: projectPath}
+        );
+      }
     }
   };
 

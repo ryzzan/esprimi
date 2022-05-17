@@ -25,7 +25,7 @@ export class Main {
           await this.createFrontendArchitecture(codes, array[index]);
         }
 
-        // console.info("Here are the codes:", codes);
+        console.info("Here are the codes:", codes);
       } catch (error: any) {
         console.error({
           component: "",

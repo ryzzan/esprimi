@@ -1,5 +1,38 @@
 import { Main } from "./index";
 
+// const envFrontDev = `
+// export const environment = {
+//     firebase: {
+//         projectId: 'kunlatek-quickstart',
+//         appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+//         storageBucket: 'kunlatek-quickstart.appspot.com',
+//         apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+//         authDomain: 'kunlatek-quickstart.firebaseapp.com',
+//         messagingSenderId: '61322235717',
+//         measurementId: 'G-V8W65TSX41',
+//     },
+//     baseUrl: 'http://localhost:3000',
+//     production: false
+// };`;
+
+// const envFrontProd = `
+// export const environment = {
+//     firebase: {
+//         projectId: 'kunlatek-quickstart',
+//         appId: '1:61322235717:web:2c454bc7bd593cc6d3f82c',
+//         storageBucket: 'kunlatek-quickstart.appspot.com',
+//         apiKey: 'AIzaSyCLOB3dc091tFAuj9LEsarILOBVzL-dqhQ',
+//         authDomain: 'kunlatek-quickstart.firebaseapp.com',
+//         messagingSenderId: '61322235717',
+//         measurementId: 'G-V8W65TSX41',
+//     },
+//     baseUrl: 'http://localhost:3000',
+//     production: true
+// };`;
+
+/**
+* LOPES API
+*/
 const envFrontDev = `
 export const environment = {
     firebase: {
@@ -14,7 +47,7 @@ export const environment = {
     baseUrl: "http://localhost:3000",
     production: false
 };`;
-
+ 
 const envFrontProd = `
 export const environment = {
     firebase: {
@@ -44,7 +77,6 @@ ADMIN_USERS=
 const cloneFrontendPath = "https://github.com/ryzzan/kunlatek-quickstart";
 
 const cloneBackendPath = "https://github.com/kunlabori-teknologio/quickstart-api";
-
 const projectPath = "/home/ryzzan/Projects/esprimi-backoffice";
 
 /**
@@ -110,7 +142,7 @@ array.forEach(object => {
     object.cloneBackendPath = cloneBackendPath;
     object.envFrontendDev = envFrontDev;
     object.envFrontendProd = envFrontProd;
-    object.envBackend = envBackend;
+    // object.envBackend = envBackend;
 });
 
 main.createCode(array)

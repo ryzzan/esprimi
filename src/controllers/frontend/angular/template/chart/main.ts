@@ -1,41 +1,58 @@
 import {
     MainInterface
 } from "../../../../../interfaces/main";
-import { ModuleInterface } from "../../../../../interfaces/module";
-import {
-    TextTransformation
-} from "../../../../../utils/text.transformation";
+import { ChartInterface } from "../../../../../interfaces/chart";
+import { CodeToAngularChartTemplateBar } from "./bar";
+import { CodeToAngularChartTemplateLine } from "./line";
+import { CodeToAngularChartTemplateBubble } from "./bubble";
+import { CodeToAngularChartTemplateDoughnut } from "./doughnut";
+import { CodeToAngularChartTemplatePie } from "./pie";
+import { CodeToAngularChartTemplatePolarArea } from "./polar-area";
+import { CodeToAngularChartTemplateRadar } from "./radar";
+import { CodeToAngularChartTemplateScatter } from "./scatter";
 
-export class CodeToAngularModuleTemplate {
-    createModuleSkeleton(object: MainInterface): string {
-        if (!object.module) return '';
-        const components = this.createModuleComponents(object.module);
-        const moduleTemplate = `
-                            ${components}
-                            `;
+export class CodeToAngularChartTemplate {
+    createChartSkeleton(object: MainInterface): string {
+        if (!object.chart) return '';
+        const hasFormTitle = (object.chart.title) ?
+            `<mat-card-title>${object.chart.title}</mat-card-title>` :
+            '';
 
-        return moduleTemplate;
+        const hasFormSubtitle = (object.chart.subtitle) ?
+            `<mat-card-subtitle>${object.chart.subtitle}</mat-card-subtitle>` :
+            '';
+        const chartTemplate = `
+        <mat-card>
+            <mat-card-header>
+                ${hasFormTitle}
+                ${hasFormSubtitle}
+            </mat-card-header>
+
+            <mat-card-content>
+                <div *ngIf="isLoading" class="loading">
+                    <mat-progress-bar color="primary" mode="buffer">
+                    </mat-progress-bar>
+                </div>
+                ${this.createChartComponents(object, object.chart)}
+            </mat-card-content>
+        </mat-card>
+        `;
+
+        return chartTemplate;
     }
 
-    private createModuleComponents = (module: ModuleInterface): string => {
-        let components = '';
-        let forms = 0;
+    private createChartComponents = (object: MainInterface, chart: ChartInterface): string => {
+        let code = '';
 
-        for (let index = 0; index < module.components.length; index++) {
-            const element = TextTransformation.kebabfy(module.components[index]);
+        if (chart.bar) code += CodeToAngularChartTemplateBar.createBar(object, chart);
+        if (chart.bubble) code += CodeToAngularChartTemplateBubble.createBubble(object, chart);
+        if (chart.doughnut) code += CodeToAngularChartTemplateDoughnut.createDoughnut(object, chart);
+        if (chart.line) code += CodeToAngularChartTemplateLine.createLine(object, chart);
+        if (chart.pie) code += CodeToAngularChartTemplatePie.createPie(object, chart);
+        if (chart.polarArea) code += CodeToAngularChartTemplatePolarArea.createPolarArea(object, chart);
+        if (chart.radar) code += CodeToAngularChartTemplateRadar.createRadar(object, chart);
+        if (chart.scatter) code += CodeToAngularChartTemplateScatter.createScatter(object, chart);
 
-            const componentType = element.split('-')[element.split('-').length - 1];
-            if (componentType === 'form') forms = forms + 1;
-        }
-
-        if (forms > 1) components += `<mat-stepper>`;
-        module.components.forEach(component => {
-            if (forms > 1) components += `<mat-step> <ng-template matStepLabel>${TextTransformation.kebabfy(component)}</ng-template>`;
-            components += `<app-${TextTransformation.kebabfy(component)}></app-${TextTransformation.kebabfy(component)}> `;
-            if (forms > 1) components += `</mat-step>`;
-        });
-        if (forms > 1) components += `</mat-stepper>`;
-
-        return components;
+        return code;
     }
 }

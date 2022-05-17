@@ -6,6 +6,10 @@ export const ANIMATION: MainInterface = {
     module: {
         id:"animation",
         title: "Animações",
-        components: ["animationForm", "animationTable"],
+        components: [
+            "animationForm",
+            "animationTable",
+            "animationChart",
+        ],
     }
 }

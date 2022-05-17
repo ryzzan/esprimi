@@ -1,25 +1,17 @@
-import {
-    DialogInterface
-} from "../../../../../interfaces/dialog";
-import {
-    MainInterface
-} from "../../../../../interfaces/main";
-import {
-    TableElementInterface
-} from "../../../../../interfaces/table";
-import {
-    TextTransformation
-} from "../../../../../utils/text.transformation";
+import { DialogInterface } from "../../../../../interfaces/dialog";
+import { MainInterface } from "../../../../../interfaces/main";
+import { TableElementInterface } from "../../../../../interfaces/table";
+import { TextTransformation } from "../../../../../utils/text.transformation";
 
 export class CodeToAngularTableComponentMethod {
-    static customMethod = (object: MainInterface): string => {
-        let hasAction = '', refreshToken = '';
+  static customMethod = (object: MainInterface): string => {
+    let hasAction = "",
+      refreshToken = "";
 
-        if (!object.table)
-            return '';
+    if (!object.table) return "";
 
-        if (object.table.service?.hasAuthorization) {
-            refreshToken = `refreshToken = async () => {
+    if (object.table.service?.hasAuthorization) {
+      refreshToken = `refreshToken = async () => {
                 try {
                     const res: any = await this._${object.table.id}Service.refreshToken();
 
@@ -34,11 +26,11 @@ export class CodeToAngularTableComponentMethod {
                     sessionStorage.clear();
                     this.router.navigate(['/']);
                 };
-            };`
-        }
+            };`;
+    }
 
-        if (object.table.actions)
-            hasAction = `
+    if (object.table.actions)
+      hasAction = `
             ${object.table.id}Submit() {
                 this.isLoading = true;
                 
@@ -63,85 +55,118 @@ export class CodeToAngularTableComponentMethod {
                 });
             };
             `;
-        const componentCode = `
-                            ${CodeToAngularTableComponentMethod.setTableElements(object, object.table.elements)}
-                            ${hasAction}
-                            
-                            ${object.table.id}Search() {
-                              this.isLoading = true;
-                          
-                              const filter = \`?filter={"or":[\${this.${object.table.id}DisplayedColumns.map((element: string) => {
-                                if(element !== "undefined") {
-                                  return \`{"\${element}":{"like": "\${this.${object.table.id}SearchForm.value.searchInput}", "options": "i"}}\`
-                                }
-                                return "";
-                              })}]}\`;
-                          
-                              this.set${TextTransformation.pascalfy(object.table.id)}Service(filter.replace("},]", "}]"));
-                            }
-
-                            set${TextTransformation.pascalfy(object.table.id)}Service = (filter: string = '') => {
-                                this._${object.table.id}Service.getAll(filter)
-                                .then((result: any) => {
-                                  this.${object.table.id}DataSource = result?.data.result ? result?.data.result : result?.data;
-                                  this.isLoading = false;
-                                })
-                                .catch(async err => {
-                                  if (err.error.logMessage === 'jwt expired') {
-                                    await this.refreshToken();
-                                    this.set${TextTransformation.pascalfy(object.table.id)}Service();
-                                  } else {
-                                    const message = this._errorHandler.apiErrorMessage(err.error.message);
-                                    this.isLoading = false;
-                                    this.sendErrorMessage(message);
-                                  };
-                                });
-                            };
-                            ${refreshToken}
-                            `;
-
-        return componentCode;
-    }
-
-    static setTableElements(object: MainInterface, elements: Array < TableElementInterface > ): string {
-        let codeElement = '';
-        elements.forEach(element => {
-            if (element.row) {
-                const menus = element.row.menu;
-
-                menus?.forEach(menu => {
-                    if (menu.dialog) {
-                        codeElement += CodeToAngularTableComponentMethod.setDialog(object, menu.dialog);
-                    }
-                });
+    const componentCode = `
+            ${CodeToAngularTableComponentMethod.setTableElements(
+              object,
+              object.table.elements
+            )}
+            ${hasAction}
+            
+            ${object.table.id}Search() {
+                this.isLoading = true;
+            
+                const filter = \`?filter={"or":[\${this.${
+                  object.table.id
+                }DisplayedColumns.map((element: string) => {
+                if(element !== "undefined") {
+                    return \`{"\${element}":{"like": "\${this.${
+                      object.table.id
+                    }SearchForm.value.searchInput}", "options": "i"}}\`
+                }
+                return "";
+                })}]}\`;
+            
+                this.set${TextTransformation.pascalfy(
+                  object.table.id
+                )}Service(filter.replace("},]", "}]"));
             }
-        });
 
-        return codeElement;
+            set${TextTransformation.pascalfy(
+              object.table.id
+            )}Service = (filter: string = '') => {
+                this._${object.table.id}Service.getAll(filter)
+                .then((result: any) => {
+                  if (result) {
+                    if (result.data) {
+                      if (result.data.result) {
+                        this.${object.table.id}DataSource = result.data.result;
+                      }
+        
+                      this.${object.table.id}DataSource = result.data;
+                    }
+        
+                    this.${object.table.id}DataSource = result;
+                  }
+
+                  const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
+                  this.sendErrorMessage(message);
+                  this.isLoading = false;
+                })
+                .catch(async err => {
+                    if (err.error.logMessage === 'jwt expired') {
+                      await this.refreshToken();
+                      this.set${TextTransformation.pascalfy(
+                        object.table.id
+                      )}Service();
+                    } else {
+                      const message = this._errorHandler.apiErrorMessage(err.error.message);
+                      this.isLoading = false;
+                      this.sendErrorMessage(message);
+                    };
+                });
+            };
+            ${refreshToken}
+            `;
+
+    return componentCode;
+  };
+
+  static setTableElements(
+    object: MainInterface,
+    elements: Array<TableElementInterface>
+  ): string {
+    let codeElement = "";
+    elements.forEach((element) => {
+      if (element.row) {
+        const menus = element.row.menu;
+
+        menus?.forEach((menu) => {
+          if (menu.dialog) {
+            codeElement += CodeToAngularTableComponentMethod.setDialog(
+              object,
+              menu.dialog
+            );
+          }
+        });
+      }
+    });
+
+    return codeElement;
+  }
+
+  static setDialog(object: MainInterface, dialog: DialogInterface): string {
+    let hasDialogData = "";
+
+    if (dialog.dialogDataInterface) {
+      hasDialogData += `,data:
+                                ${JSON.stringify(dialog.dialogDataInterface)}`;
     }
 
-    static setDialog(object: MainInterface, dialog: DialogInterface): string {
-        let hasDialogData = '';
-
-        if (dialog.dialogDataInterface) {
-            hasDialogData += `,data:
-                                ${JSON.stringify(
-                                    dialog.dialogDataInterface,
-                                )}`;
-        }
-
-        const codeDialog = `
+    const codeDialog = `
                     ${hasDialogData}
                     ${this.setDialogAfterClosed(object, dialog)}`;
-        
-        return codeDialog;
-    }
 
-    static setDialogAfterClosed = (object: MainInterface, dialog: DialogInterface) => {
-        let code = '';
-        switch (dialog.id) {
-            case 'removeConfirmationDialog':
-                code += `${dialog.id}OpenDialog = (id: string) => {
+    return codeDialog;
+  }
+
+  static setDialogAfterClosed = (
+    object: MainInterface,
+    dialog: DialogInterface
+  ) => {
+    let code = "";
+    switch (dialog.id) {
+      case "removeConfirmationDialog":
+        code += `${dialog.id}OpenDialog = (id: string) => {
                     const ${dialog.id}DialogRef = this._dialog.open(
                         ${TextTransformation.pascalfy(dialog.id)}Component,
                         {
@@ -156,11 +181,17 @@ export class CodeToAngularTableComponentMethod {
                         .subscribe(async (res: any) => {
                             if(res) {
                                 try {
-                                    const routeToGo = (this.${object.table?.id}Id !== "") 
-                                                        ? this.router.url.split(\`\/\${this.${object.table?.id}Id}\`)[0] 
+                                    const routeToGo = (this.${
+                                      object.table?.id
+                                    }Id !== "") 
+                                                        ? this.router.url.split(\`\/\${this.${
+                                                          object.table?.id
+                                                        }Id}\`)[0] 
                                                         : this.router.url;
                                     this.isLoading = true;
-                                    await this._${object.table?.id}Service.delete(res.id);
+                                    await this._${
+                                      object.table?.id
+                                    }Service.delete(res.id);
                                     this.redirectTo(routeToGo);
                                     this.isLoading = false;
                                 } catch (error: any) {
@@ -170,12 +201,14 @@ export class CodeToAngularTableComponentMethod {
                             }
                         });
                 };`;
-                break;
-        
-            default:
-                code += `${dialog.id}OpenDialog = (???) => {
+        break;
+
+        default:
+        code += `${dialog.id}OpenDialog = (???) => {
                             const ${dialog.id}DialogRef = this._dialog.open(
-                                ${TextTransformation.pascalfy(dialog.id)}Component,{}
+                                ${TextTransformation.pascalfy(
+                                  dialog.id
+                                )}Component,{}
                             );
 
                             ${dialog.id}DialogRef
@@ -184,9 +217,9 @@ export class CodeToAngularTableComponentMethod {
                                     // TODO
                                 });
                         };`;
-                break;
-        }
-        
-        return code;
+        break;
     }
+
+    return code;
+  };
 }
