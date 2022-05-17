@@ -46,9 +46,8 @@ export class CodeToAngularFormComponentMethod {
                                             );
                                         }
 
-                                        this.redirectTo("main/${
-                                          object.form.id.split("Form")[0]
-                                        }");
+                                        this.redirectTo("main/${TextTransformation.kebabfy(object.form.id.split('Form')[0])}");
+                                        
                                         this.isLoading = false;
                                     } catch (error: any) {
                                         if (error.error.logMessage === 'jwt expired') {
@@ -253,10 +252,12 @@ export class CodeToAngularFormComponentMethod {
                     };`;
         }
 
-        methods += `
-                setFiltered${TextTransformation.pascalfy(
-                  element.autocomplete.name
-                )} = async () => {
+                methods += `
+                displayFnTo${TextTransformation.pascalfy(element.autocomplete.name)} = (value?: any) => {
+                    return value ? this.filtered${TextTransformation.pascalfy(element.autocomplete.name)}.find(_ => _.${element.autocomplete.optionsApi?.valueField} === value).${element.autocomplete.optionsApi?.labelField} : null;
+                };
+
+                setFiltered${TextTransformation.pascalfy(element.autocomplete.name)} = async () => {
                     try {
                         const paramsToFilter = [${element.autocomplete.optionsApi.paramsToFilter.map(
                           (element) => {

@@ -46,7 +46,7 @@ export const PERSON_CLIENT_TABLE: MainInterface = {
         },
         row: {
           type: "string",
-          field: "city",
+          field: "addressCity",
         },
       },
       {
@@ -55,7 +55,7 @@ export const PERSON_CLIENT_TABLE: MainInterface = {
         },
         row: {
           type: "string",
-          field: "state",
+          field: "addressState",
         },
       },
       {
@@ -105,7 +105,7 @@ export const PERSON_CLIENT_TABLE: MainInterface = {
             {
               action: {
                 type: RequestTypeEnum.Link,
-                url: "/main/person_client",
+                url: "/main/person-client",
                 param: "_id",
               },
               label: "Editar",

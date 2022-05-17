@@ -72,6 +72,7 @@ export interface DatalistInterface {
     name: string;
     placeholder?: string;
     condition?: string;
+    mask?: string; // Over ngx-mask patterns 
     isAutoFocus?: boolean; // Specifies that an <input> element should automatically get focus when the page loads
     isChecked?: boolean; // Specifies that an <input> element should be pre-selected when the page loads (for type="checkbox" or type="radio")
     isDisabled?: boolean;

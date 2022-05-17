@@ -10,30 +10,40 @@ export class CodeToAngularModule {
         object: MainInterface
     ): Promise<string> => {
         const moduleSkeletonCode = `
-                                      import { NgModule } from '@angular/core';
-                                      import { CommonModule } from '@angular/common';
-                                      
-                                      import { SharedModule } from '../shared/shared.module';
-                                      import { %pascalfy(${projectName})%RoutingModule } from './%kebabfy(${projectName})%-routing.module';
-                                      import { %pascalfy(${projectName})%Component } from './%kebabfy(${projectName})%.component';
-                                      import { NgChartsModule } from "ng2-charts";
+        
+        import { NgModule } from '@angular/core';
+        import { CommonModule } from '@angular/common';
+        
+        import { SharedModule } from '../shared/shared.module';
+        import { %pascalfy(${projectName})%RoutingModule } from './%kebabfy(${projectName})%-routing.module';
+        import { %pascalfy(${projectName})%Component } from './%kebabfy(${projectName})%.component';
+        import { NgChartsModule } from "ng2-charts";
 
-                                      %IMPORTS%
-                                      
-                                      @NgModule({
-                                        declarations: [
-                                          %pascalfy(${projectName})%Component,
-                                          %DECLARATIONS%
-                                        ],
-                                        imports: [
-                                          CommonModule,
-                                          %pascalfy(${projectName})%RoutingModule,
-                                          NgChartsModule,
-                                          SharedModule,
-                                        ]
-                                      })
-                                      export class %pascalfy(${projectName})%Module { }
-                                      `;
+        import {
+          NgxMaskModule,
+          IConfig
+        } from 'ngx-mask';
+        %IMPORTS%
+
+        const maskConfig: Partial < IConfig > = {
+          validation: false,
+        };
+        
+        @NgModule({
+          declarations: [
+            %pascalfy(${projectName})%Component,
+            %DECLARATIONS%
+          ],
+          imports: [
+            CommonModule,
+            %pascalfy(${projectName})%RoutingModule,
+            NgxMaskModule.forRoot(maskConfig),
+            NgChartsModule,
+            SharedModule
+          ]
+        })
+        export class %pascalfy(${projectName})%Module { }
+        `;
 
         let code = moduleSkeletonCode;
 

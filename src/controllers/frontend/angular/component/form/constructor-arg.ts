@@ -103,7 +103,7 @@ export class CodeToAngularFormComponentConstructorArg {
                         if (element?.isRequired) element.validators?.push('required');
                         
                         codeElement += `${element?.name}: 
-                        [null, 
+                        [${(element?.isMultiple) ? `[]` : `null`}, 
                             [${validators}]
                         ],`;
                     }

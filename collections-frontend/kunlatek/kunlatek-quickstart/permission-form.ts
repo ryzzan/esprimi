@@ -1,9 +1,10 @@
-import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../src/enums/form";
-import { FrontendFrameworkEnum } from "../../src/enums/main";
-import { MainInterface } from "../../src/interfaces/main";
+import { FormButtonTypeEnum, FormInputTypeEnum, ServiceFunctionsEnum } from "../../../src/enums/form";
+import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../../../src/enums/main";
+import { MainInterface } from "../../../src/interfaces/main";
 
 export const PERMISSION_FORM: MainInterface = {
     frontendFramework: FrontendFrameworkEnum.Angular,
+    backendFramework: BackendFrameworkEnum.Loopback,
     form: {
         title: 'Permissão',
         id: 'permissionForm',
@@ -45,7 +46,7 @@ export const PERMISSION_FORM: MainInterface = {
                     elements: [{
                         select: {
                             label: 'Módulo',
-                            name: 'module',
+                            name: 'modules',
                             type: FormInputTypeEnum.Text,
                             optionsApi: {
                                 endpoint: 'modules',

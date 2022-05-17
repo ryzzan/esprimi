@@ -23,6 +23,7 @@ export const PERSON_CLIENT_FORM: MainInterface = {
                   placeholder: "Apenas números",
                   type: FormInputTypeEnum.Text,
                   isRequired: true,
+                  mask: "000.000.000-00",
                   todo: "Mask validator",
                 },
               },
@@ -69,54 +70,20 @@ export const PERSON_CLIENT_FORM: MainInterface = {
             elements: [
               {
                 input: {
-                  label: "Identificador",
-                  name: "contactIdentifier",
-                  placeholder: "Apelido para o contato",
-                  type: FormInputTypeEnum.Text,
-                  isRequired: true,
-                },
-              },
-              {
-                select: {
-                  label: "Tipo de contato",
-                  name: "contactType",
-                  type: FormInputTypeEnum.Text,
-                  optionsObject: [
-                    {
-                      label: "Celular",
-                      value: "Celular",
-                    },
-                    {
-                      label: "E-mail",
-                      value: "E-mail",
-                    },
-                    {
-                      label: "Telefone",
-                      value: "Telefone",
-                    },
-                    {
-                      label: "Rede social",
-                      value: "Rede social",
-                    },
-                  ],
-                  isRequired: true,
-                },
-              },
-              {
-                input: {
-                  label: "Valor",
-                  name: "contactValue",
-                  placeholder: "Valor correspondente ao contato",
+                  label: "E-mail",
+                  name: "email",
+                  placeholder: "E-mail da empresa",
                   type: FormInputTypeEnum.Text,
                   isRequired: true,
                 },
               },
               {
                 input: {
-                  label: "Complemento",
-                  name: "contactComplement",
-                  placeholder: "Informação adicional do contato",
+                  label: "Celular",
+                  name: "mobile",
+                  placeholder: "Celular da empresa",
                   type: FormInputTypeEnum.Text,
+                  mask: "(00)00000-0000",
                 },
               },
             ],
@@ -133,6 +100,7 @@ export const PERSON_CLIENT_FORM: MainInterface = {
                   placeholder: "Código postal",
                   type: FormInputTypeEnum.Text,
                   isRequired: true,
+                  mask: "00.000-000",
                   todo: "Validator mask | Address API?",
                 }
               },
@@ -295,7 +263,7 @@ export const PERSON_CLIENT_FORM: MainInterface = {
     ],
     service: {
       baseUrl: "http://localhost:3000",
-      endPoint: "examples",
+      endPoint: "person-clients",
       hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,

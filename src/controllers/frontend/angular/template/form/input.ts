@@ -7,6 +7,7 @@ export class CodeToAngularFormTemplateInput {
       ? `placeholder="${input.placeholder}"`
       : "";
     const required = input.isRequired ? "required" : "";
+    const mask = input.mask ? `mask="${input.mask}"` : "";
     if (input.type === FormInputTypeEnum.File) {
       const codeInput = `
         <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload multiple>
@@ -34,7 +35,7 @@ export class CodeToAngularFormTemplateInput {
     const codeInput = `
     <mat-form-field>
         <mat-label>${input.label}</mat-label>
-        <input matInput type="${input.type}" formControlName="${input.name}" ${placeholder} ${required} autocomplete="new-password">
+        <input matInput type="${input.type}" formControlName="${input.name}" ${placeholder} ${required} ${mask} autocomplete="new-password">
     </mat-form-field>`;
     return codeInput;
   };
