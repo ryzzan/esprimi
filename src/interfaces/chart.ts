@@ -1,7 +1,10 @@
+import { DialogInterface } from "./dialog";
 import { FormInterface, ServiceInterface } from "./form";
+import { RequestInterface } from "./request";
 
 export interface ChartInterface {
   id: string;
+  menu?: Array<ChartMenuInterface>;
   title?: string;
   subtitle?: string;
   bar?: ChartBarInterface;
@@ -192,3 +195,11 @@ export interface ChartScatterDatasetInterface {
   label?: string;
   backgroundColor?: Array<string>; // Default: 'rgba(0, 0, 0, 0.1)'
 };
+
+export interface ChartMenuInterface {
+  action: RequestInterface;
+  label: string;
+  dialog?: DialogInterface;
+  icon?: string;
+  validator?: string;
+}

@@ -1,8 +1,14 @@
 import { ChartInterface } from "../../../../../interfaces/chart";
+import { MainInterface } from "../../../../../interfaces/main";
+import { CodeToAngularChartTemplateMenu } from "./chart-menu";
 
 export class CodeToAngularChartTemplateScatter {
-    static createScatter = (chart: ChartInterface): string => {
-        const codeScatter = `
+  static createScatter = (
+    object: MainInterface,
+    chart: ChartInterface
+  ): string => {
+    const codeScatter = `
+        ${CodeToAngularChartTemplateMenu.createChartMenu(object)}
         <div *ngIf="!isLoading">
           <canvas baseChart width="300" height="300"
                   [data]="${chart.id}ScatterChartData"
@@ -12,6 +18,6 @@ export class CodeToAngularChartTemplateScatter {
         </div>
         `;
 
-        return codeScatter;
-    }
+    return codeScatter;
+  };
 }

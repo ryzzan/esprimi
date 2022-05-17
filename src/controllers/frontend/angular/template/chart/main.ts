@@ -44,14 +44,14 @@ export class CodeToAngularChartTemplate {
     private createChartComponents = (object: MainInterface, chart: ChartInterface): string => {
         let code = '';
 
-        if (chart.bar) code += CodeToAngularChartTemplateBar.createBar(chart);
-        if (chart.bubble) code += CodeToAngularChartTemplateBubble.createBubble(chart);
-        if (chart.doughnut) code += CodeToAngularChartTemplateDoughnut.createDoughnut(chart);
-        if (chart.line) code += CodeToAngularChartTemplateLine.createLine(chart);
-        if (chart.pie) code += CodeToAngularChartTemplatePie.createPie(chart);
-        if (chart.polarArea) code += CodeToAngularChartTemplatePolarArea.createPolarArea(chart);
-        if (chart.radar) code += CodeToAngularChartTemplateRadar.createRadar(chart);
-        if (chart.scatter) code += CodeToAngularChartTemplateScatter.createScatter(chart);
+        if (chart.bar) code += CodeToAngularChartTemplateBar.createBar(object, chart);
+        if (chart.bubble) code += CodeToAngularChartTemplateBubble.createBubble(object, chart);
+        if (chart.doughnut) code += CodeToAngularChartTemplateDoughnut.createDoughnut(object, chart);
+        if (chart.line) code += CodeToAngularChartTemplateLine.createLine(object, chart);
+        if (chart.pie) code += CodeToAngularChartTemplatePie.createPie(object, chart);
+        if (chart.polarArea) code += CodeToAngularChartTemplatePolarArea.createPolarArea(object, chart);
+        if (chart.radar) code += CodeToAngularChartTemplateRadar.createRadar(object, chart);
+        if (chart.scatter) code += CodeToAngularChartTemplateScatter.createScatter(object, chart);
 
         return code;
     }

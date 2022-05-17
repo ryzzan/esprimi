@@ -1,5 +1,6 @@
 import { ServiceFunctionsEnum } from "../../../src/enums/form";
 import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../../../src/enums/main";
+import { RequestTypeEnum } from "../../../src/enums/request";
 import { MainInterface } from "../../../src/interfaces/main";
 
 export const ORIGIN_CHANNEL_CHART: MainInterface = {
@@ -7,6 +8,13 @@ export const ORIGIN_CHANNEL_CHART: MainInterface = {
   // backendFramework: BackendFrameworkEnum.Loopback,
   chart: {
     id: "originChannelChart",
+    menu: [{
+      action: {
+        type: RequestTypeEnum.Link,
+        url: "teste"
+      }, 
+      label: "Filtro"
+    }],
     bar: {
       datasets: [],
       labels: []
