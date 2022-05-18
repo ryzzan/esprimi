@@ -16,8 +16,8 @@ export class CodeToAngularFormComponentConstructorArg {
                                             this.isAddModule = !this.${objectToCode.form.id}Id;
                                         
                                             if (this.${objectToCode.form.id}Id) {
-                                                const res: any = await this._${objectToCode.form.id}Service.find(this.${objectToCode.form.id}Id);
-                                                this.${objectToCode.form.id}Form.patchValue(res.data);
+                                                this.${objectToCode.form.id}ToEdit = await this._${objectToCode.form.id}Service.find(this.${objectToCode.form.id}Id);
+                                                this.${objectToCode.form.id}Form.patchValue(this.${objectToCode.form.id}ToEdit.data);
                                             }
 
                                             this.checkOptionsCreation(

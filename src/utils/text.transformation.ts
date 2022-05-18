@@ -27,6 +27,10 @@ export class TextTransformation {
     return pluralize(text);
   }
 
+  static singularize(text: string): string {    
+    return pluralize.singular(text);
+  }
+
   static replaceKebabfyFunctionToString(template: string): string {
     const regex = /\%kebabfy(.*?)%/g;
     const foundKebabfies = template.match(regex);

@@ -1,8 +1,9 @@
 import { AutocompleteInterface } from "../../../../../interfaces/form";
+import { MainInterface } from "../../../../../interfaces/main";
 import { TextTransformation } from "../../../../../utils/text.transformation";
 
 export class CodeToAngularFormTemplateAutocomplete {
-    static createAutocomplete = (autocomplete: AutocompleteInterface): string => {
+    static createAutocomplete = (object: MainInterface, autocomplete: AutocompleteInterface): string => {
         const placeholder = autocomplete.placeholder ?
             `placeholder="${autocomplete.placeholder}"` :
             '';

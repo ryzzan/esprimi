@@ -31,20 +31,7 @@ export class CodeToAngularChartComponentMethod {
       set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
         this._${chart.id}Service.getAll(filter)
         .then((result: any) => {
-          if (result) {
-            if (result.data) {
-              if (result.data.result) {
-                this.${chart.id}DataSource = result.data.result;
-              }
-
-              this.${chart.id}DataSource = result.data;
-            }
-
-            this.${chart.id}DataSource = result;
-          }
-
-          const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");          
-          this.sendErrorMessage(message);          
+          this.${chart.id}DataSource = result.data.result;          
           this.isLoading = false;
         })
         .catch(async err => {

@@ -72,7 +72,7 @@ export class CodeToAngularFormTemplate {
         elements.forEach((element: FormElementInterface) => {
             if (element.input) code += CodeToAngularFormTemplateInput.createInput(element.input);
             if (element.slide) code += CodeToAngularFormTemplateSlide.createSlide(element.slide);
-            if (element.autocomplete) code += CodeToAngularFormTemplateAutocomplete.createAutocomplete(element.autocomplete);
+            if (element.autocomplete) code += CodeToAngularFormTemplateAutocomplete.createAutocomplete(object, element.autocomplete);
             if (element.select) code += CodeToAngularFormTemplateSelect.createSelect(element.select);
             if (element.checkbox) code += CodeToAngularFormTemplateCheckbox.createCheckbox(element.checkbox);
             if (element.radio) code += CodeToAngularFormTemplateRadio.createRadio(element.radio);

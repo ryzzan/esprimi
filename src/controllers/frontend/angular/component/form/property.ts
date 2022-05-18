@@ -14,6 +14,7 @@ export class CodeToAngularFormComponentProperty {
                                 ${object.form.id}Id: string = '';
                                 isAddModule: boolean = true;
                                 ${object.form.id}Form: FormGroup;
+                                ${object.form.id}ToEdit: any;
                                 isLoading = true;
                                 `;
                                 
