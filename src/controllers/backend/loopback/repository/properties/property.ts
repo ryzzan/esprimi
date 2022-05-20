@@ -1,3 +1,4 @@
+import { CodeToLoopbackRepositoryModelRelated } from './related-model';
 import pluralize = require("pluralize");
 import { FormElementInterface } from "../../../../../interfaces/form";
 import { MainInterface } from "../../../../../interfaces/main";
@@ -9,6 +10,7 @@ export interface IRepositoryProperty {
     properties: string,
     getters: string,
     variables: string,
+    relatedModelsAndRepositories: string,
 }
 
 export class CodeToLoopbackRepositoryProperty {
@@ -22,6 +24,8 @@ export class CodeToLoopbackRepositoryProperty {
     }
 
     static createRepositoryProperties = (elements: Array<FormElementInterface>, modelName: string): IRepositoryProperty => {
+        const relatedModelCode = new CodeToLoopbackRepositoryModelRelated
+
         const validTypes = ['checkbox', 'radio', 'datalist', 'fieldset', 'input', 'select', 'slide', 'textarea', 'autocomplete']
 
         let modulesImports = '';
@@ -29,6 +33,7 @@ export class CodeToLoopbackRepositoryProperty {
         let properties = '';
         let getters = '';
         let variables = '';
+        let relatedModelsAndRepositories = '';
 
         for (let index = 0; index < elements.length; index++) {
             const element = elements[index];
@@ -39,20 +44,39 @@ export class CodeToLoopbackRepositoryProperty {
             if (validTypes.includes(type)) {
 
                 if (value.optionsApi) {
+                    const modelNamePascalCase = modelName.charAt(0).toLowerCase() + modelName.slice(1)
                     const className = TextTransformation.setIdToClassName(TextTransformation.pascalfy(pluralize.singular(value.optionsApi.endpoint.split('-').join(' '))))
                     const propertyName = className.charAt(0).toLowerCase() + className.slice(1)
 
                     modulesImports += `${className},`
                     repositoriesImports += `${className}Repository,`
 
-                    properties += `public readonly ${propertyName}: BelongsToAccessor<${className}, typeof ${modelName}.prototype._id>;`
-
                     getters += `@repository.getter('${className}Repository') ${propertyName}RepositoryGetter: Getter<${className}Repository>,`
 
-                    variables += `
+                    if (value.isMultiple) {
+                        getters += `@repository.getter('${modelName}Has${className}Repository') ${modelNamePascalCase}Has${className}RepositoryGetter: Getter<${modelName}Has${className}Repository>,`
+
+                        properties += `
+                            public readonly ${propertyName}: HasManyThroughRepositoryFactory<${className}, typeof ${className}.prototype._id,
+                                ${modelName}Has${className},
+                                typeof ${modelName}.prototype._id
+                            >;
+                            `
+
+                        variables += `
+                                this.${propertyName} = this.createHasManyThroughRepositoryFactoryFor('${propertyName}', ${propertyName}RepositoryGetter, ${modelNamePascalCase}Has${className}RepositoryGetter,);
+                                this.registerInclusionResolver('${propertyName}', this.${propertyName}.inclusionResolver);
+                                `
+
+                        relatedModelsAndRepositories += relatedModelCode.createRepositoryRelatedModels(modelName, className)
+                    } else {
+                        properties += `public readonly ${propertyName}: BelongsToAccessor<${className}, typeof ${modelName}.prototype._id>;`
+
+                        variables += `
                                 this.${propertyName} = this.createBelongsToAccessorFor('${propertyName}', ${propertyName}RepositoryGetter,);
                                 this.registerInclusionResolver('${propertyName}', this.${propertyName}.inclusionResolver);
                                 `
+                    }
                 }
 
 
@@ -66,6 +90,7 @@ export class CodeToLoopbackRepositoryProperty {
                     properties += repositoryProperties.properties
                     getters += repositoryProperties.getters
                     variables += repositoryProperties.variables
+                    relatedModelsAndRepositories += repositoryProperties.relatedModelsAndRepositories
                 })
 
             }
@@ -78,6 +103,7 @@ export class CodeToLoopbackRepositoryProperty {
             properties,
             getters,
             variables,
+            relatedModelsAndRepositories,
         };
     }
 }

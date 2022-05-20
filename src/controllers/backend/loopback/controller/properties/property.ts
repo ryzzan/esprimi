@@ -1,23 +1,34 @@
+import { CodeToLoopbackControllerRelatedProperties } from './related-properties';
 import pluralize = require("pluralize");
 import { FormElementInterface } from "../../../../../interfaces/form";
 import { MainInterface } from "../../../../../interfaces/main";
 import { TextTransformation } from "../../../../../utils/text.transformation";
 
+export interface IControllerRelatedProperties {
+    repositoriesImportsCode: string,
+    propertiesCode: string,
+    createCode: string,
+    deleteCode: string,
+    includePropertiesCode: string,
+}
+
 export class CodeToLoopbackControllerProperty {
-    static customProperties = (object: MainInterface): string => {
+    static customProperties = (object: MainInterface, modelName: string): IControllerRelatedProperties => {
 
         const elements = object.form?.elements;
-        const properties = CodeToLoopbackControllerProperty.createRepositoryProperties(elements!);
-
-        const componentCode = `${properties}`;
-
-        return componentCode;
+        return CodeToLoopbackControllerProperty.createRepositoryProperties(elements!, modelName);
     }
 
-    static createRepositoryProperties = (elements: Array<FormElementInterface>): string => {
+    static createRepositoryProperties = (elements: Array<FormElementInterface>, modelName: string): IControllerRelatedProperties => {
+        const multipleRelatedProperty = new CodeToLoopbackControllerRelatedProperties
+
         const validTypes = ['checkbox', 'radio', 'datalist', 'fieldset', 'input', 'select', 'slide', 'textarea', 'autocomplete']
 
-        let properties = '';
+        let repositoriesImportsCode = ''
+        let propertiesCode = ''
+        let createCode = ''
+        let deleteCode = ''
+        let includePropertiesCode = ''
 
         for (let index = 0; index < elements.length; index++) {
             const element = elements[index];
@@ -28,22 +39,46 @@ export class CodeToLoopbackControllerProperty {
             if (validTypes.includes(type)) {
 
                 if (value.optionsApi) {
+
+                    const className = TextTransformation.setIdToClassName(TextTransformation.pascalfy(pluralize.singular(value.optionsApi.endpoint.split('-').join(' '))))
+
+                    if (value.isMultiple) {
+
+                        repositoriesImportsCode += multipleRelatedProperty.createRepositoriesImports(modelName, className)
+                        propertiesCode += multipleRelatedProperty.createProperties(modelName, className)
+                        createCode += multipleRelatedProperty.createCreateAllMethods(modelName, className, value.name)
+                        deleteCode += multipleRelatedProperty.createDeleteAllMethods(modelName, className, value.name)
+
+                    }
+
                     const propertyName = TextTransformation.setIdToPropertyName(TextTransformation.pascalfy(pluralize.singular(value.optionsApi.endpoint.split('-').join(' '))))
 
-                    properties += `'${propertyName.charAt(0).toLowerCase() + propertyName.slice(1)}',`
+                    includePropertiesCode += `'${propertyName.charAt(0).toLowerCase() + propertyName.slice(1)}',`
                 }
 
 
             } else if (type === 'tabs') {
 
                 element.tabs?.forEach(tab => {
-                    properties += CodeToLoopbackControllerProperty.createRepositoryProperties(tab.elements)
+                    const code = CodeToLoopbackControllerProperty.createRepositoryProperties(tab.elements, modelName)
+
+                    repositoriesImportsCode += code.repositoriesImportsCode
+                    propertiesCode += code.propertiesCode
+                    createCode += code.createCode
+                    deleteCode += code.deleteCode
+                    includePropertiesCode += code.includePropertiesCode
                 })
 
             }
 
         }
 
-        return properties
+        return {
+            repositoriesImportsCode,
+            propertiesCode,
+            createCode,
+            deleteCode,
+            includePropertiesCode,
+        }
     }
 }

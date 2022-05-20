@@ -5,17 +5,18 @@ import { TextTransformation } from "../../../../../utils/text.transformation";
 
 export interface IModelProperty {
     modulesImports: string,
+    relatedModelsImports: string,
     properties: string,
 }
 
 export class CodeToLoopbackModelProperty {
-    static customProperties = (object: MainInterface): IModelProperty => {
+    static customProperties = (object: MainInterface, modelName: string): IModelProperty => {
 
         const elements = object.form?.elements;
-        return CodeToLoopbackModelProperty.createModelProperties(elements!);
+        return CodeToLoopbackModelProperty.createModelProperties(elements!, modelName);
     }
 
-    static createModelProperties = (elements: Array<FormElementInterface>): IModelProperty => {
+    static createModelProperties = (elements: Array<FormElementInterface>, modelName: string): IModelProperty => {
         const validTypes = ['checkbox', 'radio', 'datalist', 'fieldset', 'input', 'select', 'slide', 'textarea', 'autocomplete']
 
         const stringTypes = ['email', 'password', 'tel', 'text', 'url', 'date', 'datetime-local', 'month', 'range', 'time', 'url', 'week']
@@ -23,6 +24,7 @@ export class CodeToLoopbackModelProperty {
 
         let modulesImports = '';
         let properties = '';
+        let relatedModelsImports = '';
 
         for (let index = 0; index < elements.length; index++) {
             const element = elements[index];
@@ -46,10 +48,21 @@ export class CodeToLoopbackModelProperty {
 
                     modulesImports += `${className}, `
 
-                    properties += `
-                                @belongsTo(() => ${className})
-                                ${propertyName}Id: String;
-                                `
+                    if (value.isMultiple) {
+                        const modelNamePascalfy = modelName.charAt(0).toUpperCase() + modelName.slice(1)
+                        relatedModelsImports += `${modelNamePascalfy}Has${className}`
+
+                        properties += `
+                                    @hasMany(() => ${className}, {through: {model: () => ${modelNamePascalfy}Has${className}}})
+                                    ${value.name}: ${className}[];
+                                    `
+                    } else {
+                        properties += `
+                                    @belongsTo(() => ${className})
+                                    ${propertyName}Id: String;
+                                    `
+                    }
+
                 } else {
                     properties += `
                                 @property({
@@ -64,9 +77,10 @@ export class CodeToLoopbackModelProperty {
             } else if (type === 'tabs') {
 
                 element.tabs?.forEach(tab => {
-                    const modelProperties = CodeToLoopbackModelProperty.createModelProperties(tab.elements)
+                    const modelProperties = CodeToLoopbackModelProperty.createModelProperties(tab.elements, modelName)
                     modulesImports += modelProperties.modulesImports
                     properties += modelProperties.properties
+                    relatedModelsImports += modelProperties.relatedModelsImports
                 })
 
             } else if (type === 'array') {
@@ -83,6 +97,6 @@ export class CodeToLoopbackModelProperty {
 
         }
 
-        return { properties, modulesImports };
+        return { properties, modulesImports, relatedModelsImports };
     }
 }

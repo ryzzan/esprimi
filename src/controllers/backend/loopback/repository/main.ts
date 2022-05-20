@@ -14,7 +14,7 @@ export class CodeToLoopbackRepository {
     ): Promise<string> => {
         const repositorySkeletonCode = `
                                 import {Getter, inject} from '@loopback/core';
-                                import {BelongsToAccessor, DefaultCrudRepository, repository} from '@loopback/repository';
+                                import {BelongsToAccessor, DefaultCrudRepository, HasManyThroughRepositoryFactory, repository, Entity, model, property} from '@loopback/repository';
                                 import {MongodbDataSource} from '../datasources';
                                 import {%MODULE_IMPORTS% %pascalfy(${modelName})%, %pascalfy(${modelName})%Relations} from '../models';
                                 import {%REPOSITORY_IMPORTS%} from '.';
@@ -34,6 +34,8 @@ export class CodeToLoopbackRepository {
                                         %VARIABLES%
                                     }
                                 }
+
+                                %RELATED_MODELS%
                                 `;
 
         let code = repositorySkeletonCode;
@@ -44,6 +46,7 @@ export class CodeToLoopbackRepository {
         code = code.replace('%PROPERTIES%', propertyCode.properties);
         code = code.replace('%GETTERS%', propertyCode.getters);
         code = code.replace('%VARIABLES%', propertyCode.variables);
+        code = code.replace('%RELATED_MODELS%', propertyCode.relatedModelsAndRepositories);
 
         code = TextTransformation.replaceKebabfyFunctionToString(code);
         code = TextTransformation.replacePascalfyFunctionToString(code);

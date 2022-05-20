@@ -21,6 +21,7 @@ export class CodeToLoopbackController {
                                     import {IHttpResponse} from '../interfaces/http.interface';
                                     import {%pascalfy(${modelName})%} from '../models/%kebabfy(${modelName})%.model';
                                     import {%pascalfy(${modelName})%Repository} from '../repositories/%kebabfy(${modelName})%.repository';
+                                    import {%RELATED_REPOSITORIES_IMPORTS%} from '../repositories';
                                     import {serverMessages} from '../utils/server-messages';
                                     
                                     export class %pascalfy(${modelName})%Controller {
@@ -31,6 +32,8 @@ export class CodeToLoopbackController {
                                             @inject(RestBindings.Http.REQUEST) private httpRequest: Request,
                                             @inject(RestBindings.Http.RESPONSE) private httpResponse: Response,
                                         
+                                            %RELATED_PROPERTIES%
+
                                             @inject(SecurityBindings.USER, {optional: true}) private currentUser?: UserProfile,
                                         ) { }
                                         
@@ -54,7 +57,10 @@ export class CodeToLoopbackController {
                                                 const dataWithoutNullProperties = Object.fromEntries(Object.entries(data).filter(([_, v]) => v != null));
                                             
                                                 const dataCreated = await this.repository.create({...dataWithoutNullProperties, _createdBy: createdBy, _ownerId: ownerId});
-                                            
+                                                
+                                                const dataToWorkInRelation = dataCreated;
+                                                %CREATE_RELATED%
+
                                                 return HttpResponseToClient.createHttpResponse({
                                                     data: dataCreated,
                                                     locale,
@@ -162,9 +168,15 @@ export class CodeToLoopbackController {
                                         ): Promise<IHttpResponse> {
                                             try {
 
+                                                let dataToWorkInRelation = await this.repository.findById(id);
+                                                %DELETE_RELATED%
+
                                                 const dataWithoutNullProperties = Object.fromEntries(Object.entries(data).filter(([_, v]) => v != null));
                                         
                                                 await this.repository.updateById(id, dataWithoutNullProperties);
+
+                                                dataToWorkInRelation = data;
+                                                %CREATE_RELATED%
                                             
                                                 return HttpResponseToClient.noContentHttpResponse({
                                                     locale,
@@ -196,9 +208,15 @@ export class CodeToLoopbackController {
                                         ): Promise<IHttpResponse> {
                                             try {
 
+                                                let dataToWorkInRelation = await this.repository.findById(id);
+                                                %DELETE_RELATED%
+
                                                 const dataWithoutNullProperties = Object.fromEntries(Object.entries(data).filter(([_, v]) => v != null));
                                         
                                                 await this.repository.updateById(id, dataWithoutNullProperties);
+
+                                                dataToWorkInRelation = data;
+                                                %CREATE_RELATED%
                                             
                                                 return HttpResponseToClient.noContentHttpResponse({
                                                     locale,
@@ -253,9 +271,15 @@ export class CodeToLoopbackController {
 
         let code = controllerSkeletonCode;
 
-        const propertiesRelatedCode = this.customControllerPropertyCode.createProperties(object);
-        code = code.replace('%PROPERTIES_RELATED_FIND%', propertiesRelatedCode);
-        code = code.replace('%PROPERTIES_RELATED_FIND_ONE%', propertiesRelatedCode);
+        const propertiesRelatedCode = this.customControllerPropertyCode.createProperties(object, modelName);
+
+        code = code.replace('%PROPERTIES_RELATED_FIND%', propertiesRelatedCode.includePropertiesCode);
+        code = code.replace('%PROPERTIES_RELATED_FIND_ONE%', propertiesRelatedCode.includePropertiesCode);
+
+        code = code.replace('%RELATED_REPOSITORIES_IMPORTS%', propertiesRelatedCode.repositoriesImportsCode);
+        code = code.replace('%RELATED_PROPERTIES%', propertiesRelatedCode.propertiesCode);
+        code = code.split('%CREATE_RELATED%').join(propertiesRelatedCode.createCode);
+        code = code.split('%DELETE_RELATED%').join(propertiesRelatedCode.deleteCode);
 
         code = TextTransformation.replaceKebabfyFunctionToString(code);
         code = TextTransformation.replacePascalfyFunctionToString(code);
