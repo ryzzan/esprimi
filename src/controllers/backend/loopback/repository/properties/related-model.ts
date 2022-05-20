@@ -7,7 +7,7 @@ export class CodeToLoopbackRepositoryModelRelated {
 
         return `
             @model()
-            class ${mainProperty}Has${secondProperty} extends Entity {
+            export class ${mainProperty}Has${secondProperty} extends Entity {
                 @property({ type: 'string', id: true, generated: true })
                 _id?: string;
                 
@@ -24,7 +24,7 @@ export class CodeToLoopbackRepositoryModelRelated {
             interface ${mainProperty}Has${secondProperty}Relations {}
             type ${mainProperty}Has${secondProperty}WithRelations = ${mainProperty}Has${secondProperty} & ${mainProperty}Has${secondProperty}Relations;
 
-            class ${mainProperty}Has${secondProperty}Repository extends DefaultCrudRepository<
+            export class ${mainProperty}Has${secondProperty}Repository extends DefaultCrudRepository<
                 ${mainProperty}Has${secondProperty},
                 typeof ${mainProperty}Has${secondProperty}.prototype._id,
                 ${mainProperty}Has${secondProperty}Relations
