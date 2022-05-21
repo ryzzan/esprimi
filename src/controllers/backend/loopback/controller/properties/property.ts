@@ -49,11 +49,11 @@ export class CodeToLoopbackControllerProperty {
                         createCode += multipleRelatedProperty.createCreateAllMethods(modelName, className, value.name)
                         deleteCode += multipleRelatedProperty.createDeleteAllMethods(modelName, className, value.name)
 
+                        includePropertiesCode += `'${value.name}',`
+                    } else {
+                        const propertyName = TextTransformation.setIdToPropertyName(TextTransformation.pascalfy(pluralize.singular(value.optionsApi.endpoint.split('-').join(' '))))
+                        includePropertiesCode += `'${propertyName.charAt(0).toLowerCase() + propertyName.slice(1)}',`
                     }
-
-                    const propertyName = TextTransformation.setIdToPropertyName(TextTransformation.pascalfy(pluralize.singular(value.optionsApi.endpoint.split('-').join(' '))))
-
-                    includePropertiesCode += `'${propertyName.charAt(0).toLowerCase() + propertyName.slice(1)}',`
                 }
 
 
