@@ -1,13 +1,13 @@
 import { MainInterface } from "../../../../interfaces/main";
 import { TextTransformation } from "../../../../utils/text.transformation";
 
-export class CodeToAngularModuleImport {
-  static customImports = (object: MainInterface): string => {
+export class CodeToAngularModuleImportDeclaration {
+  static customImportDeclarations = (object: MainInterface): string => {
     if (object.module) {
-      const imports = CodeToAngularModuleImport.createModuleImports(object);
+      const importDeclarations = CodeToAngularModuleImportDeclaration.createModuleImportDeclarations(object);
 
       const componentCode = `
-      ${imports}
+      ${importDeclarations}
       `;
 
       return componentCode;
@@ -16,8 +16,8 @@ export class CodeToAngularModuleImport {
     return "";
   };
 
-  static createModuleImports = (object: MainInterface) => {
-    let imports = "";
+  static createModuleImportDeclarations = (object: MainInterface) => {
+    let importDeclarations = "";
     let hasChart = false;
     
     if (object.module) {
@@ -30,16 +30,13 @@ export class CodeToAngularModuleImport {
         if (componentKebabfied.split('-').pop() === "chart") {
           hasChart = true;
         }
-
-        imports += `import { %pascalfy(${component})%Component } from 'src/app/components/%kebabfy(${component})%/%kebabfy(${component})%.component';`;
-
       }
     }
 
     if (hasChart) {
-      imports += `import { NgChartsModule } from "ng2-charts";`;
+      importDeclarations += `NgChartsModule,`;
     }
 
-    return imports;
+    return importDeclarations;
   };
 }

@@ -2,6 +2,7 @@
 import { MainInterface } from "../../../../interfaces/main";
 import { TextTransformation } from "../../../../utils/text.transformation";
 import { CodeToAngularModuleImport } from "./import";
+import { CodeToAngularModuleImportDeclaration } from "./import-declaration";
 import { CodeToAngularModuleDeclaration } from "./module-declaration";
 
 export class CodeToAngularModule {
@@ -17,8 +18,7 @@ export class CodeToAngularModule {
         import { SharedModule } from '../shared/shared.module';
         import { %pascalfy(${projectName})%RoutingModule } from './%kebabfy(${projectName})%-routing.module';
         import { %pascalfy(${projectName})%Component } from './%kebabfy(${projectName})%.component';
-        import { NgChartsModule } from "ng2-charts";
-
+        
         import {
           NgxMaskModule,
           IConfig
@@ -38,8 +38,8 @@ export class CodeToAngularModule {
             CommonModule,
             %pascalfy(${projectName})%RoutingModule,
             NgxMaskModule.forRoot(maskConfig),
-            NgChartsModule,
-            SharedModule
+            SharedModule,
+            %IMPORT_DECLARATIONS%
           ]
         })
         export class %pascalfy(${projectName})%Module { }
@@ -49,6 +49,9 @@ export class CodeToAngularModule {
 
         const moduleImportCode = CodeToAngularModuleImport.createModuleImports(object);
         code = code.replace('%IMPORTS%', moduleImportCode);
+
+        const moduleImportDeclarationCode = CodeToAngularModuleImportDeclaration.createModuleImportDeclarations(object);
+        code = code.replace('%IMPORT_DECLARATIONS%', moduleImportDeclarationCode);
 
         const moduleDeclarationCode = CodeToAngularModuleDeclaration.createModuleDeclarations(object);
         code = code.replace('%DECLARATIONS%', moduleDeclarationCode);
