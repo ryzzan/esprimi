@@ -25,18 +25,19 @@ export class CodeToAngularFormTemplateInput {
     if (input.isMultipleLines) {
       const codeInput = `
         <mat-form-field class="full-width">
-            <mat-label>${input.label}</mat-label>
+          <mat-label>${input.label}</mat-label>
             <textarea matInput formControlName="${input.name}" ${placeholder} ${required}>
-            </textarea>
+          </textarea>
         </mat-form-field>`;
       return codeInput;
     }
 
     const codeInput = `
     <mat-form-field>
-        <mat-label>${input.label}</mat-label>
-        <input matInput type="${input.type}" formControlName="${input.name}" ${placeholder} ${required} ${mask} autocomplete="new-password">
-    </mat-form-field>`;
+      <mat-label>${input.label}</mat-label>
+      <input matInput type="${input.type}" formControlName="${input.name}" ${placeholder} ${required} ${mask} autocomplete="new-password">
+    </mat-form-field>
+    `;
     return codeInput;
   };
 }

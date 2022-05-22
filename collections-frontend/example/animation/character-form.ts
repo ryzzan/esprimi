@@ -51,45 +51,41 @@ export const CHARACTER_FORM: MainInterface = {
             elements: [
               {
                 array: {
-                  title: "Relação com personagem",
-                  id: "characterArray",
+                  title: "Dado aleatório importante",
+                  id: "genericDataArray",
                   elements: [
                     {
-                      autocomplete: {
-                        label: "Personagem",
-                        placeholder: "Nome de personagem",
-                        name: "charcaterId",
+                      input: {
+                        label: "Identificador do dado",
+                        name: "genericDataKey",
                         type: FormInputTypeEnum.Text,
-                        optionsApi: {
-                          endpoint: "animations",
-                          labelField: "name",
-                          valueField: "_id",
-                          paramsToFilter: ["name", "startDate"],
-                        },
-                      },
+                        placeholder: "Chave para o dado"
+                      }
                     },
                     {
-                      select: {
-                        label: "Relação",
-                        name: "otherSelect",
+                      input: {
+                        label: "Conteúdo do dado",
+                        name: "genericDataValue",
                         type: FormInputTypeEnum.Text,
-                        optionsObject: [
-                          {
-                            label: "Parente",
-                            value: "Parente",
-                          },
-                          {
-                            label: "Amigo",
-                            value: "Amigo",
-                          },
-                          {
-                            label: "Inimigo",
-                            value: "Inimigo",
-                          },
-                        ],
-                      },
-                    },
+                        placeholder: "Valor para o dado"
+                      }
+                    }
                   ],
+                },
+              },
+              {
+                autocomplete: {
+                  label: "Personagens relacionados",
+                  placeholder: "Nome de personagem",
+                  name: "characterId",
+                  type: FormInputTypeEnum.Text,
+                  optionsApi: {
+                    endpoint: "characters",
+                    labelField: "name",
+                    valueField: "_id",
+                    paramsToFilter: ["name"],
+                  },
+                  isMultiple: true,
                 },
               },
               {

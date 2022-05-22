@@ -13,16 +13,16 @@ export class CodeToAngularFormTemplateAutocomplete {
           const codeAutocomplete = `<mat-form-field class="full-width">
             <mat-label>${autocomplete.label}</mat-label>
             <mat-chip-list #${autocomplete.name}ChipList aria-label="Seleção de ${autocomplete.label.toLowerCase()}">
-              <mat-chip
-                *ngFor="let ${autocomplete.name}Item of chosen${TextTransformation.pascalfy(autocomplete.name)}"
+              <mat-chip 
+                *ngFor="let ${autocomplete.name}Item of chosen${TextTransformation.pascalfy(autocomplete.name)}" 
                 (removed)="remove${TextTransformation.pascalfy(autocomplete.name)}(${autocomplete.name}Item)">
                 {{${autocomplete.name}Item}}
                 <button matChipRemove>
                   <mat-icon>cancel</mat-icon>
                 </button>
               </mat-chip>
-              <input
-                ${placeholder}
+              <input 
+                ${placeholder} 
                 type="${autocomplete.type}" 
                 formControlName="${autocomplete.name}" 
                 matInput 
