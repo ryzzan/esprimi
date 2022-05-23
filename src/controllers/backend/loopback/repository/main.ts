@@ -16,7 +16,7 @@ export class CodeToLoopbackRepository {
                                 import {Getter, inject} from '@loopback/core';
                                 import {BelongsToAccessor, DefaultCrudRepository, HasManyThroughRepositoryFactory, repository, Entity, model, property} from '@loopback/repository';
                                 import {MongodbDataSource} from '../datasources';
-                                import {%MODULE_IMPORTS% %pascalfy(${modelName})%, %pascalfy(${modelName})%Relations} from '../models';
+                                import {%MODULE_IMPORTS%} from '../models';
                                 import {%REPOSITORY_IMPORTS%} from '.';
 
                                 export class %pascalfy(${modelName})%Repository extends DefaultCrudRepository<
@@ -41,8 +41,8 @@ export class CodeToLoopbackRepository {
         let code = repositorySkeletonCode;
 
         const propertyCode = this.customRepositoryPropertyCode.createProperties(object, TextTransformation.pascalfy(modelName));
-        code = code.replace('%MODULE_IMPORTS%', propertyCode.modulesImports);
-        code = code.replace('%REPOSITORY_IMPORTS%', propertyCode.repositoriesImports);
+        code = code.replace('%MODULE_IMPORTS%', [...new Set(`${propertyCode.modulesImports} ${TextTransformation.pascalfy(modelName)}, ${TextTransformation.pascalfy(modelName)}Relations`.split(',').map(el => el.trim()))].join(','));
+        code = code.replace('%REPOSITORY_IMPORTS%', [...new Set(`${propertyCode.repositoriesImports}`.split(',').map(el => el.trim()))].join(','));
         code = code.replace('%PROPERTIES%', propertyCode.properties);
         code = code.replace('%GETTERS%', propertyCode.getters);
         code = code.replace('%VARIABLES%', propertyCode.variables);

@@ -45,16 +45,19 @@ export class CodeToLoopbackModelProperty {
 
                     const className = TextTransformation.setIdToClassName(TextTransformation.pascalfy(pluralize.singular(value.optionsApi.endpoint.split('-').join(' '))))
                     const propertyName = className.charAt(0).toLowerCase() + className.slice(1)
+                    const modelNamePascalfy = modelName.charAt(0).toUpperCase() + modelName.slice(1)
 
-                    modulesImports += `${className}, `
+                    modulesImports += (modelNamePascalfy !== className ? `${className}, ` : '')
 
                     if (value.isMultiple) {
-                        const modelNamePascalfy = modelName.charAt(0).toUpperCase() + modelName.slice(1)
                         relatedModelsImports += `${modelNamePascalfy}Has${className}`
 
                         properties += `
+                                    @property({ type: 'array', itemType: 'object'})
+                                    ${value.name}?: any[];
+
                                     @hasMany(() => ${className}, {through: {model: () => ${modelNamePascalfy}Has${className}}})
-                                    ${value.name}: ${className}[];
+                                    __${value.name}: ${className}[];
                                     `
                     } else {
                         properties += `

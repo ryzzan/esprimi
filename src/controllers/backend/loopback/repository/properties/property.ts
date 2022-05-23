@@ -49,7 +49,7 @@ export class CodeToLoopbackRepositoryProperty {
                     const propertyName = className.charAt(0).toLowerCase() + className.slice(1)
 
                     modulesImports += `${className},`
-                    repositoriesImports += `${className}Repository,`
+                    repositoriesImports += modelName !== className ? `${className}Repository,` : ''
 
                     getters += `@repository.getter('${className}Repository') ${propertyName}RepositoryGetter: Getter<${className}Repository>,`
 
@@ -64,8 +64,8 @@ export class CodeToLoopbackRepositoryProperty {
                             `
 
                         variables += `
-                                this.${propertyName} = this.createHasManyThroughRepositoryFactoryFor('${value.name}', ${propertyName}RepositoryGetter, ${modelNamePascalCase}Has${className}RepositoryGetter,);
-                                this.registerInclusionResolver('${value.name}', this.${propertyName}.inclusionResolver);
+                                this.${propertyName} = this.createHasManyThroughRepositoryFactoryFor('__${value.name}', ${propertyName}RepositoryGetter, ${modelNamePascalCase}Has${className}RepositoryGetter,);
+                                this.registerInclusionResolver('__${value.name}', this.${propertyName}.inclusionResolver);
                                 `
 
                         relatedModelsAndRepositories += relatedModelCode.createRepositoryRelatedModels(modelName, className)
