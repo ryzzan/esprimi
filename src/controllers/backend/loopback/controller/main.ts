@@ -59,6 +59,7 @@ export class CodeToLoopbackController {
                                                 const dataCreated = await this.repository.create({...dataWithoutNullProperties, _createdBy: createdBy, _ownerId: ownerId});
                                                 
                                                 const dataToWorkInRelation = data;
+                                                const idToWorkInRelation = dataCreated._id;
                                                 %CREATE_RELATED%
 
                                                 return HttpResponseToClient.createHttpResponse({
@@ -175,7 +176,8 @@ export class CodeToLoopbackController {
                                         
                                                 await this.repository.updateById(id, dataWithoutNullProperties);
 
-                                                dataToWorkInRelation = data;
+                                                const idToWorkInRelation = dataToWorkInRelation._id;
+                                                dataToWorkInRelation = JSON.parse(JSON.stringify(data));
                                                 %CREATE_RELATED%
                                             
                                                 return HttpResponseToClient.noContentHttpResponse({
@@ -214,8 +216,9 @@ export class CodeToLoopbackController {
                                                 const dataWithoutNullProperties = Object.fromEntries(Object.entries(data).filter(([_, v]) => v != null));
                                         
                                                 await this.repository.updateById(id, dataWithoutNullProperties);
-
-                                                dataToWorkInRelation = data;
+;
+                                                const idToWorkInRelation = dataToWorkInRelation._id;
+                                                dataToWorkInRelation = JSON.parse(JSON.stringify(data));
                                                 %CREATE_RELATED%
                                             
                                                 return HttpResponseToClient.noContentHttpResponse({

@@ -64,8 +64,8 @@ export class CodeToLoopbackRepositoryProperty {
                             `
 
                         variables += `
-                                this.${propertyName} = this.createHasManyThroughRepositoryFactoryFor('__${value.name}', Getter.fromValue(this), ${modelNamePascalCase}Has${className}RepositoryGetter,);
-                                this.registerInclusionResolver('__${value.name}', this.${propertyName}.inclusionResolver);
+                                this.${propertyName} = this.createHasManyThroughRepositoryFactoryFor('${propertyName}', ${modelName === className ? 'Getter.fromValue(this)' : `${propertyName}RepositoryGetter`}, ${modelNamePascalCase}Has${className}RepositoryGetter,);
+                                this.registerInclusionResolver('${propertyName}', this.${propertyName}.inclusionResolver);
                                 `
 
                         relatedModelsAndRepositories += relatedModelCode.createRepositoryRelatedModels(modelName, className)

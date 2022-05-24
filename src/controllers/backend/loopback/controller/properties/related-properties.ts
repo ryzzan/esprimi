@@ -22,8 +22,8 @@ export class CodeToLoopbackControllerRelatedProperties {
             await this.${mainPropertyCamelCase}Has${secondProperty}Repository.createAll(
                 ((dataToWorkInRelation.${relatedPropertyName} || []) as any[]).map(${secondPropertyCamelCase} => {
                     return {
-                        ${mainPropertyCamelCase}${mainPropertyCamelCase === secondPropertyCamelCase ? 'Main' : ''}Id: dataToWorkInRelation._id, 
-                        ${secondPropertyCamelCase}Id: ${secondPropertyCamelCase}._id,
+                        ${mainPropertyCamelCase}Id: idToWorkInRelation, 
+                        ${secondPropertyCamelCase}${mainPropertyCamelCase === secondPropertyCamelCase ? 'Related' : ''}Id: ${secondPropertyCamelCase},
                     };
                 })
             ); 
