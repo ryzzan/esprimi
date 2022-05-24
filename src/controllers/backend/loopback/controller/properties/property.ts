@@ -43,13 +43,14 @@ export class CodeToLoopbackControllerProperty {
                     const className = TextTransformation.setIdToClassName(TextTransformation.pascalfy(pluralize.singular(value.optionsApi.endpoint.split('-').join(' '))))
 
                     if (value.isMultiple) {
+                        const propertyName = className.charAt(0).toLowerCase() + className.slice(1)
 
                         repositoriesImportsCode += multipleRelatedProperty.createRepositoriesImports(modelName, className)
                         propertiesCode += multipleRelatedProperty.createProperties(modelName, className)
                         createCode += multipleRelatedProperty.createCreateAllMethods(modelName, className, value.name)
                         deleteCode += multipleRelatedProperty.createDeleteAllMethods(modelName, className, value.name)
 
-                        includePropertiesCode += `'__${value.name}',`
+                        includePropertiesCode += `'${propertyName}',`
                     } else {
                         const propertyName = TextTransformation.setIdToPropertyName(TextTransformation.pascalfy(pluralize.singular(value.optionsApi.endpoint.split('-').join(' '))))
                         includePropertiesCode += `'${propertyName.charAt(0).toLowerCase() + propertyName.slice(1)}',`

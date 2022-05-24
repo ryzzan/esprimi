@@ -12,10 +12,10 @@ export class CodeToLoopbackRepositoryModelRelated {
                 _id?: string;
                 
                 @property()
-                ${mainPropertyCamelCase}${mainPropertyCamelCase === secondPropertyCamelCase ? 'Main' : ''}Id?: string;
+                ${mainPropertyCamelCase}Id?: string;
                 
                 @property()
-                ${secondPropertyCamelCase}Id?: string;
+                ${secondPropertyCamelCase}${mainPropertyCamelCase === secondPropertyCamelCase ? 'Related' : ''}Id?: string;
                 
                 constructor(data?: Partial<${mainProperty}Has${secondProperty}>) {
                     super(data);

@@ -53,11 +53,16 @@ export class CodeToLoopbackModelProperty {
                         relatedModelsImports += `${modelNamePascalfy}Has${className}`
 
                         properties += `
-                                    @property({ type: 'array', itemType: 'object'})
+                                    @property({ type: 'array', itemType: 'any'})
                                     ${value.name}?: any[];
 
-                                    @hasMany(() => ${className}, {through: {model: () => ${modelNamePascalfy}Has${className}}})
-                                    __${value.name}: ${className}[];
+                                    @hasMany(() => ${className}, {
+                                        through: {
+                                            model: () => ${modelNamePascalfy}Has${className},
+                                            ${modelNamePascalfy === className ? `keyFrom: '${propertyName}Id', keyTo: '${propertyName}RelatedId',` : ''}
+                                        }
+                                    })
+                                    ${propertyName}: ${className}[];
                                     `
                     } else {
                         properties += `
