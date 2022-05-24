@@ -58,7 +58,8 @@ export class CodeToAngularFormComponentProperty {
                 properties += `
                 ${element.autocomplete.name}SeparatorKeysCodes: number[] = [ENTER, COMMA];
                 filtered${TextTransformation.pascalfy(element.autocomplete.name)}: Array<any> = [];
-                chosen${TextTransformation.pascalfy(element.autocomplete.name)}: string[] = [];
+                chosen${TextTransformation.pascalfy(element.autocomplete.name)}View: string[] = [];
+                chosen${TextTransformation.pascalfy(element.autocomplete.name)}Value: string[] = [];
                 
                 @ViewChild('${element.autocomplete.name}Input') ${element.autocomplete.name}Input!: ElementRef<HTMLInputElement>;
                 `;

@@ -209,7 +209,7 @@ export class CodeToAngularFormComponentMethod {
             if (value) {
               this.chosen${TextTransformation.pascalfy(
                 element.autocomplete.name
-              )}.push(value);
+              )}View.push(value);
             }
 
             event.chipInput!.clear();
@@ -224,12 +224,22 @@ export class CodeToAngularFormComponentMethod {
           )}(element: string): void {
             const index = this.chosen${TextTransformation.pascalfy(
               element.autocomplete.name
-            )}.indexOf(element);
+            )}View.indexOf(element);
         
             if (index >= 0) {
               this.chosen${TextTransformation.pascalfy(
                 element.autocomplete.name
-              )}.splice(index, 1);
+              )}View.splice(index, 1);
+
+              this.chosen${TextTransformation.pascalfy(
+                element.autocomplete.name
+              )}Value.splice(index, 1);
+
+              this.characterFormForm.get("${
+                element.autocomplete.name
+              }")?.setValue(this.chosen${TextTransformation.pascalfy(
+                element.autocomplete.name
+              )}Value);
             }
           };
           
@@ -238,11 +248,16 @@ export class CodeToAngularFormComponentMethod {
           )}(event: MatAutocompleteSelectedEvent): void {
             this.chosen${TextTransformation.pascalfy(
               element.autocomplete.name
-            )}.push(event.option.viewValue);
-            this.${element.autocomplete.name}Input.nativeElement.value = '';
+            )}View.push(event.option.viewValue);
+            this.chosen${TextTransformation.pascalfy(
+              element.autocomplete.name
+            )}Value.push(event.option.value);
+            this.${element.autocomplete.name}Input.nativeElement.value = "";
             this.${object.form?.id}Form.get('${
-            element.autocomplete.name
-          }')?.setValue(null);
+              element.autocomplete.name
+            }')?.setValue(this.chosen${TextTransformation.pascalfy(
+              element.autocomplete.name
+            )}Value);
           };
           `;
         }
