@@ -24,6 +24,13 @@ export interface ChartInterface {
 export interface ChartBarInterface {
   labels: Array<string>;
   datasets: Array<ChartBarDatasetInterface>;
+  backgroundColor?: Array<string>; // Default: 'rgba(0, 0, 0, 0.1)'
+  borderColor?: Array<String>;
+  borderWidth?: number;
+  barPercentage?: number;
+  barThickness?: number | string;
+  maxBarThickness?: number;
+  minBarLength?: number;
 };
 
 // https://www.chartjs.org/docs/latest/charts/bubble.html
@@ -40,6 +47,18 @@ export interface ChartDoughnutInterface {
 export interface ChartPieInterface {
   labels: Array<string>;
   datasets: Array<ChartPieDatasetInterface>;
+  backgroundColor?: Array<string>; // Default: 'rgba(0, 0, 0, 0.1)'
+  borderAlign?: Enumerator<'center'|'inner'>;
+  borderColor?: Array<String>;
+  borderWidth?: number;
+  borderJoinStyle?: Enumerator<'round'|'bevel'|'miter'>;
+  borderRadius?: number | object;
+  circumference?: number;
+  hoverBackgroundColor?: string;
+  hoverBorderColor?: string;
+  hoverBoderJoinStyle?: Enumerator<'round'|'bevel'|'miter'>;
+  hoverBorderWidth?: number;
+  hoverOffset?: number;
 };
 
 // https://www.chartjs.org/docs/latest/charts/line.html
@@ -78,14 +97,7 @@ export interface ChartBarApiInterface {
 export interface ChartBarDatasetInterface {
   data?: Array<number>;
   label?: string;
-  backgroundColor?: Array<string>; // Default: 'rgba(0, 0, 0, 0.1)'
-  borderColor?: Array<String>;
-  borderWidth?: number;
   base?: number;
-  barPercentage?: number;
-  barThickness?: number | string;
-  maxBarThickness?: number;
-  minBarLength?: number;
 };
 
 export interface ChartBubbleDatasetInterface {
@@ -138,18 +150,6 @@ export interface ChartDoughnutDatasetInterface {
 export interface ChartPieDatasetInterface {
   data: Array<number>;
   label?: string;
-  backgroundColor?: Array<string>; // Default: 'rgba(0, 0, 0, 0.1)'
-  borderAlign?: Enumerator<'center'|'inner'>;
-  borderColor?: Array<String>;
-  borderWidth?: number;
-  borderJoinStyle?: Enumerator<'round'|'bevel'|'miter'>;
-  borderRadius?: number | object;
-  circumference?: number;
-  hoverBackgroundColor?: string;
-  hoverBorderColor?: string;
-  hoverBoderJoinStyle?: Enumerator<'round'|'bevel'|'miter'>;
-  hoverBorderWidth?: number;
-  hoverOffset?: number;
 };
 
 export interface ChartPolarAreaDatasetInterface {

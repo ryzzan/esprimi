@@ -86,17 +86,7 @@ export class CodeToAngularTableComponentMethod {
             )}Service = (filter: string = '') => {
                 this._${object.table.id}Service.getAll(filter)
                 .then((result: any) => {
-                  if (result) {
-                    if (result.data) {
-                      if (result.data.result) {
-                        this.${object.table.id}DataSource = result.data.result;
-                      }
-        
-                      this.${object.table.id}DataSource = result.data;
-                    }
-        
-                    this.${object.table.id}DataSource = result;
-                  }
+                  this.${object.table.id}DataSource = result;
 
                   const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
                   this.sendErrorMessage(message);

@@ -283,23 +283,9 @@ export class CodeToAngularFormComponentMethod {
           element.autocomplete.name
         }SelectObjectGetAll(filter.replace("},]", "}]"))
                             .then((result: any) => {
-                                if (result) {
-                                    if (result.data) {
-                                        if (result.data.result) {
-                                            this.filtered${TextTransformation.pascalfy(
-                                              element.autocomplete.name
-                                            )} = result.data.result;
-                                        }
-                        
-                                        this.filtered${TextTransformation.pascalfy(
-                                          element.autocomplete.name
-                                        )} = result.data;
-                                    }
-                        
-                                    this.filtered${TextTransformation.pascalfy(
-                                      element.autocomplete.name
-                                    )} = result;
-                                }
+                                this.filtered${TextTransformation.pascalfy(
+                                  element.autocomplete.name
+                                )} = result;
 
                                 const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
                                 this.sendErrorMessage(message);

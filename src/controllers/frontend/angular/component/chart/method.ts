@@ -31,16 +31,22 @@ export class CodeToAngularChartComponentMethod {
       set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
         this._${chart.id}Service.getAll(filter)
         .then((result: any) => {
-          if (result) {
-            if (result.data) {
-              if (result.data.result) {
-                this.${chart.id}DataSource = result.data.result;
+          if (result.datasets) {
+            result.datasets.map((object: any, index: number) => {
+              for (const key in object) {
+                if (Object.prototype.hasOwnProperty.call(object, key)) {
+                  const element = object[key];
+                  
+                  object["backgroundColor"] = this.${chart.id}Background[index];
+                }
               }
-
-              this.${chart.id}DataSource = result.data;
-            }
-
+  
+              result.datasets.push(object);
+            });
+  
             this.${chart.id}DataSource = result;
+          } else {
+            this.${chart.id}DataSource = [];
           }
 
           const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");          
@@ -70,7 +76,9 @@ export class CodeToAngularChartComponentMethod {
         event?: ChartEvent;
         active?: any;
       }): void => {
-        this.${chart.id}OpenDialog(this.${chart.id}DataSource.identifiers[active[0].index]);
+        this.${chart.id}OpenDialog(
+          this.${chart.id}DataSource.identifiers[active[0].index]
+        );
       };
       `;
       
@@ -79,16 +87,22 @@ export class CodeToAngularChartComponentMethod {
         set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
           this._${chart.id}Service.getAll(filter)
           .then((result: any) => {
-            if (result) {
-              if (result.data) {
-                if (result.data.result) {
-                  this.${chart.id}DataSource = result.data.result;
+            if (result.datasets) {
+              result.datasets.map((object: any, index: number) => {
+                for (const key in object) {
+                  if (Object.prototype.hasOwnProperty.call(object, key)) {
+                    const element = object[key];
+                    
+                    object["backgroundColor"] = this.${chart.id}Background[index];
+                  }
                 }
-  
-                this.${chart.id}DataSource = result.data;
-              }
-  
+    
+                result.datasets.push(object);
+              });
+    
               this.${chart.id}DataSource = result;
+            } else {
+              this.${chart.id}DataSource = [];
             }
 
             const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
@@ -131,16 +145,22 @@ export class CodeToAngularChartComponentMethod {
         set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
           this._${chart.id}Service.getAll(filter)
           .then((result: any) => {
-            if (result) {
-              if (result.data) {
-                if (result.data.result) {
-                  this.${chart.id}DataSource = result.data.result;
+            if (result.datasets) {
+              result.datasets.map((object: any, index: number) => {
+                for (const key in object) {
+                  if (Object.prototype.hasOwnProperty.call(object, key)) {
+                    const element = object[key];
+                    
+                    object["backgroundColor"] = this.${chart.id}Background[index];
+                  }
                 }
-  
-                this.${chart.id}DataSource = result.data;
-              }
-  
+    
+                result.datasets.push(object);
+              });
+    
               this.${chart.id}DataSource = result;
+            } else {
+              this.${chart.id}DataSource = [];
             }
 
             const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");

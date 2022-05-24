@@ -62,6 +62,8 @@ export class CodeToAngularChartComponentProperty {
             labels: ${ JSON.stringify(chart.bar.labels) },
           };
 
+          ${chart.id}Background: Array<string> = ${chart.bar.backgroundColor ? chart.bar.backgroundColor : `["#1F7AFF", "#85B7FF", "#B8D5FF"]`};
+
           ${chart.id}BarChartOptions: ChartConfiguration["options"] = {
             responsive: true,
             scales: {
@@ -82,6 +84,8 @@ export class CodeToAngularChartComponentProperty {
             datasets: ${ JSON.stringify(chart.pie.datasets) },
             labels: ${ JSON.stringify(chart.pie.labels) },
           };
+
+          ${chart.id}Background: Array<string> = ${chart.pie.backgroundColor ? chart.pie.backgroundColor : `["#1F7AFF", "#85B7FF", "#B8D5FF"]`};
 
           ${chart.id}PieChartOptions: ChartConfiguration["options"] = {
             responsive: true,

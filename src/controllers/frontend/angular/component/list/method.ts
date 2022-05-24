@@ -20,17 +20,7 @@ export class CodeToAngularListComponentMethod {
     set${TextTransformation.pascalfy(list.id)}Service = (filter: string = '') => {
       this._${list.id}Service.getAll(filter)
       .then((result: any) => {
-        if (result) {
-          if (result.data) {
-            if (result.data.result) {
-              this.${list.id}DataSource = result.data.result;
-            }
-
-            this.${list.id}DataSource = result.data;
-          }
-
-          this.${list.id}DataSource = result;
-        }
+        this.${list.id}DataSource = result;
 
         const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");          
         this.sendErrorMessage(message);          
