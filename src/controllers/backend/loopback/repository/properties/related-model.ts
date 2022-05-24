@@ -12,7 +12,7 @@ export class CodeToLoopbackRepositoryModelRelated {
                 _id?: string;
                 
                 @property()
-                ${mainPropertyCamelCase}Id?: string;
+                ${mainPropertyCamelCase}${mainPropertyCamelCase === secondPropertyCamelCase ? 'Main' : ''}Id?: string;
                 
                 @property()
                 ${secondPropertyCamelCase}Id?: string;

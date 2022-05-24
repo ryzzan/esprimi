@@ -58,7 +58,7 @@ export class CodeToLoopbackController {
                                             
                                                 const dataCreated = await this.repository.create({...dataWithoutNullProperties, _createdBy: createdBy, _ownerId: ownerId});
                                                 
-                                                const dataToWorkInRelation = dataCreated;
+                                                const dataToWorkInRelation = data;
                                                 %CREATE_RELATED%
 
                                                 return HttpResponseToClient.createHttpResponse({

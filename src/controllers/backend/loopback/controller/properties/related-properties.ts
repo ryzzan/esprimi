@@ -20,9 +20,9 @@ export class CodeToLoopbackControllerRelatedProperties {
 
         return `
             await this.${mainPropertyCamelCase}Has${secondProperty}Repository.createAll(
-                dataToWorkInRelation.${relatedPropertyName}.map(${secondPropertyCamelCase} => {
+                ((dataToWorkInRelation.${relatedPropertyName} || []) as any[]).map(${secondPropertyCamelCase} => {
                     return {
-                        ${mainPropertyCamelCase}Id: dataToWorkInRelation._id, 
+                        ${mainPropertyCamelCase}${mainPropertyCamelCase === secondPropertyCamelCase ? 'Main' : ''}Id: dataToWorkInRelation._id, 
                         ${secondPropertyCamelCase}Id: ${secondPropertyCamelCase}._id,
                     };
                 })
@@ -36,7 +36,7 @@ export class CodeToLoopbackControllerRelatedProperties {
 
         return `
             await this.${mainPropertyCamelCase}Has${secondProperty}Repository.deleteAll({
-                or: dataToWorkInRelation.${relatedPropertyName}.map(${secondPropertyCamelCase} => {
+                or: ((dataToWorkInRelation.${relatedPropertyName} || []) as any[]).map(${secondPropertyCamelCase} => {
                     return {${secondPropertyCamelCase}Id: ${secondPropertyCamelCase}._id};
                 })
             }); 
