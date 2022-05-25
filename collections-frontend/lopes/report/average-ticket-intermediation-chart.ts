@@ -1,19 +1,20 @@
 import { ServiceFunctionsEnum } from "../../../src/enums/form";
 import { BackendFrameworkEnum, FrontendFrameworkEnum } from "../../../src/enums/main";
+import { RequestTypeEnum } from "../../../src/enums/request";
 import { MainInterface } from "../../../src/interfaces/main";
 
-export const TOP_VALUE_ZONE_CHART: MainInterface = {
+export const AVERAGE_TICKET_INTERMEDIATION_CHART: MainInterface = {
   frontendFramework: FrontendFrameworkEnum.Angular,
-  backendFramework: BackendFrameworkEnum.Loopback,
+  // backendFramework: BackendFrameworkEnum.Loopback,
   chart: {
-    id: "topValueZoneChart",
+    id: "averageTicketIntermediationChart",
     bar: {
       datasets: [],
       labels: []
     },
     service: {
       baseUrl: "https://back-data-report.dev.lpsbr.com/api/v1",
-      endPoint: "proposals/top-value-zones",
+      endPoint: "intermediations/average-ticket",
       hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,

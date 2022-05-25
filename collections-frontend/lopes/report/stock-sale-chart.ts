@@ -12,8 +12,8 @@ export const STOCK_SALE_CHART: MainInterface = {
       labels: []
     },
     service: {
-      baseUrl: "https://back-data-report.dev.lpsbr.com/api/v1/",
-      endPoint: "captations/leases-stock",
+      baseUrl: "https://back-data-report.dev.lpsbr.com/api/v1",
+      endPoint: "captations/sales-stock",
       hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,

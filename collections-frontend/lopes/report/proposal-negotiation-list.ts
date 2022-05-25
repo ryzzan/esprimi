@@ -11,13 +11,11 @@ export const PROPOSAL_NEGOTIATION_LIST: MainInterface = {
       titleField: ["value", "label"],
     },
     service: {
-      baseUrl: "https://back-data-report.dev.lpsbr.com/api/v1/",
-      endPoint: "proposals/proposal-negotiations?start_date=2022-05-01&finish_date=2022-05-10&company_id=37",
+      baseUrl: "https://back-data-report.dev.lpsbr.com/api/v1",
+      endPoint: "proposals/proposal-negotiations",
       hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,
-        ServiceFunctionsEnum.Delete,
-        ServiceFunctionsEnum.Find,
       ],
     },
   }

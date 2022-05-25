@@ -12,13 +12,11 @@ export const AVERAGE_TICKET_CHART: MainInterface = {
       labels: []
     },
     service: {
-      baseUrl: "https://back-data-report.dev.lpsbr.com/api/v1/",
-      endPoint: "proposals/sales-average-ticket?start_date=2022-05-01&finish_date=2022-05-10&company_id=37",
+      baseUrl: "https://back-data-report.dev.lpsbr.com/api/v1",
+      endPoint: "proposals/sales-average-ticket",
       hasAuthorization: true,
       methods: [
         ServiceFunctionsEnum.Get,
-        ServiceFunctionsEnum.Delete,
-        ServiceFunctionsEnum.Find,
       ],
     },
   }

@@ -19,6 +19,7 @@ export class CodeToAngularChartComponentProperty {
         ${chart.id}DataSource: any = [];
         ${chart.id}SearchForm: FormGroup;
         isLoading = true;
+        @Input() chartInput: any = "";
         `;
         
         if (chart.line) {
