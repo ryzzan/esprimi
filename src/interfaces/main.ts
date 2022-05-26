@@ -17,6 +17,7 @@ export interface MainInterface {
   cloneBackendPath?: string;
   projectPath?: any;
   comments?: string;
+  boilerPlate?: string;
   form?: FormInterface;
   table?: TableInterface;
   chart?: ChartInterface;

@@ -69,9 +69,9 @@ export class CodeToAngularTableComponentMethod {
                   object.table.id
                 }DisplayedColumns.map((element: string) => {
                 if(element !== "undefined") {
-                    return \`{"\${element}":{"like": "\${this.${
-                      object.table.id
-                    }SearchForm.value.searchInput}", "options": "i"}}\`
+                  return \`{"\${element}":{"like": "\${this.${
+                    object.table.id
+                  }SearchForm.value.searchInput}", "options": "i"}}\`
                 }
                 return "";
                 })}]}\`;
@@ -84,23 +84,23 @@ export class CodeToAngularTableComponentMethod {
             set${TextTransformation.pascalfy(
               object.table.id
             )}Service = (filter: string = '') => {
-                this._${object.table.id}Service.getAll(filter)
-                .then((result: any) => {
-                  this.${object.table.id}DataSource = result.data.result;
+              this._${object.table.id}Service.getAll(filter)
+              .then((result: any) => {
+                this.${object.table.id}DataSource = result.data.result;
+                this.isLoading = false;
+              })
+              .catch(async err => {
+                if (err.error.logMessage === 'jwt expired') {
+                  await this.refreshToken();
+                  this.set${TextTransformation.pascalfy(
+                    object.table.id
+                  )}Service();
+                } else {
+                  const message = this._errorHandler.apiErrorMessage(err.error.message);
                   this.isLoading = false;
-                })
-                .catch(async err => {
-                    if (err.error.logMessage === 'jwt expired') {
-                      await this.refreshToken();
-                      this.set${TextTransformation.pascalfy(
-                        object.table.id
-                      )}Service();
-                    } else {
-                      const message = this._errorHandler.apiErrorMessage(err.error.message);
-                      this.isLoading = false;
-                      this.sendErrorMessage(message);
-                    };
-                });
+                  this.sendErrorMessage(message);
+                };
+              });
             };
             ${refreshToken}
             `;
