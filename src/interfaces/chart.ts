@@ -24,6 +24,9 @@ export interface ChartInterface {
 export interface ChartBarInterface {
   labels: Array<string>;
   datasets: Array<ChartBarDatasetInterface>;
+  collection: string;
+  collectionGroupedBy: Array<string>; // Max of two props. First prop would create axis label 
+                                      // and if it has a second prop, it would create bar label
   backgroundColor?: Array<string>; // Default: 'rgba(0, 0, 0, 0.1)'
   borderColor?: Array<String>;
   borderWidth?: number;

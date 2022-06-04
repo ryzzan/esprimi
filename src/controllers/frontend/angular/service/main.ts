@@ -24,7 +24,20 @@ export class CodeToAngularService {
         BASE_URL = '%BASE_URL%';
 
         constructor(private _httpClient: HttpClient) {}
-
+        ${object.chart
+          ? `
+          getDetails(filter: string = "") {
+            return this._httpClient
+              .get(\`\${this.BASE_URL}/${object.chart.service?.endPoint}/details?\${filter}\`, {
+                headers: {
+                  Authorization: \`Bearer \${sessionStorage.getItem("token")}\`,
+                },
+              })
+              .toPromise();
+          }
+          `
+          : ""
+        }
         %SERVICES%
     }
     `;

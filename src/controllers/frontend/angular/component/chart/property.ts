@@ -18,6 +18,17 @@ export class CodeToAngularChartComponentProperty {
         ${chart.id}Id: string = '';
         ${chart.id}DataSource: any = [];
         ${chart.id}SearchForm: FormGroup;
+        mainFilter: string = \`start_date=\${
+          new Date(new Date().setDate(new Date().getDate() - 30))
+            .toISOString()
+            .split("T")[0]
+        }&finish_date=\${
+          new Date().toISOString().split("T")[0]
+        }&companies=\${
+          JSON.parse(JSON.parse(JSON.stringify(sessionStorage.getItem('companies')))).map((item: any) => { return item.id; }).join()
+        }\`;
+        chartFilter: string = "";
+        chartFilterObject: any[] = [];
         isLoading = true;
         @Input() chartInput: any = "";
         `;
@@ -30,6 +41,16 @@ export class CodeToAngularChartComponentProperty {
           };
 
           ${chart.id}LineChartOptions: ChartConfiguration["options"] = {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: "Definir título",
+                font: {
+                  size: 18
+                }
+              }
+            },
             elements: {
               line: {
                 tension: ${chart.line.tension ? chart.line.tension : 0.5},
@@ -67,6 +88,15 @@ export class CodeToAngularChartComponentProperty {
 
           ${chart.id}BarChartOptions: ChartConfiguration["options"] = {
             responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: "Definir título",
+                font: {
+                  size: 18
+                }
+              }
+            },
             scales: {
               x: {},
               y: {
@@ -90,6 +120,15 @@ export class CodeToAngularChartComponentProperty {
 
           ${chart.id}PieChartOptions: ChartConfiguration["options"] = {
             responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: "Definir título",
+                font: {
+                  size: 18
+                }
+              }
+            },
           };
 
           ${chart.id}PieChartType: ChartType = "pie";

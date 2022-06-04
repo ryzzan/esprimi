@@ -25,10 +25,20 @@ export class CodeToAngularChartComponentMethod {
         event?: ChartEvent;
         active?: any;
       }): void => {
-        this.${chart.id}OpenDialog(this.${chart.id}DataSource.identifiers[active[0].index]);
+        this.chartFilterObject = this.${chart.id}DataSource.identifiers[active[0].index];
+        this.chartFilter = "";
+        for (const key in this.chartFilterObject) {
+          if (Object.prototype.hasOwnProperty.call(this.chartFilterObject, key)) {
+            const element = this.chartFilterObject[key];
+            this.chartFilter += \`&\${key}=\${element}\`
+          }
+        }
+        
+        this.${chart.id}OpenDialog();
       };
 
       set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
+        this.isLoading = true;
         this._${chart.id}Service.getAll(filter)
         .then((result: any) => {
           if (result.datasets) {
@@ -37,7 +47,8 @@ export class CodeToAngularChartComponentMethod {
                 if (Object.prototype.hasOwnProperty.call(object, key)) {
                   const element = object[key];
                   
-                  object["backgroundColor"] = this.${chart.id}Background[index];
+                  object.backgroundColor = this.${chart.id}Background[index];
+                  object.hoverBackgroundColor = this.${chart.id}Background[index];
                 }
               }
   
@@ -48,10 +59,9 @@ export class CodeToAngularChartComponentMethod {
           } else {
             this.${chart.id}DataSource = [];
           }
-
-          const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");          
-          this.sendErrorMessage(message);          
           this.isLoading = false;
+          this.${chart.id}BarChartData.datasets = this.${chart.id}DataSource.datasets;
+          this.${chart.id}BarChartData.labels = this.${chart.id}DataSource.labels;
         })
         .catch(async err => {
           if (err.error.logMessage === 'jwt expired') {
@@ -76,15 +86,23 @@ export class CodeToAngularChartComponentMethod {
         event?: ChartEvent;
         active?: any;
       }): void => {
-        this.${chart.id}OpenDialog(
-          this.${chart.id}DataSource.identifiers[active[0].index]
-        );
+        this.chartFilterObject = this.${chart.id}DataSource.identifiers[active[0].index];
+        this.chartFilter = "";
+        for (const key in this.chartFilterObject) {
+          if (Object.prototype.hasOwnProperty.call(this.chartFilterObject, key)) {
+            const element = this.chartFilterObject[key];
+            this.chartFilter += \`&\${key}=\${element}\`
+          }
+        }
+        
+        this.${chart.id}OpenDialog();
       };
       `;
       
       if (chart.bar.datasets.length < 1) {
         methods += `
         set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
+          this.isLoading = true;
           this._${chart.id}Service.getAll(filter)
           .then((result: any) => {
             if (result.datasets) {
@@ -93,7 +111,8 @@ export class CodeToAngularChartComponentMethod {
                   if (Object.prototype.hasOwnProperty.call(object, key)) {
                     const element = object[key];
                     
-                    object["backgroundColor"] = this.${chart.id}Background[index];
+                    object.backgroundColor = this.${chart.id}Background[index];
+                    object.hoverBackgroundColor = this.${chart.id}Background[index];
                   }
                 }
     
@@ -104,11 +123,7 @@ export class CodeToAngularChartComponentMethod {
             } else {
               this.${chart.id}DataSource = [];
             }
-
-            const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
-            this.sendErrorMessage(message);
             this.isLoading = false;
-            
             this.${chart.id}BarChartData.datasets = this.${chart.id}DataSource.datasets;
             this.${chart.id}BarChartData.labels = this.${chart.id}DataSource.labels;
           })
@@ -136,13 +151,23 @@ export class CodeToAngularChartComponentMethod {
         event?: ChartEvent;
         active?: any;
       }): void => {
-        this.${chart.id}OpenDialog(this.${chart.id}DataSource.identifiers[active[0].index]);
+        this.chartFilterObject = this.${chart.id}DataSource.identifiers[active[0].index];
+        this.chartFilter = "";
+        for (const key in this.chartFilterObject) {
+          if (Object.prototype.hasOwnProperty.call(this.chartFilterObject, key)) {
+            const element = this.chartFilterObject[key];
+            this.chartFilter += \`&\${key}=\${element}\`
+          }
+        }
+        
+        this.${chart.id}OpenDialog();
       };
       `;
       
       if (chart.pie.datasets.length < 1) {
         methods += `
         set${TextTransformation.pascalfy(chart.id)}Service = (filter: string = '') => {
+          this.isLoading = true;
           this._${chart.id}Service.getAll(filter)
           .then((result: any) => {
             if (result.datasets) {
@@ -151,7 +176,9 @@ export class CodeToAngularChartComponentMethod {
                   if (Object.prototype.hasOwnProperty.call(object, key)) {
                     const element = object[key];
                     
-                    object["backgroundColor"] = this.${chart.id}Background[index];
+                    object.backgroundColor = this.${chart.id}Background[index];
+                    object.hoverBackgroundColor = this.${chart.id}Background[index];
+                    object.hoverBorderColor = this.${chart.id}Background[index];
                   }
                 }
     
@@ -162,11 +189,8 @@ export class CodeToAngularChartComponentMethod {
             } else {
               this.${chart.id}DataSource = [];
             }
-
-            const message = this._errorHandler.apiErrorMessage("Sem formato esperado de resultado");
-            this.sendErrorMessage(message);  
-            this.isLoading = false;
             
+            this.isLoading = false;
             this.${chart.id}PieChartData.datasets = this.${chart.id}DataSource.datasets;
             this.${chart.id}PieChartData.labels = this.${chart.id}DataSource.labels;
           })
@@ -187,28 +211,32 @@ export class CodeToAngularChartComponentMethod {
 
     methods += `
     ${chart.id}OpenDialog = (filter: string = '') => {
-      const ${chart.id}DialogRef = this._dialog.open(
-        GenericAnalyticReportComponent,
-        {
-          data: {
-            filter: filter,
-          },
-        },
-      );
-
-      ${chart.id}DialogRef
+      const mixedFilter = \`\${this.mainFilter}\${this.chartFilter}\`;
+      this._${chart.id}Service.getDetails(mixedFilter)
+      .then(res => {
+        const ${chart.id}DialogRef = this._dialog.open(
+          GenericAnalyticReportComponent,
+          { data: {
+            datasource: res, 
+            filter: this.chartFilterObject,
+            context: "Definir contexto"
+          } }
+        );
+        ${chart.id}DialogRef
         .afterClosed()
         .subscribe(async (res: any) => {
-          if(res) {
+          if (res) {
             try {
               this.isLoading = false;
             } catch (error: any) {
-              const message = this._errorHandler
-                              .apiErrorMessage(error.error.message);
+              const message = this._errorHandler.apiErrorMessage(
+                error.error.message
+              );
               this.sendErrorMessage(message);
             }
           }
         });
+      })
     };
 
     refreshToken = async () => {
@@ -225,7 +253,7 @@ export class CodeToAngularChartComponentMethod {
         this.isLoading = false;
         this.sendErrorMessage(message);
         sessionStorage.clear();
-        this.router.navigate(['/']);
+        this._router.navigate(['/']);
       };
     };
     `;

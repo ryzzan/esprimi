@@ -26,26 +26,14 @@ const projectPath = "/home/ryzzan/Projects/lopes-report";
 /**
  * LOPES REPORT
  */
-import { STORE_GENERAL_VALUE_CHART } from "../collections-frontend/lopes/report/store-general-value-chart";
-import { PARTNERSHIP_CHART } from "../collections-frontend/lopes/report/partnershipt-chart";
-import { AVERAGE_TICKET_INTERMEDIATION_CHART } from "../collections-frontend/lopes/report/average-ticket-intermediation-chart";
-import { TOP_VALUE_ZONE_INTERMEDIATION_CHART } from "../collections-frontend/lopes/report/top-value-zone-intermediation-chart";
-import { REAL_ESTATE_TYPE_CHART } from "../collections-frontend/lopes/report/real-estate-type-chart";
-import { SALE_CHAMPION_CHART } from "../collections-frontend/lopes/report/sale-champion-chart";
-import { INTERMEDIATION } from "../collections-frontend/lopes/report/intermediation";
+import { AVERAGE_TICKET_LEASE_CHART } from "../collections-frontend/lopes/report/average-ticket-lease-chart";
 
 const main = new Main(),
   array = [
     /**
      * LOPES REPORT
      */
-    STORE_GENERAL_VALUE_CHART,
-    PARTNERSHIP_CHART,
-    AVERAGE_TICKET_INTERMEDIATION_CHART,
-    TOP_VALUE_ZONE_INTERMEDIATION_CHART,
-    REAL_ESTATE_TYPE_CHART,
-    SALE_CHAMPION_CHART,
-    INTERMEDIATION,
+    AVERAGE_TICKET_LEASE_CHART
   ];
 
 array.forEach((object) => {

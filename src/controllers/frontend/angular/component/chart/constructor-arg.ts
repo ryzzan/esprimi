@@ -25,16 +25,10 @@ export class CodeToAngularChartComponentConstructorArg {
                 searchInput: [null, []],
             });
 
-            this.set${TextTransformation.pascalfy(objectToCode.chart.id)}Service(
-                \`start_date=\${
-                    new Date(new Date().setDate(new Date().getDate() - 7))
-                      .toISOString()
-                      .split("T")[0]
-                  }&finish_date=\${
-                    new Date().toISOString().split("T")[0]
-                  }&companies=\${
-                    JSON.parse(JSON.parse(JSON.stringify(sessionStorage.getItem('companies')))).map((item: any) => { return item.id; }).join()
-                  }\`
+            this.set${
+                TextTransformation.pascalfy(objectToCode.chart.id)
+            }Service(
+                this.mainFilter
             );
 
             try {

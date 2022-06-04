@@ -28,9 +28,9 @@ export class LoopbackArchitectureProject {
         fs.writeFileSync(
             `${projectPath}/.env`,
             `
-PROJECT=${projectName}
-${object.envBackend}
-`
+            PROJECT=${projectName}
+            ${object.envBackend}
+            `
         );
 
         try {

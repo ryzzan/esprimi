@@ -16,25 +16,57 @@ export class CodeToAngularComponent {
     object: MainInterface
   ): Promise<string> => {
     const componentSkeletonCode = `
-    import { Component, OnInit, ElementRef, ViewChild, Input } from "@angular/core";
+    import { Component, ElementRef, ViewChild, Input, ${object.chart ? `OnChanges, ` : ""}} from "@angular/core";
     %IMPORTS%
 
     %INTERFACES%
 
     @Component({
-        selector: "app-%kebabfy(${projectName})%",
-        templateUrl: "./%kebabfy(${projectName})%.component.html",
-        styleUrls: ["./%kebabfy(${projectName})%.component.scss"]
+        selector: "app-${TextTransformation.kebabfy(projectName)}",
+        templateUrl: "./${TextTransformation.kebabfy(projectName)}.component.html",
+        styleUrls: ["./${TextTransformation.kebabfy(projectName)}.component.scss"]
     })
-    export class %pascalfy(${projectName})%Component implements OnInit {
+    export class ${TextTransformation.pascalfy(projectName)}Component ${object.chart ? `implements OnChanges` : ""} {
         %PROPERTIES%
 
         constructor(%DEPENDENCIES%) {
             %CONSTRUCTOR%
         }
-
-        ngOnInit(): void {
+        ${object.chart ? `
+        ngOnChanges(): void {
+          if (this.chartInput && this.chartInput.time !== "3") {
+            this.mainFilter = \`\${
+              this.chartInput.time
+            }&companies=\${
+              ((this.chartInput?.companies 
+                && this.chartInput?.companies?.length < 1
+              ) === null) 
+              ? JSON.parse(
+                JSON.parse(JSON.stringify(sessionStorage.getItem('companies')))
+                ).map((item: any) => { return item.id; }).join()
+              : this.chartInput.companies.join()
+            }\`;
+            this.set${TextTransformation.pascalfy(projectName)}Service(this.mainFilter);
+          }
+      
+          if (this.chartInput?.time === "3") {
+            this.mainFilter = \`start_date=\${
+              this.chartInput.startDate
+            }&finish_date=\${
+              this.chartInput.finishDate
+            }&companies=\${
+              ((this.chartInput?.companies 
+                && this.chartInput?.companies?.length < 1
+              ) === null) 
+              ? JSON.parse(JSON.parse(
+                JSON.stringify(sessionStorage.getItem('companies')))
+                ).map((item: any) => { return item.id; }).join()
+              : this.chartInput.companies.join()
+            }\`;
+            this.set${TextTransformation.pascalfy(projectName)}Service(this.mainFilter)
+          }
         }
+        ` : ""}
 
         %METHODS%
 
